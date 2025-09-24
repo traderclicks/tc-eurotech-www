@@ -1,0 +1,104 @@
+{
+  "businessName": "Eurotech Auto Repair Centre",
+  "totalReviews": 64,
+  "averageRating": 4.7,
+  "lastUpdated": "2024-01-15",
+  "reviews": [
+    {
+      "id": "review_001",
+      "reviewerName": "Victor",
+      "rating": 5,
+      "comment": "The booking in and follow up was excellent. So simple, incredibly friendly, I wouldn't hesitate to recommend Eurotech Auto Repair",
+      "date": "2023-12-15",
+      "imageId": "reviewer_001.jpg"
+    },
+    {
+      "id": "review_002",
+      "reviewerName": "Lesley",
+      "rating": 5,
+      "comment": "Top class in all respects",
+      "date": "2023-11-28",
+      "imageId": "reviewer_002.jpg"
+    },
+    {
+      "id": "review_003",
+      "reviewerName": "Eric",
+      "rating": 5,
+      "comment": "My dealings with Eurotech were excellent. Great communication and explanation of work required plus sorting out insurance. Great team and work was fantastic",
+      "date": "2023-11-10",
+      "imageId": "reviewer_003.jpg"
+    },
+    {
+      "id": "review_004",
+      "reviewerName": "George",
+      "rating": 5,
+      "comment": "Thanks for your usual impeccable service. Repairs look like new and thanks very much for the replacement car. You are the best in Auckland.",
+      "date": "2023-10-22",
+      "imageId": "reviewer_004.jpg"
+    },
+    {
+      "id": "review_005",
+      "reviewerName": "Philip",
+      "rating": 5,
+      "comment": "Appreciate the timely response. The car looks great. Thanks for your help.",
+      "date": "2023-10-05",
+      "imageId": "reviewer_005.jpg"
+    },
+    {
+      "id": "review_006",
+      "reviewerName": "John",
+      "rating": 5,
+      "comment": "Very happy with the work. Thank you to the team.",
+      "date": "2023-09-18",
+      "imageId": "reviewer_006.jpg"
+    },
+    {
+      "id": "review_007",
+      "reviewerName": "Sarah M.",
+      "rating": 5,
+      "comment": "Best panel beaters in Auckland for European vehicles! Fixed my Mini Cooper perfectly. Marino really knows his stuff.",
+      "date": "2023-09-01",
+      "imageId": "reviewer_007.jpg"
+    },
+    {
+      "id": "review_008",
+      "reviewerName": "David A.",
+      "rating": 4,
+      "comment": "Very professional workshop. Quality of work on my BMW 3 Series was exceptional. Highly recommended.",
+      "date": "2023-08-15",
+      "imageId": "reviewer_008.jpg"
+    },
+    {
+      "id": "review_009",
+      "reviewerName": "Emma L.",
+      "rating": 5,
+      "comment": "They handled my insurance claim seamlessly and the repair quality on my Land Rover is outstanding. Will definitely return.",
+      "date": "2023-08-02",
+      "imageId": "reviewer_009.jpg"
+    },
+    {
+      "id": "review_010",
+      "reviewerName": "Tom H.",
+      "rating": 5,
+      "comment": "As the only factory-authorized Jaguar/Land Rover structural repairer in NZ, these guys are the real deal. Exceptional work!",
+      "date": "2023-07-20",
+      "imageId": "reviewer_010.jpg"
+    },
+    {
+      "id": "review_011",
+      "reviewerName": "Michael R.",
+      "rating": 5,
+      "comment": "Professional team, great communication throughout the process. My Jaguar XF looks immaculate.",
+      "date": "2023-07-10",
+      "imageId": "reviewer_011.jpg"
+    },
+    {
+      "id": "review_012",
+      "reviewerName": "Jessica P.",
+      "rating": 4,
+      "comment": "I-Car Gold certified means they really know what they're doing. My Range Rover Evoque had major structural damage and they restored it perfectly.",
+      "date": "2023-06-25",
+      "imageId": "reviewer_012.jpg"
+    }
+  ]
+}
