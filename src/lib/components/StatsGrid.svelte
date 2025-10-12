@@ -65,7 +65,7 @@
   .logo-bar-container {
     width: 100%;
     padding: var(--space-4) var(--space-3) var(--space-6) var(--space-3);
-    background: rgba(80, 90, 95, 0.7);
+    background: rgba(120, 130, 135, 0.7);
     border-radius: var(--radius-xl);
     backdrop-filter: blur(120px);
   }

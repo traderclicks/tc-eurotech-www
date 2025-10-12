@@ -238,7 +238,7 @@
       title: 'Jaguar',
       description: 'Factory-authorized structural repairs with genuine parts',
       buttonHref: '/jaguar',
-      backgroundImage: '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg'
+      backgroundImage: '/gallery/jaguar/fourfour_44-w4aIu8mhxX8-unsplash.jpg'
     },
     {
       icon: '/landrover-logo-white.svg',
