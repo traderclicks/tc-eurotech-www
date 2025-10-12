@@ -2,8 +2,9 @@
   import { modals } from '$lib/stores/modal';
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { parseUnsplashAttribution, type UnsplashAttribution } from '$lib/utils/unsplash-attribution';
+  import { getCurrentImages } from '$lib/utils/current-images';
 
-  type Category = 'all' | 'jaguar' | 'landrover' | 'rangerover' | 'mini' | 'bmw' | 'workshop';
+  type Category = 'current' | 'jaguar' | 'landrover' | 'rangerover' | 'mini' | 'bmw' | 'workshop';
 
   interface GalleryImage {
     id: number;
@@ -14,7 +15,7 @@
     attribution?: UnsplashAttribution | null;
   }
 
-  let activeCategory: Category = 'all';
+  let activeCategory: Category = 'current';
 
   const rawImages: GalleryImage[] = [
     // Land Rover / Range Rover (20 images from land-rover collection)
@@ -103,13 +104,13 @@
     { id: 79, src: '/images/DSC00604.jpg', alt: 'Repair bay', category: 'workshop', useCloudflare: true },
     { id: 80, src: '/images/DSC00619.jpg', alt: 'Workshop equipment', category: 'workshop', useCloudflare: true },
     { id: 81, src: '/images/DSC00625.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 82, src: '/images/DSC00636.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 82, src: '/images/DSC00693.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 83, src: '/images/DSC00651.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 84, src: '/images/DSC00655.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 85, src: '/images/DSC00661.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 86, src: '/images/DSC00671.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 87, src: '/images/DSC00689.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 88, src: '/images/DSC00693.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 88, src: '/images/DSC00636.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 89, src: '/images/DSC00720.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 90, src: '/images/DSC00727.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
     { id: 91, src: '/images/DSC00735.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
@@ -140,10 +141,7 @@
     { id: 115, src: '/gallery/range-rover/range-rover-1658547737.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true },
     { id: 116, src: '/gallery/range-rover/range-rover-1725815761.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true },
     { id: 117, src: '/gallery/range-rover/range-rover-1736746419.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true },
-    { id: 118, src: '/gallery/range-rover/range-rover-1736746871.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true },
-    { id: 119, src: '/gallery/range-rover/range-rover-1737681904.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true },
-    { id: 120, src: '/gallery/range-rover/range-rover-1758098492.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true },
-    { id: 121, src: '/gallery/range-rover/range-rover-1759590029.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true }
+    { id: 118, src: '/gallery/range-rover/range-rover-1736746871.jpg', alt: 'Range Rover specialist service', category: 'rangerover', useCloudflare: true }
   ];
 
   // Add attribution data to all images
@@ -152,12 +150,21 @@
     attribution: parseUnsplashAttribution(img.src)
   }));
 
-  $: filteredImages = activeCategory === 'all'
-    ? images
+  // Get current images being used on the site
+  const currentImageSets = getCurrentImages();
+
+  // Create a map of image src to image data for quick lookup
+  const imageMap = new Map(images.map(img => [img.src, img]));
+
+  $: filteredImages = activeCategory === 'current'
+    ? [] // Current view uses custom display
     : images.filter(img => img.category === activeCategory);
 
+  // Count unique current images
+  const uniqueCurrentImages = new Set(currentImageSets.flatMap(set => set.images));
+
   $: categoryCounts = {
-    all: images.length,
+    current: uniqueCurrentImages.size,
     jaguar: images.filter(img => img.category === 'jaguar').length,
     landrover: images.filter(img => img.category === 'landrover').length,
     rangerover: images.filter(img => img.category === 'rangerover').length,
@@ -175,25 +182,24 @@
 </script>
 
 <svelte:head>
-  <title>Gallery - Eurotech Automotive</title>
+  <title>Image Manager - Eurotech Automotive</title>
   <meta name="description" content="View our work with BMW, Jaguar, Land Rover, Mini and other luxury European vehicles" />
 </svelte:head>
 
 <div class="gallery-page">
   <div class="container">
     <header class="page-header">
-      <h1>Gallery</h1>
-      <p>Our work with BMW, Jaguar, Land Rover, Mini and luxury European vehicles</p>
+      <h1>Image Manager</h1>
     </header>
 
     <!-- Category Filter Tabs -->
     <div class="category-tabs">
       <button
         class="tab"
-        class:active={activeCategory === 'all'}
-        on:click={() => activeCategory = 'all'}
+        class:active={activeCategory === 'current'}
+        on:click={() => activeCategory = 'current'}
       >
-        All ({categoryCounts.all})
+        Current ({categoryCounts.current})
       </button>
       <button
         class="tab"
@@ -239,56 +245,127 @@
       </button>
     </div>
 
-    <div class="gallery-grid">
-      {#each filteredImages as image (image.src)}
-        <button
-          class="gallery-item"
-          on:click={() => openImageModal(image.src, image.alt, image.attribution)}
-          aria-label="View larger image: {image.alt}"
-        >
-          <div class="image-id">{image.id}</div>
-          {#if image.useCloudflare}
-            <div class="cloudflare-wrapper">
-              <CloudflareImage
-                src={image.src}
-                alt={image.alt}
-                width={800}
-                height={533}
-              />
+    {#if activeCategory === 'current'}
+      <!-- Current Images View - Organized by Section -->
+      {#each currentImageSets as imageSet}
+        <div class="section-group">
+          <h2 class="section-title">{imageSet.section}</h2>
+          <p class="section-description">{imageSet.description}</p>
+
+          {#if imageSet.images.length === 0}
+            <div class="placeholder-message">
+              <p>Images not yet configured for this section</p>
             </div>
           {:else}
-            <img src={image.src} alt={image.alt} loading="lazy" />
-          {/if}
-          <div class="gallery-overlay">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="M21 21l-4.35-4.35"></path>
-              <line x1="11" y1="8" x2="11" y2="14"></line>
-              <line x1="8" y1="11" x2="14" y2="11"></line>
-            </svg>
-          </div>
-          {#if image.attribution}
-            <div class="attribution">
-              Photo by <a
-                href={image.attribution.photographerUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                on:click={(e) => e.stopPropagation()}
-              >
-                {image.attribution.photographer}
-              </a> on <a
-                href="https://unsplash.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                on:click={(e) => e.stopPropagation()}
-              >
-                Unsplash
-              </a>
+            <div class="gallery-grid">
+              {#each imageSet.images as imageSrc}
+                {@const imageData = imageMap.get(imageSrc)}
+                {#if imageData}
+                  <button
+                    class="gallery-item"
+                    on:click={() => openImageModal(imageData.src, imageData.alt, imageData.attribution)}
+                    aria-label="View larger image: {imageData.alt}"
+                  >
+                    <div class="image-id">{imageData.id}</div>
+                    {#if imageData.useCloudflare}
+                      <div class="cloudflare-wrapper">
+                        <CloudflareImage
+                          src={imageData.src}
+                          alt={imageData.alt}
+                          width={800}
+                          height={533}
+                        />
+                      </div>
+                    {:else}
+                      <img src={imageData.src} alt={imageData.alt} loading="lazy" />
+                    {/if}
+                    <div class="gallery-overlay">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                      </svg>
+                    </div>
+                    {#if imageData.attribution}
+                      <div class="attribution">
+                        Photo by <a
+                          href={imageData.attribution.photographerUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          on:click={(e) => e.stopPropagation()}
+                        >
+                          {imageData.attribution.photographer}
+                        </a> on <a
+                          href="https://unsplash.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          on:click={(e) => e.stopPropagation()}
+                        >
+                          Unsplash
+                        </a>
+                      </div>
+                    {/if}
+                  </button>
+                {/if}
+              {/each}
             </div>
           {/if}
-        </button>
+        </div>
       {/each}
-    </div>
+    {:else}
+      <!-- Regular Category View -->
+      <div class="gallery-grid">
+        {#each filteredImages as image (image.src)}
+          <button
+            class="gallery-item"
+            on:click={() => openImageModal(image.src, image.alt, image.attribution)}
+            aria-label="View larger image: {image.alt}"
+          >
+            <div class="image-id">{image.id}</div>
+            {#if image.useCloudflare}
+              <div class="cloudflare-wrapper">
+                <CloudflareImage
+                  src={image.src}
+                  alt={image.alt}
+                  width={800}
+                  height={533}
+                />
+              </div>
+            {:else}
+              <img src={image.src} alt={image.alt} loading="lazy" />
+            {/if}
+            <div class="gallery-overlay">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+            {#if image.attribution}
+              <div class="attribution">
+                Photo by <a
+                  href={image.attribution.photographerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  on:click={(e) => e.stopPropagation()}
+                >
+                  {image.attribution.photographer}
+                </a> on <a
+                  href="https://unsplash.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  on:click={(e) => e.stopPropagation()}
+                >
+                  Unsplash
+                </a>
+              </div>
+            {/if}
+          </button>
+        {/each}
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -347,6 +424,43 @@
     background: var(--color-primary);
     color: white;
     border-color: var(--color-primary);
+  }
+
+  .section-group {
+    margin-bottom: var(--space-16);
+  }
+
+  .section-group .section-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .section-group .section-description {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .section-group .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .placeholder-message {
+    background: var(--bg-secondary);
+    border: 2px dashed var(--text-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-12);
+    text-align: center;
+  }
+
+  .placeholder-message p {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
   }
 
   .cloudflare-wrapper {

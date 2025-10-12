@@ -17,6 +17,7 @@
   import ServiceCard from '$lib/components/ServiceCard.svelte';
   import ReviewCarousel from '$lib/components/ReviewCarousel.svelte';
   import BlogCard from '$lib/components/BlogCard.svelte';
+  import HeroCTAButtons from '$lib/components/HeroCTAButtons.svelte';
   import { PLACEHOLDERS, iconPlaceholder} from '$lib/utils/placeholders';
   import { generateFAQSchema, generateLocalBusinessSchema } from '$lib/utils/structuredData';
 
@@ -25,7 +26,7 @@
   let isTransitioning = true;
 
   const baseImages = [
-    '/gallery/range-rover/range-rover-1555941543.jpg', // 108
+    '/gallery/bmw/tyler_clemmensen-h5XcT5T0ST8-unsplash.jpg', // 71
     '/images/DSC00619.jpg', // 80
     '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg', // 35
     '/images/DSC00748.jpg', // 93
@@ -36,8 +37,8 @@
     '/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg', // 30
     '/images/DSC00751.jpg', // 94
     '/gallery/bmw/pat__-TOigkN59Dcg-unsplash.jpg', // 67
-    '/images/DSC00636.jpg', // 82
-    '/gallery/bmw/tyler_clemmensen-h5XcT5T0ST8-unsplash.jpg' // 71
+    '/images/DSC00727.jpg', // 90
+    '/gallery/range-rover/range-rover-1725815761.jpg' // 116
   ];
 
   // Repeat images 10 times for longer slideshow before reset
@@ -91,6 +92,10 @@
 
   function openContactModal() {
     modal.form({ title: 'Get a Quote' });
+  }
+
+  function openInsuranceModal() {
+    modal.insurance();
   }
 
   // Eurotech Features
@@ -212,7 +217,7 @@
 
   // Hero section data
   const heroData = {
-    title: 'European Repair Specialist',
+    title: 'European Auto Repair',
     subtitle: '',
     description: 'NZ\'s only factory-authorized Jaguar/Land Rover repairer  •  Expert BMW & Mini repairs  •  Over 20 years experience',
     primaryCTA: {
@@ -232,42 +237,42 @@
       icon: '/jaguar-logo-white.svg',
       title: 'Jaguar',
       description: 'Factory-authorized structural repairs with genuine parts',
-      buttonHref: '#jaguar',
+      buttonHref: '/jaguar',
       backgroundImage: '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg'
     },
     {
       icon: '/landrover-logo-white.svg',
       title: 'Land Rover',
       description: 'Factory-authorized Land Rover specialist repairs',
-      buttonHref: '#landrover',
+      buttonHref: '/land-rover',
       backgroundImage: '/gallery/land-rover/timtrad-CLm3pWXrS9Q-unsplash.jpg'
     },
     {
       icon: '/range-rover-logo-white.svg',
       title: 'Range Rover',
       description: 'Premium Range Rover repair and maintenance',
-      buttonHref: '#range-rover',
+      buttonHref: '/range-rover',
       backgroundImage: '/gallery/range-rover/range-rover-1725815761.jpg'
     },
     {
       icon: '/bmw-logo-white.svg',
       title: 'BMW',
       description: 'Specialist BMW repairs using latest repair techniques',
-      buttonHref: '#bmw',
+      buttonHref: '/bmw',
       backgroundImage: '/bmw.jpg'
     },
     {
       icon: '/mini-white.svg',
       title: 'Mini',
       description: 'Expert Mini servicing and collision repairs',
-      buttonHref: '#mini',
+      buttonHref: '/mini',
       backgroundImage: '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg'
     },
     {
       icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"%3E%3Cpath d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/%3E%3Cpath d="M9 12l2 2 4-4"/%3E%3C/svg%3E',
       title: 'Insurance Claims',
       description: 'Complete claim management from assessment to completion',
-      buttonHref: '#insurance',
+      buttonHref: '/insurance',
       backgroundImage: '/gallery/land-rover/woeiman-4C-x7CQNwvw-unsplash.jpg'
     }
   ];
@@ -403,12 +408,7 @@
           {heroData.title}
           <span class="hero-gradient">{heroData.subtitle}</span>
         </h1>
-        <div class="hero-actions">
-          <button class="hero-book-btn">
-            Book repair
-          </button>
-          <a href="#insurance" class="hero-insurance-link">insurance contacts</a>
-        </div>
+        <HeroCTAButtons />
       </div>
     {/if}
   </div>
@@ -457,7 +457,7 @@
         What Our Customers Say
         <span class="title-separator">|</span>
         <span class="google-rating">
-          <img src="/icons/google.svg" alt="Google" class="google-logo-inline" />
+          <img src="/icons/google-wordmark-white.svg" alt="Google" class="google-logo-inline" />
           <span class="star filled">★</span>
           {googleReviews.rating} ({googleReviews.totalReviews} reviews)
         </span>
@@ -490,6 +490,7 @@
 
   .bg-blog {
     background: #f5f5f5;
+    padding-top: var(--space-4);
   }
 
   .faq-container {
@@ -515,11 +516,11 @@
   /* Hero Section Styles */
   .hero {
     position: relative;
-    min-height: 800px;
+    min-height: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
+    overflow: hidden;
     padding-bottom: var(--space-8);
   }
 
@@ -595,7 +596,7 @@
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(3rem, 7vw, 5rem);
     font-weight: var(--font-extrabold);
     line-height: 1.1;
     margin-bottom: var(--space-6);
@@ -605,50 +606,6 @@
   .hero-gradient {
     display: block;
     color: white;
-  }
-
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-6);
-    margin-top: var(--space-6);
-  }
-
-  .hero-book-btn {
-    padding: var(--space-3) var(--space-8);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    color: #1a1a1a;
-    border: none;
-    border-radius: var(--radius-full);
-    font-size: var(--text-base);
-    font-weight: var(--font-semibold);
-    cursor: pointer;
-    transition: all var(--transition-base);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .hero-book-btn:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .hero-insurance-link {
-    color: white;
-    font-size: var(--text-base);
-    font-weight: var(--font-bold);
-    text-decoration: none;
-    opacity: 1;
-    transition: opacity var(--transition-base);
-    border-bottom: 1px solid white;
-    padding-bottom: 2px;
-  }
-
-  .hero-insurance-link:hover {
-    opacity: 1;
-    border-bottom-color: rgba(255, 255, 255, 0.8);
   }
 
   /* Hero Navigation Buttons */
@@ -705,7 +662,7 @@
   }
 
   .bg-dark {
-    background: #1a1a1a;
+    background: #1a2a30eb;
   }
 
   .text-center {
@@ -721,7 +678,7 @@
   }
 
   .reviews-title {
-    font-size: var(--text-lg);
+    font-size: var(--text-2xl);
   }
 
   .title-separator {
@@ -751,16 +708,6 @@
   @media (max-width: 768px) {
     .hero {
       min-height: 500px;
-    }
-
-    .hero-actions {
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .hero-book-btn {
-      font-size: var(--text-sm);
-      padding: var(--space-2) var(--space-6);
     }
   }
 </style>
