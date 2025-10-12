@@ -65,9 +65,9 @@
   .logo-bar-container {
     width: 100%;
     padding: var(--space-4) var(--space-3) var(--space-6) var(--space-3);
-    background: rgba(80, 90, 95, 0.9);
+    background: rgba(80, 90, 95, 0.7);
     border-radius: var(--radius-xl);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(120px);
   }
 
   .logo-bar-content {
@@ -96,7 +96,8 @@
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    background: rgba(130, 130, 130, 0.8);
+    background: rgba(90, 100, 105, 0.9);
+    backdrop-filter: blur(10px);
     padding: var(--space-3) 0;
   }
 
