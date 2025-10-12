@@ -57,17 +57,17 @@
     width: 80%;
     max-width: 1300px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.5);
+    background: transparent;
     border-radius: var(--radius-xl);
-    filter: drop-shadow(0 -8px 12px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 -12px 24px rgba(255, 255, 255, 0.2));
   }
 
   .logo-bar-container {
     width: 100%;
     padding: var(--space-4) var(--space-3) var(--space-6) var(--space-3);
-    background: #08141a80;
+    background: #1a2a30eb;
     border-radius: var(--radius-xl);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
   }
 
   .logo-bar-content {
@@ -80,7 +80,7 @@
     font-size: var(--text-base);
     font-weight: bold;
     text-align: center;
-    margin: 0 0 var(--space-5) 0;
+    margin: var(--space-3) 0 var(--space-6) 0;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -96,8 +96,8 @@
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 0;
+    background: rgba(130, 130, 130, 0.6);
+    padding: var(--space-3) 0;
   }
 
   .logos-track {
@@ -119,8 +119,7 @@
   .brand-logo {
     width: 70px;
     height: auto;
-    opacity: 0.7;
-    transition: opacity var(--transition-base);
+    opacity: 1;
     flex-shrink: 0;
   }
 
@@ -130,10 +129,6 @@
 
   .brand-logo.landrover-logo {
     width: 56px;
-  }
-
-  .brand-logo:hover {
-    opacity: 0.9;
   }
 
   /* Mobile Styles */
