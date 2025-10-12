@@ -114,22 +114,6 @@
     position: relative;
   }
 
-  .logo-small {
-    height: 55px;
-    width: auto;
-    z-index: 10;
-    margin-left: var(--space-8);
-  }
-
-  .logo-mta {
-    height: 40px;
-    margin-left: var(--space-4);
-  }
-
-  .nav-cta {
-    margin-left: var(--space-2);
-  }
-
   /* Menu Toggle Button */
   .menu-toggle {
     position: absolute;
@@ -171,12 +155,6 @@
   @media (max-width: 768px) {
     .logo img {
       height: 60px;
-    }
-
-    .logo-small,
-    .logo-mta,
-    .nav-cta {
-      display: none;
     }
   }
 

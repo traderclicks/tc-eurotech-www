@@ -347,15 +347,6 @@
   }
 
   @media (max-width: 768px) {
-    .section-header {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .google-badge {
-      justify-content: center;
-    }
-
     .reviews-grid {
       grid-template-columns: 1fr;
       gap: var(--space-4);

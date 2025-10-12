@@ -179,42 +179,6 @@
     padding-left: calc(var(--space-6) + 4px);
   }
 
-  /* Services Section Styles */
-  .services-section {
-    border-bottom: 1px solid #3A352F;
-    padding-bottom: var(--space-2);
-  }
-
-  .services-title {
-    padding: var(--space-4) var(--space-6);
-    color: white;
-    font-size: var(--text-lg);
-    font-weight: var(--font-medium);
-    opacity: 0.9;
-  }
-
-  .services-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .service-link {
-    display: block;
-    padding: var(--space-3) var(--space-6) var(--space-3) var(--space-10);
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: var(--text-base);
-    transition: all var(--transition-fast);
-  }
-
-  .service-link:hover {
-    color: white;
-    padding-left: calc(var(--space-10) + 4px);
-    background: rgba(255, 255, 255, 0.08);
-  }
-
   .menu-footer {
     padding: var(--space-6);
     border-top: 1px solid #3A352F;
