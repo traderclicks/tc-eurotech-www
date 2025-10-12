@@ -6,6 +6,21 @@
   function openContactModal() {
     modal.form({ title: 'Get a Quote' });
   }
+
+  function openImageCreditsModal() {
+    modal.alert({
+      title: 'Image Credits',
+      message: `
+        <h3 style="margin-top: 0;">Image Sources</h3>
+        <p>Vehicle photography from:</p>
+        <ul style="line-height: 1.8;">
+          <li><strong>Unsplash Contributors:</strong> Professional automotive photography</li>
+          <li><strong>Eurotech Workshop:</strong> Original photography of our facility and work</li>
+        </ul>
+        <p style="margin-top: 1rem;">All images are used in accordance with their respective licenses.</p>
+      `
+    });
+  }
 </script>
 
 <footer class="footer">
@@ -16,7 +31,7 @@
         <div class="services-eyebrow">EUROTECH AUTO REPAIR</div>
         <ul class="footer-links services-grid-links">
           <li>
-            <a href="#jaguar" class="service-link">
+            <a href="/jaguar" class="service-link">
               <div class="logo-col">
                 <img src="/jaguar-logo-white.svg" alt="" class="service-logo" />
               </div>
@@ -24,7 +39,7 @@
             </a>
           </li>
           <li>
-            <a href="#landrover" class="service-link">
+            <a href="/land-rover" class="service-link">
               <div class="logo-col">
                 <img src="/landrover-logo-white.svg" alt="" class="service-logo service-logo-landrover" />
               </div>
@@ -32,7 +47,15 @@
             </a>
           </li>
           <li>
-            <a href="#bmw" class="service-link">
+            <a href="/range-rover" class="service-link">
+              <div class="logo-col">
+                <img src="/range-rover-logo-white.svg" alt="" class="service-logo service-logo-landrover" />
+              </div>
+              <span class="text-col">Range Rover Repair</span>
+            </a>
+          </li>
+          <li>
+            <a href="/bmw" class="service-link">
               <div class="logo-col">
                 <img src="/bmw-logo-white.svg" alt="" class="service-logo service-logo-bmw" />
               </div>
@@ -40,7 +63,7 @@
             </a>
           </li>
           <li>
-            <a href="#mini" class="service-link">
+            <a href="/mini" class="service-link">
               <div class="logo-col">
                 <img src="/mini-white.svg" alt="" class="service-logo" />
               </div>
@@ -48,7 +71,7 @@
             </a>
           </li>
           <li>
-            <a href="#insurance" class="service-link">
+            <a href="/insurance" class="service-link">
               <div class="logo-col">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E" alt="" class="service-logo service-logo-insurance" />
               </div>
@@ -112,14 +135,14 @@
 
         <!-- Social Links -->
         <div class="social-links">
-          <a href="https://www.facebook.com/eurotechauto" aria-label="Facebook">
-            <img src="/icons/facebook.svg" alt="Facebook" width="20" height="20" />
+          <a href="https://www.facebook.com/eurotechauto" aria-label="Facebook" class="social-icon-link">
+            <img src="/icons/facebook.svg" alt="Facebook" width="35" height="35" />
           </a>
-          <a href="https://www.instagram.com/eurotechauto" aria-label="Instagram">
-            <img src="/icons/instagram.svg" alt="Instagram" width="20" height="20" />
+          <a href="https://www.instagram.com/eurotechauto" aria-label="Instagram" class="social-icon-link">
+            <img src="/icons/instagram.svg" alt="Instagram" width="35" height="35" />
           </a>
-          <a href="https://g.page/eurotech-auto-repair" aria-label="Google Business">
-            <img src="/icons/google.svg" alt="Google" width="20" height="20" />
+          <a href="https://g.page/eurotech-auto-repair" aria-label="Google Business" class="social-icon-link">
+            <img src="/icons/google.svg" alt="Google" width="35" height="35" />
           </a>
         </div>
       </div>
@@ -135,12 +158,12 @@
         <a href="/privacy">Privacy</a>
         <span class="separator">|</span>
         <a href="/terms">Terms</a>
+        <span class="separator">|</span>
+        <button class="link-button" on:click={openImageCreditsModal}>Image Credits</button>
       </div>
 
       <!-- Logos at right -->
       <div class="certifications-logos">
-        <span>CRA Accredited</span>
-        <span class="separator">|</span>
         <span>I-Car Gold Certified</span>
         <span class="separator">|</span>
         <span>Member of:</span>
@@ -153,9 +176,9 @@
 
 <style>
   .footer {
-    background: #000000;
+    background: #08141a;
     color: rgba(255, 255, 255, 0.8);
-    padding: var(--space-16) 0 var(--space-8);
+    padding: var(--space-16) 0 0;
     margin-top: auto;
   }
 
@@ -187,8 +210,8 @@
 
   .social-links {
     display: flex;
-    gap: var(--space-4);
-    margin-top: var(--space-4);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
   }
 
   .social-links a {
@@ -205,6 +228,29 @@
   .social-links a:hover {
     background: var(--color-primary);
     transform: translateY(-2px);
+  }
+
+  .social-links a.social-icon-link {
+    background: none;
+    width: auto;
+    height: auto;
+    opacity: 0.8;
+  }
+
+  .social-links a.social-icon-link:hover {
+    background: none;
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .social-links a.google-link {
+    width: auto;
+    padding: 0 var(--space-2);
+  }
+
+  .google-logo-full {
+    width: 70px;
+    height: auto;
   }
 
   .footer-heading {
@@ -300,18 +346,22 @@
   }
 
   .footer-cta {
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    padding: var(--space-3) var(--space-6);
-    border-radius: var(--radius-md);
-    font-weight: var(--font-medium);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: var(--space-3) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-base);
+    width: fit-content;
   }
 
   .footer-cta:hover {
-    background: var(--color-primary-dark);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
     transform: translateY(-2px);
   }
 
@@ -321,7 +371,7 @@
 
   .footer-bottom-links {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: var(--space-4);
     padding-top: var(--space-12);
@@ -351,6 +401,22 @@
   }
 
   .footer-bottom-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+  }
+
+  .link-button:hover {
     color: var(--color-primary);
   }
 

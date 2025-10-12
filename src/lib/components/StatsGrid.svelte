@@ -24,7 +24,7 @@
             <span class="separator">•</span>
             <span>Expert BMW & Mini repairs</span>
             <span class="separator">•</span>
-            <span>Operating over 20 years</span>
+            <span>20+ years of operation</span>
           </div>
         {/if}
         <div class="logos-scroll">
@@ -57,7 +57,7 @@
     width: 80%;
     max-width: 1300px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: var(--radius-xl);
     filter: drop-shadow(0 -8px 12px rgba(0, 0, 0, 0.2));
   }
@@ -65,7 +65,7 @@
   .logo-bar-container {
     width: 100%;
     padding: var(--space-4) var(--space-3) var(--space-6) var(--space-3);
-    background: rgba(0, 0, 0, 0.6);
+    background: #08141a80;
     border-radius: var(--radius-xl);
     backdrop-filter: blur(10px);
   }
@@ -77,7 +77,7 @@
 
   .description-text {
     color: #ffffff;
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     font-weight: bold;
     text-align: center;
     margin: 0 0 var(--space-5) 0;

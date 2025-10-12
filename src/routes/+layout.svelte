@@ -11,6 +11,9 @@
   // Only the homepage has a hero image
   $: hasHero = $page.url.pathname === '/';
 
+  // Hide header/footer on login page
+  $: isLoginPage = $page.url.pathname === '/login';
+
   onMount(() => {
     const handleScroll = () => {
       scrollY = window.scrollY;
@@ -82,19 +85,23 @@
 </svelte:head>
 
 <div class="app">
-  <Header isScrolled={scrollY > 50} {hasHero} />
+  {#if !isLoginPage}
+    <Header isScrolled={scrollY > 50} {hasHero} />
+  {/if}
 
   <main class="main">
     <slot />
   </main>
 
-  <Footer />
+  {#if !isLoginPage}
+    <Footer />
+  {/if}
 
   <!-- Global Modal Container -->
   <Modal />
 
   <!-- Back to Top Button -->
-  {#if scrollY > 300}
+  {#if scrollY > 300 && !isLoginPage}
     <button
       class="back-to-top"
       on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
