@@ -8,12 +8,15 @@
  * 3. Fails build if violations found
  *
  * Usage: node scripts/check-images.mjs
+ * Usage: node scripts/check-images.mjs --auto-fix (skip prompts, auto-fix)
  */
 
 import { readFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { createInterface } from 'readline';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -212,10 +215,58 @@ function checkImageSizes() {
 }
 
 // ============================================================================
+// Image Optimization
+// ============================================================================
+
+function promptUser(question) {
+  return new Promise((resolve) => {
+    const rl = createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    rl.question(question, (answer) => {
+      rl.close();
+      resolve(answer.toLowerCase().trim());
+    });
+  });
+}
+
+function optimizeImages(directories) {
+  const scriptPath = '/Users/duncanmcgill/workspace/_workspace/scripts/cloudflare-images/prepare-images.sh';
+
+  if (!existsSync(scriptPath)) {
+    console.error(`\n❌ Optimization script not found at: ${scriptPath}`);
+    console.error('   Cannot auto-fix images.\n');
+    return false;
+  }
+
+  console.log('\n🔧 Running image optimization...\n');
+
+  try {
+    for (const dir of directories) {
+      const fullPath = join(projectRoot, dir);
+      if (existsSync(fullPath)) {
+        console.log(`   Optimizing: ${dir}/`);
+        execSync(`${scriptPath} ${fullPath}`, {
+          stdio: 'inherit',
+          cwd: projectRoot
+        });
+      }
+    }
+    console.log('\n✅ Image optimization complete!\n');
+    return true;
+  } catch (error) {
+    console.error(`\n❌ Optimization failed: ${error.message}\n`);
+    return false;
+  }
+}
+
+// ============================================================================
 // Main Execution
 // ============================================================================
 
-function main() {
+async function main() {
   console.log('\n🔍 Image Validation Check\n');
   console.log(`Mode: ${config.cloudflareEnabled ? '✨ Cloudflare Optimization Enabled' : '⚠️  Cloudflare Disabled - Size Limits Apply'}\n`);
 
@@ -279,15 +330,57 @@ function main() {
 
     if (config.cloudflareEnabled) {
       console.error('   These images are too large even for development/git.');
-      console.error('   Fix: Run prepare-images.sh to optimize:');
-      console.error('   $ prepare-images.sh ./static/images\n');
       console.error('   This will resize to max 2400px width (~1-2MB)\n');
-    } else {
-      console.error('   Fix: Run prepare-images.sh to optimize images:');
-      console.error('   $ prepare-images.sh ./static/images\n');
     }
 
-    hasErrors = true;
+    // Check if running in CI or with --no-prompt flag
+    const isCI = process.env.CI === 'true' || process.env.VERCEL === '1';
+    const autoFix = process.argv.includes('--auto-fix');
+    const noPrompt = process.argv.includes('--no-prompt');
+
+    if (isCI || noPrompt) {
+      console.error('   Fix: Run prepare-images.sh to optimize:');
+      console.error('   $ prepare-images.sh ./static/images\n');
+      hasErrors = true;
+    } else if (autoFix) {
+      // Auto-fix without prompt
+      const optimized = optimizeImages(config.imageDirs);
+      if (optimized) {
+        console.log('🔄 Re-running validation...\n');
+        const recheckSizes = checkImageSizes();
+        if (recheckSizes.oversizedImages.length > 0) {
+          console.error(`❌ Still ${recheckSizes.oversizedImages.length} oversized images after optimization\n`);
+          hasErrors = true;
+        } else {
+          console.log('✅ All images now within size limits!\n');
+        }
+      } else {
+        hasErrors = true;
+      }
+    } else {
+      // Prompt user for interactive fix
+      const answer = await promptUser('\n❓ Run image optimization now? (y/n): ');
+
+      if (answer === 'y' || answer === 'yes') {
+        const optimized = optimizeImages(config.imageDirs);
+        if (optimized) {
+          console.log('🔄 Re-running validation...\n');
+          const recheckSizes = checkImageSizes();
+          if (recheckSizes.oversizedImages.length > 0) {
+            console.error(`❌ Still ${recheckSizes.oversizedImages.length} oversized images after optimization\n`);
+            hasErrors = true;
+          } else {
+            console.log('✅ All images now within size limits!\n');
+          }
+        } else {
+          hasErrors = true;
+        }
+      } else {
+        console.log('\n⏭️  Skipping optimization. Fix manually with:');
+        console.log('   $ prepare-images.sh ./static/images\n');
+        hasErrors = true;
+      }
+    }
   } else {
     const avgSize = sizeCheck.totalSize.bytes / sizeCheck.totalSize.count;
     console.log(`   Average size: ${formatBytes(avgSize)}`);
@@ -306,4 +399,7 @@ function main() {
   }
 }
 
-main();
+main().catch(error => {
+  console.error('\n❌ Unexpected error:', error);
+  process.exit(1);
+});
