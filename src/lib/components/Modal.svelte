@@ -90,6 +90,23 @@
               </svg>
             </button>
             <img src={modal.content.src} alt={modal.content.alt || ''} />
+            {#if modal.content.attribution}
+              <div class="image-attribution">
+                Photo by <a
+                  href={modal.content.attribution.photographerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {modal.content.attribution.photographer}
+                </a> on <a
+                  href="https://unsplash.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Unsplash
+                </a>
+              </div>
+            {/if}
           </div>
         {:else if modal.type === 'video'}
           <div class="video-modal">
@@ -247,6 +264,31 @@
 
   .image-close:hover {
     background: rgba(0, 0, 0, 0.8);
+  }
+
+  .image-attribution {
+    position: absolute;
+    bottom: var(--space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .image-attribution a {
+    color: white;
+    text-decoration: underline;
+    font-weight: var(--font-medium);
+    transition: opacity var(--transition-fast);
+  }
+
+  .image-attribution a:hover {
+    opacity: 0.8;
   }
 
   /* Video Modal Styles */

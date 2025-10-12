@@ -1,6 +1,7 @@
 <script lang="ts">
   import { modals } from '$lib/stores/modal';
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
+  import { parseUnsplashAttribution, type UnsplashAttribution } from '$lib/utils/unsplash-attribution';
 
   type Category = 'all' | 'jaguar' | 'landrover' | 'mini' | 'workshop';
 
@@ -10,75 +11,98 @@
     alt: string;
     category: Category;
     useCloudflare?: boolean;
+    attribution?: UnsplashAttribution | null;
   }
 
   let activeCategory: Category = 'all';
 
-  const images: GalleryImage[] = [
-    // Range Rover / Land Rover
-    { id: 1, src: '/gallery/Range-rover-6XeVLIVbbpg-unsplash.jpeg', alt: 'Range Rover luxury vehicle', category: 'landrover' },
-    { id: 2, src: '/gallery/range-rover-LyhzCmT23QM-unsplash.jpeg', alt: 'Range Rover luxury vehicle', category: 'landrover' },
-    { id: 3, src: '/gallery/range-rover-kD858yV-GME-unsplash.jpeg', alt: 'Range Rover luxury vehicle', category: 'landrover' },
-    { id: 4, src: '/gallery/lasnd-rover-EiYV7GWsR78-unsplash.jpeg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
-    // Mini
-    { id: 5, src: '/gallery/mini-gFP1cUAviAc-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 6, src: '/gallery/mini-G0GRk2bzJiU-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 7, src: '/gallery/mini-VjjhiOobxU0-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 8, src: '/gallery/mini-d_6pVSQip3I-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 9, src: '/gallery/mini-PUBt7UPbJFY-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 10, src: '/gallery/mini-0jdnuETGLRg-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 11, src: '/gallery/mini-jjzQB15xcGs-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 12, src: '/gallery/mini--AfHLWdTyjQ-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 13, src: '/gallery/mini-msFTpW3g9CA-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 14, src: '/gallery/mini-AnQV-1C-hJk-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 15, src: '/gallery/mini-ZIyIy8RFoQA-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 16, src: '/gallery/mini-zKILixwL90A-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 17, src: '/gallery/mini-RUQV_UbOKgY-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    { id: 18, src: '/gallery/mini-vynohradov-QimUytDxdKk-unsplash.jpeg', alt: 'Mini specialist service', category: 'mini' },
-    // Jaguar
-    { id: 19, src: '/gallery/jaguar-kalamar-pJ5Nm5QfB7k-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 20, src: '/gallery/jaguar-6pDXbba2cQk-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 21, src: '/gallery/jaguar-yRAb7f_LlfI-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 22, src: '/gallery/jaguarj-wYZOFSt2f9Y-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 23, src: '/gallery/jaguar-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 24, src: '/gallery/jaguar-OnppPkl1d3U-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 25, src: '/gallery/jaguar-MGVLBuXS6Ic-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 26, src: '/gallery/jaguar-nyUIFbDSy5Y-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 27, src: '/gallery/jaguar-oUoLi5k7esA-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
-    { id: 28, src: '/gallery/Jaguar-UWekMnJ2pCc-unsplash.jpeg', alt: 'Jaguar specialist service', category: 'jaguar' },
+  const rawImages: GalleryImage[] = [
+    // Land Rover / Range Rover (20 images from land-rover collection)
+    { id: 1, src: '/gallery/land-rover/grundsteins-53JjnvtUGKE-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 2, src: '/gallery/land-rover/cedrikwesche-YP1LA4lzDJc-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 3, src: '/gallery/land-rover/timtrad-CLm3pWXrS9Q-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 4, src: '/gallery/land-rover/timtrad-HxrAN-G0IfI-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 5, src: '/gallery/land-rover/timtrad-v-4RgW343fA-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 6, src: '/gallery/land-rover/grantritchie-j0YPbvXu4t0-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 7, src: '/gallery/land-rover/grantritchie-jYk96oRbPwg-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 8, src: '/gallery/land-rover/richhemingway-UbTktGx_vdQ-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 9, src: '/gallery/land-rover/jonflobrant-lRSChvh1Mhs-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 10, src: '/gallery/land-rover/finding_dan-lXvycA58ZfQ-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 11, src: '/gallery/land-rover/visionaryconcepts-jx4OyQHNhi0-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 12, src: '/gallery/land-rover/withluke-Pn285tSRCNY-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 13, src: '/gallery/land-rover/woeiman-4C-x7CQNwvw-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 14, src: '/gallery/land-rover/louistricot-0Uv4fh1kLCc-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 15, src: '/gallery/land-rover/metinozer-hShrr0WvrQs-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 16, src: '/gallery/land-rover/loris_marie-DFvBETKITEw-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 17, src: '/gallery/land-rover/r3dmax-dTQyfxfdtp8-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 18, src: '/gallery/land-rover/dillonjshook-xWeSCy5BdfI-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 19, src: '/gallery/land-rover/cmalquist-3jquALuN6B0-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    { id: 20, src: '/gallery/land-rover/braintax-Y4vFVJPyYew-unsplash.jpg', alt: 'Land Rover luxury vehicle', category: 'landrover' },
+    // Mini (11 images from mini collection)
+    { id: 21, src: '/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 22, src: '/gallery/mini/sonniehiles-PUBt7UPbJFY-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 23, src: '/gallery/mini/v1d-kySbGWdOmio-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 24, src: '/gallery/mini/v1d-4D7rUMPYiqE-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 25, src: '/gallery/mini/yxvi-zKILixwL90A-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 26, src: '/gallery/mini/huntleytography-0jdnuETGLRg-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 27, src: '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 28, src: '/gallery/mini/picsbyjameslee-msFTpW3g9CA-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 29, src: '/gallery/mini/reinhartjulian-q3WIb09OMYE-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 30, src: '/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    { id: 31, src: '/gallery/mini/icedcocoa-zmdG9tUvK4I-unsplash.jpg', alt: 'Mini specialist service', category: 'mini' },
+    // Jaguar (15 images from jaguar collection)
+    { id: 32, src: '/gallery/jaguar/taylor65s-EIs247QDxZk-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 33, src: '/gallery/jaguar/mostafa_jamei-rZzOv2M-CIM-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 34, src: '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 35, src: '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 36, src: '/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 37, src: '/gallery/jaguar/imlst-XsTEdMbraw0-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 38, src: '/gallery/jaguar/gettyimages-nKlKPouTUsg-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 39, src: '/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 40, src: '/gallery/jaguar/quentin_martinez-rl9vMwJkoRY-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 41, src: '/gallery/jaguar/fourfour_44-w4aIu8mhxX8-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 42, src: '/gallery/jaguar/escobar_kanishk-J1kmixRfys0-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 43, src: '/gallery/jaguar/neptune279-_J0AfhTco-w-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 44, src: '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 45, src: '/gallery/jaguar/coty12-MnzEPhMDh6w-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
+    { id: 46, src: '/gallery/jaguar/cashmacanaya-m2-1PmKnig0-unsplash.jpg', alt: 'Jaguar specialist service', category: 'jaguar' },
     // Andy's Workshop Photos (2019)
-    { id: 29, src: '/images/DSC00592.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 30, src: '/images/DSC00596.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 31, src: '/images/DSC00604.jpg', alt: 'Repair bay', category: 'workshop', useCloudflare: true },
-    { id: 32, src: '/images/DSC00619.jpg', alt: 'Workshop equipment', category: 'workshop', useCloudflare: true },
-    { id: 33, src: '/images/DSC00625.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 34, src: '/images/DSC00636.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 35, src: '/images/DSC00651.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 36, src: '/images/DSC00655.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 37, src: '/images/DSC00661.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 38, src: '/images/DSC00671.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 39, src: '/images/DSC00683.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 40, src: '/images/DSC00689.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 41, src: '/images/DSC00693.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 42, src: '/images/DSC00720.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 43, src: '/images/DSC00727.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 44, src: '/images/DSC00735.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 45, src: '/images/DSC00740.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 46, src: '/images/DSC00748.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 47, src: '/images/DSC00751.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 48, src: '/images/DSC00760.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 49, src: '/images/DSC00768.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 50, src: '/images/DSC00773.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 51, src: '/images/DSC00926.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 52, src: '/images/DSC00931.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 53, src: '/images/DSC00972.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 54, src: '/images/DSC00977.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 55, src: '/images/DSC00979.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 56, src: '/images/DSC00981.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 57, src: '/images/DSC00985.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 58, src: '/images/DSC00986.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
-    { id: 59, src: '/images/DSC00988.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true }
+    { id: 47, src: '/images/DSC00592.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 48, src: '/images/DSC00596.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 49, src: '/images/DSC00604.jpg', alt: 'Repair bay', category: 'workshop', useCloudflare: true },
+    { id: 50, src: '/images/DSC00619.jpg', alt: 'Workshop equipment', category: 'workshop', useCloudflare: true },
+    { id: 51, src: '/images/DSC00625.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 52, src: '/images/DSC00636.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 53, src: '/images/DSC00651.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 54, src: '/images/DSC00655.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 55, src: '/images/DSC00661.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 56, src: '/images/DSC00671.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 58, src: '/images/DSC00689.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 59, src: '/images/DSC00693.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 60, src: '/images/DSC00720.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 61, src: '/images/DSC00727.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 62, src: '/images/DSC00735.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 63, src: '/images/DSC00740.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 64, src: '/images/DSC00748.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 65, src: '/images/DSC00751.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 66, src: '/images/DSC00760.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 67, src: '/images/DSC00768.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 68, src: '/images/DSC00773.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 70, src: '/images/DSC00931.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 71, src: '/images/DSC00972.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 72, src: '/images/DSC00977.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 73, src: '/images/DSC00979.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 74, src: '/images/DSC00981.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 75, src: '/images/DSC00985.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 76, src: '/images/DSC00986.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true },
+    { id: 77, src: '/images/DSC00988.jpg', alt: 'Workshop facility', category: 'workshop', useCloudflare: true }
   ];
+
+  // Add attribution data to all images
+  const images: GalleryImage[] = rawImages.map(img => ({
+    ...img,
+    attribution: parseUnsplashAttribution(img.src)
+  }));
 
   $: filteredImages = activeCategory === 'all'
     ? images
@@ -92,10 +116,10 @@
     workshop: images.filter(img => img.category === 'workshop').length
   };
 
-  function openImageModal(src: string, alt: string) {
+  function openImageModal(src: string, alt: string, attribution?: UnsplashAttribution | null) {
     modals.open({
       type: 'image',
-      content: { src, alt }
+      content: { src, alt, attribution }
     });
   }
 </script>
@@ -155,7 +179,7 @@
       {#each filteredImages as image (image.src)}
         <button
           class="gallery-item"
-          on:click={() => openImageModal(image.src, image.alt)}
+          on:click={() => openImageModal(image.src, image.alt, image.attribution)}
           aria-label="View larger image: {image.alt}"
         >
           <div class="image-id">{image.id}</div>
@@ -179,6 +203,25 @@
               <line x1="8" y1="11" x2="14" y2="11"></line>
             </svg>
           </div>
+          {#if image.attribution}
+            <div class="attribution">
+              Photo by <a
+                href={image.attribution.photographerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                on:click={(e) => e.stopPropagation()}
+              >
+                {image.attribution.photographer}
+              </a> on <a
+                href="https://unsplash.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                on:click={(e) => e.stopPropagation()}
+              >
+                Unsplash
+              </a>
+            </div>
+          {/if}
         </button>
       {/each}
     </div>
@@ -317,6 +360,31 @@
   .gallery-item:hover .gallery-overlay,
   .gallery-item:focus .gallery-overlay {
     opacity: 1;
+  }
+
+  .attribution {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+    color: white;
+    padding: var(--space-4) var(--space-3) var(--space-2);
+    font-size: var(--text-xs);
+    text-align: center;
+    z-index: 5;
+    pointer-events: auto;
+  }
+
+  .attribution a {
+    color: white;
+    text-decoration: underline;
+    font-weight: var(--font-medium);
+    transition: opacity var(--transition-base);
+  }
+
+  .attribution a:hover {
+    opacity: 0.8;
   }
 
   @media (max-width: 768px) {
