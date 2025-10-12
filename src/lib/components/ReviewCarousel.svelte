@@ -244,6 +244,7 @@
     font-weight: var(--font-semibold);
     color: white;
     margin-bottom: var(--space-1);
+    font-size: var(--text-sm);
   }
 
   .review-stars {
@@ -273,7 +274,7 @@
   .review-comment {
     color: rgba(255, 255, 255, 0.8);
     line-height: var(--leading-relaxed);
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     flex-grow: 1;
     display: -webkit-box;
     -webkit-line-clamp: 4;

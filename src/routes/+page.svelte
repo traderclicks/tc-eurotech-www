@@ -25,15 +25,24 @@
   let isTransitioning = true;
 
   const baseImages = [
-    '/gallery/mini/sonniehiles-PUBt7UPbJFY-unsplash.jpg',
-    '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg',
-    '/images/DSC00720.jpg',
-    '/images/DSC00773.jpg'
+    '/gallery/range-rover/range-rover-1555941543.jpg', // 108
+    '/images/DSC00619.jpg', // 80
+    '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg', // 35
+    '/images/DSC00748.jpg', // 93
+    '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg', // 44
+    '/images/DSC00972.jpg', // 99
+    '/gallery/land-rover/finding_dan-lXvycA58ZfQ-unsplash.jpg', // 10
+    '/images/DSC00773.jpg', // 97
+    '/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg', // 30
+    '/images/DSC00751.jpg', // 94
+    '/gallery/bmw/pat__-TOigkN59Dcg-unsplash.jpg', // 67
+    '/images/DSC00636.jpg', // 82
+    '/gallery/bmw/tyler_clemmensen-h5XcT5T0ST8-unsplash.jpg' // 71
   ];
 
   // Repeat images 10 times for longer slideshow before reset
   const heroBackgrounds = Array(10).fill(baseImages).flat();
-  const totalSlides = heroBackgrounds.length; // 40 slides (4 images × 10 repetitions)
+  const totalSlides = heroBackgrounds.length; // 130 slides (13 images × 10 repetitions)
 
   function nextSlide() {
     currentSlide++;
@@ -51,6 +60,23 @@
           isTransitioning = true;
         });
       }, 800); // Match the transition duration
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide === 0) {
+      // Jump to the last slide without transition
+      isTransitioning = false;
+      currentSlide = totalSlides;
+      void (document.querySelector('.hero-slider-track') as HTMLElement)?.offsetHeight;
+
+      // Re-enable transition and go back one
+      requestAnimationFrame(() => {
+        isTransitioning = true;
+        currentSlide = totalSlides - 1;
+      });
+    } else {
+      currentSlide--;
     }
   }
 
@@ -207,7 +233,7 @@
       title: 'Jaguar',
       description: 'Factory-authorized structural repairs with genuine parts',
       buttonHref: '#jaguar',
-      backgroundImage: '/gallery/jaguar/taylor65s-EIs247QDxZk-unsplash.jpg'
+      backgroundImage: '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg'
     },
     {
       icon: '/landrover-logo-white.svg',
@@ -221,7 +247,7 @@
       title: 'Range Rover',
       description: 'Premium Range Rover repair and maintenance',
       buttonHref: '#range-rover',
-      backgroundImage: '/gallery/land-rover/grundsteins-53JjnvtUGKE-unsplash.jpg'
+      backgroundImage: '/gallery/range-rover/range-rover-1725815761.jpg'
     },
     {
       icon: '/bmw-logo-white.svg',
@@ -235,14 +261,14 @@
       title: 'Mini',
       description: 'Expert Mini servicing and collision repairs',
       buttonHref: '#mini',
-      backgroundImage: '/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg'
+      backgroundImage: '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg'
     },
     {
       icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"%3E%3Cpath d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/%3E%3Cpath d="M9 12l2 2 4-4"/%3E%3C/svg%3E',
       title: 'Insurance Claims',
       description: 'Complete claim management from assessment to completion',
       buttonHref: '#insurance',
-      backgroundImage: '/gallery/jaguar/mostafa_jamei-rZzOv2M-CIM-unsplash.jpg'
+      backgroundImage: '/gallery/land-rover/woeiman-4C-x7CQNwvw-unsplash.jpg'
     }
   ];
 
@@ -356,6 +382,20 @@
     {/each}
   </div>
   <div class="hero-overlay"></div>
+
+  <!-- Slider Controls -->
+  <button class="hero-nav-btn prev" on:click={prevSlide} aria-label="Previous slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button class="hero-nav-btn next" on:click={nextSlide} aria-label="Next slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
   <div class="container hero-container">
     {#if isVisible}
       <div class="hero-content" in:fly={{ y: 20, duration: 800, delay: 100 }}>
@@ -487,14 +527,14 @@
     position: absolute;
     inset: 0;
     display: flex;
-    width: 4100%; /* 41 slides (40 + 1 duplicate) */
+    width: 13100%; /* 131 slides (130 + 1 duplicate) */
     height: 100%;
     z-index: 0;
   }
 
   .hero-background {
-    flex: 0 0 2.439%; /* 100% / 41 slides */
-    width: 2.439%;
+    flex: 0 0 0.763%; /* 100% / 131 slides */
+    width: 0.763%;
     height: 100%;
     background-size: cover;
     background-position: center center;
@@ -516,7 +556,19 @@
   .hero-content {
     color: white;
     text-align: center;
-    margin-top: calc(var(--space-8) * -1);
+    margin-top: 6rem;
+    position: relative;
+    padding: var(--space-16);
+    border-radius: var(--radius-2xl);
+  }
+
+  .hero-content::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
+    border-radius: inherit;
+    z-index: -1;
   }
 
   .hero-white-block {
@@ -585,17 +637,71 @@
 
   .hero-insurance-link {
     color: white;
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
     text-decoration: none;
-    opacity: 0.9;
+    opacity: 1;
     transition: opacity var(--transition-base);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid white;
     padding-bottom: 2px;
   }
 
   .hero-insurance-link:hover {
     opacity: 1;
     border-bottom-color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Hero Navigation Buttons */
+  .hero-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-full);
+    color: white;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 1;
+    transition: all var(--transition-fast);
+  }
+
+  .hero-nav-btn:hover {
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .hero-nav-btn.prev {
+    left: var(--space-8);
+  }
+
+  .hero-nav-btn.next {
+    right: var(--space-8);
+  }
+
+  @media (max-width: 768px) {
+    .hero-nav-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .hero-nav-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-nav-btn.prev {
+      left: var(--space-4);
+    }
+
+    .hero-nav-btn.next {
+      right: var(--space-4);
+    }
   }
 
   .bg-dark {
@@ -615,7 +721,7 @@
   }
 
   .reviews-title {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
   }
 
   .title-separator {
@@ -627,19 +733,19 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.6em;
+    font-size: 0.8em;
     font-weight: normal;
   }
 
   .google-logo-inline {
-    height: 1.2em;
+    height: 1.3em;
     width: auto;
     filter: brightness(0) invert(1);
   }
 
   .google-rating .star {
     color: #fbbc04;
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 
   @media (max-width: 768px) {
