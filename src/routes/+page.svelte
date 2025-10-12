@@ -43,7 +43,7 @@
       setTimeout(() => {
         isTransitioning = false;
         // Force a reflow to ensure transition is disabled
-        void document.querySelector('.hero-slider-track')?.offsetHeight;
+        void (document.querySelector('.hero-slider-track') as HTMLElement)?.offsetHeight;
         currentSlide = 0;
 
         // Re-enable transition on next frame
@@ -372,7 +372,7 @@
 
   <!-- Logo Bar Section inside Hero -->
   <div class="logo-bar">
-    <StatsGrid {stats} backgroundColor="transparent" textColor="white" description={heroData.description} />
+    <StatsGrid backgroundColor="transparent" textColor="white" description={heroData.description} />
   </div>
 </section>
 
@@ -435,13 +435,6 @@
 
 <style>
   /* Section Grid Styles */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-6);
-    margin-top: var(--space-8);
-  }
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -451,13 +444,6 @@
 
   .bg-blog {
     background: #f5f5f5;
-  }
-
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-6);
-    margin-top: var(--space-8);
   }
 
   .faq-container {
@@ -549,15 +535,6 @@
     background: transparent !important;
   }
 
-  .hero-eyebrow {
-    font-size: var(--text-base);
-    font-weight: bold;
-    letter-spacing: 0.30em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: var(--space-4);
-  }
-
   .hero-title {
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: var(--font-extrabold);
@@ -569,30 +546,6 @@
   .hero-gradient {
     display: block;
     color: white;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-8);
-  }
-
-  .hero-trust {
-    display: flex;
-    gap: var(--space-6);
-    flex-wrap: wrap;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: rgba(255, 255, 255, 0.9);
-  }
-
-  .trust-item svg {
-    color: #4ade80;
   }
 
   .bg-dark {
@@ -642,16 +595,6 @@
   @media (max-width: 768px) {
     .hero {
       min-height: 500px;
-    }
-
-    .hero-cta {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .hero-trust {
-      flex-direction: column;
-      gap: var(--space-3);
     }
   }
 </style>

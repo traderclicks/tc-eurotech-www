@@ -28,7 +28,7 @@
     class:pointer-events-none={disabled}
   >
     {#if loading}
-      <span class="btn-spinner" />
+      <span class="btn-spinner"></span>
     {/if}
     {#if icon && !loading}
       <span class="btn-icon">{@html icon}</span>
@@ -45,7 +45,7 @@
     on:click
   >
     {#if loading}
-      <span class="btn-spinner" />
+      <span class="btn-spinner"></span>
     {/if}
     {#if icon && !loading}
       <span class="btn-icon">{@html icon}</span>

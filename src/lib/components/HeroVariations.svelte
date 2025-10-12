@@ -415,6 +415,7 @@
     font-weight: var(--font-extrabold);
     background: linear-gradient(135deg, white 0%, rgba(255,255,255,0.7) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: var(--space-6);
   }

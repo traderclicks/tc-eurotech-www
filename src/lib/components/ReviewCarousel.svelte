@@ -8,7 +8,7 @@
 
   let currentIndex = 0;
   let carouselContainer: HTMLDivElement;
-  let intervalId: number;
+  let intervalId: number | null = null;
   let isPaused = false;
 
   // Filter out low ratings and reviews without comments or very short comments
@@ -38,7 +38,7 @@
 
   function startAutoPlay() {
     if (autoPlay && !intervalId) {
-      intervalId = setInterval(nextSlide, interval);
+      intervalId = setInterval(nextSlide, interval) as unknown as number;
     }
   }
 
@@ -277,6 +277,7 @@
     flex-grow: 1;
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -347,15 +348,6 @@
   }
 
   @media (max-width: 768px) {
-    .section-header {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .google-badge {
-      justify-content: center;
-    }
-
     .reviews-grid {
       grid-template-columns: 1fr;
       gap: var(--space-4);
