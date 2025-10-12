@@ -1,7 +1,12 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
 
-  export let stats = [];
+  interface Stat {
+    number: string;
+    label: string;
+  }
+
+  export let stats: Stat[] = [];
   export let backgroundColor = '#000000';
   export let textColor = 'white';
   export let description = '';

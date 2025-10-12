@@ -43,7 +43,7 @@
       setTimeout(() => {
         isTransitioning = false;
         // Force a reflow to ensure transition is disabled
-        void document.querySelector('.hero-slider-track')?.offsetHeight;
+        void (document.querySelector('.hero-slider-track') as HTMLElement)?.offsetHeight;
         currentSlide = 0;
 
         // Re-enable transition on next frame

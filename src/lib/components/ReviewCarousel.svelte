@@ -8,7 +8,7 @@
 
   let currentIndex = 0;
   let carouselContainer: HTMLDivElement;
-  let intervalId: number;
+  let intervalId: number | null = null;
   let isPaused = false;
 
   // Filter out low ratings and reviews without comments or very short comments
@@ -38,7 +38,7 @@
 
   function startAutoPlay() {
     if (autoPlay && !intervalId) {
-      intervalId = setInterval(nextSlide, interval);
+      intervalId = setInterval(nextSlide, interval) as unknown as number;
     }
   }
 
