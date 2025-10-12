@@ -184,7 +184,7 @@
       <h2>Heading 2 - Section Title</h2>
       <h3>Heading 3 - Subsection</h3>
       <h4>Heading 4 - Card Title</h4>
-      <p>Regular paragraph text with <a href="#">inline link</a> and <strong>bold text</strong>.</p>
+      <p>Regular paragraph text with <a href="/example">inline link</a> and <strong>bold text</strong>.</p>
       <p class="text-secondary">Secondary text color for descriptions</p>
       <p class="text-success">Success message text</p>
       <p class="text-danger">Error message text</p>
@@ -435,7 +435,7 @@
 
       <div class="component-item">
         <h3>Stats Grid</h3>
-        <StatsGrid stats={sampleStats} backgroundColor="var(--color-primary)" textColor="white" />
+        <StatsGrid backgroundColor="var(--color-primary)" textColor="white" />
       </div>
 
       <div class="component-item">

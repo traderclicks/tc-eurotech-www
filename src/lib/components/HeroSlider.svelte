@@ -149,12 +149,12 @@
           <div
             class="slide-bg slide-gradient"
             style="background: {slide.image}"
-          />
+          ></div>
         {:else}
           <div
             class="slide-bg slide-image"
             style="background-image: url({slide.image})"
-          />
+          ></div>
         {/if}
 
         <!-- Overlay -->
@@ -162,7 +162,7 @@
           <div
             class="slide-overlay"
             style="opacity: {slide.overlayOpacity || 0.5}"
-          />
+          ></div>
         {/if}
 
         <!-- Content Container -->

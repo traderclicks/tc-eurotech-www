@@ -1,12 +1,9 @@
 <script lang="ts">
-  import Button from './Button.svelte';
-
   export let icon = '';
   export let title = '';
   export let description = '';
   export let buttonText = 'Learn More →';
   export let buttonHref = '#';
-  export let buttonVariant = 'ghost';
   export let backgroundImage = '';
 
   // Determine logo type from filename

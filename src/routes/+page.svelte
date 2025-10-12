@@ -372,7 +372,7 @@
 
   <!-- Logo Bar Section inside Hero -->
   <div class="logo-bar">
-    <StatsGrid {stats} backgroundColor="transparent" textColor="white" description={heroData.description} />
+    <StatsGrid backgroundColor="transparent" textColor="white" description={heroData.description} />
   </div>
 </section>
 

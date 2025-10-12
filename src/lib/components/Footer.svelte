@@ -165,10 +165,6 @@
     gap: var(--space-12);
   }
 
-  .footer-spacer {
-    /* Empty spacer column */
-  }
-
   .services-eyebrow {
     font-size: var(--text-base);
     font-weight: bold;
