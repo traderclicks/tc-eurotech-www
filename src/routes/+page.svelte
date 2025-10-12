@@ -490,7 +490,7 @@
 
   .bg-blog {
     background: #f5f5f5;
-    padding-top: var(--space-4);
+    padding-top: var(--space-12);
   }
 
   .faq-container {
