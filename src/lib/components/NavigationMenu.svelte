@@ -7,38 +7,21 @@
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'About Us', href: '#about' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'Contact Us', href: '#contact' },
-  ];
-
-  const serviceItems = [
-    { label: 'Jaguar & Land Rover', href: '#jaguar-landrover' },
-    { label: 'BMW & Mini', href: '#bmw-mini' },
+    { label: 'Jaguar Repair', href: '#jaguar' },
+    { label: 'Land Rover Repair', href: '#landrover' },
+    { label: 'BMW Repair', href: '#bmw' },
+    { label: 'Mini Repair', href: '#mini' },
     { label: 'Insurance Claims', href: '#insurance' },
-    { label: 'Structural Repairs', href: '#structural' },
-    { label: 'Paintless Dent Removal', href: '#paintless' },
   ];
-
-  let expandedItems: Set<string> = new Set();
-
-  function toggleExpanded(label: string, event: Event) {
-    event.preventDefault();
-    if (expandedItems.has(label)) {
-      expandedItems.delete(label);
-    } else {
-      expandedItems.add(label);
-    }
-    expandedItems = expandedItems;
-  }
 
   function closeMenu() {
     isOpen = false;
   }
 
-  function handleNavClick(event: Event, hasSubItems: boolean = false) {
-    if (!hasSubItems) {
-      closeMenu();
-    }
+  function handleNavClick() {
+    closeMenu();
   }
 
   function openContactModal() {
@@ -77,30 +60,12 @@
           <a
             href={item.href}
             class="nav-link"
-            on:click={(e) => handleNavClick(e)}
+            on:click={handleNavClick}
           >
             {item.label}
           </a>
         </li>
       {/each}
-
-      <!-- Services Section -->
-      <li class="nav-item services-section">
-        <div class="services-title">Services</div>
-        <ul class="services-list">
-          {#each serviceItems as service}
-            <li>
-              <a
-                href={service.href}
-                class="service-link"
-                on:click={(e) => handleNavClick(e)}
-              >
-                {service.label}
-              </a>
-            </li>
-          {/each}
-        </ul>
-      </li>
     </ul>
 
     <!-- Bottom Section -->
@@ -147,7 +112,7 @@
     bottom: 0;
     width: 400px;
     max-width: 100vw;
-    background: #000000;
+    background: #5C544A;
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -189,7 +154,7 @@
   }
 
   .nav-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #3A352F;
   }
 
   .nav-link {
@@ -214,19 +179,9 @@
     padding-left: calc(var(--space-6) + 4px);
   }
 
-  .expand-icon {
-    transition: transform var(--transition-base);
-    flex-shrink: 0;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .nav-link.expanded .expand-icon {
-    transform: rotate(45deg);
-  }
-
   /* Services Section Styles */
   .services-section {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #3A352F;
     padding-bottom: var(--space-2);
   }
 
@@ -260,41 +215,19 @@
     background: rgba(255, 255, 255, 0.08);
   }
 
-  .submenu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .submenu-link {
-    display: block;
-    padding: var(--space-3) var(--space-6) var(--space-3) var(--space-10);
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: var(--text-base);
-    transition: all var(--transition-fast);
-  }
-
-  .submenu-link:hover {
-    color: white;
-    padding-left: calc(var(--space-10) + 4px);
-    background: rgba(255, 255, 255, 0.08);
-  }
-
   .menu-footer {
     padding: var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid #3A352F;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .quote-btn {
     width: 100%;
     padding: var(--space-4);
-    background: var(--color-primary);
+    background: #000000;
     color: white;
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: 0;
     font-size: var(--text-base);
     font-weight: var(--font-medium);
     cursor: pointer;
@@ -303,7 +236,7 @@
   }
 
   .quote-btn:hover {
-    background: var(--color-primary-dark);
+    background: #1a1a1a;
   }
 
   .contact-info {

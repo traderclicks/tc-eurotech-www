@@ -16,13 +16,51 @@
   import StatsGrid from '$lib/components/StatsGrid.svelte';
   import ServiceCard from '$lib/components/ServiceCard.svelte';
   import ReviewCarousel from '$lib/components/ReviewCarousel.svelte';
-  import { PLACEHOLDERS, iconPlaceholder } from '$lib/utils/placeholders';
+  import BlogCard from '$lib/components/BlogCard.svelte';
+  import { PLACEHOLDERS, iconPlaceholder} from '$lib/utils/placeholders';
   import { generateFAQSchema, generateLocalBusinessSchema } from '$lib/utils/structuredData';
 
   let isVisible = false;
+  let currentSlide = 0;
+  let isTransitioning = true;
+
+  const baseImages = [
+    '/gallery/mini-PUBt7UPbJFY-unsplash.jpeg',
+    '/gallery/jaguar-oUoLi5k7esA-unsplash.jpeg',
+    '/images/DSC00720.jpg',
+    '/images/DSC00773.jpg'
+  ];
+
+  // Repeat images 10 times for longer slideshow before reset
+  const heroBackgrounds = Array(10).fill(baseImages).flat();
+  const totalSlides = heroBackgrounds.length; // 40 slides (4 images × 10 repetitions)
+
+  function nextSlide() {
+    currentSlide++;
+
+    // If we've reached the duplicate (last slide), reset to first after transition
+    if (currentSlide === totalSlides) {
+      setTimeout(() => {
+        isTransitioning = false;
+        // Force a reflow to ensure transition is disabled
+        void document.querySelector('.hero-slider-track')?.offsetHeight;
+        currentSlide = 0;
+
+        // Re-enable transition on next frame
+        requestAnimationFrame(() => {
+          isTransitioning = true;
+        });
+      }, 800); // Match the transition duration
+    }
+  }
 
   onMount(() => {
     isVisible = true;
+
+    // Auto-slide every 6 seconds
+    const slideInterval = setInterval(nextSlide, 6000);
+
+    return () => clearInterval(slideInterval);
   });
 
   function openContactModal() {
@@ -148,9 +186,9 @@
 
   // Hero section data
   const heroData = {
-    title: 'European Vehicle',
-    subtitle: 'Repair Specialists',
-    description: 'New Zealand\'s only factory-authorized Jaguar/Land Rover structural repairer. Expert BMW and Mini repairs with 20+ years experience.',
+    title: 'European Repair Specialist',
+    subtitle: '',
+    description: 'NZ\'s only factory-authorized Jaguar/Land Rover repairer  •  Expert BMW & Mini repairs  •  Over 20 years experience',
     primaryCTA: {
       text: 'Get a Quote',
       action: openContactModal
@@ -165,22 +203,46 @@
   // Services data
   const services = [
     {
-      icon: PLACEHOLDERS.serviceIcon(1),
-      title: 'Jaguar & Land Rover',
+      icon: '/jaguar-logo-white.svg',
+      title: 'Jaguar',
       description: 'Factory-authorized structural repairs with genuine parts',
-      buttonHref: '#jaguar-landrover'
+      buttonHref: '#jaguar',
+      backgroundImage: '/gallery/jaguar-6pDXbba2cQk-unsplash.jpeg'
     },
     {
-      icon: PLACEHOLDERS.serviceIcon(2),
-      title: 'BMW & Mini',
-      description: 'Specialist repairs using latest BMW repair techniques',
-      buttonHref: '#bmw-mini'
+      icon: '/landrover-logo-white.svg',
+      title: 'Land Rover',
+      description: 'Factory-authorized Land Rover specialist repairs',
+      buttonHref: '#landrover',
+      backgroundImage: '/gallery/lasnd-rover-EiYV7GWsR78-unsplash.jpeg'
     },
     {
-      icon: PLACEHOLDERS.serviceIcon(3),
+      icon: '/range-rover-logo-white.svg',
+      title: 'Range Rover',
+      description: 'Premium Range Rover repair and maintenance',
+      buttonHref: '#range-rover',
+      backgroundImage: '/gallery/range-rover-LyhzCmT23QM-unsplash.jpeg'
+    },
+    {
+      icon: '/bmw-logo-white.svg',
+      title: 'BMW',
+      description: 'Specialist BMW repairs using latest repair techniques',
+      buttonHref: '#bmw',
+      backgroundImage: '/bmw.jpg'
+    },
+    {
+      icon: '/mini-white.svg',
+      title: 'Mini',
+      description: 'Expert Mini servicing and collision repairs',
+      buttonHref: '#mini',
+      backgroundImage: '/gallery/mini-G0GRk2bzJiU-unsplash.jpeg'
+    },
+    {
+      icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"%3E%3Cpath d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/%3E%3Cpath d="M9 12l2 2 4-4"/%3E%3C/svg%3E',
       title: 'Insurance Claims',
       description: 'Complete claim management from assessment to completion',
-      buttonHref: '#insurance'
+      buttonHref: '#insurance',
+      backgroundImage: '/gallery/jaguar-kalamar-pJ5Nm5QfB7k-unsplash.jpeg'
     }
   ];
 
@@ -209,6 +271,34 @@
       }
     ]
   };
+
+  // Blog articles
+  const blogArticles = [
+    {
+      title: 'Why Choose Factory-Authorized Repairs for Your Jaguar or Land Rover',
+      excerpt: 'Learn about the importance of factory-authorized repairs and how they protect your vehicle\'s value and warranty.',
+      image: '/gallery/jaguar-kalamar-pJ5Nm5QfB7k-unsplash.jpeg',
+      category: 'Expert Advice',
+      date: 'March 15, 2025',
+      href: '#blog'
+    },
+    {
+      title: 'Common BMW Repair Issues and How to Prevent Them',
+      excerpt: 'Discover the most common repair issues for BMW vehicles and our expert tips for preventative maintenance.',
+      image: '/bmw.jpg',
+      category: 'Maintenance',
+      date: 'March 10, 2025',
+      href: '#blog'
+    },
+    {
+      title: 'Understanding Your Insurance Claim Process',
+      excerpt: 'A comprehensive guide to navigating insurance claims for European vehicle repairs in New Zealand.',
+      image: '/gallery/mini-G0GRk2bzJiU-unsplash.jpeg',
+      category: 'Insurance',
+      date: 'March 5, 2025',
+      href: '#blog'
+    }
+  ];
 
   // Local Business Schema
   const businessSchema = generateLocalBusinessSchema({
@@ -256,7 +346,15 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2940&auto=format&fit=crop')">
+<section class="hero">
+  <div class="hero-slider-track" style="transform: translateX(-{currentSlide * (100 / (totalSlides + 1))}%); transition: {isTransitioning ? 'transform 0.8s ease-in-out' : 'none'}">
+    {#each [...heroBackgrounds, heroBackgrounds[0]] as bg, i}
+      <div
+        class="hero-background"
+        style="background-image: url('{bg}')"
+      ></div>
+    {/each}
+  </div>
   <div class="hero-overlay"></div>
   <div class="container hero-container">
     {#if isVisible}
@@ -265,62 +363,22 @@
           {heroData.title}
           <span class="hero-gradient">{heroData.subtitle}</span>
         </h1>
-        <p class="hero-description">{heroData.description}</p>
-
-        <div class="hero-cta">
-          <Button variant="primary" size="large" on:click={heroData.primaryCTA.action}>
-            {heroData.primaryCTA.text}
-          </Button>
-          <Button variant="outline" size="large" href={heroData.secondaryCTA.href}>
-            {heroData.secondaryCTA.text}
-          </Button>
-        </div>
-
-        <div class="hero-trust" in:fly={{ y: 20, delay: 400, duration: 600 }}>
-          {#each heroData.trustIndicators as indicator}
-            <div class="trust-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-success)">
-                <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" fill="none" />
-              </svg>
-              <span>{indicator}</span>
-            </div>
-          {/each}
-        </div>
       </div>
     {/if}
   </div>
-</section>
 
-<!-- Stats Section -->
-<StatsGrid {stats} />
+  <!-- White background block for half-on-half effect -->
+  <div class="hero-white-block"></div>
 
-<!-- Features Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Why Choose Eurotech</h2>
-      <p class="section-subtitle">Auckland's premier European vehicle repair specialists</p>
-    </div>
-
-    <div class="features-grid">
-      {#each features as feature}
-        <FeatureCard {...feature} />
-      {/each}
-    </div>
+  <!-- Logo Bar Section inside Hero -->
+  <div class="logo-bar">
+    <StatsGrid {stats} backgroundColor="transparent" textColor="white" description={heroData.description} />
   </div>
 </section>
 
-<!-- Google Reviews Carousel -->
-<ReviewCarousel />
-
 <!-- Services Section -->
-<section class="section">
+<section class="section bg-blog">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Our Services</h2>
-      <p class="section-subtitle">Comprehensive repair solutions for European vehicles</p>
-    </div>
-
     <div class="services-grid">
       {#each services as service}
         <ServiceCard {...service} />
@@ -329,36 +387,44 @@
   </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="section bg-gradient">
+<!-- Blog Articles -->
+<section class="section">
   <div class="container">
-    <div class="section-header text-inverse">
-      <h2 class="section-title">What Our Customers Say</h2>
+    <div class="section-header">
+      <h2 class="section-title">Expert Insights & Advice</h2>
+      <p class="section-subtitle">Latest articles from our European vehicle repair specialists</p>
     </div>
 
-    <div class="testimonials-grid">
-      {#each testimonials.slice(0, 3) as testimonial}
-        <TestimonialCard {...testimonial} />
+    <div class="blog-grid">
+      {#each blogArticles as article}
+        <BlogCard {...article} />
       {/each}
     </div>
   </div>
 </section>
 
-<!-- Brand Logos Carousel -->
-<section class="section">
+<!-- Google Reviews Section with Dark Background -->
+<section class="section bg-dark reviews-section">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Authorized Repairer</h2>
-      <p class="section-subtitle">Factory-authorized for premium European brands</p>
+    <div class="section-header text-center text-inverse">
+      <h2 class="section-title reviews-title">
+        What Our Customers Say
+        <span class="title-separator">|</span>
+        <span class="google-rating">
+          <img src="/icons/google.svg" alt="Google" class="google-logo-inline" />
+          <span class="star filled">★</span>
+          {googleReviews.rating} ({googleReviews.totalReviews} reviews)
+        </span>
+      </h2>
     </div>
-    <ClientLogos />
+    <ReviewCarousel />
   </div>
 </section>
 
 <!-- FAQ Section -->
 <section class="section bg-secondary">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header text-center">
       <h2 class="section-title">Frequently Asked Questions</h2>
     </div>
     <div class="faq-container">
@@ -367,102 +433,8 @@
   </div>
 </section>
 
-<!-- CTA Section -->
-<CTASection
-  title="Ready to Get Your European Vehicle Repaired?"
-  subtitle="Contact Auckland's premier European vehicle specialists today"
-  buttonText="Get a Quote"
-  buttonAction={openContactModal}
-/>
-
 <style>
-  /* Google Reviews Styles */
-  .google-rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-  }
-
-  .rating-number {
-    font-size: var(--text-3xl);
-    font-weight: var(--font-bold);
-    color: var(--text-primary);
-  }
-
-  .rating-stars {
-    display: flex;
-    gap: 2px;
-  }
-
-  .review-count {
-    color: var(--text-secondary);
-    font-size: var(--text-sm);
-  }
-
-  .google-reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-6);
-    margin: var(--space-8) 0;
-  }
-
-  .google-review-card {
-    background: var(--bg-primary);
-    padding: var(--space-6);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-base);
-  }
-
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--space-2);
-  }
-
-  .review-author {
-    font-weight: var(--font-semibold);
-    color: var(--text-primary);
-  }
-
-  .review-time {
-    font-size: var(--text-sm);
-    color: var(--text-muted);
-  }
-
-  .review-rating {
-    display: flex;
-    gap: 2px;
-    margin-bottom: var(--space-3);
-  }
-
-  .review-text {
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-  }
-
-  .google-reviews-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-
-  .view-all-reviews {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: var(--font-medium);
-    transition: color var(--transition-fast);
-  }
-
-  .view-all-reviews:hover {
-    color: var(--color-primary-dark);
-    text-decoration: underline;
-  }
-
-  /* Other section styles */
+  /* Section Grid Styles */
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -472,9 +444,13 @@
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-8);
     margin-top: var(--space-8);
+  }
+
+  .bg-blog {
+    background: #f5f5f5;
   }
 
   .testimonials-grid {
@@ -489,6 +465,13 @@
     margin: var(--space-8) auto 0;
   }
 
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+  }
+
   .text-inverse {
     color: var(--text-inverse);
   }
@@ -500,19 +483,36 @@
   /* Hero Section Styles */
   .hero {
     position: relative;
-    min-height: 80vh;
+    min-height: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
+    padding-bottom: var(--space-8);
+  }
+
+  .hero-slider-track {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    width: 4100%; /* 41 slides (40 + 1 duplicate) */
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-background {
+    flex: 0 0 2.439%; /* 100% / 41 slides */
+    width: 2.439%;
+    height: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
   }
 
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
     z-index: 1;
   }
 
@@ -522,8 +522,40 @@
   }
 
   .hero-content {
-    max-width: 700px;
     color: white;
+    text-align: center;
+  }
+
+  .hero-white-block {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #f5f5f5;
+    z-index: 2;
+  }
+
+  .logo-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    padding-top: var(--space-12);
+  }
+
+  .logo-bar :global(.logo-bar-section) {
+    background: transparent !important;
+  }
+
+  .hero-eyebrow {
+    font-size: var(--text-base);
+    font-weight: bold;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-4);
   }
 
   .hero-title {
@@ -536,16 +568,7 @@
 
   .hero-gradient {
     display: block;
-    background: linear-gradient(135deg, #ffffff 0%, #ffcc00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hero-description {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-8);
-    line-height: var(--leading-relaxed);
-    color: rgba(255, 255, 255, 0.95);
+    color: white;
   }
 
   .hero-cta {
@@ -572,17 +595,53 @@
     color: #4ade80;
   }
 
+  .bg-dark {
+    background: #1a1a1a;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .reviews-section {
+    padding-bottom: var(--space-8);
+  }
+
+  .reviews-section .section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .reviews-title {
+    font-size: var(--text-3xl);
+  }
+
+  .title-separator {
+    margin: 0 var(--space-4);
+    opacity: 0.5;
+  }
+
+  .google-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.6em;
+    font-weight: normal;
+  }
+
+  .google-logo-inline {
+    height: 1.2em;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .google-rating .star {
+    color: #fbbc04;
+    font-size: 1.2em;
+  }
+
   @media (max-width: 768px) {
-    .google-rating {
-      flex-direction: column;
-    }
-
-    .google-reviews-footer {
-      flex-direction: column;
-    }
-
     .hero {
-      min-height: 60vh;
+      min-height: 500px;
     }
 
     .hero-cta {

@@ -48,12 +48,14 @@
     class="modal-backdrop"
     transition:fade={{ duration: 200 }}
     on:click={(e) => handleBackdropClick(modal.id, e)}
+    on:keydown={(e) => e.key === 'Enter' && handleBackdropClick(modal.id, e as any)}
     bind:this={modalElements[i]}
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-title-{modal.id}"
+    tabindex="-1"
   >
-    <div class="modal-container" transition:scale={{ duration: 200, start: 0.95 }}>
+    <div class="modal-container" class:image-container={modal.type === 'image'} transition:scale={{ duration: 200, start: 0.95 }}>
       {#if modal.type !== 'image'}
         <div class="modal-header">
           {#if modal.title}
@@ -171,6 +173,12 @@
     flex-direction: column;
     position: relative;
     z-index: var(--z-modal);
+  }
+
+  .modal-container.image-container {
+    max-width: 1200px;
+    background: transparent;
+    box-shadow: none;
   }
 
   .modal-header {

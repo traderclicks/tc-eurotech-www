@@ -109,7 +109,7 @@
   function getTransition(type: string) {
     switch (type) {
       case 'slide':
-        return { in: fly, out: fly, inProps: { x: 100, duration: 600 }, outProps: { x: -100, duration: 600 } };
+        return { in: fly, out: fly, inProps: { x: -100, duration: 600 }, outProps: { x: 100, duration: 600 } };
       case 'scale':
         return { in: scale, out: scale, inProps: { duration: 600 }, outProps: { duration: 600 } };
       default:

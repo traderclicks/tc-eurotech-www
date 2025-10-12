@@ -11,39 +11,59 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <!-- Company Info -->
+      <!-- Services -->
       <div class="footer-column">
-        <div class="footer-logo">
-          <img src="/eurotech-logo.png" alt="Eurotech Auto Repair Centre" width="150" height="40" />
-        </div>
+        <div class="services-eyebrow">EUROTECH AUTO REPAIR</div>
+        <ul class="footer-links services-grid-links">
+          <li>
+            <a href="#jaguar" class="service-link">
+              <div class="logo-col">
+                <img src="/jaguar-logo-white.svg" alt="" class="service-logo" />
+              </div>
+              <span class="text-col">Jaguar Repair</span>
+            </a>
+          </li>
+          <li>
+            <a href="#landrover" class="service-link">
+              <div class="logo-col">
+                <img src="/landrover-logo-white.svg" alt="" class="service-logo service-logo-landrover" />
+              </div>
+              <span class="text-col">Land Rover Repair</span>
+            </a>
+          </li>
+          <li>
+            <a href="#bmw" class="service-link">
+              <div class="logo-col">
+                <img src="/bmw-logo-white.svg" alt="" class="service-logo service-logo-bmw" />
+              </div>
+              <span class="text-col">BMW Repair</span>
+            </a>
+          </li>
+          <li>
+            <a href="#mini" class="service-link">
+              <div class="logo-col">
+                <img src="/mini-white.svg" alt="" class="service-logo" />
+              </div>
+              <span class="text-col">Mini Repair</span>
+            </a>
+          </li>
+          <li>
+            <a href="#insurance" class="service-link">
+              <div class="logo-col">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E" alt="" class="service-logo service-logo-insurance" />
+              </div>
+              <span class="text-col">Insurance Claims</span>
+            </a>
+          </li>
+        </ul>
         <p class="footer-description">
           New Zealand's only factory-authorized Jaguar/Land Rover structural repairer.
           European vehicle specialists with 20+ years experience.
         </p>
-        <div class="social-links">
-          <a href="https://www.facebook.com/eurotechauto" aria-label="Facebook">
-            <img src="/icons/facebook.svg" alt="Facebook" width="20" height="20" />
-          </a>
-          <a href="https://www.instagram.com/eurotechauto" aria-label="Instagram">
-            <img src="/icons/instagram.svg" alt="Instagram" width="20" height="20" />
-          </a>
-          <a href="https://g.page/eurotech-auto-repair" aria-label="Google Business">
-            <img src="/icons/google.svg" alt="Google" width="20" height="20" />
-          </a>
-        </div>
       </div>
 
-      <!-- Quick Links -->
-      <div class="footer-column">
-        <h3 class="footer-heading">Services</h3>
-        <ul class="footer-links">
-          <li><a href="#jaguar-landrover">Jaguar & Land Rover</a></li>
-          <li><a href="#bmw-mini">BMW & Mini</a></li>
-          <li><a href="#structural">Structural Repairs</a></li>
-          <li><a href="#insurance">Insurance Claims</a></li>
-          <li><a href="#paintless">Paintless Dent Removal</a></li>
-        </ul>
-      </div>
+      <!-- Spacer -->
+      <div class="footer-spacer"></div>
 
       <!-- Information -->
       <div class="footer-column">
@@ -89,31 +109,44 @@
         <button class="footer-cta" on:click={openContactModal}>
           Get a Quote
         </button>
+
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="https://www.facebook.com/eurotechauto" aria-label="Facebook">
+            <img src="/icons/facebook.svg" alt="Facebook" width="20" height="20" />
+          </a>
+          <a href="https://www.instagram.com/eurotechauto" aria-label="Instagram">
+            <img src="/icons/instagram.svg" alt="Instagram" width="20" height="20" />
+          </a>
+          <a href="https://g.page/eurotech-auto-repair" aria-label="Google Business">
+            <img src="/icons/google.svg" alt="Google" width="20" height="20" />
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="footer-bottom">
-      <p class="copyright">
-        © {currentYear} Eurotech Auto Repair Centre. All rights reserved.
-      </p>
-      <div class="footer-bottom-links">
-        <a href="/privacy">Privacy Policy</a>
+    <!-- Bottom Links -->
+    <div class="footer-bottom-links">
+      <div class="bottom-left">
+        <p class="copyright">
+          © {currentYear} Eurotech Auto Repair Centre. All rights reserved.
+        </p>
         <span class="separator">|</span>
-        <a href="/terms">Terms of Service</a>
+        <a href="/privacy">Privacy</a>
         <span class="separator">|</span>
-        <a href="#contact">Contact</a>
+        <a href="/terms">Terms</a>
       </div>
-    </div>
 
-    <!-- Certifications Bar -->
-    <div class="certifications-bar">
-      <span>Member of:</span>
-      <img src="/mta-logo.png" alt="MTA Member" width="60" height="30" />
-      <span>|</span>
-      <span>CRA Accredited</span>
-      <span>|</span>
-      <span>I-Car Gold Certified</span>
+      <!-- Logos at right -->
+      <div class="certifications-logos">
+        <span>CRA Accredited</span>
+        <span class="separator">|</span>
+        <span>I-Car Gold Certified</span>
+        <span class="separator">|</span>
+        <span>Member of:</span>
+        <img src="/eurotech-logo.png" alt="Eurotech" width="60" height="30" />
+        <img src="/mta-logo.png" alt="MTA Member" width="60" height="30" />
+      </div>
     </div>
   </div>
 </footer>
@@ -128,9 +161,21 @@
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    grid-template-columns: 2fr 0.3fr 1fr 1fr;
     gap: var(--space-12);
-    margin-bottom: var(--space-12);
+  }
+
+  .footer-spacer {
+    /* Empty spacer column */
+  }
+
+  .services-eyebrow {
+    font-size: var(--text-base);
+    font-weight: bold;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-6);
   }
 
   .footer-column {
@@ -138,18 +183,8 @@
     flex-direction: column;
   }
 
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: white;
-  }
-
   .footer-description {
-    margin-bottom: var(--space-6);
+    margin-top: var(--space-6);
     line-height: var(--leading-relaxed);
     color: rgba(255, 255, 255, 0.7);
   }
@@ -157,6 +192,7 @@
   .social-links {
     display: flex;
     gap: var(--space-4);
+    margin-top: var(--space-4);
   }
 
   .social-links a {
@@ -192,6 +228,10 @@
     margin-bottom: var(--space-3);
   }
 
+  .services-grid-links li {
+    margin-bottom: var(--space-5);
+  }
+
   .footer-links a {
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
@@ -200,6 +240,43 @@
 
   .footer-links a:hover {
     color: var(--color-primary);
+  }
+
+  .services-grid-links .service-link {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .logo-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+  }
+
+  .text-col {
+    display: flex;
+    align-items: center;
+  }
+
+  .service-logo {
+    width: 50px;
+    height: auto;
+    opacity: 0.8;
+  }
+
+  .service-logo-bmw {
+    width: 25px;
+  }
+
+  .service-logo-landrover {
+    width: 40px;
+  }
+
+  .service-logo-insurance {
+    width: 25px;
   }
 
   .contact-info {
@@ -242,23 +319,33 @@
     transform: translateY(-2px);
   }
 
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: var(--space-8);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
   .copyright {
     margin: 0;
-    color: rgba(255, 255, 255, 0.5);
   }
 
   .footer-bottom-links {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-4);
+    padding-top: var(--space-12);
+    margin-top: var(--space-12);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: var(--text-sm);
+  }
+
+  .bottom-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .certifications-logos {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.5);
   }
 
   .footer-bottom-links a {
@@ -275,22 +362,14 @@
     color: rgba(255, 255, 255, 0.3);
   }
 
-  .certifications-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-4);
-    padding-top: var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: var(--space-6);
-    font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.5);
-  }
-
   @media (max-width: 1024px) {
     .footer-grid {
       grid-template-columns: 1fr 1fr;
       gap: var(--space-8);
+    }
+
+    .footer-spacer {
+      display: none;
     }
   }
 
@@ -300,14 +379,23 @@
       gap: var(--space-8);
     }
 
-    .footer-bottom {
-      flex-direction: column;
-      gap: var(--space-4);
-      text-align: center;
+    .footer-spacer {
+      display: none;
     }
 
-    .certifications-bar {
+    .footer-bottom-links {
       flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .bottom-left {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .certifications-logos {
+      flex-wrap: wrap;
+      justify-content: center;
       gap: var(--space-2);
     }
   }

@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let rating = 4.9;
-  export let reviewCount = 127;
+  export let rating = 4.7;
+  export let reviewCount = 65;
 </script>
 
 <div class="google-reviews">
