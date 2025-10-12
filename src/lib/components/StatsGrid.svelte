@@ -59,12 +59,12 @@
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.76);
     border-radius: var(--radius-xl);
-    filter: drop-shadow(0 -8px 12px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 -8px 12px rgba(0, 0, 0, 0.2));
   }
 
   .logo-bar-container {
     width: 100%;
-    padding: var(--space-6) var(--space-3);
+    padding: var(--space-4) var(--space-3) var(--space-6) var(--space-3);
     background: rgba(0, 0, 0, 0.6);
     border-radius: var(--radius-xl);
     backdrop-filter: blur(10px);
@@ -77,9 +77,10 @@
 
   .description-text {
     color: #ffffff;
-    font-size: var(--text-xl);
+    font-size: var(--text-sm);
+    font-weight: bold;
     text-align: center;
-    margin: 0 0 var(--space-4) 0;
+    margin: 0 0 var(--space-5) 0;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -95,6 +96,8 @@
     overflow: hidden;
     white-space: nowrap;
     position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0;
   }
 
   .logos-track {

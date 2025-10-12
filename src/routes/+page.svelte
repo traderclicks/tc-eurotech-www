@@ -25,8 +25,8 @@
   let isTransitioning = true;
 
   const baseImages = [
-    '/gallery/mini-PUBt7UPbJFY-unsplash.jpeg',
-    '/gallery/jaguar-oUoLi5k7esA-unsplash.jpeg',
+    '/gallery/mini/sonniehiles-PUBt7UPbJFY-unsplash.jpg',
+    '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg',
     '/images/DSC00720.jpg',
     '/images/DSC00773.jpg'
   ];
@@ -207,21 +207,21 @@
       title: 'Jaguar',
       description: 'Factory-authorized structural repairs with genuine parts',
       buttonHref: '#jaguar',
-      backgroundImage: '/gallery/jaguar-6pDXbba2cQk-unsplash.jpeg'
+      backgroundImage: '/gallery/jaguar/taylor65s-EIs247QDxZk-unsplash.jpg'
     },
     {
       icon: '/landrover-logo-white.svg',
       title: 'Land Rover',
       description: 'Factory-authorized Land Rover specialist repairs',
       buttonHref: '#landrover',
-      backgroundImage: '/gallery/lasnd-rover-EiYV7GWsR78-unsplash.jpeg'
+      backgroundImage: '/gallery/land-rover/timtrad-CLm3pWXrS9Q-unsplash.jpg'
     },
     {
       icon: '/range-rover-logo-white.svg',
       title: 'Range Rover',
       description: 'Premium Range Rover repair and maintenance',
       buttonHref: '#range-rover',
-      backgroundImage: '/gallery/range-rover-LyhzCmT23QM-unsplash.jpeg'
+      backgroundImage: '/gallery/land-rover/grundsteins-53JjnvtUGKE-unsplash.jpg'
     },
     {
       icon: '/bmw-logo-white.svg',
@@ -235,14 +235,14 @@
       title: 'Mini',
       description: 'Expert Mini servicing and collision repairs',
       buttonHref: '#mini',
-      backgroundImage: '/gallery/mini-G0GRk2bzJiU-unsplash.jpeg'
+      backgroundImage: '/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg'
     },
     {
       icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"%3E%3Cpath d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/%3E%3Cpath d="M9 12l2 2 4-4"/%3E%3C/svg%3E',
       title: 'Insurance Claims',
       description: 'Complete claim management from assessment to completion',
       buttonHref: '#insurance',
-      backgroundImage: '/gallery/jaguar-kalamar-pJ5Nm5QfB7k-unsplash.jpeg'
+      backgroundImage: '/gallery/jaguar/mostafa_jamei-rZzOv2M-CIM-unsplash.jpg'
     }
   ];
 
@@ -277,7 +277,7 @@
     {
       title: 'Why Choose Factory-Authorized Repairs for Your Jaguar or Land Rover',
       excerpt: 'Learn about the importance of factory-authorized repairs and how they protect your vehicle\'s value and warranty.',
-      image: '/gallery/jaguar-kalamar-pJ5Nm5QfB7k-unsplash.jpeg',
+      image: '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg',
       category: 'Expert Advice',
       date: 'March 15, 2025',
       href: '#blog'
@@ -293,7 +293,7 @@
     {
       title: 'Understanding Your Insurance Claim Process',
       excerpt: 'A comprehensive guide to navigating insurance claims for European vehicle repairs in New Zealand.',
-      image: '/gallery/mini-G0GRk2bzJiU-unsplash.jpeg',
+      image: '/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg',
       category: 'Insurance',
       date: 'March 5, 2025',
       href: '#blog'
@@ -363,6 +363,12 @@
           {heroData.title}
           <span class="hero-gradient">{heroData.subtitle}</span>
         </h1>
+        <div class="hero-actions">
+          <button class="hero-book-btn">
+            Book repair
+          </button>
+          <a href="#insurance" class="hero-insurance-link">insurance contacts</a>
+        </div>
       </div>
     {/if}
   </div>
@@ -406,7 +412,7 @@
 <!-- Google Reviews Section with Dark Background -->
 <section class="section bg-dark reviews-section">
   <div class="container">
-    <div class="section-header text-center text-inverse">
+    <div class="section-header text-inverse">
       <h2 class="section-title reviews-title">
         What Our Customers Say
         <span class="title-separator">|</span>
@@ -417,8 +423,8 @@
         </span>
       </h2>
     </div>
-    <ReviewCarousel />
   </div>
+  <ReviewCarousel />
 </section>
 
 <!-- FAQ Section -->
@@ -498,7 +504,7 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.55) 100%);
     z-index: 1;
   }
 
@@ -510,6 +516,7 @@
   .hero-content {
     color: white;
     text-align: center;
+    margin-top: calc(var(--space-8) * -1);
   }
 
   .hero-white-block {
@@ -528,7 +535,7 @@
     left: 0;
     right: 0;
     z-index: 3;
-    padding-top: var(--space-12);
+    padding-top: calc(var(--space-12) * 1.5);
   }
 
   .logo-bar :global(.logo-bar-section) {
@@ -548,6 +555,49 @@
     color: white;
   }
 
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+
+  .hero-book-btn {
+    padding: var(--space-3) var(--space-8);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #1a1a1a;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero-book-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-insurance-link {
+    color: white;
+    font-size: var(--text-sm);
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity var(--transition-base);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+  }
+
+  .hero-insurance-link:hover {
+    opacity: 1;
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+  }
+
   .bg-dark {
     background: #1a1a1a;
   }
@@ -565,7 +615,7 @@
   }
 
   .reviews-title {
-    font-size: var(--text-3xl);
+    font-size: var(--text-xl);
   }
 
   .title-separator {
@@ -595,6 +645,16 @@
   @media (max-width: 768px) {
     .hero {
       min-height: 500px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .hero-book-btn {
+      font-size: var(--text-sm);
+      padding: var(--space-2) var(--space-6);
     }
   }
 </style>

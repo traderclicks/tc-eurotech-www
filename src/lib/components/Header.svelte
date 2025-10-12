@@ -7,6 +7,7 @@
   export let hasHero = false;
 
   let isMenuOpen = false;
+  let isLocationOpen = false;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -14,6 +15,10 @@
 
   function openContactModal() {
     modal.form({ title: 'Get a Quote' });
+  }
+
+  function toggleLocation() {
+    isLocationOpen = !isLocationOpen;
   }
 </script>
 
@@ -41,6 +46,31 @@
 
       <!-- Right side items -->
       <div class="nav-right">
+        <!-- Location Dropdown -->
+        <div class="location-dropdown">
+          <button class="header-link location-btn" on:click={toggleLocation}>
+            Mount Wellington
+          </button>
+
+          {#if isLocationOpen}
+            <div class="dropdown-content">
+              <div class="address">
+                <strong>Eurotech Auto Repair Centre</strong><br>
+                6 Sylvia Park Road<br>
+                Mount Wellington<br>
+                Auckland 1060<br>
+                New Zealand
+              </div>
+            </div>
+          {/if}
+        </div>
+
+        <span class="separator">•</span>
+
+        <!-- Phone Link -->
+        <a href="tel:095731093" class="header-link phone-link">
+          (09) 573 1093
+        </a>
       </div>
     </div>
   </nav>
@@ -83,7 +113,6 @@
   .nav-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 100%;
     padding-left: 0;
   }
@@ -109,9 +138,70 @@
   .nav-right {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
-    margin-left: auto;
+    gap: var(--space-3);
+    margin-left: var(--space-6);
     position: relative;
+  }
+
+  .separator {
+    color: white;
+    opacity: 0.5;
+    font-size: var(--text-sm);
+  }
+
+  .header-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    font-size: var(--text-sm);
+    font-weight: normal;
+    transition: opacity var(--transition-fast);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+  }
+
+  .header-link:hover {
+    opacity: 0.8;
+  }
+
+  .location-dropdown {
+    position: relative;
+  }
+
+  .location-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: var(--space-2);
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: var(--space-4);
+    min-width: 250px;
+    z-index: 100;
+  }
+
+  .address {
+    color: #1a1a1a;
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  .address strong {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
   }
 
   /* Menu Toggle Button */
@@ -155,6 +245,10 @@
   @media (max-width: 768px) {
     .logo img {
       height: 60px;
+    }
+
+    .nav-right {
+      display: none;
     }
   }
 

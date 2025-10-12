@@ -1,6 +1,5 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
-  import { modal } from '$lib/stores/modal';
 
   export let isOpen = false;
 
@@ -22,11 +21,6 @@
 
   function handleNavClick() {
     closeMenu();
-  }
-
-  function openContactModal() {
-    closeMenu();
-    modal.form({ title: 'Get a Quote' });
   }
 </script>
 
@@ -68,27 +62,6 @@
       {/each}
     </ul>
 
-    <!-- Bottom Section -->
-    <div class="menu-footer">
-      <button class="quote-btn" on:click={openContactModal}>
-        Get a Quote
-      </button>
-
-      <div class="contact-info">
-        <a href="tel:095731093" class="contact-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-          </svg>
-          (09) 573 1093
-        </a>
-        <a href="mailto:info@eurotech.co.nz" class="contact-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-          info@eurotech.co.nz
-        </a>
-      </div>
-    </div>
   </nav>
 {/if}
 
@@ -177,50 +150,6 @@
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.05);
     padding-left: calc(var(--space-6) + 4px);
-  }
-
-  .menu-footer {
-    padding: var(--space-6);
-    border-top: 1px solid #3A352F;
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  .quote-btn {
-    width: 100%;
-    padding: var(--space-4);
-    background: #000000;
-    color: white;
-    border: none;
-    border-radius: 0;
-    font-size: var(--text-base);
-    font-weight: var(--font-medium);
-    cursor: pointer;
-    transition: background var(--transition-fast);
-    margin-bottom: var(--space-4);
-  }
-
-  .quote-btn:hover {
-    background: #1a1a1a;
-  }
-
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: var(--text-sm);
-    transition: color var(--transition-fast);
-  }
-
-  .contact-link:hover {
-    color: white;
   }
 
   /* Mobile Styles */

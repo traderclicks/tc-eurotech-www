@@ -170,7 +170,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 0;
-    min-height: 400px;
+    min-height: 290px;
   }
 
   .carousel-track {
