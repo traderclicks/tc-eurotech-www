@@ -1,9 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "framework": "sveltekit",
-  "outputDirectory": ".svelte-kit",
   "git": {
     "deploymentEnabled": {
       "main": true,

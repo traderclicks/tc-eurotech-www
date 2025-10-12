@@ -54,7 +54,7 @@
   }
 
   .logo-bar-wrapper {
-    width: 80%;
+    width: 68%;
     max-width: 1300px;
     margin: 0 auto;
     background: transparent;
@@ -65,7 +65,7 @@
   .logo-bar-container {
     width: 100%;
     padding: var(--space-4) var(--space-3) var(--space-6) var(--space-3);
-    background: rgba(120, 130, 135, 0.7);
+    background: #4d5357c9;
     border-radius: var(--radius-xl);
     backdrop-filter: blur(120px);
   }
@@ -77,7 +77,7 @@
 
   .description-text {
     color: #ffffff;
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     font-weight: bold;
     text-align: center;
     margin: var(--space-3) 0 var(--space-6) 0;
