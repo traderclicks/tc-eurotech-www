@@ -13,8 +13,8 @@ export const actions = {
       cookies.set('authenticated', 'true', {
         path: '/',
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        secure: true,
+        sameSite: 'lax',
         maxAge: 60 * 60 * 24 // 24 hours
       });
 
