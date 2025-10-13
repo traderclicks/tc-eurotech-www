@@ -40,19 +40,23 @@
     Math.floor(width * 1.5)
   ];
 
+  // Check if Cloudflare Image Resizing should be used
+  // Can be disabled via environment variable if Cloudflare proxy is not enabled
+  const useCloudflareTransform = import.meta.env.PUBLIC_USE_CLOUDFLARE_IMAGES !== 'false';
+
   // Build Cloudflare transformation URL
   function buildUrl(w: number): string {
-    if (dev) {
-      // Development: serve originals directly (no Cloudflare transforms on localhost)
+    if (dev || !useCloudflareTransform) {
+      // Development or Cloudflare disabled: serve originals directly
       return src;
     }
-    // Production: use Cloudflare Image Resizing
+    // Production with Cloudflare enabled: use Cloudflare Image Resizing
     return `/cdn-cgi/image/width=${w},fit=${fit},quality=${quality},format=auto${src}`;
   }
 
   // Build srcset string
-  $: srcset = dev
-    ? undefined  // Skip srcset in dev (serves original only)
+  $: srcset = (dev || !useCloudflareTransform)
+    ? undefined  // Skip srcset in dev or when Cloudflare is disabled
     : sizes.map(w => `${buildUrl(w)} ${w}w`).join(', ');
 
   // Build sizes attribute (responsive breakpoints)

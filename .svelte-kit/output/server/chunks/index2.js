@@ -2369,6 +2369,8 @@ function slot(renderer, $$props, name, slot_props, fallback_fn) {
   }
   if (slot_fn !== void 0) {
     slot_fn(renderer, slot_props);
+  } else {
+    fallback_fn?.();
   }
 }
 function bind_props(props_parent, props_now) {
@@ -2387,7 +2389,7 @@ function ensure_array_like(array_like_or_iterator) {
   return [];
 }
 export {
-  escape_html as $,
+  bind_props as $,
   EFFECT_PRESERVED as A,
   Batch as B,
   COMMENT_NODE as C,
@@ -2414,24 +2416,25 @@ export {
   experimental_async_ssr as X,
   setContext as Y,
   fallback as Z,
-  bind_props as _,
+  escape_html as _,
   HYDRATION_END as a,
   store_get as a0,
   ensure_array_like as a1,
   attr as a2,
-  stringify as a3,
-  spread_props as a4,
-  slot as a5,
-  unsubscribe_stores as a6,
-  attr_class as a7,
+  attr_class as a3,
+  stringify as a4,
+  spread_props as a5,
+  slot as a6,
+  unsubscribe_stores as a7,
   head as a8,
-  getContext as a9,
-  noop as aa,
-  clsx as ab,
-  attr_style as ac,
-  safe_not_equal as ad,
-  subscribe_to_store as ae,
-  run_all as af,
+  attr_style as a9,
+  ssr_context as aa,
+  noop as ab,
+  getContext as ac,
+  clsx as ad,
+  safe_not_equal as ae,
+  subscribe_to_store as af,
+  run_all as ag,
   HYDRATION_START as b,
   HYDRATION_START_ELSE as c,
   get as d,

@@ -55,7 +55,7 @@
     aria-labelledby="modal-title-{modal.id}"
     tabindex="-1"
   >
-    <div class="modal-container" class:image-container={modal.type === 'image'} transition:scale={{ duration: 200, start: 0.95 }}>
+    <div class="modal-container" class:image-container={modal.type === 'image'} class:insurance-container={modal.type === 'insurance'} transition:scale={{ duration: 200, start: 0.95 }}>
       {#if modal.type !== 'image'}
         <div class="modal-header">
           {#if modal.title}
@@ -152,6 +152,39 @@
               OK
             </button>
           </div>
+        {:else if modal.type === 'insurance'}
+          <div class="insurance-modal">
+            <div class="insurance-list">
+              <div class="insurance-item">
+                <div class="insurance-name">AA Insurance</div>
+                <a href="tel:0800222022" class="insurance-phone">0800 222 022</a>
+              </div>
+              <div class="insurance-item">
+                <div class="insurance-name">State Insurance</div>
+                <a href="tel:0800808808" class="insurance-phone">0800 808 808</a>
+              </div>
+              <div class="insurance-item">
+                <div class="insurance-name">AMI Insurance</div>
+                <a href="tel:0800100200" class="insurance-phone">0800 100 200</a>
+              </div>
+              <div class="insurance-item">
+                <div class="insurance-name">Tower Insurance</div>
+                <a href="tel:0800808808" class="insurance-phone">0800 808 808</a>
+              </div>
+              <div class="insurance-item">
+                <div class="insurance-name">Vero Insurance</div>
+                <a href="tel:0800800100" class="insurance-phone">0800 800 100</a>
+              </div>
+              <div class="insurance-item">
+                <div class="insurance-name">NZI Insurance</div>
+                <a href="tel:0800100080" class="insurance-phone">0800 100 080</a>
+              </div>
+              <div class="insurance-item">
+                <div class="insurance-name">IAG (NZI/State/AMI/Lumley)</div>
+                <a href="tel:0800104104" class="insurance-phone">0800 104 104</a>
+              </div>
+            </div>
+          </div>
         {:else if modal.type === 'custom'}
           <!-- Slot for custom modal content -->
           <slot name="custom" {modal} />
@@ -196,6 +229,11 @@
     max-width: 1200px;
     background: transparent;
     box-shadow: none;
+  }
+
+  .modal-container.insurance-container {
+    max-width: 450px;
+    background: #f5f5f5;
   }
 
   .modal-header {
@@ -323,6 +361,41 @@
   .alert-modal p {
     margin-bottom: var(--space-6);
     color: var(--text-secondary);
+  }
+
+  /* Insurance Modal Styles */
+  .insurance-modal {
+    padding: var(--space-6);
+  }
+
+  .insurance-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .insurance-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .insurance-name {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+  }
+
+  .insurance-phone {
+    font-size: var(--text-xl);
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .insurance-phone:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
   }
 
   /* Button Styles */

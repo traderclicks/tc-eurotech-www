@@ -1,6 +1,6 @@
 import { writable, derived } from 'svelte/store';
 
-export type ModalType = 'form' | 'image' | 'video' | 'confirm' | 'alert' | 'custom';
+export type ModalType = 'form' | 'image' | 'video' | 'confirm' | 'alert' | 'custom' | 'insurance';
 
 interface Modal {
   id: string;
@@ -87,5 +87,12 @@ export const modal = {
     }
 
     return id;
+  },
+
+  insurance: () => {
+    return modals.open({
+      type: 'insurance',
+      title: 'Insurance Contacts'
+    });
   }
 };

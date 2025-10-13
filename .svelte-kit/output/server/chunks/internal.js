@@ -828,7 +828,8 @@ function Root($$renderer, $$props) {
       components = [],
       form,
       data_0 = null,
-      data_1 = null
+      data_1 = null,
+      data_2 = null
     } = $$props;
     {
       setContext("__svelte__", stores);
@@ -836,7 +837,7 @@ function Root($$renderer, $$props) {
     {
       stores.page.set(page);
     }
-    const Pyramid_1 = constructors[1];
+    const Pyramid_2 = constructors[2];
     if (constructors[1]) {
       $$renderer2.push("<!--[-->");
       const Pyramid_0 = constructors[0];
@@ -846,9 +847,30 @@ function Root($$renderer, $$props) {
         form,
         params: page.params,
         children: ($$renderer3) => {
-          $$renderer3.push(`<!---->`);
-          Pyramid_1($$renderer3, { data: data_1, form, params: page.params });
-          $$renderer3.push(`<!---->`);
+          if (constructors[2]) {
+            $$renderer3.push("<!--[-->");
+            const Pyramid_1 = constructors[1];
+            $$renderer3.push(`<!---->`);
+            Pyramid_1($$renderer3, {
+              data: data_1,
+              form,
+              params: page.params,
+              children: ($$renderer4) => {
+                $$renderer4.push(`<!---->`);
+                Pyramid_2($$renderer4, { data: data_2, form, params: page.params });
+                $$renderer4.push(`<!---->`);
+              },
+              $$slots: { default: true }
+            });
+            $$renderer3.push(`<!---->`);
+          } else {
+            $$renderer3.push("<!--[!-->");
+            const Pyramid_1 = constructors[1];
+            $$renderer3.push(`<!---->`);
+            Pyramid_1($$renderer3, { data: data_1, form, params: page.params });
+            $$renderer3.push(`<!---->`);
+          }
+          $$renderer3.push(`<!--]-->`);
         },
         $$slots: { default: true }
       });
@@ -884,7 +906,7 @@ const options = {
   service_worker: false,
   service_worker_options: void 0,
   templates: {
-    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n\n    <!-- Favicons -->\n    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n    <link rel="alternate icon" href="/favicon.ico" />\n    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />\n\n    <!-- Preconnect to improve performance -->\n    <link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n\n    <!-- Default meta tags (will be overridden by page-specific tags) -->\n    <meta name="generator" content="SvelteKit" />\n    <meta name="format-detection" content="telephone=no" />\n    <meta name="theme-color" content="#3B82F6" />\n\n    ' + head + '\n  </head>\n  <body data-sveltekit-preload-data="hover">\n    <div style="display: contents">' + body + "</div>\n  </body>\n</html>\n",
+    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n\n    <!-- Favicons -->\n    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n    <link rel="alternate icon" href="/favicon.ico" />\n    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />\n\n    <!-- Preconnect to improve performance -->\n    <link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n\n    <!-- Google Fonts -->\n    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />\n\n    <!-- Default meta tags (will be overridden by page-specific tags) -->\n    <meta name="generator" content="SvelteKit" />\n    <meta name="format-detection" content="telephone=no" />\n    <meta name="theme-color" content="#3B82F6" />\n\n    ' + head + '\n  </head>\n  <body data-sveltekit-preload-data="hover">\n    <div style="display: contents">' + body + "</div>\n  </body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -956,7 +978,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1atogr9"
+  version_hash: "1ajzzco"
 };
 async function get_hooks() {
   let handle;
@@ -964,6 +986,7 @@ async function get_hooks() {
   let handleError;
   let handleValidationError;
   let init;
+  ({ handle, handleFetch, handleError, handleValidationError, init } = await import("./hooks.server.js"));
   let reroute;
   let transport;
   return {

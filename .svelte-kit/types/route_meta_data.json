@@ -1,9 +1,18 @@
 {
 	"/": [],
+	"/bmw": [],
 	"/gallery": [],
+	"/jaguar": [],
+	"/land-rover": [],
+	"/login": [
+		"src/routes/login/+page.server.ts"
+	],
+	"/mini": [],
+	"/range-rover": [],
 	"/robots.txt": [
 		"src/routes/robots.txt/+server.ts"
 	],
+	"/services": [],
 	"/sitemap.xml": [
 		"src/routes/sitemap.xml/+server.ts"
 	],

@@ -22,6 +22,7 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--space-8);
     align-items: center;
+    background: #ffffff1a;
   }
 
   .client-logo {

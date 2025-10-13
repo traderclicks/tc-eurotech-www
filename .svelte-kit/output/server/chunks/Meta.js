@@ -1,30 +1,5 @@
-import { a9 as getContext, Z as fallback, a0 as store_get, a8 as head, a6 as unsubscribe_stores, _ as bind_props, $ as escape_html, a2 as attr, a3 as stringify, a1 as ensure_array_like } from "./index2.js";
-import "@sveltejs/kit/internal";
-import "./exports.js";
-import "./utils.js";
-import "clsx";
-import "./state.svelte.js";
-const getStores = () => {
-  const stores = getContext("__svelte__");
-  return {
-    /** @type {typeof page} */
-    page: {
-      subscribe: stores.page.subscribe
-    },
-    /** @type {typeof navigating} */
-    navigating: {
-      subscribe: stores.navigating.subscribe
-    },
-    /** @type {typeof updated} */
-    updated: stores.updated
-  };
-};
-const page = {
-  subscribe(fn) {
-    const store = getStores().page;
-    return store.subscribe(fn);
-  }
-};
+import { Z as fallback, a0 as store_get, a8 as head, a7 as unsubscribe_stores, $ as bind_props, _ as escape_html, a2 as attr, a4 as stringify, a1 as ensure_array_like } from "./index2.js";
+import { p as page } from "./stores.js";
 function Meta($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     var $$store_subs;
@@ -149,6 +124,5 @@ function Meta($$renderer, $$props) {
   });
 }
 export {
-  Meta as M,
-  page as p
+  Meta as M
 };

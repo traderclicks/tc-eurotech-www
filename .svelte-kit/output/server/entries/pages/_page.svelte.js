@@ -1,69 +1,43 @@
-import { Z as fallback, $ as escape_html, a5 as slot, _ as bind_props, a1 as ensure_array_like, a2 as attr, a8 as head, a4 as spread_props } from "../../chunks/index2.js";
-import { a as modal } from "../../chunks/Checkbox.svelte_svelte_type_style_lang.js";
+import { Z as fallback, a2 as attr, _ as escape_html, $ as bind_props, a8 as head, a9 as attr_style, a1 as ensure_array_like, a5 as spread_props, a4 as stringify } from "../../chunks/index2.js";
+import "../../chunks/modal.js";
 import { M as Meta } from "../../chunks/Meta.js";
-import { h as html } from "../../chunks/Button.js";
+import { h as html } from "../../chunks/Button.svelte_svelte_type_style_lang.js";
 /* empty css                                                     */
-import { S as StatsGrid, F as FeatureCard, a as ServiceCard, T as TestimonialCard, b as FAQ } from "../../chunks/ServiceCard.js";
-function CTASection($$renderer, $$props) {
-  let title = fallback($$props["title"], "Ready to Get Started?");
-  let description = fallback($$props["description"], "Contact us today for a free consultation");
-  $$renderer.push(`<section class="cta svelte-ck0zer"><div class="container"><h2 class="svelte-ck0zer">${escape_html(title)}</h2> <p class="svelte-ck0zer">${escape_html(description)}</p> <!--[-->`);
-  slot($$renderer, $$props, "default", {});
-  $$renderer.push(`<!--]--></div></section>`);
-  bind_props($$props, { title, description });
-}
-function photoPlaceholder(width, height, seed) {
-  const seedParam = seed ? `?random=${seed}` : "";
-  return `https://picsum.photos/${width}/${height}${seedParam}`;
-}
-function logoPlaceholder(company, size = 80) {
-  const initial = company.charAt(0).toUpperCase();
-  return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}'%3E%3Crect width='${size}' height='${size}' rx='8' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='system-ui, sans-serif' font-size='${size / 2}' font-weight='bold' fill='%236b7280'%3E${initial}%3C/text%3E%3C/svg%3E`;
-}
-function iconPlaceholder(type = "feature", index = 1) {
-  const colors = ["#3b82f6", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#ef4444"];
-  const color = colors[(index - 1) % colors.length];
-  const icons = {
-    feature: "M13 10V3L4 14h7v7l9-11h-7z",
-    // Lightning bolt
-    service: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z",
-    // Star
-    category: "M4 6h16M4 12h16M4 18h16"
-    // Menu bars
-  };
-  const path = icons[type];
-  return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='${encodeURIComponent(color)}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='${path}'/%3E%3C/svg%3E`;
-}
-const PLACEHOLDERS = {
-  hero: photoPlaceholder(1200, 600, "hero"),
-  avatar: (index) => `https://i.pravatar.cc/150?img=${index}`,
-  product: (index) => photoPlaceholder(400, 300, `product-${index}`),
-  client: (company) => logoPlaceholder(company),
-  icon: (index) => iconPlaceholder("feature", index),
-  serviceIcon: (index) => iconPlaceholder("service", index),
-  categoryIcon: (index) => iconPlaceholder("category", index)
-};
-function ClientLogos($$renderer, $$props) {
-  let logos = fallback(
-    $$props["logos"],
-    () => [
-      {
-        src: "/jaguar-logo-lg.jpg",
-        alt: "Jaguar Authorized Repairer"
-      },
-      { src: "/bmw-logo.jpg", alt: "BMW Specialist" },
-      { src: "/mini-logo-lg.jpg", alt: "Mini Cooper Specialist" }
-    ],
-    true
-  );
-  $$renderer.push(`<div class="client-logos svelte-kivu6h"><!--[-->`);
-  const each_array = ensure_array_like(logos);
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    let logo = each_array[$$index];
-    $$renderer.push(`<div class="client-logo svelte-kivu6h"><img${attr("src", logo.src)}${attr("alt", logo.alt)} class="svelte-kivu6h"/></div>`);
+import { S as ServiceCard } from "../../chunks/ServiceCard.js";
+import { F as FAQ } from "../../chunks/FAQ.js";
+import { S as StatsGrid } from "../../chunks/StatsGrid.js";
+import { R as ReviewCarousel } from "../../chunks/ReviewCarousel.js";
+import "../../chunks/HeroCTAButtons.svelte_svelte_type_style_lang.js";
+function BlogCard($$renderer, $$props) {
+  let title = fallback($$props["title"], "");
+  let excerpt = fallback($$props["excerpt"], "");
+  let image = fallback($$props["image"], "");
+  let category = fallback($$props["category"], "");
+  let date = fallback($$props["date"], "");
+  let href = fallback($$props["href"], "#");
+  $$renderer.push(`<a${attr("href", href)} class="blog-card svelte-pf7zc2"><div class="blog-image svelte-pf7zc2"><img${attr("src", image)}${attr("alt", title)} class="svelte-pf7zc2"/> `);
+  if (category) {
+    $$renderer.push("<!--[-->");
+    $$renderer.push(`<span class="blog-category svelte-pf7zc2">${escape_html(category)}</span>`);
+  } else {
+    $$renderer.push("<!--[!-->");
   }
-  $$renderer.push(`<!--]--></div>`);
-  bind_props($$props, { logos });
+  $$renderer.push(`<!--]--></div> <div class="blog-content svelte-pf7zc2">`);
+  if (date) {
+    $$renderer.push("<!--[-->");
+    $$renderer.push(`<time class="blog-date svelte-pf7zc2">${escape_html(date)}</time>`);
+  } else {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--> <h3 class="blog-title svelte-pf7zc2">${escape_html(title)}</h3> `);
+  if (excerpt) {
+    $$renderer.push("<!--[-->");
+    $$renderer.push(`<p class="blog-excerpt svelte-pf7zc2">${escape_html(excerpt)}</p>`);
+  } else {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--> <span class="blog-link svelte-pf7zc2">Learn More</span></div></a>`);
+  bind_props($$props, { title, excerpt, image, category, date, href });
 }
 function generateFAQSchema(faqs) {
   return {
@@ -124,92 +98,37 @@ function generateLocalBusinessSchema(config) {
 }
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
-    function openContactModal() {
-      modal.form({ title: "Get a Quote" });
-    }
-    const features = [
-      {
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M9 11H3v2h6v-2zm0-4H3v2h6V7zm0 8H3v2h6v-2zm12-4h-6v2h6v-2zm0-4h-6v2h6V7zm0 8h-6v2h6v-2z"/>
-      </svg>`,
-        title: "Factory Authorized",
-        description: "New Zealand's only Jaguar/Land Rover factory-authorized structural repairer"
-      },
-      {
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
-        <path d="M3 3h18v2H3zm0 16h18v2H3zm0-8h18v2H3z"/>
-      </svg>`,
-        title: "CRA Accredited",
-        description: "20+ years experience with I-Car Gold certification and CRA accreditation"
-      },
-      {
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-        title: "Insurance Approved",
-        description: "Trusted by all major insurance companies for quality repairs"
-      },
-      {
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-      </svg>`,
-        title: "Latest Technology",
-        description: "State-of-the-art equipment ensuring precision repairs"
-      },
-      {
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-      </svg>`,
-        title: "4.7★ Google Rating",
-        description: "64+ reviews from satisfied customers averaging 4.7 stars"
-      },
-      {
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 8V7l-3 2-3-2v1l3 2 3-2zm1-5H2C.9 3 0 3.9 0 5v14c0 1.1.9 2 2 2h20c1.1 0 1.99-.9 1.99-2L24 5c0-1.1-.9-2-2-2zM8 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H2v-1c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1zm8-6h-8V6h8v6z"/>
-      </svg>`,
-        title: "European Specialists",
-        description: "BMW, Jaguar, Land Rover, and Mini repair specialists"
-      }
+    let currentSlide = 0;
+    const baseImages = [
+      "/gallery/bmw/tyler_clemmensen-h5XcT5T0ST8-unsplash.jpg",
+      // 71
+      "/images/DSC00619.jpg",
+      // 80
+      "/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg",
+      // 35
+      "/images/DSC00748.jpg",
+      // 93
+      "/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg",
+      // 44
+      "/images/DSC00972.jpg",
+      // 99
+      "/gallery/land-rover/finding_dan-lXvycA58ZfQ-unsplash.jpg",
+      // 10
+      "/images/DSC00773.jpg",
+      // 97
+      "/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg",
+      // 30
+      "/images/DSC00751.jpg",
+      // 94
+      "/gallery/bmw/pat__-TOigkN59Dcg-unsplash.jpg",
+      // 67
+      "/images/DSC00727.jpg",
+      // 90
+      "/gallery/range-rover/range-rover-1725815761.jpg"
+      // 116
     ];
-    const testimonials = [
-      {
-        name: "Victor",
-        role: "BMW Owner",
-        content: "They know what they are doing. Great job.",
-        avatar: "https://i.pravatar.cc/150?img=8"
-      },
-      {
-        name: "Lesley",
-        role: "Land Rover Owner",
-        content: "Have had a few vehicles repaired with Marino and his team, always friendly and efficient service with cars returned in excellent condition, thank you.",
-        avatar: "https://i.pravatar.cc/150?img=5"
-      },
-      {
-        name: "Eric",
-        role: "Jaguar Owner",
-        content: "The team at Eurotech have been brilliant repairing my 2 vehicles. They've made it super easy with dealing with insurance etc and the repairs are exceptional!",
-        avatar: "https://i.pravatar.cc/150?img=11"
-      },
-      {
-        name: "George",
-        role: "BMW Owner",
-        content: "Great service and quality of workmanship.",
-        avatar: "https://i.pravatar.cc/150?img=12"
-      },
-      {
-        name: "Philip",
-        role: "Land Rover Owner",
-        content: "I was unfortunate to have to make a claim but have been stoked with the outcome. Thanks!",
-        avatar: "https://i.pravatar.cc/150?img=7"
-      },
-      {
-        name: "John",
-        role: "Mini Owner",
-        content: "Great service. Good communication. Happy client.",
-        avatar: "https://i.pravatar.cc/150?img=3"
-      }
-    ];
+    const heroBackgrounds = Array(10).fill(baseImages).flat();
+    const totalSlides = heroBackgrounds.length;
     const faqs = [
       {
         question: "What brands do you specialize in?",
@@ -232,56 +151,83 @@ function _page($$renderer, $$props) {
         answer: "Eurotech has been providing quality European vehicle repairs for over 20 years, building a reputation for excellence and reliability."
       }
     ];
-    const stats = [
-      { number: "20+", label: "Years Experience" },
-      { number: "4.7★", label: "Google Rating" },
-      { number: "100%", label: "Insurance Approved" },
-      { number: "#1", label: "JLR Authorized" }
-    ];
+    const heroData = {
+      description: "NZ's only factory-authorized Jaguar/Land Rover repairer  •  Expert BMW & Mini repairs  •  Over 20 years experience"
+    };
     const services = [
       {
-        icon: PLACEHOLDERS.serviceIcon(1),
-        title: "Jaguar & Land Rover",
+        icon: "/jaguar-logo-white.svg",
+        title: "Jaguar",
         description: "Factory-authorized structural repairs with genuine parts",
-        buttonHref: "#jaguar-landrover"
+        buttonHref: "/jaguar",
+        backgroundImage: "/gallery/jaguar/fourfour_44-w4aIu8mhxX8-unsplash.jpg"
       },
       {
-        icon: PLACEHOLDERS.serviceIcon(2),
-        title: "BMW & Mini",
-        description: "Specialist repairs using latest BMW repair techniques",
-        buttonHref: "#bmw-mini"
+        icon: "/landrover-logo-white.svg",
+        title: "Land Rover",
+        description: "Factory-authorized Land Rover specialist repairs",
+        buttonHref: "/land-rover",
+        backgroundImage: "/gallery/land-rover/timtrad-CLm3pWXrS9Q-unsplash.jpg"
       },
       {
-        icon: PLACEHOLDERS.serviceIcon(3),
+        icon: "/range-rover-logo-white.svg",
+        title: "Range Rover",
+        description: "Premium Range Rover repair and maintenance",
+        buttonHref: "/range-rover",
+        backgroundImage: "/gallery/range-rover/range-rover-1725815761.jpg"
+      },
+      {
+        icon: "/bmw-logo-white.svg",
+        title: "BMW",
+        description: "Specialist BMW repairs using latest repair techniques",
+        buttonHref: "/bmw",
+        backgroundImage: "/bmw.jpg"
+      },
+      {
+        icon: "/mini-white.svg",
+        title: "Mini",
+        description: "Expert Mini servicing and collision repairs",
+        buttonHref: "/mini",
+        backgroundImage: "/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg"
+      },
+      {
+        icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"%3E%3Cpath d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/%3E%3Cpath d="M9 12l2 2 4-4"/%3E%3C/svg%3E',
         title: "Insurance Claims",
         description: "Complete claim management from assessment to completion",
-        buttonHref: "#insurance"
+        buttonHref: "/insurance",
+        backgroundImage: "/gallery/land-rover/woeiman-4C-x7CQNwvw-unsplash.jpg"
       }
     ];
     const googleReviews = {
       rating: 4.7,
-      totalReviews: 64,
-      reviews: [
-        {
-          author: "Sarah M.",
-          rating: 5,
-          text: "Excellent service! My BMW looks brand new after the repair.",
-          time: "2 weeks ago"
-        },
-        {
-          author: "Michael T.",
-          rating: 5,
-          text: "Professional team, great communication throughout the process.",
-          time: "1 month ago"
-        },
-        {
-          author: "Emma L.",
-          rating: 5,
-          text: "Best panel beaters in Auckland for European vehicles!",
-          time: "1 month ago"
-        }
-      ]
+      totalReviews: 64
     };
+    const blogArticles = [
+      {
+        title: "Why Choose Factory-Authorized Repairs for Your Jaguar or Land Rover",
+        excerpt: "Learn about the importance of factory-authorized repairs and how they protect your vehicle's value and warranty.",
+        image: "/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg",
+        category: "Expert Advice",
+        date: "March 15, 2025",
+        href: "#blog"
+      },
+      {
+        title: "Common BMW Repair Issues and How to Prevent Them",
+        excerpt: "Discover the most common repair issues for BMW vehicles and our expert tips for preventative maintenance.",
+        image: "/bmw.jpg",
+        category: "Maintenance",
+        date: "March 10, 2025",
+        href: "#blog"
+      },
+      {
+        title: "Understanding Your Insurance Claim Process",
+        excerpt: "A comprehensive guide to navigating insurance claims for European vehicle repairs in New Zealand.",
+        image: "/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg",
+        category: "Insurance",
+        date: "March 5, 2025",
+        href: "#blog"
+      }
+    ];
     const businessSchema = generateLocalBusinessSchema({
       name: "Eurotech Auto Repair Centre",
       description: "European vehicle repair specialists. New Zealand's only factory-authorized Jaguar/Land Rover structural repairer.",
@@ -313,60 +259,39 @@ function _page($$renderer, $$props) {
       keywords: "european car repair auckland, bmw repair, jaguar repair, land rover repair, mini repair, panel beaters auckland, insurance repairs",
       ogImage: "/og-eurotech.png"
     });
-    $$renderer2.push(`<!---->  <section class="hero svelte-1uha8ag" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&amp;w=2940&amp;auto=format&amp;fit=crop')"><div class="hero-overlay svelte-1uha8ag"></div> <div class="container hero-container svelte-1uha8ag">`);
+    $$renderer2.push(`<!---->  <section class="hero svelte-1uha8ag"><div class="hero-slider-track svelte-1uha8ag"${attr_style(`transform: translateX(-${stringify(currentSlide * (100 / (totalSlides + 1)))}%); transition: ${stringify("transform 0.8s ease-in-out")}`)}><!--[-->`);
+    const each_array = ensure_array_like([...heroBackgrounds, heroBackgrounds[0]]);
+    for (let i = 0, $$length = each_array.length; i < $$length; i++) {
+      let bg = each_array[i];
+      $$renderer2.push(`<div class="hero-background svelte-1uha8ag"${attr_style(`background-image: url('${stringify(bg)}')`)}></div>`);
+    }
+    $$renderer2.push(`<!--]--></div> <div class="hero-overlay svelte-1uha8ag"></div> <button class="hero-nav-btn prev svelte-1uha8ag" aria-label="Previous slide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="svelte-1uha8ag"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button> <button class="hero-nav-btn next svelte-1uha8ag" aria-label="Next slide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="svelte-1uha8ag"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button> <div class="container hero-container svelte-1uha8ag">`);
     {
       $$renderer2.push("<!--[!-->");
     }
-    $$renderer2.push(`<!--]--></div></section> `);
-    StatsGrid($$renderer2, { stats });
-    $$renderer2.push(`<!----> <section class="section"><div class="container"><div class="section-header"><h2 class="section-title">Why Choose Eurotech</h2> <p class="section-subtitle">Auckland's premier European vehicle repair specialists</p></div> <div class="features-grid svelte-1uha8ag"><!--[-->`);
-    const each_array_1 = ensure_array_like(features);
+    $$renderer2.push(`<!--]--></div> <div class="hero-white-block svelte-1uha8ag"></div> <div class="logo-bar svelte-1uha8ag">`);
+    StatsGrid($$renderer2, {
+      backgroundColor: "transparent",
+      textColor: "white",
+      description: heroData.description
+    });
+    $$renderer2.push(`<!----></div></section> <section class="section bg-blog svelte-1uha8ag"><div class="container"><div class="services-grid svelte-1uha8ag"><!--[-->`);
+    const each_array_1 = ensure_array_like(services);
     for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
-      let feature = each_array_1[$$index_1];
-      FeatureCard($$renderer2, spread_props([feature]));
-    }
-    $$renderer2.push(`<!--]--></div></div></section> <section class="section bg-secondary"><div class="container"><div class="section-header"><h2 class="section-title">Customer Reviews</h2> <div class="google-rating svelte-1uha8ag"><span class="rating-number svelte-1uha8ag">${escape_html(googleReviews.rating)}</span> <div class="rating-stars svelte-1uha8ag"><!--[-->`);
-    const each_array_2 = ensure_array_like(Array(5));
-    for (let i = 0, $$length = each_array_2.length; i < $$length; i++) {
-      each_array_2[i];
-      $$renderer2.push(`<svg width="20" height="20"${attr("fill", i < Math.floor(googleReviews.rating) ? "#FFA500" : "#DDD")}><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>`);
-    }
-    $$renderer2.push(`<!--]--></div> <span class="review-count svelte-1uha8ag">(${escape_html(googleReviews.totalReviews)} reviews)</span></div></div> <div class="google-reviews-grid svelte-1uha8ag"><!--[-->`);
-    const each_array_3 = ensure_array_like(googleReviews.reviews);
-    for (let $$index_4 = 0, $$length = each_array_3.length; $$index_4 < $$length; $$index_4++) {
-      let review = each_array_3[$$index_4];
-      $$renderer2.push(`<div class="google-review-card svelte-1uha8ag"><div class="review-header svelte-1uha8ag"><span class="review-author svelte-1uha8ag">${escape_html(review.author)}</span> <span class="review-time svelte-1uha8ag">${escape_html(review.time)}</span></div> <div class="review-rating svelte-1uha8ag"><!--[-->`);
-      const each_array_4 = ensure_array_like(Array(5));
-      for (let i = 0, $$length2 = each_array_4.length; i < $$length2; i++) {
-        each_array_4[i];
-        $$renderer2.push(`<svg width="16" height="16"${attr("fill", i < review.rating ? "#FFA500" : "#DDD")}><path d="M8 12l-4.702 2.472.898-5.236L.392 5.528l5.257-.764L8 0l2.351 4.764 5.257.764-3.804 3.708.898 5.236z"></path></svg>`);
-      }
-      $$renderer2.push(`<!--]--></div> <p class="review-text svelte-1uha8ag">${escape_html(review.text)}</p></div>`);
-    }
-    $$renderer2.push(`<!--]--></div> <div class="google-reviews-footer svelte-1uha8ag"><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" width="92" height="30"/> <a href="https://www.google.com/search?q=eurotech+auto+repair+centre" target="_blank" rel="noopener" class="view-all-reviews svelte-1uha8ag">View all reviews on Google →</a></div></div></section> <section class="section"><div class="container"><div class="section-header"><h2 class="section-title">Our Services</h2> <p class="section-subtitle">Comprehensive repair solutions for European vehicles</p></div> <div class="services-grid svelte-1uha8ag"><!--[-->`);
-    const each_array_5 = ensure_array_like(services);
-    for (let $$index_5 = 0, $$length = each_array_5.length; $$index_5 < $$length; $$index_5++) {
-      let service = each_array_5[$$index_5];
+      let service = each_array_1[$$index_1];
       ServiceCard($$renderer2, spread_props([service]));
     }
-    $$renderer2.push(`<!--]--></div></div></section> <section class="section bg-gradient"><div class="container"><div class="section-header text-inverse svelte-1uha8ag"><h2 class="section-title svelte-1uha8ag">What Our Customers Say</h2></div> <div class="testimonials-grid svelte-1uha8ag"><!--[-->`);
-    const each_array_6 = ensure_array_like(testimonials.slice(0, 3));
-    for (let $$index_6 = 0, $$length = each_array_6.length; $$index_6 < $$length; $$index_6++) {
-      let testimonial = each_array_6[$$index_6];
-      TestimonialCard($$renderer2, spread_props([testimonial]));
+    $$renderer2.push(`<!--]--></div></div></section> <section class="section"><div class="container"><div class="section-header"><h2 class="section-title">Expert Insights &amp; Advice</h2> <p class="section-subtitle">Latest articles from our European vehicle repair specialists</p></div> <div class="blog-grid svelte-1uha8ag"><!--[-->`);
+    const each_array_2 = ensure_array_like(blogArticles);
+    for (let $$index_2 = 0, $$length = each_array_2.length; $$index_2 < $$length; $$index_2++) {
+      let article = each_array_2[$$index_2];
+      BlogCard($$renderer2, spread_props([article]));
     }
-    $$renderer2.push(`<!--]--></div></div></section> <section class="section"><div class="container"><div class="section-header"><h2 class="section-title">Authorized Repairer</h2> <p class="section-subtitle">Factory-authorized for premium European brands</p></div> `);
-    ClientLogos($$renderer2, {});
-    $$renderer2.push(`<!----></div></section> <section class="section bg-secondary"><div class="container"><div class="section-header"><h2 class="section-title">Frequently Asked Questions</h2></div> <div class="faq-container svelte-1uha8ag">`);
+    $$renderer2.push(`<!--]--></div></div></section> <section class="section bg-dark reviews-section svelte-1uha8ag"><div class="container"><div class="section-header text-inverse svelte-1uha8ag"><h2 class="section-title reviews-title svelte-1uha8ag">What Our Customers Say <span class="title-separator svelte-1uha8ag">|</span> <span class="google-rating svelte-1uha8ag"><img src="/icons/google-wordmark-white.svg" alt="Google" class="google-logo-inline svelte-1uha8ag"/> <span class="star filled svelte-1uha8ag">★</span> ${escape_html(googleReviews.rating)} (${escape_html(googleReviews.totalReviews)} reviews)</span></h2></div></div> `);
+    ReviewCarousel($$renderer2, {});
+    $$renderer2.push(`<!----></section> <section class="section bg-secondary"><div class="container"><div class="section-header text-center svelte-1uha8ag"><h2 class="section-title">Frequently Asked Questions</h2></div> <div class="faq-container svelte-1uha8ag">`);
     FAQ($$renderer2, { items: faqs });
-    $$renderer2.push(`<!----></div></div></section> `);
-    CTASection($$renderer2, {
-      title: "Ready to Get Your European Vehicle Repaired?",
-      subtitle: "Contact Auckland's premier European vehicle specialists today",
-      buttonText: "Get a Quote",
-      buttonAction: openContactModal
-    });
-    $$renderer2.push(`<!---->`);
+    $$renderer2.push(`<!----></div></div></section>`);
   });
 }
 export {

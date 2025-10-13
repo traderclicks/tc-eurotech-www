@@ -13,7 +13,7 @@
   else if (icon.includes('data:image')) logoClass = 'logo-insurance';
 </script>
 
-<div class="service-card" class:has-background={backgroundImage} style={backgroundImage ? `background-image: url('${backgroundImage}')` : ''}>
+<a href={buttonHref} class="service-card" class:has-background={backgroundImage} style={backgroundImage ? `background-image: url('${backgroundImage}')` : ''}>
   {#if backgroundImage}
     <div class="service-overlay"></div>
   {/if}
@@ -31,13 +31,13 @@
       <p class="service-description">{description}</p>
     {/if}
 
-    {#if buttonText && buttonHref}
-      <a href={buttonHref} class="service-link">
+    {#if buttonText}
+      <span class="service-link">
         {buttonText}
-      </a>
+      </span>
     {/if}
   </div>
-</div>
+</a>
 
 <style>
   .service-card {
@@ -53,6 +53,8 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
   }
 
   .service-card.has-background {

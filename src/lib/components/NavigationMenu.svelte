@@ -8,11 +8,12 @@
     { label: 'About Us', href: '#about' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Contact Us', href: '#contact' },
-    { label: 'Jaguar Repair', href: '#jaguar' },
-    { label: 'Land Rover Repair', href: '#landrover' },
-    { label: 'BMW Repair', href: '#bmw' },
-    { label: 'Mini Repair', href: '#mini' },
-    { label: 'Insurance Claims', href: '#insurance' },
+    { label: 'Jaguar Repair', href: '/jaguar' },
+    { label: 'Land Rover Repair', href: '/land-rover' },
+    { label: 'Range Rover Repair', href: '/range-rover' },
+    { label: 'BMW Repair', href: '/bmw' },
+    { label: 'Mini Repair', href: '/mini' },
+    { label: 'Insurance Claims', href: '/insurance' },
   ];
 
   function closeMenu() {
@@ -85,7 +86,7 @@
     bottom: 0;
     width: 400px;
     max-width: 100vw;
-    background: #5C544A;
+    background: #4b4b4b;
     z-index: 999;
     display: flex;
     flex-direction: column;

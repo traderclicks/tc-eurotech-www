@@ -1,8 +1,205 @@
-import { a8 as head, a7 as attr_class, ab as clsx, a1 as ensure_array_like, $ as escape_html, a3 as stringify, a4 as spread_props } from "../../../chunks/index2.js";
-import "../../../chunks/Checkbox.svelte_svelte_type_style_lang.js";
+import { Z as fallback, a2 as attr, _ as escape_html, $ as bind_props, a3 as attr_class, a4 as stringify, a1 as ensure_array_like, a6 as slot, a8 as head, ad as clsx, a5 as spread_props } from "../../../chunks/index2.js";
+import "../../../chunks/modal.js";
 import { B as Button } from "../../../chunks/Button.js";
-import { I as Input, T as Textarea, S as Select, C as Checkbox } from "../../../chunks/Checkbox.js";
-import { F as FeatureCard, a as ServiceCard, T as TestimonialCard, S as StatsGrid, b as FAQ } from "../../../chunks/ServiceCard.js";
+import { S as ServiceCard } from "../../../chunks/ServiceCard.js";
+import { h as html } from "../../../chunks/Button.svelte_svelte_type_style_lang.js";
+import { F as FAQ } from "../../../chunks/FAQ.js";
+import { S as StatsGrid } from "../../../chunks/StatsGrid.js";
+/* empty css                                                       */
+function FeatureCard($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let isSvgString, isImageUrl;
+    let icon = fallback($$props["icon"], "✨");
+    let title = fallback($$props["title"], "");
+    let description = fallback($$props["description"], "");
+    isSvgString = typeof icon === "string" && icon.includes("<svg");
+    isImageUrl = typeof icon === "string" && (icon.startsWith("/") || icon.startsWith("http") || icon.startsWith("data:"));
+    $$renderer2.push(`<div class="feature-card svelte-1tvhds4"><div class="feature-icon svelte-1tvhds4">`);
+    if (isSvgString) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`${html(icon)}`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+      if (isImageUrl) {
+        $$renderer2.push("<!--[-->");
+        $$renderer2.push(`<img${attr("src", icon)}${attr("alt", title)} class="svelte-1tvhds4"/>`);
+      } else {
+        $$renderer2.push("<!--[!-->");
+        $$renderer2.push(`${escape_html(icon)}`);
+      }
+      $$renderer2.push(`<!--]-->`);
+    }
+    $$renderer2.push(`<!--]--></div> <h3 class="feature-title svelte-1tvhds4">${escape_html(title)}</h3> <p class="feature-description svelte-1tvhds4">${escape_html(description)}</p></div>`);
+    bind_props($$props, { icon, title, description });
+  });
+}
+function TestimonialCard($$renderer, $$props) {
+  let name = fallback($$props["name"], "");
+  let role = fallback($$props["role"], "");
+  let content = fallback($$props["content"], "");
+  let avatar = fallback($$props["avatar"], "");
+  $$renderer.push(`<div class="testimonial svelte-1wv70ah"><div class="testimonial-content svelte-1wv70ah"><p>"${escape_html(content)}"</p></div> <div class="testimonial-author svelte-1wv70ah">`);
+  if (avatar) {
+    $$renderer.push("<!--[-->");
+    $$renderer.push(`<img${attr("src", avatar)}${attr("alt", name)} class="author-avatar svelte-1wv70ah"/>`);
+  } else {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--> <div><div class="author-name svelte-1wv70ah">${escape_html(name)}</div> <div class="author-role svelte-1wv70ah">${escape_html(role)}</div></div></div></div>`);
+  bind_props($$props, { name, role, content, avatar });
+}
+function Input($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let type = fallback($$props["type"], "text");
+    let label = fallback($$props["label"], "");
+    let value = fallback($$props["value"], "");
+    let placeholder = fallback($$props["placeholder"], "");
+    let error = fallback($$props["error"], "");
+    let required = fallback($$props["required"], false);
+    let disabled = fallback($$props["disabled"], false);
+    let readonly = fallback($$props["readonly"], false);
+    let id = fallback($$props["id"], () => Math.random().toString(36).substring(7), true);
+    $$renderer2.push(`<div class="input-group svelte-6ivx2n">`);
+    if (label) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<label${attr("for", id)} class="input-label svelte-6ivx2n">${escape_html(label)}</label>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> <input${attr("id", id)}${attr("type", type)}${attr("value", value)}${attr("placeholder", placeholder)}${attr("required", required, true)}${attr("disabled", disabled, true)}${attr("readonly", readonly, true)}${attr_class("input-field svelte-6ivx2n", void 0, { "error": error })}${attr("aria-invalid", !!error)}${attr("aria-describedby", error ? `${id}-error` : void 0)}/> `);
+    if (error) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<span${attr("id", `${stringify(id)}-error`)} class="input-error svelte-6ivx2n">${escape_html(error)}</span>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--></div>`);
+    bind_props($$props, {
+      type,
+      label,
+      value,
+      placeholder,
+      error,
+      required,
+      disabled,
+      readonly,
+      id
+    });
+  });
+}
+function Textarea($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let label = fallback($$props["label"], "");
+    let value = fallback($$props["value"], "");
+    let placeholder = fallback($$props["placeholder"], "");
+    let error = fallback($$props["error"], "");
+    let required = fallback($$props["required"], false);
+    let disabled = fallback($$props["disabled"], false);
+    let readonly = fallback($$props["readonly"], false);
+    let rows = fallback($$props["rows"], 4);
+    let id = fallback($$props["id"], () => Math.random().toString(36).substring(7), true);
+    $$renderer2.push(`<div class="textarea-group svelte-1eo2upp">`);
+    if (label) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<label${attr("for", id)} class="textarea-label svelte-1eo2upp">${escape_html(label)}</label>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> <textarea${attr("id", id)}${attr("placeholder", placeholder)}${attr("required", required, true)}${attr("disabled", disabled, true)}${attr("readonly", readonly, true)}${attr("rows", rows)}${attr_class("textarea-field svelte-1eo2upp", void 0, { "error": error })}${attr("aria-invalid", !!error)}${attr("aria-describedby", error ? `${id}-error` : void 0)}>`);
+    const $$body = escape_html(value);
+    if ($$body) {
+      $$renderer2.push(`${$$body}`);
+    }
+    $$renderer2.push(`</textarea> `);
+    if (error) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<span${attr("id", `${stringify(id)}-error`)} class="textarea-error svelte-1eo2upp">${escape_html(error)}</span>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--></div>`);
+    bind_props($$props, {
+      label,
+      value,
+      placeholder,
+      error,
+      required,
+      disabled,
+      readonly,
+      rows,
+      id
+    });
+  });
+}
+function Select($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let label = fallback($$props["label"], "");
+    let value = fallback($$props["value"], "");
+    let options = fallback($$props["options"], () => [], true);
+    let error = fallback($$props["error"], "");
+    let required = fallback($$props["required"], false);
+    let disabled = fallback($$props["disabled"], false);
+    let id = fallback($$props["id"], () => Math.random().toString(36).substring(7), true);
+    $$renderer2.push(`<div class="select-group svelte-kt0fiv">`);
+    if (label) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<label${attr("for", id)} class="select-label svelte-kt0fiv">${escape_html(label)}</label>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> `);
+    $$renderer2.select(
+      {
+        id,
+        value,
+        required,
+        disabled,
+        class: "select-field",
+        "aria-invalid": !!error,
+        "aria-describedby": error ? `${id}-error` : void 0
+      },
+      ($$renderer3) => {
+        $$renderer3.push(`<!--[-->`);
+        const each_array = ensure_array_like(options);
+        for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+          let option = each_array[$$index];
+          $$renderer3.option({ value: option.value }, ($$renderer4) => {
+            $$renderer4.push(`${escape_html(option.label)}`);
+          });
+        }
+        $$renderer3.push(`<!--]-->`);
+      }
+    );
+    $$renderer2.push(` `);
+    if (error) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<span${attr("id", `${stringify(id)}-error`)} class="select-error svelte-kt0fiv">${escape_html(error)}</span>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--></div>`);
+    bind_props($$props, { label, value, options, error, required, disabled, id });
+  });
+}
+function Checkbox($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let checked = fallback($$props["checked"], false);
+    let error = fallback($$props["error"], "");
+    let disabled = fallback($$props["disabled"], false);
+    let id = fallback($$props["id"], () => Math.random().toString(36).substring(7), true);
+    $$renderer2.push(`<div class="checkbox-group svelte-m5vqja"><label${attr("for", id)} class="checkbox-label svelte-m5vqja"><input${attr("id", id)} type="checkbox"${attr("checked", checked, true)}${attr("disabled", disabled, true)} class="checkbox-field svelte-m5vqja"${attr("aria-invalid", !!error)}${attr("aria-describedby", error ? `${id}-error` : void 0)}/> <span class="checkbox-text svelte-m5vqja"><!--[-->`);
+    slot($$renderer2, $$props, "default", {}, null);
+    $$renderer2.push(`<!--]--></span></label> `);
+    if (error) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<span${attr("id", `${stringify(id)}-error`)} class="checkbox-error svelte-m5vqja">${escape_html(error)}</span>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--></div>`);
+    bind_props($$props, { checked, error, disabled, id });
+  });
+}
 const tableStyles = {
   wrapper: "border border-gray-200 rounded-lg overflow-hidden",
   table: "min-w-full divide-y divide-gray-200",
@@ -127,10 +324,6 @@ function _page($$renderer, $$props) {
         answer: "Yes, these use the same styles as the FAQ section on the homepage."
       }
     ];
-    const sampleStats = [
-      { number: "100+", label: "Metric One" },
-      { number: "95%", label: "Metric Two" }
-    ];
     const sampleTableData = [
       {
         id: 1,
@@ -161,7 +354,7 @@ function _page($$renderer, $$props) {
     $$renderer2.push(`<div class="theme-container svelte-1y3nc6e"><header class="theme-header svelte-1y3nc6e"><h1 class="svelte-1y3nc6e">Living Theme System</h1> <p class="subtitle svelte-1y3nc6e">Every component here is the ACTUAL component used in the app. When you update a component, this page updates automatically.</p> <div class="tab-navigation svelte-1y3nc6e"><div${attr_class(clsx(tabStyles.container), "svelte-1y3nc6e")}><button${attr_class(`${stringify(tabStyles.button)} ${stringify(tabStyles.buttonActive)}`, "svelte-1y3nc6e")}>Core Design System</button> <button${attr_class(`${stringify(tabStyles.button)} ${stringify(tabStyles.buttonInactive)}`, "svelte-1y3nc6e")}>Hero Components</button> <button${attr_class(`${stringify(tabStyles.button)} ${stringify(tabStyles.buttonInactive)}`, "svelte-1y3nc6e")}>Domain Components</button></div></div></header> `);
     {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<div class="tab-content svelte-1y3nc6e"><section class="theme-section svelte-1y3nc6e"><h2 class="svelte-1y3nc6e">Color Palette</h2> <p class="section-description svelte-1y3nc6e">Semantic colors used throughout the application</p> <div class="color-grid svelte-1y3nc6e"><div class="color-group svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Primary Colors</h3> <div class="color-swatches svelte-1y3nc6e"><div class="color-swatch bg-primary svelte-1y3nc6e"><span class="svelte-1y3nc6e">Primary</span> <code class="svelte-1y3nc6e">bg-primary</code></div> <div class="color-swatch bg-primary-dark svelte-1y3nc6e"><span class="svelte-1y3nc6e">Primary Dark</span> <code class="svelte-1y3nc6e">bg-primary-dark</code></div> <div class="color-swatch bg-primary-light svelte-1y3nc6e"><span class="svelte-1y3nc6e">Primary Light</span> <code class="svelte-1y3nc6e">bg-primary-light</code></div></div></div> <div class="color-group svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Status Colors</h3> <div class="color-swatches svelte-1y3nc6e"><div class="color-swatch bg-success svelte-1y3nc6e"><span class="svelte-1y3nc6e">Success</span> <code class="svelte-1y3nc6e">bg-success</code></div> <div class="color-swatch bg-warning svelte-1y3nc6e"><span class="svelte-1y3nc6e">Warning</span> <code class="svelte-1y3nc6e">bg-warning</code></div> <div class="color-swatch bg-danger svelte-1y3nc6e"><span class="svelte-1y3nc6e">Danger</span> <code class="svelte-1y3nc6e">bg-danger</code></div> <div class="color-swatch bg-info svelte-1y3nc6e"><span class="svelte-1y3nc6e">Info</span> <code class="svelte-1y3nc6e">bg-info</code></div></div></div></div></section> <section class="theme-section svelte-1y3nc6e"><h2 class="svelte-1y3nc6e">Typography</h2> <p class="section-description svelte-1y3nc6e">Text styles as they appear in the app</p> <div class="typography-samples svelte-1y3nc6e"><h1 class="svelte-1y3nc6e">Heading 1 - Main Title</h1> <h2 class="svelte-1y3nc6e">Heading 2 - Section Title</h2> <h3 class="svelte-1y3nc6e">Heading 3 - Subsection</h3> <h4 class="svelte-1y3nc6e">Heading 4 - Card Title</h4> <p class="svelte-1y3nc6e">Regular paragraph text with <a href="#">inline link</a> and <strong>bold text</strong>.</p> <p class="text-secondary svelte-1y3nc6e">Secondary text color for descriptions</p> <p class="text-success svelte-1y3nc6e">Success message text</p> <p class="text-danger svelte-1y3nc6e">Error message text</p> <p class="text-warning svelte-1y3nc6e">Warning message text</p> <p class="text-info svelte-1y3nc6e">Info message text</p></div></section> <section class="theme-section svelte-1y3nc6e"><h2 class="svelte-1y3nc6e">Buttons</h2> <p class="section-description svelte-1y3nc6e">These are the ACTUAL Button components used everywhere</p> <div class="button-showcase svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Variants</h3> <div class="button-row svelte-1y3nc6e">`);
+      $$renderer2.push(`<div class="tab-content svelte-1y3nc6e"><section class="theme-section svelte-1y3nc6e"><h2 class="svelte-1y3nc6e">Color Palette</h2> <p class="section-description svelte-1y3nc6e">Semantic colors used throughout the application</p> <div class="color-grid svelte-1y3nc6e"><div class="color-group svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Primary Colors</h3> <div class="color-swatches svelte-1y3nc6e"><div class="color-swatch bg-primary svelte-1y3nc6e"><span class="svelte-1y3nc6e">Primary</span> <code class="svelte-1y3nc6e">bg-primary</code></div> <div class="color-swatch bg-primary-dark svelte-1y3nc6e"><span class="svelte-1y3nc6e">Primary Dark</span> <code class="svelte-1y3nc6e">bg-primary-dark</code></div> <div class="color-swatch bg-primary-light svelte-1y3nc6e"><span class="svelte-1y3nc6e">Primary Light</span> <code class="svelte-1y3nc6e">bg-primary-light</code></div></div></div> <div class="color-group svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Status Colors</h3> <div class="color-swatches svelte-1y3nc6e"><div class="color-swatch bg-success svelte-1y3nc6e"><span class="svelte-1y3nc6e">Success</span> <code class="svelte-1y3nc6e">bg-success</code></div> <div class="color-swatch bg-warning svelte-1y3nc6e"><span class="svelte-1y3nc6e">Warning</span> <code class="svelte-1y3nc6e">bg-warning</code></div> <div class="color-swatch bg-danger svelte-1y3nc6e"><span class="svelte-1y3nc6e">Danger</span> <code class="svelte-1y3nc6e">bg-danger</code></div> <div class="color-swatch bg-info svelte-1y3nc6e"><span class="svelte-1y3nc6e">Info</span> <code class="svelte-1y3nc6e">bg-info</code></div></div></div></div></section> <section class="theme-section svelte-1y3nc6e"><h2 class="svelte-1y3nc6e">Typography</h2> <p class="section-description svelte-1y3nc6e">Text styles as they appear in the app</p> <div class="typography-samples svelte-1y3nc6e"><h1 class="svelte-1y3nc6e">Heading 1 - Main Title</h1> <h2 class="svelte-1y3nc6e">Heading 2 - Section Title</h2> <h3 class="svelte-1y3nc6e">Heading 3 - Subsection</h3> <h4 class="svelte-1y3nc6e">Heading 4 - Card Title</h4> <p class="svelte-1y3nc6e">Regular paragraph text with <a href="/example">inline link</a> and <strong>bold text</strong>.</p> <p class="text-secondary svelte-1y3nc6e">Secondary text color for descriptions</p> <p class="text-success svelte-1y3nc6e">Success message text</p> <p class="text-danger svelte-1y3nc6e">Error message text</p> <p class="text-warning svelte-1y3nc6e">Warning message text</p> <p class="text-info svelte-1y3nc6e">Info message text</p></div></section> <section class="theme-section svelte-1y3nc6e"><h2 class="svelte-1y3nc6e">Buttons</h2> <p class="section-description svelte-1y3nc6e">These are the ACTUAL Button components used everywhere</p> <div class="button-showcase svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Variants</h3> <div class="button-row svelte-1y3nc6e">`);
       Button($$renderer2, {
         variant: "primary",
         children: ($$renderer3) => {
@@ -318,11 +511,7 @@ function _page($$renderer, $$props) {
       $$renderer2.push(`<!----></div> <div class="component-item svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Testimonial Card</h3> `);
       TestimonialCard($$renderer2, spread_props([sampleTestimonial]));
       $$renderer2.push(`<!----></div> <div class="component-item svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">Stats Grid</h3> `);
-      StatsGrid($$renderer2, {
-        stats: sampleStats,
-        backgroundColor: "var(--color-primary)",
-        textColor: "white"
-      });
+      StatsGrid($$renderer2, { backgroundColor: "var(--color-primary)", textColor: "white" });
       $$renderer2.push(`<!----></div> <div class="component-item svelte-1y3nc6e"><h3 class="svelte-1y3nc6e">FAQ Component</h3> `);
       FAQ($$renderer2, { items: sampleFAQs });
       $$renderer2.push(`<!----></div></div></section> <section class="theme-section svelte-1y3nc6e"><h2 class="svelte-1y3nc6e">Modals</h2> <p class="section-description svelte-1y3nc6e">Modal system used throughout the app</p> <div class="button-row svelte-1y3nc6e">`);

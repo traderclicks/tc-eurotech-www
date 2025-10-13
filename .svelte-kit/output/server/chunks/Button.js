@@ -1,9 +1,5 @@
-import { Z as fallback, a2 as attr, a7 as attr_class, a5 as slot, _ as bind_props, a3 as stringify } from "./index2.js";
-function html(value) {
-  var html2 = String(value ?? "");
-  var open = "<!---->";
-  return open + html2 + "<!---->";
-}
+import { Z as fallback, a2 as attr, a3 as attr_class, a6 as slot, $ as bind_props, a4 as stringify } from "./index2.js";
+import { h as html } from "./Button.svelte_svelte_type_style_lang.js";
 function Button($$renderer, $$props) {
   let variant = fallback($$props["variant"], "primary");
   let size = fallback($$props["size"], "medium");
@@ -30,7 +26,7 @@ function Button($$renderer, $$props) {
       $$renderer.push("<!--[!-->");
     }
     $$renderer.push(`<!--]--> <span class="btn-text svelte-18sv61c"><!--[-->`);
-    slot($$renderer, $$props, "default", {});
+    slot($$renderer, $$props, "default", {}, null);
     $$renderer.push(`<!--]--></span></a>`);
   } else {
     $$renderer.push("<!--[!-->");
@@ -49,7 +45,7 @@ function Button($$renderer, $$props) {
       $$renderer.push("<!--[!-->");
     }
     $$renderer.push(`<!--]--> <span class="btn-text svelte-18sv61c"><!--[-->`);
-    slot($$renderer, $$props, "default", {});
+    slot($$renderer, $$props, "default", {}, null);
     $$renderer.push(`<!--]--></span></button>`);
   }
   $$renderer.push(`<!--]-->`);
@@ -65,6 +61,5 @@ function Button($$renderer, $$props) {
   });
 }
 export {
-  Button as B,
-  html as h
+  Button as B
 };
