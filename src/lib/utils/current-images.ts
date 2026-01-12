@@ -1,7 +1,14 @@
 /**
  * Central registry of images currently used on the website
+ * Now reads from CMS JSON files in /content/slots/
  * This allows the gallery "Current" tab to dynamically show only active images
  */
+
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+
+const CONTENT_DIR = join(process.cwd(), 'content');
+const SLOTS_DIR = join(CONTENT_DIR, 'slots');
 
 export interface CurrentImageSet {
   section: string;
@@ -9,96 +16,48 @@ export interface CurrentImageSet {
   images: string[];
 }
 
+interface SlotSchema {
+  label: string;
+  description: string;
+  page: string;
+  maxImages?: number;
+  aspectRatio?: string;
+}
+
+interface SlotSchemas {
+  [slotId: string]: SlotSchema;
+}
+
+interface SlotAssignments {
+  [slotId: string]: string[];
+}
+
 /**
  * Get all images currently in use on the website
+ * Reads from CMS JSON files
  */
 export function getCurrentImages(): CurrentImageSet[] {
-  return [
-    {
-      section: 'Home Hero Slider',
-      description: 'Main homepage hero background images (in rotation order)',
-      images: [
-        '/gallery/bmw/tyler_clemmensen-h5XcT5T0ST8-unsplash.jpg', // 71
-        '/images/DSC00619.jpg', // 80
-        '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg', // 35
-        '/images/DSC00748.jpg', // 93
-        '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg', // 44
-        '/images/DSC00972.jpg', // 99
-        '/gallery/land-rover/finding_dan-lXvycA58ZfQ-unsplash.jpg', // 10
-        '/images/DSC00773.jpg', // 97
-        '/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg', // 30
-        '/images/DSC00751.jpg', // 94
-        '/gallery/bmw/pat__-TOigkN59Dcg-unsplash.jpg', // 67
-        '/images/DSC00727.jpg', // 90
-        '/gallery/range-rover/range-rover-1725815761.jpg' // 116
-      ]
-    },
-    {
-      section: 'Home Service Cards',
-      description: 'Service card background images on homepage',
-      images: [
-        '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg', // Jaguar
-        '/gallery/land-rover/timtrad-CLm3pWXrS9Q-unsplash.jpg', // Land Rover
-        '/gallery/range-rover/range-rover-1725815761.jpg', // Range Rover
-        '/bmw.jpg', // BMW
-        '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg', // Mini
-        '/gallery/land-rover/woeiman-4C-x7CQNwvw-unsplash.jpg' // Insurance
-      ]
-    },
-    {
-      section: 'Home Blog Cards',
-      description: 'Blog article images on homepage',
-      images: [
-        '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg', // Blog 1
-        '/bmw.jpg', // Blog 2
-        '/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg' // Blog 3
-      ]
-    },
-    {
-      section: 'Jaguar Page Hero',
-      description: 'Jaguar service page hero slider images',
-      images: [
-        '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg',
-        '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg',
-        '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg',
-        '/gallery/jaguar/escobar_kanishk-J1kmixRfys0-unsplash.jpg',
-        '/gallery/jaguar/taylor65s-EIs247QDxZk-unsplash.jpg'
-      ]
-    },
-    {
-      section: 'Land Rover Page',
-      description: 'Land Rover service page images - not yet configured',
-      images: []
-    },
-    {
-      section: 'Range Rover Page',
-      description: 'Range Rover service page images - not yet configured',
-      images: []
-    },
-    {
-      section: 'BMW Page',
-      description: 'BMW service page images - not yet configured',
-      images: []
-    },
-    {
-      section: 'Mini Page',
-      description: 'Mini service page hero slider and content images',
-      images: [
-        '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg',
-        '/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg',
-        '/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg',
-        '/gallery/mini/v1d-kySbGWdOmio-unsplash.jpg',
-        '/gallery/mini/sonniehiles-PUBt7UPbJFY-unsplash.jpg',
-        '/gallery/mini/huntleytography-0jdnuETGLRg-unsplash.jpg',
-        '/gallery/mini/picsbyjameslee-msFTpW3g9CA-unsplash.jpg'
-      ]
-    },
-    {
-      section: 'Insurance Page',
-      description: 'Insurance claims page images - not yet configured',
-      images: []
+  try {
+    const schemaPath = join(SLOTS_DIR, 'schema.json');
+    const livePath = join(SLOTS_DIR, 'live.json');
+
+    if (!existsSync(schemaPath) || !existsSync(livePath)) {
+      console.warn('CMS slot files not found, returning empty');
+      return [];
     }
-  ];
+
+    const schemas: SlotSchemas = JSON.parse(readFileSync(schemaPath, 'utf-8'));
+    const live: SlotAssignments = JSON.parse(readFileSync(livePath, 'utf-8'));
+
+    return Object.entries(schemas).map(([slotId, schema]) => ({
+      section: schema.label,
+      description: schema.description,
+      images: live[slotId] || []
+    }));
+  } catch (error) {
+    console.error('Error reading CMS slot files:', error);
+    return [];
+  }
 }
 
 /**

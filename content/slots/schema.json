@@ -1,0 +1,62 @@
+{
+  "home-hero-slider": {
+    "label": "Home Hero Slider",
+    "description": "Main homepage hero background images (in rotation order)",
+    "page": "/",
+    "maxImages": 15,
+    "aspectRatio": "16:9"
+  },
+  "home-service-cards": {
+    "label": "Home Service Cards",
+    "description": "Service card background images on homepage",
+    "page": "/",
+    "maxImages": 6
+  },
+  "home-blog-cards": {
+    "label": "Home Blog Cards",
+    "description": "Blog article images on homepage",
+    "page": "/",
+    "maxImages": 3
+  },
+  "jaguar-page-hero": {
+    "label": "Jaguar Page Hero",
+    "description": "Jaguar service page hero slider images",
+    "page": "/jaguar",
+    "maxImages": 10,
+    "aspectRatio": "16:9"
+  },
+  "land-rover-page": {
+    "label": "Land Rover Page",
+    "description": "Land Rover service page images",
+    "page": "/land-rover",
+    "maxImages": 10,
+    "aspectRatio": "16:9"
+  },
+  "range-rover-page": {
+    "label": "Range Rover Page",
+    "description": "Range Rover service page images",
+    "page": "/range-rover",
+    "maxImages": 10,
+    "aspectRatio": "16:9"
+  },
+  "bmw-page": {
+    "label": "BMW Page",
+    "description": "BMW service page images",
+    "page": "/bmw",
+    "maxImages": 10,
+    "aspectRatio": "16:9"
+  },
+  "mini-page": {
+    "label": "Mini Page",
+    "description": "Mini service page hero slider and content images",
+    "page": "/mini",
+    "maxImages": 10,
+    "aspectRatio": "16:9"
+  },
+  "insurance-page": {
+    "label": "Insurance Page",
+    "description": "Insurance claims page images",
+    "page": "/services",
+    "maxImages": 5
+  }
+}
