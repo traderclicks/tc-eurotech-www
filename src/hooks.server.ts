@@ -3,9 +3,10 @@ import { redirect, type Handle } from '@sveltejs/kit';
 export const handle: Handle = async ({ event, resolve }) => {
   const { url, cookies } = event;
 
-  // Allow login page, API routes, and static assets
+  // Allow login page, admin (has own auth), API routes, and static assets
   if (
     url.pathname.startsWith('/login') ||
+    url.pathname.startsWith('/admin') ||
     url.pathname.startsWith('/api/') ||
     url.pathname.startsWith('/_app/') ||
     url.pathname.includes('.')  // Static files (css, js, images)
