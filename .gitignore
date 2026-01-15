@@ -44,3 +44,21 @@ Thumbs.db
 *.local
 .vercel
 _common
+
+# ============================================
+# WORKSPACE INTEGRATION - DO NOT REMOVE
+# These entries are required for all projects
+# that use the workspace symlink system.
+# Source: _common/templates/gitignore-workspace.txt
+# ============================================
+
+# Workspace symlinks (break when cloned outside workspace)
+CLAUDE.md
+_common
+
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+**/.DS_Store
