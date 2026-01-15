@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PageData, ActionData } from './$types';
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
+  import ImagePicker from '$lib/components/ImagePicker.svelte';
 
   export let data: PageData;
   export let form: ActionData;
@@ -8,17 +9,31 @@
   let editingSlot: string | null = null;
   let editImages: string[] = [];
   let editNote = '';
+  let pickerOpen = false;
+  let currentSlotMaxImages: number | undefined = undefined;
 
-  function startEdit(slotId: string, currentImages: string[]) {
+  function startEdit(slotId: string, currentImages: string[], maxImages?: number) {
     editingSlot = slotId;
     editImages = [...currentImages];
     editNote = '';
+    currentSlotMaxImages = maxImages;
   }
 
   function cancelEdit() {
     editingSlot = null;
     editImages = [];
     editNote = '';
+    currentSlotMaxImages = undefined;
+  }
+
+  function openPicker() {
+    pickerOpen = true;
+  }
+
+  function handlePickerSelect(event: CustomEvent<{ images: string[] }>) {
+    // Add new images that aren't already in the list
+    const newImages = event.detail.images.filter(img => !editImages.includes(img));
+    editImages = [...editImages, ...newImages];
   }
 
   function removeImage(index: number) {
@@ -127,6 +142,15 @@
                       </div>
                     </div>
                   {/each}
+
+                  <button
+                    type="button"
+                    class="add-images-btn"
+                    on:click={openPicker}
+                    disabled={currentSlotMaxImages ? editImages.length >= currentSlotMaxImages : false}
+                  >
+                    + Add Images
+                  </button>
                 </div>
 
                 <div class="form-group">
@@ -163,7 +187,7 @@
 
               <div class="slot-actions">
                 {#if data.canPropose && !slot.pendingChange}
-                  <button class="btn-secondary" on:click={() => startEdit(slot.id, slot.images)}>
+                  <button class="btn-secondary" on:click={() => startEdit(slot.id, slot.images, slot.maxImages)}>
                     Edit
                   </button>
                 {/if}
@@ -186,6 +210,15 @@
     </section>
   {/each}
 </div>
+
+<ImagePicker
+  bind:open={pickerOpen}
+  gallery={data.gallery}
+  selectedImages={editImages}
+  maxImages={currentSlotMaxImages}
+  on:close={() => (pickerOpen = false)}
+  on:select={handlePickerSelect}
+/>
 
 <style>
   .admin-page {
@@ -396,6 +429,29 @@
     flex-direction: column;
     gap: var(--space-2);
     margin-bottom: var(--space-4);
+  }
+
+  .add-images-btn {
+    padding: var(--space-3) var(--space-4);
+    border: 2px dashed #d1d5db;
+    background: #f9fafb;
+    border-radius: var(--radius-md);
+    color: #6b7280;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .add-images-btn:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: white;
+  }
+
+  .add-images-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .edit-image-item {

@@ -6,6 +6,7 @@ import {
   approveChange,
   rejectChange
 } from '$lib/cms/slots';
+import { getGalleryFolders } from '$lib/cms/gallery';
 import { canApprove, canPropose, verifySessionToken } from '$lib/cms/auth';
 
 export const load: PageServerLoad = async ({ parent }) => {
@@ -13,10 +14,12 @@ export const load: PageServerLoad = async ({ parent }) => {
 
   const slots = getAllSlotData();
   const hasPendingChanges = slots.some(slot => slot.pendingChange);
+  const gallery = getGalleryFolders();
 
   return {
     slots,
     hasPendingChanges,
+    gallery,
     canApprove: user ? canApprove(user) : false,
     canPropose: user ? canPropose(user) : false
   };

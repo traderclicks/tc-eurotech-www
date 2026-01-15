@@ -1,8 +1,10 @@
 <script lang="ts">
+  import type { PageData } from './$types';
   import { modals } from '$lib/stores/modal';
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { parseUnsplashAttribution, type UnsplashAttribution } from '$lib/utils/unsplash-attribution';
-  import { getCurrentImages } from '$lib/utils/current-images';
+
+  export let data: PageData;
 
   type Category = 'current' | 'jaguar' | 'landrover' | 'rangerover' | 'mini' | 'bmw' | 'workshop';
 
@@ -150,8 +152,8 @@
     attribution: parseUnsplashAttribution(img.src)
   }));
 
-  // Get current images being used on the site
-  const currentImageSets = getCurrentImages();
+  // Get current images being used on the site (from server)
+  $: currentImageSets = data.currentImageSets;
 
   // Create a map of image src to image data for quick lookup
   const imageMap = new Map(images.map(img => [img.src, img]));
@@ -161,7 +163,7 @@
     : images.filter(img => img.category === activeCategory);
 
   // Count unique current images
-  const uniqueCurrentImages = new Set(currentImageSets.flatMap(set => set.images));
+  $: uniqueCurrentImages = new Set(currentImageSets.flatMap(set => set.images));
 
   $: categoryCounts = {
     current: uniqueCurrentImages.size,

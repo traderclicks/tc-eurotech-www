@@ -63,22 +63,41 @@ export const actions = {
 
     try {
       const token = await generateMagicLinkToken(email);
+      const magicLink = `${process.env.ORIGIN || 'http://localhost:3021'}/admin/login?token=${token}`;
 
-      // In production, send email. For now, log to console.
-      const magicLink = `${process.env.ORIGIN || 'http://localhost:5173'}/admin/login?token=${token}`;
+      // Send email via tc-services
+      const servicesUrl = process.env.TC_SERVICES_URL;
+      const servicesSecret = process.env.TC_SERVICES_SECRET;
 
-      // TODO: Send email with nodemailer
-      // For development, log the link
-      console.log('\n========================================');
-      console.log('MAGIC LINK (dev mode):');
-      console.log(magicLink);
-      console.log('========================================\n');
+      if (servicesUrl && servicesSecret) {
+        const response = await fetch(`${servicesUrl}/api/email/magic-link`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${servicesSecret}`
+          },
+          body: JSON.stringify({
+            to: email,
+            magicLink,
+            siteName: 'Eurotech Auto CMS'
+          })
+        });
+
+        if (!response.ok) {
+          console.error('Failed to send magic link email:', await response.text());
+        }
+      } else {
+        // Dev fallback: log to console
+        console.log('\n========================================');
+        console.log('MAGIC LINK (dev mode - tc-services not configured):');
+        console.log(magicLink);
+        console.log('========================================\n');
+      }
 
       return {
         success: true,
         message: 'If your email is authorized, you will receive a login link shortly.',
-        // In dev mode, also return link for easy testing
-        devLink: process.env.NODE_ENV === 'development' ? magicLink : undefined
+        devLink: !servicesUrl ? magicLink : undefined
       };
     } catch (error) {
       return fail(500, { error: 'Failed to generate login link', email });
