@@ -1,4 +1,4 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { fail, redirect, isRedirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import {
   isAllowedEmail,
@@ -35,6 +35,8 @@ export const load: PageServerLoad = async ({ url, cookies }) => {
 
       throw redirect(303, '/admin');
     } catch (error) {
+      // Re-throw redirects (they're intentional, not errors)
+      if (isRedirect(error)) throw error;
       return {
         error: 'Invalid or expired magic link. Please request a new one.'
       };
