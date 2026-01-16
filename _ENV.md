@@ -26,5 +26,5 @@ Eurotech Auto client website with CMS.
 
 ## Vercel Project
 
-- Project: `client-eurotechauto-svelte` in traderclicks team
+- Project: `tc-eurotech-www` in traderclicks team
 - Production URL: `https://eurotechauto.co.nz`

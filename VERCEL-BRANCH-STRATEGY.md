@@ -84,7 +84,7 @@ This whitelists only `main` and `dev` for deployments.
 
 **Recommended Setup**:
 - Primary domain: `eurotechauto.com` (or client's actual domain)
-- Vercel subdomain: `client-eurotechauto-svelte.vercel.app`
+- Vercel subdomain: `tc-eurotech-www.vercel.app`
 
 **Steps**:
 1. Go to Project Settings → Domains
@@ -96,7 +96,7 @@ This whitelists only `main` and `dev` for deployments.
 
 **Recommended Setup**:
 - Staging subdomain: `staging.eurotechauto.com`
-- Or use Vercel preview URL: `client-eurotechauto-svelte-git-dev-traderclicks.vercel.app`
+- Or use Vercel preview URL: `tc-eurotech-www-git-dev-traderclicks.vercel.app`
 
 **Steps**:
 1. Deploy `dev` branch once
@@ -131,7 +131,7 @@ PUBLIC_SITE_URL=https://staging.eurotechauto.com
 
 ## Current Configuration Status
 
-- [x] Vercel project created: `client-eurotechauto-svelte`
+- [x] Vercel project created: `tc-eurotech-www`
 - [x] Node.js 22.x runtime configured
 - [x] vercel.json with branch whitelist
 - [ ] **TODO**: Set production branch to `main` in dashboard
@@ -145,7 +145,7 @@ PUBLIC_SITE_URL=https://staging.eurotechauto.com
 
 ### Via Vercel Dashboard (Recommended)
 
-1. Go to https://vercel.com/traderclicks/client-eurotechauto-svelte/settings/git
+1. Go to https://vercel.com/traderclicks/tc-eurotech-www/settings/git
 
 2. **Set Production Branch**:
    - Production Branch: `main`
