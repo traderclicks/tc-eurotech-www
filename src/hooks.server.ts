@@ -1,4 +1,5 @@
 import { redirect, type Handle } from '@sveltejs/kit';
+import { verifySessionToken } from '$lib/cms/auth-service';
 
 export const handle: Handle = async ({ event, resolve }) => {
   const { url, cookies } = event;
@@ -14,10 +15,14 @@ export const handle: Handle = async ({ event, resolve }) => {
     return resolve(event);
   }
 
-  // Check for authentication cookie
+  // Check for site password authentication cookie
   const isAuthenticated = cookies.get('authenticated') === 'true';
 
-  if (!isAuthenticated) {
+  // Also allow CMS users to bypass site password
+  const cmsSession = cookies.get('cms_session');
+  const isCmsUser = cmsSession ? await verifySessionToken(cmsSession) : null;
+
+  if (!isAuthenticated && !isCmsUser) {
     throw redirect(303, '/login');
   }
 
