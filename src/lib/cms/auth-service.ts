@@ -33,13 +33,14 @@ export interface VerifyResult {
  * Request a magic link be sent to the email
  * @param email - User's email address
  * @param callbackUrl - URL to redirect to after login (e.g., current site URL)
+ * @param turnstileToken - Cloudflare Turnstile token for human verification
  */
-export async function requestMagicLink(email: string, callbackUrl?: string): Promise<{ success: boolean; message: string }> {
+export async function requestMagicLink(email: string, callbackUrl?: string, turnstileToken?: string): Promise<{ success: boolean; message: string }> {
   try {
     const response = await fetch(`${TC_SERVICES_URL}/api/auth/request`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ siteSlug: SITE_SLUG, email, callbackUrl })
+      body: JSON.stringify({ siteSlug: SITE_SLUG, email, callbackUrl, turnstileToken })
     });
 
     const data = await response.json();

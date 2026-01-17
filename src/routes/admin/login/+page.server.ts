@@ -49,16 +49,21 @@ export const actions = {
   request: async ({ request, url }) => {
     const data = await request.formData();
     const email = data.get('email')?.toString().toLowerCase().trim();
+    const turnstileToken = data.get('cf-turnstile-response')?.toString();
 
     if (!email) {
       return fail(400, { error: 'Email is required', email: '' });
+    }
+
+    if (!turnstileToken) {
+      return fail(400, { error: 'Please complete the verification', email });
     }
 
     // Build callback URL from current origin
     const callbackUrl = `${url.origin}/admin/login`;
 
     // Delegate to auth service
-    const result = await requestMagicLink(email, callbackUrl);
+    const result = await requestMagicLink(email, callbackUrl, turnstileToken);
 
     return {
       success: result.success,

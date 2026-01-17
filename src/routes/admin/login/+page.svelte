@@ -7,6 +7,7 @@
 
 <svelte:head>
   <title>Admin Login - Eurotech CMS</title>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
 <div class="login-container">
@@ -49,6 +50,14 @@
         {#if form?.error}
           <p class="error-message">{form.error}</p>
         {/if}
+
+        <div class="turnstile-wrapper">
+          <div
+            class="cf-turnstile"
+            data-sitekey="1x00000000000000000000AA"
+            data-theme="light"
+          ></div>
+        </div>
 
         <button type="submit" class="submit-btn">
           Send Login Link
@@ -178,6 +187,12 @@
 
   .magic-link-btn:hover {
     background: #14532d;
+  }
+
+  .turnstile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-4);
   }
 
   .submit-btn {
