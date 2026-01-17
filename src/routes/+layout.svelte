@@ -90,8 +90,8 @@
   </script>`}
 </svelte:head>
 
-<div class="app" class:has-admin-bar={data.cmsUser && !isAdminPage && !isLoginPage}>
-  {#if data.cmsUser && !isAdminPage && !isLoginPage}
+<div class="app" class:has-admin-bar={data.cmsUser && !isLoginPage}>
+  {#if data.cmsUser && !isLoginPage}
     <div class="admin-bar">
       <div class="admin-bar-content">
         <span class="admin-bar-brand">Eurotech CMS</span>
@@ -148,12 +148,14 @@
     width: 100%;
   }
 
-  /* Admin bar - compact strip above header */
+  /* Admin bar - compact sticky strip above everything */
   .admin-bar {
     background: #ff1493; /* Hot pink - garish */
     color: white;
     font-size: 11px;
     width: 100%;
+    position: sticky;
+    top: 0;
     z-index: 9999;
   }
 
