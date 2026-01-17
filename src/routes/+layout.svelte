@@ -5,6 +5,9 @@
   import Footer from '$lib/components/Footer.svelte';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
+  import type { LayoutData } from './$types';
+
+  export let data: LayoutData;
 
   let scrollY = 0;
 
@@ -13,6 +16,9 @@
 
   // Hide header/footer on login page
   $: isLoginPage = $page.url.pathname === '/login';
+
+  // Hide admin bar on admin pages (they have their own header)
+  $: isAdminPage = $page.url.pathname.startsWith('/admin');
 
   onMount(() => {
     const handleScroll = () => {
@@ -84,7 +90,23 @@
   </script>`}
 </svelte:head>
 
-<div class="app">
+<div class="app" class:has-admin-bar={data.cmsUser && !isAdminPage && !isLoginPage}>
+  {#if data.cmsUser && !isAdminPage && !isLoginPage}
+    <div class="admin-bar">
+      <div class="admin-bar-content">
+        <span class="admin-bar-brand">Eurotech CMS</span>
+        <span class="admin-bar-user">
+          {data.cmsUser.email}
+          <span class="admin-bar-role">{data.cmsUser.role}</span>
+        </span>
+        <a href="/admin" class="admin-bar-link">Dashboard</a>
+        <form method="POST" action="/admin/login?/logout" class="admin-bar-logout">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+    </div>
+  {/if}
+
   {#if !isLoginPage}
     <Header isScrolled={scrollY > 50} {hasHero} />
   {/if}
@@ -124,6 +146,75 @@
   .main {
     flex: 1;
     width: 100%;
+  }
+
+  /* Admin bar - pushes entire site down */
+  .admin-bar {
+    background: #1a1a2e;
+    color: white;
+    font-size: 13px;
+    position: relative;
+    z-index: 9999;
+  }
+
+  .admin-bar-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .admin-bar-brand {
+    font-weight: 600;
+    color: #6c8caa;
+  }
+
+  .admin-bar-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #aaa;
+  }
+
+  .admin-bar-role {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .admin-bar-link {
+    color: white;
+    text-decoration: none;
+    padding: 4px 12px;
+    background: #6c8caa;
+    border-radius: 4px;
+    margin-left: auto;
+  }
+
+  .admin-bar-link:hover {
+    background: #5a7a9a;
+  }
+
+  .admin-bar-logout {
+    display: inline;
+  }
+
+  .admin-bar-logout button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .admin-bar-logout button:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
 
   .back-to-top {
