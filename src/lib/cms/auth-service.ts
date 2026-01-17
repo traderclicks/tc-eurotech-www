@@ -14,7 +14,7 @@ const SITE_SLUG = 'eurotech';
 const SESSION_SECRET = new TextEncoder().encode(
   env.CMS_SESSION_SECRET || 'eurotech-session-secret-change-in-production'
 );
-const SESSION_EXPIRY = '7d';
+const SESSION_EXPIRY = '30m';
 
 export interface AuthUser {
   userId: string;

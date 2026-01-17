@@ -31,7 +31,7 @@ export const load: PageServerLoad = async ({ url, cookies }) => {
         httpOnly: true,
         secure: true,
         sameSite: 'lax',
-        maxAge: 60 * 60 * 24 * 7 // 7 days
+        maxAge: 60 * 30 // 30 minutes (sliding window refreshes on each request)
       });
 
       throw redirect(303, '/admin');
