@@ -7,7 +7,7 @@ import {
   rejectChange
 } from '$lib/cms/slots';
 import { getGalleryFolders } from '$lib/cms/gallery';
-import { canApprove, canPropose, verifySessionToken } from '$lib/cms/auth';
+import { canApprove, canPropose, verifySessionToken } from '$lib/cms/auth-service';
 
 export const load: PageServerLoad = async ({ parent }) => {
   const { user } = await parent();

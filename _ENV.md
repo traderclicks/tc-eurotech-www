@@ -7,10 +7,8 @@ Eurotech Auto client website with CMS.
 | Variable | Description | Where to get |
 |----------|-------------|--------------|
 | `SITE_PASSWORD` | Password for site preview protection | Set a secure password |
-| `CMS_JWT_SECRET` | Secret for CMS authentication tokens | Generate with `openssl rand -hex 32` |
-| `ORIGIN` | Site origin for magic links | e.g. `https://eurotechauto.co.nz` |
+| `CMS_SESSION_SECRET` | Secret for local session tokens | Generate with `openssl rand -hex 32` |
 | `TC_SERVICES_URL` | tc-services API URL | `https://tc-services-traderclicks.vercel.app` |
-| `TC_SERVICES_SECRET` | Shared secret for tc-services auth | Must match tc-services TC_SERVICES_SECRET |
 
 ## Optional Variables
 
@@ -20,9 +18,17 @@ Eurotech Auto client website with CMS.
 
 ## Notes
 
-- **TC_SERVICES_SECRET**: Must match the value in tc-services Vercel project
-- **CMS_JWT_SECRET**: Used for magic link token generation and verification
-- **ORIGIN**: Required for magic link URLs to work correctly in production
+- **Auth is delegated to tc-services** - magic link tokens are generated/verified there
+- **CMS_SESSION_SECRET**: Only used for local session cookies after tc-services verifies the user
+- **TC_SERVICES_URL**: Points to centralized auth service
+- **User whitelist**: Managed via `site-user-add eurotech <email>` CLI command (not local config)
+
+## Auth Flow
+
+1. User enters email → site calls tc-services `/api/auth/request`
+2. tc-services checks whitelist, sends magic link email
+3. User clicks link → site calls tc-services `/api/auth/verify`
+4. Site creates local session cookie with CMS_SESSION_SECRET
 
 ## Vercel Project
 

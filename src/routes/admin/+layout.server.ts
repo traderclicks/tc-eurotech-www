@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
-import { verifySessionToken } from '$lib/cms/auth';
+import { verifySessionToken } from '$lib/cms/auth-service';
 
 export const load: LayoutServerLoad = async ({ cookies, url }) => {
   // Allow access to login page without auth
