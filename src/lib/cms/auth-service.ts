@@ -31,13 +31,15 @@ export interface VerifyResult {
 
 /**
  * Request a magic link be sent to the email
+ * @param email - User's email address
+ * @param callbackUrl - URL to redirect to after login (e.g., current site URL)
  */
-export async function requestMagicLink(email: string): Promise<{ success: boolean; message: string }> {
+export async function requestMagicLink(email: string, callbackUrl?: string): Promise<{ success: boolean; message: string }> {
   try {
     const response = await fetch(`${TC_SERVICES_URL}/api/auth/request`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ siteSlug: SITE_SLUG, email })
+      body: JSON.stringify({ siteSlug: SITE_SLUG, email, callbackUrl })
     });
 
     const data = await response.json();

@@ -46,7 +46,7 @@ export const load: PageServerLoad = async ({ url, cookies }) => {
 };
 
 export const actions = {
-  request: async ({ request }) => {
+  request: async ({ request, url }) => {
     const data = await request.formData();
     const email = data.get('email')?.toString().toLowerCase().trim();
 
@@ -54,8 +54,11 @@ export const actions = {
       return fail(400, { error: 'Email is required', email: '' });
     }
 
+    // Build callback URL from current origin
+    const callbackUrl = `${url.origin}/admin/login`;
+
     // Delegate to auth service
-    const result = await requestMagicLink(email);
+    const result = await requestMagicLink(email, callbackUrl);
 
     return {
       success: result.success,
