@@ -26,5 +26,8 @@ jobs:
       - name: Type check
         run: npm run check
 
+      - name: Check images
+        run: npm run check:images -- --auto-fix
+
       - name: Build
         run: npm run build

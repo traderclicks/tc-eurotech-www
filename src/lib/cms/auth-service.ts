@@ -5,13 +5,14 @@
  */
 
 import { SignJWT, jwtVerify } from 'jose';
+import { env } from '$env/dynamic/private';
 
-const TC_SERVICES_URL = process.env.TC_SERVICES_URL || 'https://tc-services-traderclicks.vercel.app';
+const TC_SERVICES_URL = env.TC_SERVICES_URL || 'https://tc-services-traderclicks.vercel.app';
 const SITE_SLUG = 'eurotech';
 
 // Session token secret (for local session management)
 const SESSION_SECRET = new TextEncoder().encode(
-  process.env.CMS_SESSION_SECRET || 'eurotech-session-secret-change-in-production'
+  env.CMS_SESSION_SECRET || 'eurotech-session-secret-change-in-production'
 );
 const SESSION_EXPIRY = '7d';
 
