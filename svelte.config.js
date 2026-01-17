@@ -6,7 +6,9 @@ const config = {
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
-			runtime: 'nodejs22.x'
+			runtime: 'nodejs22.x',
+			// Include content folder in serverless function bundle for CMS
+			includeFiles: ['content/**/*']
 		})
 	}
 };
