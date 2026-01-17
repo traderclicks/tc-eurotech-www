@@ -148,55 +148,55 @@
     width: 100%;
   }
 
-  /* Admin bar - pushes entire site down */
+  /* Admin bar - compact strip above header */
   .admin-bar {
-    background: #1a1a2e;
+    background: #ff1493; /* Hot pink - garish */
     color: white;
-    font-size: 13px;
-    position: relative;
+    font-size: 11px;
+    width: 100%;
     z-index: 9999;
   }
 
   .admin-bar-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 8px 24px;
+    padding: 4px 16px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
   }
 
   .admin-bar-brand {
-    font-weight: 600;
-    color: #6c8caa;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .admin-bar-user {
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: #aaa;
+    gap: 6px;
   }
 
   .admin-bar-role {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 9px;
     text-transform: uppercase;
+    font-weight: 600;
   }
 
   .admin-bar-link {
     color: white;
     text-decoration: none;
-    padding: 4px 12px;
-    background: #6c8caa;
-    border-radius: 4px;
+    padding: 2px 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
     margin-left: auto;
+    font-weight: 600;
   }
 
   .admin-bar-link:hover {
-    background: #5a7a9a;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .admin-bar-logout {
@@ -205,16 +205,16 @@
 
   .admin-bar-logout button {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 13px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
     cursor: pointer;
   }
 
   .admin-bar-logout button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
   }
 
   .back-to-top {
