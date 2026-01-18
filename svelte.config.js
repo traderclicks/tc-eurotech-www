@@ -7,8 +7,8 @@ const config = {
 	kit: {
 		adapter: adapter({
 			runtime: 'nodejs22.x',
-			// Include content folder in serverless function bundle for CMS
-			includeFiles: ['content/**/*']
+			// Include content and gallery folders in serverless function bundle for CMS
+			includeFiles: ['content/**/*', 'static/gallery/**/*']
 		})
 	}
 };

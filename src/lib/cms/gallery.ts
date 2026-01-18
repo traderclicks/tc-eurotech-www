@@ -3,10 +3,30 @@
  * Scans static/gallery folders for available images
  */
 
-import { readdirSync, statSync } from 'fs';
-import { join } from 'path';
+import { readdirSync, statSync, existsSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const GALLERY_DIR = join(process.cwd(), 'static', 'gallery');
+// Resolve gallery directory - works both locally and on Vercel
+function getGalleryDir(): string {
+  const candidates = [
+    join(process.cwd(), 'static', 'gallery'),           // Local dev
+    '/var/task/static/gallery',                         // Vercel serverless
+    join(dirname(fileURLToPath(import.meta.url)), '../../../../static/gallery'), // Relative
+  ];
+
+  for (const dir of candidates) {
+    if (existsSync(dir)) {
+      console.log('Gallery: Using dir:', dir);
+      return dir;
+    }
+  }
+
+  console.error('Gallery directory not found. Tried:', candidates);
+  return candidates[0];
+}
+
+const GALLERY_DIR = getGalleryDir();
 
 export interface GalleryFolder {
   name: string;
