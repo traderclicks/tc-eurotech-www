@@ -10,6 +10,7 @@
   export let data: LayoutData;
 
   let scrollY = 0;
+  let cmsDropdownOpen = false;
 
   // Only the homepage has a hero image
   $: hasHero = $page.url.pathname === '/';
@@ -20,13 +21,33 @@
   // Hide admin bar on admin pages (they have their own header)
   $: isAdminPage = $page.url.pathname.startsWith('/admin');
 
+  function toggleCmsDropdown() {
+    cmsDropdownOpen = !cmsDropdownOpen;
+  }
+
+  function closeCmsDropdown() {
+    cmsDropdownOpen = false;
+  }
+
   onMount(() => {
     const handleScroll = () => {
       scrollY = window.scrollY;
     };
 
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.cms-dropdown')) {
+        cmsDropdownOpen = false;
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   });
 </script>
 
@@ -93,15 +114,39 @@
 {#if data.cmsUser && !isLoginPage}
   <div class="admin-bar">
     <div class="admin-bar-content">
-      <span class="admin-bar-brand">Eurotech CMS</span>
+      <div class="cms-dropdown">
+        <button class="cms-dropdown-trigger" on:click|stopPropagation={toggleCmsDropdown}>
+          <span class="admin-bar-brand">CMS</span>
+          <svg class="dropdown-arrow" class:open={cmsDropdownOpen} width="10" height="6" viewBox="0 0 10 6" fill="currentColor">
+            <path d="M1 1l4 4 4-4"/>
+          </svg>
+        </button>
+        {#if cmsDropdownOpen}
+          <div class="cms-dropdown-menu">
+            <a href="/admin" class="cms-dropdown-item" on:click={closeCmsDropdown}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+              </svg>
+              Image Slots
+            </a>
+            <div class="cms-dropdown-divider"></div>
+            <form method="POST" action="/admin/login?/logout">
+              <button type="submit" class="cms-dropdown-item cms-dropdown-logout">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                  <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                Logout
+              </button>
+            </form>
+          </div>
+        {/if}
+      </div>
       <span class="admin-bar-user">
         {data.cmsUser.email}
         <span class="admin-bar-role">{data.cmsUser.role}</span>
       </span>
-      <a href="/admin" class="admin-bar-link">Dashboard</a>
-      <form method="POST" action="/admin/login?/logout" class="admin-bar-logout">
-        <button type="submit">Logout</button>
-      </form>
     </div>
   </div>
 {/if}
@@ -189,6 +234,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    margin-left: auto;
   }
 
   .admin-bar-role {
@@ -200,36 +246,87 @@
     font-weight: 600;
   }
 
-  .admin-bar-link {
-    color: white;
-    text-decoration: none;
-    padding: 2px 8px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-    margin-left: auto;
-    font-weight: 600;
+  /* CMS Dropdown */
+  .cms-dropdown {
+    position: relative;
   }
 
-  .admin-bar-link:hover {
+  .cms-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .cms-dropdown-trigger:hover {
     background: rgba(0, 0, 0, 0.3);
   }
 
-  .admin-bar-logout {
-    display: inline;
+  .dropdown-arrow {
+    transition: transform 0.2s;
   }
 
-  .admin-bar-logout button {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 11px;
+  .dropdown-arrow.open {
+    transform: rotate(180deg);
+  }
+
+  .cms-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    min-width: 180px;
+    padding: 6px 0;
+    z-index: 10000;
+  }
+
+  .cms-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s;
+    border: none;
+    background: none;
+    width: 100%;
     cursor: pointer;
+    text-align: left;
   }
 
-  .admin-bar-logout button:hover {
-    background: rgba(0, 0, 0, 0.2);
+  .cms-dropdown-item:hover {
+    background: #f5f5f5;
+  }
+
+  .cms-dropdown-item svg {
+    opacity: 0.6;
+  }
+
+  .cms-dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 6px 0;
+  }
+
+  .cms-dropdown-logout {
+    color: #dc2626;
+  }
+
+  .cms-dropdown-logout:hover {
+    background: #fef2f2;
   }
 
   .back-to-top {
