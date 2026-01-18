@@ -3,11 +3,37 @@
  * Read/write image slot assignments from JSON files
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const CONTENT_DIR = join(process.cwd(), 'content');
+// Resolve content directory - works both locally and on Vercel
+function getContentDir(): string {
+  // Try multiple possible locations
+  const candidates = [
+    join(process.cwd(), 'content'),                    // Local dev
+    '/var/task/content',                               // Vercel serverless
+    join(dirname(fileURLToPath(import.meta.url)), '../../../../content'), // Relative to module
+  ];
+
+  for (const dir of candidates) {
+    if (existsSync(dir)) {
+      return dir;
+    }
+  }
+
+  console.error('Content directory not found. Tried:', candidates);
+  console.error('CWD:', process.cwd());
+  console.error('Files in CWD:', existsSync(process.cwd()) ? readdirSync(process.cwd()) : 'CWD does not exist');
+
+  return candidates[0]; // Fallback to first option
+}
+
+const CONTENT_DIR = getContentDir();
 const SLOTS_DIR = join(CONTENT_DIR, 'slots');
+
+console.log('CMS Slots: Using content dir:', CONTENT_DIR);
+console.log('CMS Slots: Slots dir exists:', existsSync(SLOTS_DIR));
 
 export interface SlotSchema {
   label: string;
