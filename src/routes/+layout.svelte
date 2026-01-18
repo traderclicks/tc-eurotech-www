@@ -90,23 +90,23 @@
   </script>`}
 </svelte:head>
 
-<div class="app" class:has-admin-bar={data.cmsUser && !isLoginPage}>
-  {#if data.cmsUser && !isLoginPage}
-    <div class="admin-bar">
-      <div class="admin-bar-content">
-        <span class="admin-bar-brand">Eurotech CMS</span>
-        <span class="admin-bar-user">
-          {data.cmsUser.email}
-          <span class="admin-bar-role">{data.cmsUser.role}</span>
-        </span>
-        <a href="/admin" class="admin-bar-link">Dashboard</a>
-        <form method="POST" action="/admin/login?/logout" class="admin-bar-logout">
-          <button type="submit">Logout</button>
-        </form>
-      </div>
+{#if data.cmsUser && !isLoginPage}
+  <div class="admin-bar">
+    <div class="admin-bar-content">
+      <span class="admin-bar-brand">Eurotech CMS</span>
+      <span class="admin-bar-user">
+        {data.cmsUser.email}
+        <span class="admin-bar-role">{data.cmsUser.role}</span>
+      </span>
+      <a href="/admin" class="admin-bar-link">Dashboard</a>
+      <form method="POST" action="/admin/login?/logout" class="admin-bar-logout">
+        <button type="submit">Logout</button>
+      </form>
     </div>
-  {/if}
+  </div>
+{/if}
 
+<div class="app" class:has-admin-bar={data.cmsUser && !isLoginPage}>
   {#if !isLoginPage}
     <Header isScrolled={scrollY > 50} {hasHero} />
   {/if}
@@ -137,10 +137,21 @@
 </div>
 
 <style>
+  /* Admin bar height - single source of truth */
+  :global(:root) {
+    --admin-bar-height: 28px;
+  }
+
   .app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+  }
+
+  /* When admin bar is present, offset the site and create new containing block */
+  .app.has-admin-bar {
+    margin-top: var(--admin-bar-height);
+    transform: translateY(0); /* Creates new containing block for fixed descendants */
   }
 
   .main {
@@ -148,14 +159,16 @@
     width: 100%;
   }
 
-  /* Admin bar - compact sticky strip above everything */
+  /* Admin bar - fixed to viewport top */
   .admin-bar {
     background: #ff1493; /* Hot pink - garish */
     color: white;
     font-size: 11px;
     width: 100%;
-    position: sticky;
+    height: var(--admin-bar-height);
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 9999;
   }
 
