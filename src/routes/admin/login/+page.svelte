@@ -54,7 +54,7 @@
         <div class="turnstile-wrapper">
           <div
             class="cf-turnstile"
-            data-sitekey="1x00000000000000000000AA"
+            data-sitekey="0x4AAAAAACNIk2Vx5oy-i2qc"
             data-theme="light"
           ></div>
         </div>

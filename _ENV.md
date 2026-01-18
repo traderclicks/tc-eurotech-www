@@ -9,6 +9,7 @@ Eurotech Auto client website with CMS.
 | `SITE_PASSWORD` | Password for site preview protection | Set a secure password |
 | `CMS_SESSION_SECRET` | Secret for local session tokens | Generate with `openssl rand -hex 32` |
 | `TC_SERVICES_URL` | tc-services API URL | `https://tc-services-traderclicks.vercel.app` |
+| `PUBLIC_TURNSTILE_SITEKEY` | Cloudflare Turnstile site key | Cloudflare dashboard → Turnstile → eurotech-auth widget |
 
 ## Optional Variables
 
@@ -25,10 +26,10 @@ Eurotech Auto client website with CMS.
 
 ## Auth Flow
 
-1. User enters email → site calls tc-services `/api/auth/request`
-2. tc-services checks whitelist, sends magic link email
+1. User enters email → Turnstile generates token → site calls tc-services `/api/auth/request`
+2. tc-services verifies Turnstile token (human check), checks whitelist, sends magic link email
 3. User clicks link → site calls tc-services `/api/auth/verify`
-4. Site creates local session cookie with CMS_SESSION_SECRET
+4. Site creates local session cookie with CMS_SESSION_SECRET (30-minute sliding window)
 
 ## Vercel Project
 
