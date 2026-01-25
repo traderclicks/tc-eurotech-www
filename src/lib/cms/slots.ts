@@ -187,6 +187,20 @@ export function getSlotImages(slotId: string): string[] {
 }
 
 /**
+ * Get images for a specific slot with preview mode support
+ * In preview mode, returns pending changes if any, otherwise live
+ */
+export function getSlotImagesWithPreview(slotId: string, isPreviewMode: boolean): string[] {
+  if (isPreviewMode) {
+    const pending = getPendingChanges();
+    if (pending[slotId]) {
+      return pending[slotId].proposed;
+    }
+  }
+  return getSlotImages(slotId);
+}
+
+/**
  * Get all unique images currently in use
  */
 export function getAllCurrentImages(): string[] {

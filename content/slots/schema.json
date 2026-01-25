@@ -1,62 +1,78 @@
 {
   "home-hero-slider": {
-    "label": "Home Hero Slider",
-    "description": "Main homepage hero background images (in rotation order)",
+    "label": "Slider Images",
+    "description": "Background images for the hero slider",
     "page": "/",
+    "section": "Hero",
     "maxImages": 15,
     "aspectRatio": "16:9"
   },
   "home-service-cards": {
-    "label": "Home Service Cards",
-    "description": "Service card background images on homepage",
+    "label": "Service Card Images",
+    "description": "Background images for service cards",
     "page": "/",
+    "section": "Services",
     "maxImages": 6
   },
   "home-blog-cards": {
-    "label": "Home Blog Cards",
-    "description": "Blog article images on homepage",
+    "label": "Blog Card Images",
+    "description": "Images for blog article cards",
     "page": "/",
+    "section": "Blog",
     "maxImages": 3
   },
   "jaguar-page-hero": {
-    "label": "Jaguar Page Hero",
-    "description": "Jaguar service page hero slider images",
+    "label": "Hero Images",
+    "description": "Hero slider images",
     "page": "/jaguar",
+    "section": "Hero",
     "maxImages": 10,
     "aspectRatio": "16:9"
   },
   "land-rover-page": {
-    "label": "Land Rover Page",
-    "description": "Land Rover service page images",
+    "label": "Hero Images",
+    "description": "Hero slider images",
     "page": "/land-rover",
+    "section": "Hero",
     "maxImages": 10,
     "aspectRatio": "16:9"
   },
   "range-rover-page": {
-    "label": "Range Rover Page",
-    "description": "Range Rover service page images",
+    "label": "Hero Images",
+    "description": "Hero slider images",
     "page": "/range-rover",
+    "section": "Hero",
     "maxImages": 10,
     "aspectRatio": "16:9"
   },
   "bmw-page": {
-    "label": "BMW Page",
-    "description": "BMW service page images",
+    "label": "Hero Images",
+    "description": "Hero slider images",
     "page": "/bmw",
+    "section": "Hero",
     "maxImages": 10,
     "aspectRatio": "16:9"
   },
   "mini-page": {
-    "label": "Mini Page",
-    "description": "Mini service page hero slider and content images",
+    "label": "Hero Images",
+    "description": "Hero slider images",
     "page": "/mini",
+    "section": "Hero",
     "maxImages": 10,
     "aspectRatio": "16:9"
   },
   "insurance-page": {
-    "label": "Insurance Page",
+    "label": "Page Images",
     "description": "Insurance claims page images",
     "page": "/services",
+    "section": "Insurance",
     "maxImages": 5
+  },
+  "gallery-page": {
+    "label": "Gallery Images",
+    "description": "Images displayed on the workshop gallery page",
+    "page": "/gallery",
+    "section": "Gallery",
+    "maxImages": 50
   }
 }

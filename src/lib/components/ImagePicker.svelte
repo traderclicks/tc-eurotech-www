@@ -1,8 +1,20 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onDestroy } from 'svelte';
   import CloudflareImage from './CloudflareImage.svelte';
 
   export let open = false;
+
+  // Lock body scroll when modal is open
+  $: if (typeof document !== 'undefined') {
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  // Ensure body scroll is restored when component is destroyed
+  onDestroy(() => {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+    }
+  });
   export let gallery: { name: string; label: string; images: string[] }[] = [];
   export let selectedImages: string[] = [];
   export let maxImages: number | undefined = undefined;
@@ -14,27 +26,32 @@
 
   let activeFolder: string | null = null;
   let localSelection: string[] = [];
+  let selectionSet: Set<string> = new Set();
 
   // Initialize local selection when modal opens
   $: if (open) {
     localSelection = [...selectedImages];
+    selectionSet = new Set(selectedImages);
     activeFolder = gallery[0]?.name || null;
   }
 
   function toggleImage(imagePath: string) {
-    if (localSelection.includes(imagePath)) {
+    if (selectionSet.has(imagePath)) {
+      selectionSet.delete(imagePath);
       localSelection = localSelection.filter(img => img !== imagePath);
     } else {
       // Check max limit
       if (maxImages && localSelection.length >= maxImages) {
         return;
       }
+      selectionSet.add(imagePath);
       localSelection = [...localSelection, imagePath];
     }
+    selectionSet = selectionSet; // Trigger reactivity
   }
 
   function isSelected(imagePath: string): boolean {
-    return localSelection.includes(imagePath);
+    return selectionSet.has(imagePath);
   }
 
   function handleConfirm() {
@@ -101,7 +118,7 @@
               disabled={atMaxLimit && !isSelected(image)}
             >
               <div class="image-wrapper">
-                <CloudflareImage src={image} alt="" width={200} height={133} />
+                <CloudflareImage src={image} alt="" width={120} height={80} />
               </div>
               {#if isSelected(image)}
                 <div class="selected-badge">
@@ -131,7 +148,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 10000;
     padding: var(--space-4);
   }
 
@@ -237,8 +254,9 @@
     overflow-y: auto;
     padding: var(--space-4) var(--space-6);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: var(--space-3);
+    content-visibility: auto;
   }
 
   .image-item {
@@ -249,7 +267,8 @@
     cursor: pointer;
     padding: 0;
     background: #f3f4f6;
-    transition: all var(--transition-fast);
+    transition: border-color 0.15s ease;
+    contain: layout style;
   }
 
   .image-item:hover:not(:disabled) {

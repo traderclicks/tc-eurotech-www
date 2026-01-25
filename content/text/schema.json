@@ -1,0 +1,107 @@
+{
+  "home-hero-headline": {
+    "label": "Headline",
+    "description": "Main headline in the hero section",
+    "page": "/",
+    "section": "Hero",
+    "type": "text"
+  },
+  "home-hero-subheadline": {
+    "label": "Subheadline",
+    "description": "Supporting text below the headline",
+    "page": "/",
+    "section": "Hero",
+    "type": "textarea"
+  },
+  "home-intro-text": {
+    "label": "Intro Text",
+    "description": "Introduction paragraph on homepage",
+    "page": "/",
+    "section": "Introduction",
+    "type": "textarea"
+  },
+  "jaguar-hero-headline": {
+    "label": "Headline",
+    "description": "Main headline on Jaguar page",
+    "page": "/jaguar",
+    "section": "Hero",
+    "type": "text"
+  },
+  "jaguar-intro-text": {
+    "label": "Intro Text",
+    "description": "Introduction text for Jaguar services",
+    "page": "/jaguar",
+    "section": "Hero",
+    "type": "textarea"
+  },
+  "land-rover-hero-headline": {
+    "label": "Headline",
+    "description": "Main headline on Land Rover page",
+    "page": "/land-rover",
+    "section": "Hero",
+    "type": "text"
+  },
+  "land-rover-intro-text": {
+    "label": "Intro Text",
+    "description": "Introduction text for Land Rover services",
+    "page": "/land-rover",
+    "section": "Hero",
+    "type": "textarea"
+  },
+  "range-rover-hero-headline": {
+    "label": "Headline",
+    "description": "Main headline on Range Rover page",
+    "page": "/range-rover",
+    "section": "Hero",
+    "type": "text"
+  },
+  "range-rover-intro-text": {
+    "label": "Intro Text",
+    "description": "Introduction text for Range Rover services",
+    "page": "/range-rover",
+    "section": "Hero",
+    "type": "textarea"
+  },
+  "bmw-hero-headline": {
+    "label": "Headline",
+    "description": "Main headline on BMW page",
+    "page": "/bmw",
+    "section": "Hero",
+    "type": "text"
+  },
+  "bmw-intro-text": {
+    "label": "Intro Text",
+    "description": "Introduction text for BMW services",
+    "page": "/bmw",
+    "section": "Hero",
+    "type": "textarea"
+  },
+  "mini-hero-headline": {
+    "label": "Headline",
+    "description": "Main headline on Mini page",
+    "page": "/mini",
+    "section": "Hero",
+    "type": "text"
+  },
+  "mini-intro-text": {
+    "label": "Intro Text",
+    "description": "Introduction text for Mini services",
+    "page": "/mini",
+    "section": "Hero",
+    "type": "textarea"
+  },
+  "services-hero-headline": {
+    "label": "Headline",
+    "description": "Main headline on Services page",
+    "page": "/services",
+    "section": "Hero",
+    "type": "text"
+  },
+  "services-intro-text": {
+    "label": "Intro Text",
+    "description": "Introduction text for services",
+    "page": "/services",
+    "section": "Hero",
+    "type": "textarea"
+  }
+}

@@ -4,7 +4,7 @@
 
   export let autoPlay = true;
   export let interval = 6750; // Time between slides in ms (slowed by 35%)
-  export let reviewsPerSlide = 4; // Number of reviews to show at once
+  export let reviewsPerSlide = 5; // Number of reviews to show at once
 
   let currentIndex = 0;
   let carouselContainer: HTMLDivElement;
@@ -73,62 +73,64 @@
 </script>
 
 <section class="review-carousel-section">
-  <div class="container">
-    <div
-      class="carousel-container"
-      bind:this={carouselContainer}
-      on:mouseenter={handleMouseEnter}
-      on:mouseleave={handleMouseLeave}
-      role="region"
-      aria-label="Customer reviews carousel"
-    >
-      <div class="carousel-track" style="transform: translateX(-{currentIndex * 100}%)">
-        {#each Array(totalSlides) as _, slideIndex}
-          <div class="review-slide">
-            <div class="reviews-grid">
-              {#each reviews.slice(slideIndex * reviewsPerSlide, (slideIndex + 1) * reviewsPerSlide) as review (review.id)}
-                <div class="review-card">
-                  <div class="review-header">
-                    <div class="reviewer-info">
-                      {#if review.profileImage}
-                        <img src={review.profileImage} alt={review.reviewerName} class="reviewer-avatar" />
-                      {:else}
-                        <div class="reviewer-avatar-placeholder">
-                          {review.reviewerName.charAt(0)}
+  <!-- Full-width carousel -->
+  <div
+    class="carousel-container"
+    bind:this={carouselContainer}
+    on:mouseenter={handleMouseEnter}
+    on:mouseleave={handleMouseLeave}
+    role="region"
+    aria-label="Customer reviews carousel"
+  >
+    <div class="carousel-track" style="transform: translateX(-{currentIndex * 100}%)">
+      {#each Array(totalSlides) as _, slideIndex}
+        <div class="review-slide">
+          <div class="reviews-grid">
+            {#each reviews.slice(slideIndex * reviewsPerSlide, (slideIndex + 1) * reviewsPerSlide) as review (review.id)}
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="reviewer-info">
+                    {#if review.profileImage}
+                      <img src={review.profileImage} alt={review.reviewerName} class="reviewer-avatar" />
+                    {:else}
+                      <div class="reviewer-avatar-placeholder">
+                        {review.reviewerName.charAt(0)}
+                      </div>
+                    {/if}
+                    <div>
+                      <h4 class="reviewer-name">{review.reviewerName}</h4>
+                      <div class="review-meta">
+                        <div class="review-stars">
+                          {#each renderStars(review.rating) as filled}
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill={filled ? '#fbbc04' : 'rgba(0, 0, 0, 0.15)'}>
+                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                            </svg>
+                          {/each}
                         </div>
-                      {/if}
-                      <div>
-                        <h4 class="reviewer-name">{review.reviewerName}</h4>
-                        <div class="review-meta">
-                          <div class="review-stars">
-                            {#each renderStars(review.rating) as filled}
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill={filled ? '#6B8CAE' : 'rgba(255, 255, 255, 0.2)'}>
-                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                              </svg>
-                            {/each}
-                          </div>
-                          {#if review.isLocalGuide}
-                            <span class="local-guide-badge">Local Guide</span>
-                          {/if}
-                        </div>
+                        {#if review.isLocalGuide}
+                          <span class="local-guide-badge">Local Guide</span>
+                        {/if}
                       </div>
                     </div>
-                    <svg class="google-icon" width="20" height="20" viewBox="0 0 24 24">
-                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                    </svg>
                   </div>
-                  <p class="review-comment">{review.comment}</p>
+                  <svg class="google-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                  </svg>
                 </div>
-              {/each}
-            </div>
+                <p class="review-comment">{review.comment}</p>
+              </div>
+            {/each}
           </div>
-        {/each}
-      </div>
+        </div>
+      {/each}
     </div>
+  </div>
 
+  <!-- Contained controls -->
+  <div class="container">
     <div class="carousel-controls">
       <div class="carousel-dots">
       {#each Array(totalSlides) as _, index}
@@ -170,6 +172,8 @@
     position: relative;
     overflow: hidden;
     border-radius: 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
 
   .carousel-track {
@@ -180,24 +184,25 @@
 
   .review-slide {
     min-width: 100%;
-    padding: 0;
+    padding: 0 var(--space-10);
     height: 100%;
+    box-sizing: border-box;
   }
 
   .reviews-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-auto-rows: 1fr;
     gap: var(--space-6);
     height: 100%;
   }
 
   .review-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.92);
     padding: var(--space-6);
     border-radius: var(--radius-lg);
     border: none;
-    box-shadow: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -241,7 +246,7 @@
 
   .reviewer-name {
     font-weight: var(--font-semibold);
-    color: white;
+    color: #1a1a1a;
     margin-bottom: var(--space-1);
     font-size: var(--text-sm);
   }
@@ -263,15 +268,15 @@
 
   .local-guide-badge {
     font-size: var(--text-xs);
-    color: white;
-    background: rgba(255, 255, 255, 0.2);
+    color: #4a4a4a;
+    background: rgba(0, 0, 0, 0.1);
     padding: 2px 6px;
     border-radius: var(--radius-sm);
     font-weight: var(--font-medium);
   }
 
   .review-comment {
-    color: rgba(255, 255, 255, 0.8);
+    color: #333;
     line-height: var(--leading-relaxed);
     font-size: var(--text-sm);
     flex-grow: 1;
@@ -330,7 +335,7 @@
     width: 6px;
     height: 6px;
     border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
     border: none;
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -338,7 +343,7 @@
 
   .dot.active {
     width: 6px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.5);
   }
 
   @media (max-width: 1024px) {

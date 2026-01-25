@@ -3,17 +3,19 @@
 
   export let isOpen = false;
 
-  const navItems = [
+  const primaryItems = [
     { label: 'Home', href: '/' },
     { label: 'About Us', href: '#about' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Contact Us', href: '#contact' },
-    { label: 'Jaguar Repair', href: '/jaguar' },
-    { label: 'Land Rover Repair', href: '/land-rover' },
-    { label: 'Range Rover Repair', href: '/range-rover' },
-    { label: 'BMW Repair', href: '/bmw' },
-    { label: 'Mini Repair', href: '/mini' },
     { label: 'Insurance Claims', href: '/insurance' },
+    { label: 'Contact Us', href: '#contact' },
+  ];
+
+  const secondaryItems = [
+    { label: 'Jaguar Repair', href: '/jaguar', logo: '/jaguar-logo-white.svg', logoHeight: 10 },
+    { label: 'Land Rover Repair', href: '/land-rover', logo: '/landrover-logo-white.svg', logoHeight: 20 },
+    { label: 'Range Rover Repair', href: '/range-rover', logo: '/range-rover-logo-white.svg', logoHeight: 14 },
+    { label: 'BMW Repair', href: '/bmw', logo: '/bmw-logo-white.svg', logoHeight: 28 },
+    { label: 'Mini Repair', href: '/mini', logo: '/mini-white.svg', logoHeight: 16 },
   ];
 
   function closeMenu() {
@@ -50,7 +52,7 @@
 
     <!-- Navigation Items -->
     <ul class="nav-list">
-      {#each navItems as item}
+      {#each primaryItems as item}
         <li class="nav-item">
           <a
             href={item.href}
@@ -62,6 +64,27 @@
         </li>
       {/each}
     </ul>
+
+    <!-- Secondary Navigation -->
+    <div class="secondary-nav">
+      <div class="secondary-title">Our specialties</div>
+      <ul class="nav-list secondary-list">
+        {#each secondaryItems as item}
+          <li class="nav-item secondary-item">
+            <a
+              href={item.href}
+              class="nav-link secondary"
+              on:click={handleNavClick}
+            >
+              <span>{item.label}</span>
+              {#if item.logo}
+                <img src={item.logo} alt="" class="nav-logo" style="height: {item.logoHeight}px" />
+              {/if}
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </div>
 
   </nav>
 {/if}
@@ -123,12 +146,34 @@
   .nav-list {
     list-style: none;
     margin: 0;
-    padding: calc(var(--space-16) + var(--space-4)) 0 var(--space-4) 0;
-    flex: 1;
+    padding: calc(var(--space-16) + var(--space-4)) 0 0 0;
   }
 
   .nav-item {
     border-bottom: 1px solid #3A352F;
+  }
+
+  .secondary-nav {
+    margin-top: var(--space-6);
+    background: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid #3A352F;
+    border-bottom: 1px solid #3A352F;
+  }
+
+  .secondary-title {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-4) var(--space-6) var(--space-2);
+  }
+
+  .secondary-list {
+    padding: 0;
+  }
+
+  .secondary-item {
+    border-bottom: none;
   }
 
   .nav-link {
@@ -151,6 +196,17 @@
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.05);
     padding-left: calc(var(--space-6) + 4px);
+  }
+
+  .nav-link.secondary {
+    font-size: var(--text-base);
+    padding: var(--space-3) var(--space-6);
+    opacity: 0.6;
+  }
+
+  .nav-logo {
+    width: auto;
+    opacity: 0.5;
   }
 
   /* Mobile Styles */

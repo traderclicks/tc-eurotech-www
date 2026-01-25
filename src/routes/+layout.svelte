@@ -9,17 +9,15 @@
 
   export let data: LayoutData;
 
+  // Admin pages get a completely clean pass-through
+  $: isAdminPage = $page.url.pathname.startsWith('/admin');
+
   let scrollY = 0;
   let cmsDropdownOpen = false;
 
-  // Only the homepage has a hero image
   $: hasHero = $page.url.pathname === '/';
-
-  // Hide header/footer on login page
   $: isLoginPage = $page.url.pathname === '/login';
-
-  // Hide admin bar on admin pages (they have their own header)
-  $: isAdminPage = $page.url.pathname.startsWith('/admin');
+  $: isPreviewMode = data.isPreviewMode;
 
   function toggleCmsDropdown() {
     cmsDropdownOpen = !cmsDropdownOpen;
@@ -30,6 +28,8 @@
   }
 
   onMount(() => {
+    if (isAdminPage) return;
+
     const handleScroll = () => {
       scrollY = window.scrollY;
     };
@@ -52,139 +52,150 @@
 </script>
 
 <svelte:head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  {#if !isAdminPage}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 
-  <!-- Organization Schema for SEO -->
-  {@html `<script type="application/ld+json">
-  ${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Page One",
-    "alternateName": "Page One Solutions",
-    "url": "https://example.com",
-    "logo": "https://example.com/logo.png",
-    "description": "Premium solutions and services to help you achieve success",
-    "foundingDate": "2020",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Main Street",
-      "addressLocality": "City",
-      "addressRegion": "State",
-      "postalCode": "12345",
-      "addressCountry": "US"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-555-0100",
-      "contactType": "customer service",
-      "email": "contact@example.com",
-      "areaServed": "US",
-      "availableLanguage": ["English"]
-    },
-    "sameAs": [
-      "https://www.facebook.com/pageone",
-      "https://twitter.com/pageone",
-      "https://www.linkedin.com/company/pageone",
-      "https://www.instagram.com/pageone"
-    ]
-  })}
-  </script>`}
-
-  <!-- Website Schema -->
-  {@html `<script type="application/ld+json">
-  ${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Page One",
-    "url": "https://example.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://example.com/search?q={search_term_string}"
+    {@html `<script type="application/ld+json">
+    ${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Page One",
+      "alternateName": "Page One Solutions",
+      "url": "https://example.com",
+      "logo": "https://example.com/logo.png",
+      "description": "Premium solutions and services to help you achieve success",
+      "foundingDate": "2020",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main Street",
+        "addressLocality": "City",
+        "addressRegion": "State",
+        "postalCode": "12345",
+        "addressCountry": "US"
       },
-      "query-input": "required name=search_term_string"
-    }
-  })}
-  </script>`}
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-555-0100",
+        "contactType": "customer service",
+        "email": "contact@example.com",
+        "areaServed": "US",
+        "availableLanguage": ["English"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/pageone",
+        "https://twitter.com/pageone",
+        "https://www.linkedin.com/company/pageone",
+        "https://www.instagram.com/pageone"
+      ]
+    })}
+    </script>`}
+
+    {@html `<script type="application/ld+json">
+    ${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Page One",
+      "url": "https://example.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://example.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    })}
+    </script>`}
+  {/if}
 </svelte:head>
 
-{#if data.cmsUser && !isLoginPage}
-  <div class="admin-bar">
-    <div class="admin-bar-content">
-      <div class="cms-dropdown">
-        <button class="cms-dropdown-trigger" on:click|stopPropagation={toggleCmsDropdown}>
-          <span class="admin-bar-brand">CMS</span>
-          <svg class="dropdown-arrow" class:open={cmsDropdownOpen} width="10" height="6" viewBox="0 0 10 6" fill="currentColor">
-            <path d="M1 1l4 4 4-4"/>
-          </svg>
-        </button>
-        {#if cmsDropdownOpen}
-          <div class="cms-dropdown-menu">
-            <a href="/admin" class="cms-dropdown-item" on:click={closeCmsDropdown}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-                <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
-              </svg>
-              Image Slots
-            </a>
-            <div class="cms-dropdown-divider"></div>
-            <form method="POST" action="/admin/login?/logout">
-              <button type="submit" class="cms-dropdown-item cms-dropdown-logout">
+{#if isAdminPage}
+  <!-- Admin: clean pass-through, admin layout handles everything -->
+  <slot />
+{:else}
+  <!-- Website: full layout -->
+  {#if data.cmsUser && !isLoginPage}
+    <div class="admin-bar">
+      <div class="admin-bar-content">
+        <div class="cms-dropdown">
+          <button class="cms-dropdown-trigger" on:click|stopPropagation={toggleCmsDropdown}>
+            <span class="admin-bar-brand">CMS</span>
+            <svg class="dropdown-arrow" class:open={cmsDropdownOpen} width="10" height="6" viewBox="0 0 10 6" fill="currentColor">
+              <path d="M1 1l4 4 4-4"/>
+            </svg>
+          </button>
+          {#if cmsDropdownOpen}
+            <div class="cms-dropdown-menu">
+              <a href="/admin" class="cms-dropdown-item" on:click={closeCmsDropdown}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                  <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                  <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                  <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
                 </svg>
-                Logout
-              </button>
-            </form>
-          </div>
-        {/if}
+                Image Slots
+              </a>
+              <div class="cms-dropdown-divider"></div>
+              <form method="POST" action="/admin/login?/logout">
+                <button type="submit" class="cms-dropdown-item cms-dropdown-logout">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                  </svg>
+                  Logout
+                </button>
+              </form>
+            </div>
+          {/if}
+        </div>
+        <span class="admin-bar-user">
+          {data.cmsUser.email}
+          <span class="admin-bar-role">{data.cmsUser.role}</span>
+        </span>
       </div>
-      <span class="admin-bar-user">
-        {data.cmsUser.email}
-        <span class="admin-bar-role">{data.cmsUser.role}</span>
-      </span>
     </div>
+  {/if}
+
+  {#if isPreviewMode && !isLoginPage}
+    <div class="preview-bar">
+      <span class="preview-text">Preview Mode — Viewing unpublished changes</span>
+      <a href="/api/preview/disable?return={$page.url.pathname}" class="preview-exit">Exit Preview</a>
+    </div>
+  {/if}
+
+  <div class="app" class:has-admin-bar={data.cmsUser && !isLoginPage} class:has-preview-bar={isPreviewMode && !isLoginPage}>
+    {#if !isLoginPage}
+      <Header isScrolled={scrollY > 50} {hasHero} />
+    {/if}
+
+    <main class="main">
+      <slot />
+    </main>
+
+    {#if !isLoginPage}
+      <Footer />
+    {/if}
+
+    <Modal />
+
+    {#if scrollY > 300 && !isLoginPage}
+      <button
+        class="back-to-top"
+        on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Back to top"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </button>
+    {/if}
   </div>
 {/if}
 
-<div class="app" class:has-admin-bar={data.cmsUser && !isLoginPage}>
-  {#if !isLoginPage}
-    <Header isScrolled={scrollY > 50} {hasHero} />
-  {/if}
-
-  <main class="main">
-    <slot />
-  </main>
-
-  {#if !isLoginPage}
-    <Footer />
-  {/if}
-
-  <!-- Global Modal Container -->
-  <Modal />
-
-  <!-- Back to Top Button -->
-  {#if scrollY > 300 && !isLoginPage}
-    <button
-      class="back-to-top"
-      on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      aria-label="Back to top"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="18 15 12 9 6 15"></polyline>
-      </svg>
-    </button>
-  {/if}
-</div>
-
 <style>
-  /* Admin bar height - single source of truth */
   :global(:root) {
     --admin-bar-height: 28px;
+    --preview-bar-height: 40px;
   }
 
   .app {
@@ -193,10 +204,17 @@
     flex-direction: column;
   }
 
-  /* When admin bar is present, offset the site and create new containing block */
   .app.has-admin-bar {
     margin-top: var(--admin-bar-height);
-    transform: translateY(0); /* Creates new containing block for fixed descendants */
+    transform: translateY(0);
+  }
+
+  .app.has-preview-bar {
+    margin-top: var(--preview-bar-height);
+  }
+
+  .app.has-admin-bar.has-preview-bar {
+    margin-top: calc(var(--admin-bar-height) + var(--preview-bar-height));
   }
 
   .main {
@@ -204,9 +222,8 @@
     width: 100%;
   }
 
-  /* Admin bar - fixed to viewport top */
   .admin-bar {
-    background: #ff1493; /* Hot pink - garish */
+    background: #ff1493;
     color: white;
     font-size: 11px;
     width: 100%;
@@ -215,6 +232,46 @@
     top: 0;
     left: 0;
     z-index: 9999;
+  }
+
+  .preview-bar {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    height: var(--preview-bar-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .admin-bar + .preview-bar,
+  .admin-bar ~ .preview-bar {
+    top: var(--admin-bar-height);
+  }
+
+  .preview-text::before {
+    content: '⚡ ';
+  }
+
+  .preview-exit {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .preview-exit:hover {
+    background: rgba(255, 255, 255, 0.3);
   }
 
   .admin-bar-content {
@@ -246,7 +303,6 @@
     font-weight: 600;
   }
 
-  /* CMS Dropdown */
   .cms-dropdown {
     position: relative;
   }

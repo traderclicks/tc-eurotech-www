@@ -102,10 +102,11 @@
   }
 
   .hero-description {
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
     color: var(--text-secondary);
     margin-bottom: var(--space-8);
     line-height: var(--leading-relaxed);
+    font-style: italic;
   }
 
   .hero-cta {

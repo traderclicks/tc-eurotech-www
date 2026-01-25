@@ -2,11 +2,14 @@ import type { LayoutServerLoad } from './$types';
 import { verifySessionToken, generateSessionToken } from '$lib/cms/auth-service';
 
 export const load: LayoutServerLoad = async ({ cookies }) => {
+  // Check for preview mode
+  const isPreviewMode = cookies.get('cms_preview') === 'true';
+
   // Check for CMS session on all pages
   const sessionToken = cookies.get('cms_session');
 
   if (!sessionToken) {
-    return { cmsUser: null };
+    return { cmsUser: null, isPreviewMode };
   }
 
   const user = await verifySessionToken(sessionToken);
@@ -27,5 +30,5 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
     maxAge: 60 * 30 // 30 minutes
   });
 
-  return { cmsUser: user };
+  return { cmsUser: user, isPreviewMode };
 };

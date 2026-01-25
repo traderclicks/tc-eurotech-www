@@ -62,7 +62,7 @@
   }
 
   .faq-item {
-    background: #ebebeb;
+    background: rgba(235, 235, 235, 0.4);
     border: none;
     border-radius: 0;
     overflow: hidden;

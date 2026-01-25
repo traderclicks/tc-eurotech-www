@@ -1,23 +1,19 @@
 import type { PageServerLoad } from './$types';
-import { getSlotSchemas, getLiveAssignments } from '$lib/cms/slots';
+import { getSlotImagesWithPreview } from '$lib/cms/slots';
 
-export interface CurrentImageSet {
-  section: string;
-  description: string;
-  images: string[];
-}
+export const load: PageServerLoad = async ({ parent }) => {
+  const { isPreviewMode } = await parent();
 
-export const load: PageServerLoad = async () => {
-  const schemas = getSlotSchemas();
-  const live = getLiveAssignments();
+  // Get images from CMS slot
+  const slotImages = getSlotImagesWithPreview('gallery-page', isPreviewMode ?? false);
 
-  const currentImageSets: CurrentImageSet[] = Object.entries(schemas).map(([slotId, schema]) => ({
-    section: schema.label,
-    description: schema.description,
-    images: live[slotId] || []
+  // Convert to the format the page expects
+  const images = slotImages.map((src, index) => ({
+    src,
+    alt: `Workshop image ${index + 1}`
   }));
 
   return {
-    currentImageSets
+    images
   };
 };

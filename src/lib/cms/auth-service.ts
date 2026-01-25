@@ -21,6 +21,7 @@ export interface AuthUser {
   email: string;
   name: string | null;
   role: 'editor' | 'approver' | 'viewer';
+  tenantId: string;  // The site/client this user is authenticated for
 }
 
 export interface VerifyResult {
@@ -77,7 +78,8 @@ export async function verifyMagicLink(token: string): Promise<VerifyResult> {
           userId: data.userId,
           email: data.email,
           name: data.name,
-          role: data.role
+          role: data.role,
+          tenantId: data.tenantId || SITE_SLUG  // From tc-services, fallback to local SITE_SLUG
         }
       };
     }
@@ -118,6 +120,7 @@ export async function generateSessionToken(user: AuthUser): Promise<string> {
     email: user.email,
     name: user.name,
     role: user.role,
+    tenantId: user.tenantId,  // Include tenant in session token
     type: 'session'
   })
     .setProtectedHeader({ alg: 'HS256' })
@@ -138,7 +141,8 @@ export async function verifySessionToken(token: string): Promise<AuthUser | null
       userId: payload.userId as string,
       email: payload.email as string,
       name: payload.name as string | null,
-      role: payload.role as 'editor' | 'approver' | 'viewer'
+      role: payload.role as 'editor' | 'approver' | 'viewer',
+      tenantId: payload.tenantId as string
     };
   } catch {
     return null;

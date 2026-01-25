@@ -1,0 +1,52 @@
+{
+  "phone": {
+    "label": "Phone Number",
+    "type": "text",
+    "placeholder": "(09) 573 1093"
+  },
+  "email": {
+    "label": "Email Address",
+    "type": "text",
+    "placeholder": "info@eurotech.co.nz"
+  },
+  "address": {
+    "label": "Street Address",
+    "type": "text",
+    "placeholder": "123 Example Street"
+  },
+  "suburb": {
+    "label": "Suburb",
+    "type": "text",
+    "placeholder": "Mount Wellington"
+  },
+  "city": {
+    "label": "City",
+    "type": "text",
+    "placeholder": "Auckland"
+  },
+  "postcode": {
+    "label": "Postcode",
+    "type": "text",
+    "placeholder": "1060"
+  },
+  "openingHours": {
+    "label": "Opening Hours",
+    "type": "textarea",
+    "placeholder": "Mon-Fri: 8:00 AM - 5:00 PM"
+  },
+  "googleMapsUrl": {
+    "label": "Google Maps URL",
+    "type": "text",
+    "placeholder": "https://maps.google.com/..."
+  },
+  "facebookUrl": {
+    "label": "Facebook URL",
+    "type": "text",
+    "placeholder": "https://facebook.com/..."
+  },
+  "instagramUrl": {
+    "label": "Instagram URL",
+    "type": "text",
+    "placeholder": "https://instagram.com/..."
+  }
+}

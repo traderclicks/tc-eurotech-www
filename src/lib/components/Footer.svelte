@@ -70,14 +70,6 @@
               <span class="text-col">Mini Repair</span>
             </a>
           </li>
-          <li>
-            <a href="/insurance" class="service-link">
-              <div class="logo-col">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E" alt="" class="service-logo service-logo-insurance" />
-              </div>
-              <span class="text-col">Insurance Claims</span>
-            </a>
-          </li>
         </ul>
         <p class="footer-description">
           New Zealand's only factory-authorized Jaguar/Land Rover structural repairer.
@@ -92,9 +84,9 @@
       <div class="footer-column">
         <h3 class="footer-heading">Information</h3>
         <ul class="footer-links">
-          <li><a href="#about">About Eurotech</a></li>
-          <li><a href="#certifications">Certifications</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="/about">About Eurotech</a></li>
+          <li><a href="/insurance">Insurance Claims</a></li>
+          <li><a href="/gallery">Gallery</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms & Conditions</a></li>
         </ul>

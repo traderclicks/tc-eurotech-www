@@ -457,9 +457,9 @@
         What Our Customers Say
         <span class="title-separator">|</span>
         <span class="google-rating">
-          <img src="/icons/google-wordmark-white.svg" alt="Google" class="google-logo-inline" />
+          <img src="/google-logo.svg" alt="Google" class="google-logo-inline" />
           <span class="star filled">★</span>
-          {googleReviews.rating} ({googleReviews.totalReviews} reviews)
+          {googleReviews.rating} average review ({googleReviews.totalReviews} reviews)
         </span>
       </h2>
     </div>
@@ -483,9 +483,15 @@
   /* Section Grid Styles */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--space-8);
     margin-top: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .bg-blog {
@@ -596,7 +602,7 @@
   }
 
   .hero-title {
-    font-size: clamp(3rem, 7vw, 5rem);
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
     font-weight: var(--font-extrabold);
     line-height: 1.1;
     margin-bottom: var(--space-6);
@@ -662,7 +668,7 @@
   }
 
   .bg-dark {
-    background: #1a2a30eb;
+    background: rgba(50, 75, 90, 0.12);
   }
 
   .text-center {
@@ -679,6 +685,11 @@
 
   .reviews-title {
     font-size: var(--text-2xl);
+    color: #1a1a1a !important;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0;
   }
 
   .title-separator {
@@ -688,21 +699,26 @@
 
   .google-rating {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
     gap: var(--space-2);
     font-size: 0.8em;
     font-weight: normal;
+    color: #1a1a1a;
   }
 
   .google-logo-inline {
-    height: 1.3em;
+    height: 1.1em;
     width: auto;
-    filter: brightness(0) invert(1);
+    filter: brightness(0);
+    vertical-align: baseline;
+    position: relative;
+    top: 0.15em;
   }
 
   .google-rating .star {
     color: #fbbc04;
     font-size: 1.3em;
+    line-height: 1;
   }
 
   @media (max-width: 768px) {

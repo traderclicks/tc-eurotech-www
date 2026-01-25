@@ -20,7 +20,7 @@
       <div class="logo-bar-content">
         {#if description}
           <div class="description-text">
-            <span>NZ's only factory-authorized Jaguar/Land Rover repairer</span>
+            <span>NZ's only factory-authorised Jaguar/Land Rover repairer</span>
             <span class="separator">•</span>
             <span>Expert BMW & Mini repairs</span>
             <span class="separator">•</span>
@@ -64,8 +64,8 @@
 
   .logo-bar-container {
     width: 100%;
-    padding: var(--space-4) var(--space-3) var(--space-6) var(--space-3);
-    background: #4d5357c9;
+    padding: var(--space-6) var(--space-6) var(--space-4) var(--space-6);
+    background: rgba(20, 25, 30, 0.79);
     border-radius: var(--radius-xl);
     backdrop-filter: blur(120px);
   }
@@ -77,8 +77,9 @@
 
   .description-text {
     color: #ffffff;
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     font-weight: bold;
+    font-style: italic;
     text-align: center;
     margin: var(--space-3) 0 var(--space-6) 0;
     display: flex;
@@ -86,6 +87,7 @@
     gap: 2rem;
     justify-content: center;
     align-items: center;
+    line-height: 1.2;
   }
 
   .separator {
@@ -134,6 +136,13 @@
 
   /* Mobile Styles */
   @media (max-width: 768px) {
+    .description-text {
+      font-size: var(--text-sm);
+      gap: 0.5rem;
+      line-height: 1.2;
+      margin: var(--space-2) 0 var(--space-4) 0;
+    }
+
     .logos-track {
       gap: var(--space-8);
     }

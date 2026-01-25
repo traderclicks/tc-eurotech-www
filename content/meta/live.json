@@ -1,0 +1,38 @@
+{
+  "home": {
+    "title": "Eurotech Auto Repair Centre - European Vehicle Specialists Auckland",
+    "description": "New Zealand's only factory-authorized Jaguar/Land Rover structural repairer. Expert BMW and Mini repairs. Insurance approved. Call (09) 573 1093",
+    "keywords": "european car repair auckland, bmw repair, jaguar repair, land rover repair, mini repair, panel beaters auckland, insurance repairs",
+    "ogImage": "/og-eurotech.png"
+  },
+  "jaguar": {
+    "title": "Jaguar Specialist Repairs - Factory Authorized | Eurotech Auto Repair",
+    "description": "NZ's only factory-authorized Jaguar structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093",
+    "keywords": "jaguar repair auckland, jaguar panel beaters, jaguar collision repair, factory authorized jaguar, genuine jaguar parts"
+  },
+  "land-rover": {
+    "title": "Land Rover Specialist Repairs - Factory Authorized | Eurotech Auto Repair",
+    "description": "NZ's only factory-authorized Land Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093",
+    "keywords": "land rover repair auckland, land rover panel beaters, land rover collision repair, factory authorized land rover, genuine land rover parts"
+  },
+  "range-rover": {
+    "title": "Range Rover Specialist Repairs - Factory Authorized | Eurotech Auto Repair",
+    "description": "NZ's only factory-authorized Range Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093",
+    "keywords": "range rover repair auckland, range rover panel beaters, range rover collision repair, factory authorized range rover, genuine range rover parts"
+  },
+  "bmw": {
+    "title": "BMW Specialist Repairs - European Vehicle Experts | Eurotech Auto Repair",
+    "description": "Expert BMW collision repairs, panel beating & paint work. European vehicle specialists with 20+ years experience. Insurance approved. Call (09) 573 1093",
+    "keywords": "bmw repair auckland, bmw panel beaters, bmw collision repair, european vehicle specialists"
+  },
+  "mini": {
+    "title": "Mini Specialist Repairs - European Vehicle Experts | Eurotech Auto Repair",
+    "description": "Expert Mini collision repairs, panel beating & paint work. European vehicle specialists with 20+ years experience. Insurance approved. Call (09) 573 1093",
+    "keywords": "mini repair auckland, mini panel beaters, mini collision repair, mini cooper repair, european vehicle specialists"
+  },
+  "services": {
+    "title": "Our Services - Eurotech Auto Repair Centre",
+    "description": "Comprehensive European vehicle repair services including collision repairs, panel beating, and paint work. Insurance approved.",
+    "keywords": "european car services auckland, collision repair, panel beating, paint work"
+  }
+}
