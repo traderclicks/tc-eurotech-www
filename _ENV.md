@@ -2,6 +2,12 @@
 
 Eurotech Auto client website with CMS.
 
+## CMS Architecture
+
+**Before any CMS work:** `cc D328` - Multi-channel content platform (has related decisions and work blocks)
+
+CMS is a **Controlla platform feature** used by this site.
+
 ## Required Variables
 
 | Variable | Description | Where to get |
