@@ -21,6 +21,8 @@
   import { PLACEHOLDERS, iconPlaceholder} from '$lib/utils/placeholders';
   import { generateFAQSchema, generateLocalBusinessSchema } from '$lib/utils/structuredData';
 
+  export let data;
+
   let isVisible = false;
   let currentSlide = 0;
   let isTransitioning = true;
@@ -303,33 +305,15 @@
     ]
   };
 
-  // Blog articles
-  const blogArticles = [
-    {
-      title: 'Why Choose Factory-Authorized Repairs for Your Jaguar or Land Rover',
-      excerpt: 'Learn about the importance of factory-authorized repairs and how they protect your vehicle\'s value and warranty.',
-      image: '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg',
-      category: 'Expert Advice',
-      date: 'March 15, 2025',
-      href: '#blog'
-    },
-    {
-      title: 'Common BMW Repair Issues and How to Prevent Them',
-      excerpt: 'Discover the most common repair issues for BMW vehicles and our expert tips for preventative maintenance.',
-      image: '/bmw.jpg',
-      category: 'Maintenance',
-      date: 'March 10, 2025',
-      href: '#blog'
-    },
-    {
-      title: 'Understanding Your Insurance Claim Process',
-      excerpt: 'A comprehensive guide to navigating insurance claims for European vehicle repairs in New Zealand.',
-      image: '/gallery/mini/huntleytography-G0GRk2bzJiU-unsplash.jpg',
-      category: 'Insurance',
-      date: 'March 5, 2025',
-      href: '#blog'
-    }
-  ];
+  // Blog articles from CMS
+  $: blogArticles = (data.latestPosts ?? []).map(post => ({
+    title: post.title,
+    excerpt: post.excerpt,
+    image: post.featuredImage?.url ?? '',
+    category: post.category,
+    date: new Date(post.publishedAt).toLocaleDateString('en-NZ', { year: 'numeric', month: 'long', day: 'numeric' }),
+    href: `/blog/${post.slug}`
+  }));
 
   // Local Business Schema
   const businessSchema = generateLocalBusinessSchema({
