@@ -206,7 +206,6 @@
 
   .app.has-admin-bar {
     margin-top: var(--admin-bar-height);
-    transform: translateY(0);
   }
 
   .app.has-preview-bar {

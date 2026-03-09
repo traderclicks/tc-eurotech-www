@@ -206,7 +206,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: var(--z-modal-backdrop);
+    z-index: 10001;
     padding: var(--space-4);
     overflow-y: auto;
   }
@@ -218,11 +218,11 @@
     max-width: 600px;
     width: 100%;
     max-height: 90vh;
-    overflow: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: var(--z-modal);
+    z-index: 10002;
   }
 
   .modal-container.image-container {
