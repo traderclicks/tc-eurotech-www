@@ -5,7 +5,8 @@
 
   const primaryItems = [
     { label: 'Home', href: '/' },
-    { label: 'About Us', href: '#about' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Insurance Claims', href: '/insurance' },
     { label: 'Contact Us', href: '#contact' },
   ];

@@ -309,7 +309,7 @@
   $: blogArticles = (data.latestPosts ?? []).map(post => ({
     title: post.title,
     excerpt: post.excerpt,
-    image: post.featuredImage?.url ?? '',
+    image: post.featuredImage?.url ?? data.defaultPostImage ?? '',
     category: post.category,
     date: new Date(post.publishedAt).toLocaleDateString('en-NZ', { year: 'numeric', month: 'long', day: 'numeric' }),
     href: `/blog/${post.slug}`

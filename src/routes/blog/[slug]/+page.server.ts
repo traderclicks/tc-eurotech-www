@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { getBlogPost } from '$lib/cms/blog';
+import { getBlogPost, getDefaultPostImage } from '$lib/cms/blog';
 import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -9,5 +9,7 @@ export const load: PageServerLoad = async ({ params }) => {
     throw error(404, 'Blog post not found');
   }
 
-  return { post };
+  const defaultPostImage = getDefaultPostImage();
+
+  return { post, defaultPostImage };
 };

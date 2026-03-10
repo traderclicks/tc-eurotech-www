@@ -8,6 +8,10 @@
 />
 
 <div class="page">
+  <div class="page-hero">
+    <img src="/images/DSC00693.jpg" alt="Eurotech workshop — European vehicle repair specialists" />
+  </div>
+
   <div class="container">
     <h1>About Eurotech</h1>
 
@@ -62,9 +66,27 @@
 </div>
 
 <style>
+  .page-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .page-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
   .page {
-    padding: var(--space-16) 0;
     min-height: 60vh;
+  }
+
+  .page .container {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
   }
 
   h1 {
@@ -72,10 +94,12 @@
     font-weight: var(--font-bold);
     margin-bottom: var(--space-8);
     color: var(--color-text);
+    text-align: center;
   }
 
   .content {
     max-width: 740px;
+    margin: 0 auto;
   }
 
   .intro {
@@ -126,8 +150,13 @@
   }
 
   @media (max-width: 768px) {
-    .page {
-      padding: var(--space-8) 0;
+    .page-hero {
+      height: 260px;
+    }
+
+    .page .container {
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-12);
     }
 
     h1 {

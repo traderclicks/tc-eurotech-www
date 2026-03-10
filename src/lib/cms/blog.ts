@@ -27,7 +27,20 @@ function getContentDir(): string {
   return candidates[0];
 }
 
-const BLOG_DIR = join(getContentDir(), 'blog');
+const CONTENT_DIR = getContentDir();
+const BLOG_DIR = join(CONTENT_DIR, 'blog');
+
+/**
+ * Get the default post image from config
+ */
+export function getDefaultPostImage(): string {
+  try {
+    const config = JSON.parse(readFileSync(join(CONTENT_DIR, 'config.json'), 'utf-8'));
+    return config.settings?.defaultPostImage ?? '/images/DSC00625.jpg';
+  } catch {
+    return '/images/DSC00625.jpg';
+  }
+}
 
 /**
  * Get all published blog posts, sorted by date (newest first)

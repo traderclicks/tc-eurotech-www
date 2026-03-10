@@ -15,15 +15,18 @@
 <Meta
   title="{post.title} - Eurotech Blog"
   description={post.excerpt}
-  ogImage={post.featuredImage?.url}
+  ogImage={post.featuredImage?.url ?? data.defaultPostImage}
 />
 
 <article class="post">
-  {#if post.featuredImage}
-    <div class="post-hero">
-      <img src={post.featuredImage.url} alt={post.featuredImage.alt} />
+  <div class="post-hero">
+    <div class="hero-overlay">
+      <div class="hero-nav">
+        <a href="/blog" class="hero-back-link"><span class="back-arrow">&larr;</span> <span class="back-text">Latest posts</span></a>
+      </div>
     </div>
-  {/if}
+    <img src={post.featuredImage?.url ?? data.defaultPostImage} alt={post.featuredImage?.alt ?? post.title} />
+  </div>
 
   <div class="container">
     <div class="post-content">
@@ -61,15 +64,52 @@
 
 <style>
   .post-hero {
+    position: relative;
     width: 100%;
-    max-height: 480px;
+    height: 480px;
     overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: var(--space-3) 0;
+  }
+
+  .hero-nav {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .hero-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: var(--space-1) var(--space-4);
+    text-decoration: none;
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    transition: background var(--transition-fast);
+  }
+
+  .hero-back-link:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .back-text {
+    text-decoration: underline;
   }
 
   .post-hero img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
   }
 
   .post-content {
