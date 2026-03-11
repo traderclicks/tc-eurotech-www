@@ -3,6 +3,7 @@
   import { modal } from '$lib/stores/modal';
   import { site } from '$lib/config/site';
   import Button from './Button.svelte';
+  import CloudflareImage from './CloudflareImage.svelte';
   import NavigationMenu from './NavigationMenu.svelte';
 
   export let isScrolled = false;
@@ -78,7 +79,7 @@
       </button>
 
       <div class="modal-image-wrapper">
-        <img src="/images/DSC00931.jpg" alt="Eurotech Auto Repair Centre Building" class="modal-image" />
+        <CloudflareImage src="/images/DSC00931.jpg" alt="Eurotech Auto Repair Centre Building" width={800} height={534} />
         <div class="modal-image-overlay"></div>
       </div>
 
@@ -90,6 +91,13 @@
           {site.city} {site.postcode}<br>
           {site.country}
         </div>
+
+        <a href={site.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="modal-maps-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          Open in Google Maps
+        </a>
 
         <div class="modal-contact">
           <div class="contact-row">
@@ -112,12 +120,15 @@
           </div>
         </div>
 
-        <a href={site.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="modal-maps-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
-          Open in Google Maps
-        </a>
+        <div class="modal-actions">
+          <button class="modal-action-btn primary" on:click={() => { toggleLocation(); openContactModal(); }}>
+            Get a Repair Quote
+          </button>
+          <a href="mailto:{site.email}" class="modal-action-btn secondary">
+            Send a Message
+          </a>
+        </div>
+
       </div>
     </div>
   </div>
@@ -273,7 +284,7 @@
     position: relative;
   }
 
-  .modal-image {
+  .modal-image-wrapper :global(img) {
     width: 100%;
     height: 250px;
     object-fit: cover;
@@ -337,6 +348,48 @@
     color: var(--color-primary);
   }
 
+  .modal-actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .modal-action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: none;
+  }
+
+  .modal-action-btn.primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .modal-action-btn.primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  .modal-action-btn.secondary {
+    background: transparent;
+    color: #1a1a1a;
+    border: 1.5px solid #d0d0d0;
+  }
+
+  .modal-action-btn.secondary:hover {
+    border-color: #1a1a1a;
+    transform: translateY(-1px);
+  }
+
   .modal-maps-btn {
     display: flex;
     align-items: center;
@@ -344,6 +397,7 @@
     gap: var(--space-2);
     width: 100%;
     padding: var(--space-3) var(--space-8);
+    margin-bottom: var(--space-4);
     background: #1a1a1a;
     color: white;
     text-decoration: none;

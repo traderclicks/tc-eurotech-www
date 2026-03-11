@@ -1,5 +1,12 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
+  import ServiceHero from '$lib/components/ServiceHero.svelte';
+
+  const heroImages = [
+    '/images/DSC00931.jpg',
+    '/images/DSC00651.jpg',
+    '/images/DSC00720.jpg'
+  ];
 </script>
 
 <Meta
@@ -7,13 +14,15 @@
   description="Learn about Eurotech Auto Repair Centre, New Zealand's only factory-authorized Jaguar/Land Rover structural repairer with 20+ years experience."
 />
 
-<div class="page">
-  <div class="page-hero">
-    <img src="/images/DSC00693.jpg" alt="Eurotech workshop — European vehicle repair specialists" />
-  </div>
+<ServiceHero
+  title="About Eurotech"
+  description="European vehicle specialists • Factory authorized • 20+ years experience"
+  images={heroImages}
+  showLogoBar={true}
+/>
 
+<div class="page">
   <div class="container">
-    <h1>About Eurotech</h1>
 
     <div class="content">
       <section class="intro">
@@ -66,20 +75,6 @@
 </div>
 
 <style>
-  .page-hero {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-  }
-
-  .page-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
   .page {
     min-height: 60vh;
   }
@@ -87,14 +82,6 @@
   .page .container {
     padding-top: var(--space-16);
     padding-bottom: var(--space-16);
-  }
-
-  h1 {
-    font-size: var(--text-4xl);
-    font-weight: var(--font-bold);
-    margin-bottom: var(--space-8);
-    color: var(--color-text);
-    text-align: center;
   }
 
   .content {
@@ -150,17 +137,9 @@
   }
 
   @media (max-width: 768px) {
-    .page-hero {
-      height: 260px;
-    }
-
     .page .container {
       padding-top: var(--space-8);
       padding-bottom: var(--space-12);
-    }
-
-    h1 {
-      font-size: var(--text-3xl);
     }
 
     .lead {

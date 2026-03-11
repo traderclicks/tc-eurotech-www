@@ -3,6 +3,7 @@
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import ReviewCarousel from '$lib/components/ReviewCarousel.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
+  import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { modal } from '$lib/stores/modal';
   import { site } from '$lib/config/site';
 
@@ -98,7 +99,7 @@
     <!-- Image + Text Grid Layout -->
     <div class="content-grid">
       <div class="content-image">
-        <img src="/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg" alt="Jaguar repair specialist" />
+        <CloudflareImage src="/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg" alt="Jaguar repair specialist" width={1200} height={800} />
       </div>
       <div class="content-text">
         <h3>Aluminium Structural Expertise</h3>
@@ -123,7 +124,7 @@
         </p>
       </div>
       <div class="content-image">
-        <img src="/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg" alt="Jaguar repair workshop" />
+        <CloudflareImage src="/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg" alt="Jaguar repair workshop" width={1200} height={801} />
       </div>
     </div>
 

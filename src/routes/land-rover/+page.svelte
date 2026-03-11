@@ -2,6 +2,7 @@
   import Meta from '$lib/components/Meta.svelte';
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
+  import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { modal } from '$lib/stores/modal';
 
   function openContactModal() {
@@ -67,7 +68,7 @@
     <!-- Image + Text Grid Layout -->
     <div class="content-grid">
       <div class="content-image">
-        <img src="/gallery/land-rover/visionaryconcepts-jx4OyQHNhi0-unsplash.jpg" alt="Land Rover repair specialist" />
+        <CloudflareImage src="/gallery/land-rover/visionaryconcepts-jx4OyQHNhi0-unsplash.jpg" alt="Land Rover repair specialist" width={1200} height={800} />
       </div>
       <div class="content-text">
         <h3>Built for Land Rover's Architecture</h3>
@@ -92,7 +93,7 @@
         </p>
       </div>
       <div class="content-image">
-        <img src="/gallery/land-rover/withluke-Pn285tSRCNY-unsplash.jpg" alt="Land Rover repair workshop" />
+        <CloudflareImage src="/gallery/land-rover/withluke-Pn285tSRCNY-unsplash.jpg" alt="Land Rover repair workshop" width={1200} height={800} />
       </div>
     </div>
 

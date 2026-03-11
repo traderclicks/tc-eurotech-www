@@ -18,15 +18,6 @@
   <div class="logo-bar-wrapper">
     <div class="logo-bar-container">
       <div class="logo-bar-content">
-        {#if description}
-          <div class="description-text">
-            <span>NZ's only factory-authorised Jaguar/Land Rover repairer</span>
-            <span class="separator">•</span>
-            <span>Expert BMW & Mini repairs</span>
-            <span class="separator">•</span>
-            <span>20+ years of operation</span>
-          </div>
-        {/if}
         <div class="logos-scroll">
           <div class="logos-track">
             {#each Array(10) as _, repeatIndex}
@@ -42,6 +33,15 @@
             {/each}
           </div>
         </div>
+        {#if description}
+          <div class="description-text">
+            <span>NZ's only factory-authorised Jaguar/Land Rover repairer</span>
+            <span class="separator">•</span>
+            <span>Expert BMW & Mini repairs</span>
+            <span class="separator">•</span>
+            <span>20+ years of operation</span>
+          </div>
+        {/if}
       </div>
     </div>
   </div>
@@ -77,11 +77,11 @@
 
   .description-text {
     color: #ffffff;
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     font-weight: bold;
     font-style: italic;
     text-align: center;
-    margin: var(--space-3) 0 var(--space-6) 0;
+    margin: var(--space-6) 0 var(--space-2) 0;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -140,7 +140,7 @@
       font-size: var(--text-sm);
       gap: 0.5rem;
       line-height: 1.2;
-      margin: var(--space-2) 0 var(--space-4) 0;
+      margin: var(--space-4) 0 var(--space-2) 0;
     }
 
     .logos-track {

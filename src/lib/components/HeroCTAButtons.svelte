@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-6);
-    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
   }
 
   .hero-book-btn {

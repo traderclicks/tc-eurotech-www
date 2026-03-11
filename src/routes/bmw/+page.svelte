@@ -2,6 +2,7 @@
   import Meta from '$lib/components/Meta.svelte';
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
+  import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { modal } from '$lib/stores/modal';
 
   function openContactModal() {
@@ -64,7 +65,7 @@
     <!-- Image + Text Grid Layout -->
     <div class="content-grid">
       <div class="content-image">
-        <img src="/gallery/bmw/arteum-KiTalJFRkcg-unsplash.jpg" alt="BMW repair specialist" />
+        <CloudflareImage src="/gallery/bmw/arteum-KiTalJFRkcg-unsplash.jpg" alt="BMW repair specialist" width={1200} height={800} />
       </div>
       <div class="content-text">
         <h3>Carbon Fibre and Multi-Material Expertise</h3>
@@ -89,7 +90,7 @@
         </p>
       </div>
       <div class="content-image">
-        <img src="/gallery/bmw/romaxp-PzCGId2ljsY-unsplash.jpg" alt="BMW repair workshop" />
+        <CloudflareImage src="/gallery/bmw/romaxp-PzCGId2ljsY-unsplash.jpg" alt="BMW repair workshop" width={1200} height={1800} />
       </div>
     </div>
 

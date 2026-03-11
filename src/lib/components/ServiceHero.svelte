@@ -96,14 +96,14 @@
   <div class="container hero-container">
     {#if isVisible}
       <div class="hero-content" in:fly={{ y: 20, duration: 800, delay: 100 }}>
+        <HeroCTAButtons />
+
         <h1 class="hero-title">
           {title}
           {#if subtitle}
             <span class="hero-gradient">{subtitle}</span>
           {/if}
         </h1>
-
-        <HeroCTAButtons />
       </div>
     {/if}
   </div>
