@@ -5,7 +5,6 @@
   import { site } from '$lib/config/site';
   import Meta from '$lib/components/Meta.svelte';
   import Button from '$lib/components/Button.svelte';
-  import ContactForm from '$lib/components/ContactForm.svelte';
   import FeatureCard from '$lib/components/FeatureCard.svelte';
   import TestimonialCard from '$lib/components/TestimonialCard.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
