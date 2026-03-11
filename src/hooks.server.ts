@@ -1,6 +1,6 @@
-import { redirect, type Handle } from '@sveltejs/kit';
+import { type Handle } from '@sveltejs/kit';
 import { dev } from '$app/environment';
-import { verifySessionToken, generateSessionToken } from '$lib/cms/auth-service';
+import { generateSessionToken } from '$lib/cms/auth-service';
 
 export const handle: Handle = async ({ event, resolve }) => {
   const { url, cookies } = event;
@@ -34,23 +34,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     return resolve(event);
   }
 
-  // Allow admin routes (has own auth), API routes, and static assets
-  if (
-    url.pathname.startsWith('/admin') ||
-    url.pathname.startsWith('/api/') ||
-    url.pathname.startsWith('/_app/') ||
-    url.pathname.includes('.')  // Static files (css, js, images)
-  ) {
-    return resolve(event);
-  }
-
-  // Magic link auth required for all pages on preview/client subdomains
-  const cmsSession = cookies.get('cms_session');
-  const user = cmsSession ? await verifySessionToken(cmsSession) : null;
-
-  if (!user) {
-    throw redirect(303, '/admin/login');
-  }
-
+  // All public pages are accessible without auth
+  // Admin routes have their own auth in /admin/+layout.server.ts
   return resolve(event);
 };
