@@ -7,7 +7,7 @@
   <div class="container">
     <div class="cta-actions">
       <Button size="large" on:click={() => modal.cognito()}>Get a Repair Quote</Button>
-      <Button variant="link" size="large" on:click={() => modal.insurance()}>insurance contacts</Button>
+      <Button variant="link" size="large" on:click={() => modal.insurance()}>Insurance Contacts</Button>
     </div>
   </div>
 </section>

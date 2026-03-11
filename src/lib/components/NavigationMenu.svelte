@@ -8,9 +8,9 @@
 
   const primaryItems = [
     { label: 'Home', href: '/' },
+    { label: 'Make an Insurance Claim', href: '/insurance' },
     { label: 'About Us', href: '/about' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Insurance Claims', href: '/insurance' },
     { label: 'Contact Us', href: '#contact', action: 'contact' },
   ];
 
@@ -215,12 +215,12 @@
   .nav-link.secondary {
     font-size: var(--text-base);
     padding: var(--space-3) var(--space-6);
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   .nav-logo {
     width: auto;
-    opacity: 0.65;
+    opacity: 0.85;
   }
 
   /* Mobile Styles */
