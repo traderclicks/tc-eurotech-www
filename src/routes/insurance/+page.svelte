@@ -71,11 +71,11 @@
     <div class="intro-row">
       <div class="intro-text">
         <h1>Insurance Claims</h1>
-        <p class="intro">Factory-authorized for Jaguar, Land Rover, and BMW — we handle your claim from assessment to completion. You choose your repairer, and all work carries a manufacturer guarantee.</p>
+        <p class="intro">Had an accident? Submit the form and we'll handle everything. Factory-authorized for Jaguar, Land Rover, and BMW — you get to choose us as your repairer. All work carries a manufacturer's guarantee.</p>
       </div>
       <div class="cta-buttons-wrapper">
         <div class="cta-buttons">
-          <Button size="large" on:click={() => modal.cognito()}>Get a Repair Quote</Button>
+          <Button variant="primary" size="large" on:click={() => modal.cognito()}>Get a Repair Quote</Button>
           <Button variant="link" size="large" on:click={() => modal.insurance()}>insurance contacts</Button>
         </div>
       </div>
@@ -123,12 +123,13 @@
     min-height: 60vh;
   }
 
+
   h1 {
     font-size: clamp(3rem, 7vw, 5rem);
     font-weight: var(--font-extrabold);
     line-height: 1.1;
     margin-bottom: var(--space-4);
-    color: rgba(0, 30, 80, 0.55);
+    color: var(--text-heading);
   }
 
   .intro-row {
@@ -160,10 +161,16 @@
     align-items: start;
   }
 
-  .col-left,
+  .col-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
   .col-right {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: var(--space-12);
   }
 
@@ -200,8 +207,8 @@
   /* Insurer logos — full color grid */
   .insurer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
     align-items: center;
   }
 
@@ -213,16 +220,16 @@
   }
 
   .insurer-logo img {
-    max-width: 140px;
-    max-height: 60px;
+    max-width: 115px;
+    max-height: 48px;
     width: auto;
     height: auto;
     object-fit: contain;
   }
 
   .small-logo img {
-    max-width: 80px;
-    max-height: 35px;
+    max-width: 50px;
+    max-height: 22px;
   }
 
   @media (max-width: 768px) {
@@ -253,8 +260,14 @@
     }
 
     .insurer-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: var(--space-4);
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      gap: var(--space-4);
+      align-items: center;
     }
   }
 </style>

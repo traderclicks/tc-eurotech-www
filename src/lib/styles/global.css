@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 var(--space-4) 0;
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
-  color: var(--text-primary);
+  color: var(--text-heading);
 }
 
 h1 {

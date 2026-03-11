@@ -114,7 +114,7 @@
     font-size: clamp(3rem, 7vw, 5rem);
     font-weight: var(--font-extrabold);
     line-height: 1.1;
-    color: rgba(0, 30, 80, 0.55);
+    color: var(--text-heading);
     text-align: center;
   }
 

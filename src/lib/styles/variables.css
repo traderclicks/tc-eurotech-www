@@ -37,6 +37,7 @@
   --text-secondary: var(--color-gray-600);
   --text-muted: var(--color-gray-500);
   --text-inverse: var(--color-white);
+  --text-heading: #33444b;
 
   /* Background Colors */
   --bg-primary: var(--color-white);

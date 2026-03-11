@@ -202,6 +202,7 @@
   .header-link {
     display: flex;
     align-items: center;
+    gap: var(--space-2);
     color: white;
     text-decoration: underline;
     text-decoration-color: rgba(255, 255, 255, 0.4);
