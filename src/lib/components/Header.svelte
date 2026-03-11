@@ -21,6 +21,10 @@
     modal.cognito();
   }
 
+  function openMessageModal() {
+    modal.cognito(site.cognitoMessageFormId, 'Send a Message');
+  }
+
   function toggleLocation() {
     isLocationOpen = !isLocationOpen;
   }
@@ -48,20 +52,21 @@
         <img src="/eurotech-main-logo.png" alt="Eurotech Auto Repair Centre" />
       </a>
 
-      <!-- Right side items -->
-      <div class="nav-right">
-        <!-- Location Button -->
+      <!-- Centre links -->
+      <div class="nav-center">
         <button class="header-link location-btn" on:click={toggleLocation}>
           {site.suburb}
         </button>
 
         <span class="separator">•</span>
 
-        <!-- Phone Link -->
         <a href="tel:{site.phoneTel}" class="header-link phone-link">
           <PhoneIcon size={14} /> {site.phone}
         </a>
       </div>
+
+      <!-- Spacer to balance logo width -->
+      <div class="nav-spacer"></div>
     </div>
   </nav>
 </header>
@@ -121,7 +126,7 @@
 
         <div class="modal-actions">
           <Button fullWidth on:click={() => { toggleLocation(); openContactModal(); }}>Get a Repair Quote</Button>
-          <Button variant="outline" fullWidth href="mailto:{site.email}">Send a Message</Button>
+          <Button variant="outline" fullWidth on:click={() => { toggleLocation(); openMessageModal(); }}>Send a Message</Button>
         </div>
 
       </div>
@@ -135,7 +140,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(8, 20, 26, 0.92);
+    background: rgba(8, 20, 26, 0.75);
     z-index: var(--z-sticky);
     transition: background var(--transition-base);
   }
@@ -158,13 +163,20 @@
   .nav {
     height: 90px;
     padding: 0;
+    transition: height var(--transition-base);
+  }
+
+  .header.scrolled .nav,
+  .header.no-hero .nav {
+    height: 75px;
   }
 
   .nav-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 100%;
-    padding-left: 0;
+    padding-left: 80px;
   }
 
   .logo {
@@ -178,19 +190,28 @@
   }
 
   .logo img {
-    height: 80px;
+    height: 105px;
     width: auto;
-    margin-top: calc(var(--space-2) / -2);
-    margin-bottom: calc(var(--space-2) / -2);
+    transition: height var(--transition-base);
+  }
+
+  .header.scrolled .logo img,
+  .header.no-hero .logo img {
+    height: 70px;
   }
 
 
-  .nav-right {
+  .nav-center {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    margin-left: 16rem;
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-spacer {
+    width: 1px;
   }
 
   .separator {
@@ -352,27 +373,21 @@
   }
 
   .modal-maps-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    width: 100%;
-    padding: var(--space-3) var(--space-8);
+    gap: var(--space-1);
     margin-bottom: var(--space-4);
-    background: #1a1a1a;
-    color: white;
-    text-decoration: none;
-    border-radius: var(--radius-full);
-    font-size: var(--text-base);
-    font-weight: var(--font-semibold);
-    transition: all var(--transition-base);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: none;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    transition: color var(--transition-fast);
   }
 
   .modal-maps-btn:hover {
-    background: #000000;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
   }
 
   .modal-maps-btn svg {
@@ -417,14 +432,42 @@
     height: 48px;
   }
 
-  /* Mobile Styles */
-  @media (max-width: 768px) {
+  /* Tablet Styles */
+  @media (max-width: 1024px) {
     .logo img {
-      height: 60px;
+      height: 75px;
     }
 
-    .nav-right {
+    .header.scrolled .logo img,
+    .header.no-hero .logo img {
+      height: 55px;
+    }
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .nav-center {
+      position: static;
+      transform: none;
+      margin-left: auto;
+    }
+
+    .location-btn,
+    .separator {
       display: none;
+    }
+
+    .nav-spacer {
+      display: none;
+    }
+
+    .logo img {
+      height: 55px;
+    }
+
+    .header.scrolled .logo img,
+    .header.no-hero .logo img {
+      height: 50px;
     }
   }
 

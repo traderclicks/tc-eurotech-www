@@ -131,13 +131,13 @@
   .page-header h1 {
     font-size: var(--text-4xl);
     font-weight: var(--font-bold);
-    color: var(--color-text);
+    color: var(--text-primary);
     margin-bottom: var(--space-4);
   }
 
   .page-header p {
     font-size: var(--text-lg);
-    color: var(--color-text-muted);
+    color: var(--text-muted);
   }
 
   .gallery-grid {
@@ -154,7 +154,7 @@
     cursor: pointer;
     border: none;
     padding: 0;
-    background: var(--color-bg-secondary);
+    background: var(--bg-secondary);
     transition: transform 0.2s ease;
   }
 

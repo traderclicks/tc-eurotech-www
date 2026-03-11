@@ -16,9 +16,9 @@
   }
 
   const heroImages = [
-    '/gallery/bmw/tyler_clemmensen-h5XcT5T0ST8-unsplash.jpg',
     '/images/DSC00619.jpg',
     '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg',
+    '/gallery/bmw/martinkatler-1ouLyK5oykg-unsplash.jpg',
     '/images/DSC00748.jpg',
     '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg',
     '/images/DSC00972.jpg',

@@ -49,7 +49,7 @@
   h1 {
     font-size: var(--text-4xl);
     font-weight: var(--font-bold);
-    color: var(--color-text);
+    color: var(--text-primary);
     margin-bottom: var(--space-4);
   }
 

@@ -134,13 +134,22 @@
     width: 56px;
   }
 
+  /* Tablet Styles */
+  @media (max-width: 1024px) {
+    .logo-bar-wrapper {
+      width: 90%;
+    }
+
+    .description-text {
+      font-size: var(--text-base);
+      gap: 1rem;
+    }
+  }
+
   /* Mobile Styles */
   @media (max-width: 768px) {
     .description-text {
-      font-size: var(--text-sm);
-      gap: 0.5rem;
-      line-height: 1.2;
-      margin: var(--space-4) 0 var(--space-2) 0;
+      display: none;
     }
 
     .logos-track {

@@ -137,7 +137,7 @@
   h2 {
     font-size: var(--text-2xl);
     font-weight: var(--font-bold);
-    color: var(--color-text);
+    color: var(--text-primary);
     margin-bottom: var(--space-4);
   }
 
@@ -167,7 +167,7 @@
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
     padding: var(--space-3) 0;
-    border-bottom: 1px solid var(--color-neutral-100);
+    border-bottom: 1px solid var(--color-gray-100);
     font-size: var(--text-lg);
   }
 

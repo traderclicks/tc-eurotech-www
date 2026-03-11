@@ -138,7 +138,7 @@
   h1 {
     font-size: var(--text-4xl);
     font-weight: var(--font-bold);
-    color: var(--color-text);
+    color: var(--text-primary);
     line-height: var(--leading-tight);
     margin-bottom: var(--space-8);
   }
@@ -152,7 +152,7 @@
   .post-body :global(h2) {
     font-size: var(--text-2xl);
     font-weight: var(--font-bold);
-    color: var(--color-text);
+    color: var(--text-primary);
     margin: var(--space-10) 0 var(--space-4);
   }
 
@@ -177,7 +177,7 @@
   }
 
   .tag {
-    background: var(--color-neutral-100);
+    background: var(--color-gray-100);
     color: var(--text-secondary);
     padding: var(--space-1) var(--space-3);
     font-size: var(--text-sm);
@@ -194,7 +194,7 @@
   }
 
   .back-link:hover {
-    color: var(--color-text);
+    color: var(--text-primary);
   }
 
   @media (max-width: 768px) {

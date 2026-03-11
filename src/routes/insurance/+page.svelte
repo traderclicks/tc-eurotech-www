@@ -76,7 +76,7 @@
       <div class="cta-buttons-wrapper">
         <div class="cta-buttons">
           <Button variant="primary" size="large" on:click={() => modal.cognito()}>Get a Repair Quote</Button>
-          <Button variant="link" size="large" on:click={() => modal.insurance()}>insurance contacts</Button>
+          <Button variant="link" size="large" on:click={() => modal.insurance()}>Insurance Contacts</Button>
         </div>
       </div>
     </div>
@@ -177,7 +177,7 @@
   h2 {
     font-size: var(--text-2xl);
     font-weight: var(--font-bold);
-    color: var(--color-text);
+    color: var(--text-primary);
     margin-bottom: var(--space-6);
   }
 

@@ -16,6 +16,7 @@ interface SiteConfig {
   facebookUrl: string;
   instagramUrl: string;
   cognitoFormId: string;
+  cognitoMessageFormId: string;
   cognitoDataKey: string;
   googleReviewRating: number;
   googleReviewCount: number;
