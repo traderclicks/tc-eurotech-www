@@ -59,15 +59,14 @@
     margin: 0 auto;
     background: transparent;
     border-radius: var(--radius-xl);
-    filter: drop-shadow(0 -12px 24px rgba(255, 255, 255, 0.2));
+    filter: drop-shadow(0 -12px 24px rgba(255, 255, 255, 0.14));
   }
 
   .logo-bar-container {
     width: 100%;
     padding: var(--space-4) 0 var(--space-5) 0;
-    background: rgba(20, 25, 30, 0.79);
+    background: #2a3038;
     border-radius: var(--radius-xl);
-    backdrop-filter: blur(120px);
   }
 
   .logo-bar-content {
@@ -77,11 +76,11 @@
 
   .description-text {
     color: #ffffff;
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     font-weight: bold;
     font-style: italic;
     text-align: center;
-    margin: var(--space-8) 0 0 0;
+    margin: var(--space-6) 0 var(--space-2) 0;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;

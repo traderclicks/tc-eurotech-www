@@ -77,7 +77,7 @@
 
     <!-- Secondary Navigation -->
     <div class="secondary-nav">
-      <div class="secondary-title">Our specialties</div>
+      <div class="secondary-title">Our services</div>
       <ul class="nav-list secondary-list">
         {#each secondaryItems as item}
           <li class="nav-item secondary-item">
@@ -119,7 +119,7 @@
     bottom: 0;
     width: 400px;
     max-width: 100vw;
-    background: #4b4b4b;
+    background: #2a2a2a;
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -160,7 +160,7 @@
   }
 
   .nav-item {
-    border-bottom: 1px solid #2a2520;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-item:last-child {
@@ -176,7 +176,7 @@
   .secondary-title {
     font-size: var(--text-xs);
     font-weight: var(--font-bold);
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.35);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     padding: var(--space-3) var(--space-6) var(--space-1);
