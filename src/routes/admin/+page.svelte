@@ -556,19 +556,19 @@
             <div class="logo-item">
               <span class="logo-label">Main Logo</span>
               <div class="logo-preview">
-                <img src="/images/logo.svg" alt="Main logo" />
+                <img src="/eurotech-main-logo.png" alt="Main logo" />
               </div>
             </div>
             <div class="logo-item">
               <span class="logo-label">Dark Version</span>
               <div class="logo-preview dark">
-                <img src="/images/logo-dark.svg" alt="Dark logo" />
+                <img src="/eurotech-main-logo.png" alt="Dark logo" />
               </div>
             </div>
             <div class="logo-item">
               <span class="logo-label">Light Version</span>
               <div class="logo-preview light">
-                <img src="/images/logo-light.svg" alt="Light logo" />
+                <img src="/eurotech-main-logo.png" alt="Light logo" />
               </div>
             </div>
           </div>

@@ -71,8 +71,8 @@
 
 <!-- Location Modal -->
 {#if isLocationOpen}
-  <div class="modal-overlay" on:click={toggleLocation} transition:fade={{ duration: 200 }}>
-    <div class="modal-content" on:click|stopPropagation transition:scale={{ duration: 200, start: 0.95 }}>
+  <div class="modal-overlay" on:click={toggleLocation} on:keydown={(e) => e.key === 'Escape' && toggleLocation()} role="dialog" aria-modal="true" aria-label="Location details" transition:fade={{ duration: 200 }}>
+    <div class="modal-content" on:click|stopPropagation on:keydown={() => {}} transition:scale={{ duration: 200, start: 0.95 }}>
       <button class="modal-close" on:click={toggleLocation} aria-label="Close">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -135,9 +135,9 @@
     top: 0;
     left: 0;
     right: 0;
-    background: #08141a;
+    background: rgba(8, 20, 26, 0.92);
     z-index: var(--z-sticky);
-    transition: all var(--transition-base);
+    transition: background var(--transition-base);
   }
 
   .header.scrolled {
@@ -145,7 +145,7 @@
     position: fixed;
   }
 
-  /* Black header for pages without hero */
+  /* Solid header for pages without hero */
   .header.no-hero {
     background: #08141a;
     position: sticky;
@@ -156,7 +156,7 @@
   }
 
   .nav {
-    height: 110px;
+    height: 90px;
     padding: 0;
   }
 
@@ -178,7 +178,7 @@
   }
 
   .logo img {
-    height: 99px;
+    height: 80px;
     width: auto;
     margin-top: calc(var(--space-2) / -2);
     margin-bottom: calc(var(--space-2) / -2);
@@ -208,12 +208,13 @@
     text-decoration-color: rgba(255, 255, 255, 0.4);
     text-decoration-thickness: 3px;
     text-underline-offset: 5px;
-    font-size: var(--text-base);
-    font-weight: normal;
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    letter-spacing: 1px;
     transition: opacity var(--transition-fast);
     padding: var(--space-2);
     border-radius: var(--radius-md);
-    opacity: 0.9;
+    opacity: 1;
   }
 
   .header-link:hover {

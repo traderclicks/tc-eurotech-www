@@ -2,6 +2,12 @@
   import { onMount } from 'svelte';
   import { site } from '$lib/config/site';
 
+  declare global {
+    interface Window {
+      Cognito?: { load: (mode: string, config: Record<string, unknown>, opts: Record<string, unknown>) => void };
+    }
+  }
+
   export let formId: string;
   export let dataKey = site.cognitoDataKey;
 

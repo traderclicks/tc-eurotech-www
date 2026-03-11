@@ -10,9 +10,7 @@
   }
 
   function openImageCreditsModal() {
-    modal.alert({
-      title: 'Image Credits',
-      message: `
+    modal.alert('Image Credits', `
         <h3 style="margin-top: 0;">Image Sources</h3>
         <p>Vehicle photography from:</p>
         <ul style="line-height: 1.8;">
@@ -20,8 +18,7 @@
           <li><strong>Eurotech Workshop:</strong> Original photography of our facility and work</li>
         </ul>
         <p style="margin-top: 1rem;">All images are used in accordance with their respective licenses.</p>
-      `
-    });
+      `);
   }
 </script>
 

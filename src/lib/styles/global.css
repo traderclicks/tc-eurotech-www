@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 var(--space-4) 0;
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
-  color: var(--text-heading);
+  color: var(--text-primary);
 }
 
 h1 {
@@ -223,6 +223,13 @@ select {
 /* Section Spacing */
 .section {
   padding: var(--space-16) 0;
+}
+
+.section h1,
+.section h2,
+.section h3,
+.section h4 {
+  color: var(--text-heading);
 }
 
 @media (min-width: 768px) {

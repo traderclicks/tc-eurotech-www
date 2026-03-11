@@ -9,12 +9,13 @@
   export let description: string = '';
   export let images: string[] = [];
   export let showLogoBar: boolean = true;
-  export let minHeight: number = 620; // Default height for service pages (35% less than 900px home hero)
+  export let minHeight: number = 760;
 
   let isVisible = false;
   let currentSlide = 0;
   let isTransitioning = true;
   let slideInterval: number | null = null;
+  let trackEl: HTMLDivElement;
 
   // Repeat images 10 times for longer slideshow before reset
   const heroBackgrounds = Array(10).fill(images).flat();
@@ -22,17 +23,16 @@
 
   // Calculate widths dynamically based on number of slides
   const totalSlidesWithDuplicate = totalSlides + 1;
-  const trackWidth = totalSlidesWithDuplicate * 100; // Total width percentage
-  const slideWidth = 100 / totalSlidesWithDuplicate; // Each slide width percentage
+  const trackWidth = totalSlidesWithDuplicate * 100;
+  const slideWidth = 100 / totalSlidesWithDuplicate;
 
   function nextSlide() {
     currentSlide++;
 
-    // If we've reached the end, reset to first after transition
     if (currentSlide === totalSlides) {
       setTimeout(() => {
         isTransitioning = false;
-        void (document.querySelector('.hero-slider-track') as HTMLElement)?.offsetHeight;
+        void trackEl?.offsetHeight;
         currentSlide = 0;
 
         requestAnimationFrame(() => {
@@ -46,7 +46,7 @@
     if (currentSlide === 0) {
       isTransitioning = false;
       currentSlide = totalSlides;
-      void (document.querySelector('.hero-slider-track') as HTMLElement)?.offsetHeight;
+      void trackEl?.offsetHeight;
 
       requestAnimationFrame(() => {
         isTransitioning = true;
@@ -70,7 +70,7 @@
 </script>
 
 <section class="hero" style="min-height: {minHeight}px">
-  <div class="hero-slider-track" style="width: {trackWidth}%; transform: translateX(-{currentSlide * slideWidth}%); transition: {isTransitioning ? 'transform 0.8s ease-in-out' : 'none'}">
+  <div class="hero-slider-track" bind:this={trackEl} style="width: {trackWidth}%; transform: translateX(-{currentSlide * slideWidth}%); transition: {isTransitioning ? 'transform 0.8s ease-in-out' : 'none'}">
     {#each [...heroBackgrounds, heroBackgrounds[0]] as bg, i}
       <div
         class="hero-background"
@@ -148,7 +148,7 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.55) 60%, rgba(0, 0, 0, 0.8) 100%);
     z-index: 1;
   }
 
