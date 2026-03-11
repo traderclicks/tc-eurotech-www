@@ -3,6 +3,7 @@
   import Modal from '$lib/components/Modal.svelte';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import { site } from '$lib/config/site';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
   import type { LayoutData } from './$types';
@@ -61,33 +62,32 @@
     ${JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Page One",
-      "alternateName": "Page One Solutions",
-      "url": "https://example.com",
-      "logo": "https://example.com/logo.png",
-      "description": "Premium solutions and services to help you achieve success",
-      "foundingDate": "2020",
+      "name": site.businessName,
+      "alternateName": "Eurotech Panel Beaters",
+      "url": "https://eurotechauto.co.nz",
+      "logo": "https://eurotechauto.co.nz/eurotech-logo.png",
+      "description": "Factory-authorized European vehicle specialists. NZ's only Jaguar/Land Rover structural repairer and accredited BMW Carbon Fibre Body Shop.",
+      "foundingDate": "2003",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "123 Main Street",
-        "addressLocality": "City",
-        "addressRegion": "State",
-        "postalCode": "12345",
-        "addressCountry": "US"
+        "streetAddress": site.address,
+        "addressLocality": site.suburb,
+        "addressRegion": site.city,
+        "postalCode": site.postcode,
+        "addressCountry": "NZ"
       },
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+1-555-0100",
+        "telephone": `+64-9-${site.phone.replace(/[()]/g, '').replace(/^09\s*/, '')}`,
         "contactType": "customer service",
-        "email": "contact@example.com",
-        "areaServed": "US",
+        "email": site.email,
+        "areaServed": "NZ",
         "availableLanguage": ["English"]
       },
       "sameAs": [
-        "https://www.facebook.com/pageone",
-        "https://twitter.com/pageone",
-        "https://www.linkedin.com/company/pageone",
-        "https://www.instagram.com/pageone"
+        site.facebookUrl,
+        site.instagramUrl,
+        site.googleMapsUrl
       ]
     })}
     </script>`}
@@ -96,16 +96,8 @@
     ${JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Page One",
-      "url": "https://example.com",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://example.com/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
+      "name": site.businessName,
+      "url": "https://eurotechauto.co.nz"
     })}
     </script>`}
   {/if}

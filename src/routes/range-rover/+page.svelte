@@ -5,7 +5,7 @@
   import { modal } from '$lib/stores/modal';
 
   function openContactModal() {
-    modal.form({ title: 'Get a Quote - Range Rover Service' });
+    modal.cognito();
   }
 
   const heroImages = [
@@ -59,10 +59,9 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">Excellence in Range Rover Repair</h2>
+      <h2 class="content-heading">Factory-Authorized Range Rover Repairs</h2>
       <p class="lead-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        As New Zealand's only factory-authorized Jaguar/Land Rover structural repairer, Eurotech is equipped to handle the full Range Rover family — from the Sport and Velar to the full-size Range Rover. Every repair meets the manufacturer's exact specifications.
       </p>
     </div>
 
@@ -72,15 +71,12 @@
         <img src="/gallery/range-rover/range-rover-1529438636731.jpg" alt="Range Rover repair specialist" />
       </div>
       <div class="content-text">
-        <h3>Precision Craftsmanship</h3>
+        <h3>Premium Materials, Premium Repair</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
+          Range Rovers are built with lightweight aluminium architectures that deliver performance and refinement — but they demand specialist repair methods. Incorrect techniques can compromise structural integrity and void your manufacturer's warranty.
         </p>
         <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-          eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          Our factory-trained technicians use approved tooling and repair procedures specific to each Range Rover model. Dedicated aluminium repair bays prevent cross-contamination, and every structural dimension is verified against manufacturer tolerances.
         </p>
       </div>
     </div>
@@ -88,14 +84,12 @@
     <!-- Reversed Layout -->
     <div class="content-grid reverse">
       <div class="content-text">
-        <h3>State-of-the-Art Equipment</h3>
+        <h3>Seamless Insurance Claims</h3>
         <p>
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          We work with all major New Zealand insurers and manage the entire claims process on your behalf — from the initial damage assessment through to final quality inspection and delivery.
         </p>
         <p>
-          Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-          voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+          All repairs are completed using genuine parts and the Glasurit 100 Line paint system for factory-accurate colour matching. Every Range Rover repair carries a written manufacturer guarantee, giving you complete confidence in the result.
         </p>
       </div>
       <div class="content-image">

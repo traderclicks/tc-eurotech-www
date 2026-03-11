@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import { fade, scale } from 'svelte/transition';
   import ContactForm from './ContactForm.svelte';
+  import CognitoForm from './CognitoForm.svelte';
 
   let modalElements: HTMLDivElement[] = [];
 
@@ -55,7 +56,7 @@
     aria-labelledby="modal-title-{modal.id}"
     tabindex="-1"
   >
-    <div class="modal-container" class:image-container={modal.type === 'image'} class:insurance-container={modal.type === 'insurance'} transition:scale={{ duration: 200, start: 0.95 }}>
+    <div class="modal-container" class:image-container={modal.type === 'image'} class:insurance-container={modal.type === 'insurance'} class:cognito-container={modal.type === 'cognito'} transition:scale={{ duration: 200, start: 0.95 }}>
       {#if modal.type !== 'image'}
         <div class="modal-header">
           {#if modal.title}
@@ -185,6 +186,8 @@
               </div>
             </div>
           </div>
+        {:else if modal.type === 'cognito'}
+          <CognitoForm formId={modal.content.formId} />
         {:else if modal.type === 'custom'}
           <!-- Slot for custom modal content -->
           <slot name="custom" {modal} />
@@ -209,6 +212,10 @@
     z-index: 10001;
     padding: var(--space-4);
     overflow-y: auto;
+  }
+
+  .modal-container.cognito-container {
+    max-width: 800px;
   }
 
   .modal-container {

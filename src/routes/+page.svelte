@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { fly, scale } from 'svelte/transition';
   import { modal } from '$lib/stores/modal';
+  import { site } from '$lib/config/site';
   import Meta from '$lib/components/Meta.svelte';
   import Button from '$lib/components/Button.svelte';
   import ContactForm from '$lib/components/ContactForm.svelte';
@@ -93,7 +94,7 @@
   });
 
   function openContactModal() {
-    modal.form({ title: 'Get a Quote' });
+    modal.cognito();
   }
 
   function openInsuranceModal() {
@@ -135,8 +136,8 @@
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
       </svg>`,
-      title: '4.7★ Google Rating',
-      description: '64+ reviews from satisfied customers averaging 4.7 stars'
+      title: `${site.googleReviewRating}★ Google Rating`,
+      description: `${site.googleReviewCount}+ reviews from satisfied customers averaging ${site.googleReviewRating} stars`
     },
     {
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -202,7 +203,7 @@
     },
     {
       question: 'Where are you located?',
-      answer: 'We are located in Mount Wellington, Auckland. Our facility is equipped with the latest technology for European vehicle repairs.'
+      answer: 'We are at 20 Sylvia Park Road, Mount Wellington, Auckland. We are open Monday to Friday, 7:30 AM to 5:00 PM.'
     },
     {
       question: 'How long have you been in business?',
@@ -212,7 +213,7 @@
 
   const stats = [
     { number: '20+', label: 'Years Experience' },
-    { number: '4.7★', label: 'Google Rating' },
+    { number: `${site.googleReviewRating}★`, label: 'Google Rating' },
     { number: '100%', label: 'Insurance Approved' },
     { number: '#1', label: 'JLR Authorized' }
   ];
@@ -223,12 +224,12 @@
     subtitle: '',
     description: 'NZ\'s only factory-authorized Jaguar/Land Rover repairer  •  Expert BMW & Mini repairs  •  Over 20 years experience',
     primaryCTA: {
-      text: 'Get a Quote',
+      text: 'Get a Repair Quote',
       action: openContactModal
     },
     secondaryCTA: {
-      text: 'Call (09) 573 1093',
-      href: 'tel:095731093'
+      text: `Call ${site.phone}`,
+      href: `tel:${site.phoneTel}`
     },
     trustIndicators: ['Factory Authorized', 'Insurance Approved', 'CRA Accredited']
   };
@@ -252,7 +253,7 @@
     {
       icon: '/range-rover-logo-white.svg',
       title: 'Range Rover',
-      description: 'Premium Range Rover repair and maintenance',
+      description: 'Premium Range Rover collision repair and refinishing',
       buttonHref: '/range-rover',
       backgroundImage: '/gallery/range-rover/range-rover-1725815761.jpg'
     },
@@ -266,7 +267,7 @@
     {
       icon: '/mini-white.svg',
       title: 'Mini',
-      description: 'Expert Mini servicing and collision repairs',
+      description: 'Expert Mini collision repairs and panel beating',
       buttonHref: '/mini',
       backgroundImage: '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg'
     },
@@ -281,8 +282,8 @@
 
   // Mock Google Reviews data
   const googleReviews = {
-    rating: 4.7,
-    totalReviews: 64,
+    rating: site.googleReviewRating,
+    totalReviews: site.googleReviewCount,
     reviews: [
       {
         author: 'Sarah M.',
@@ -317,27 +318,27 @@
 
   // Local Business Schema
   const businessSchema = generateLocalBusinessSchema({
-    name: 'Eurotech Auto Repair Centre',
+    name: site.businessName,
     description: 'European vehicle repair specialists. New Zealand\'s only factory-authorized Jaguar/Land Rover structural repairer.',
     address: {
-      street: 'Mount Wellington',
-      city: 'Auckland',
-      state: 'Auckland',
-      postalCode: '1060',
+      street: site.address,
+      city: `${site.suburb}, ${site.city}`,
+      state: site.city,
+      postalCode: site.postcode,
       country: 'NZ'
     },
-    phone: '(09) 573 1093',
-    email: 'info@eurotech.co.nz',
+    phone: site.phone,
+    email: site.email,
     hours: [
       {
         days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
+        opens: '07:30',
         closes: '17:00'
       }
     ],
     rating: {
-      value: 4.7,
-      count: 64
+      value: site.googleReviewRating,
+      count: site.googleReviewCount
     },
     geo: {
       latitude: -36.909,

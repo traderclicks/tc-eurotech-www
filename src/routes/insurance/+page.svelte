@@ -5,7 +5,7 @@
   import { modal } from '$lib/stores/modal';
 
   function openEstimateModal() {
-    modal.form({ title: 'Request an Estimate' });
+    modal.cognito();
   }
 
   const insuranceFaqs = [

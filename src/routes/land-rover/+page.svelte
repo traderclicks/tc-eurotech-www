@@ -5,7 +5,7 @@
   import { modal } from '$lib/stores/modal';
 
   function openContactModal() {
-    modal.form({ title: 'Get a Quote - Land Rover Service' });
+    modal.cognito();
   }
 
   const heroImages = [
@@ -58,10 +58,9 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">Excellence in Land Rover Repair</h2>
+      <h2 class="content-heading">New Zealand's Only Factory-Authorized Land Rover Repairer</h2>
       <p class="lead-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Eurotech holds full factory authorization from Land Rover for structural aluminium repairs — the only body shop in New Zealand with this certification. Your vehicle is repaired to the exact specifications set by the manufacturer, preserving its safety, warranty, and value.
       </p>
     </div>
 
@@ -71,15 +70,12 @@
         <img src="/gallery/land-rover/visionaryconcepts-jx4OyQHNhi0-unsplash.jpg" alt="Land Rover repair specialist" />
       </div>
       <div class="content-text">
-        <h3>Precision Craftsmanship</h3>
+        <h3>Built for Land Rover's Architecture</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
+          Land Rovers use a combination of aluminium monocoque and body-on-frame constructions depending on the model. Repairing these structures correctly requires specialist knowledge and equipment that most body shops simply don't have.
         </p>
         <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-          eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          Our technicians are factory-trained in Land Rover's specific repair procedures, using approved measuring systems and dedicated aluminium tooling. Every structural repair is verified against manufacturer tolerances before leaving our workshop.
         </p>
       </div>
     </div>
@@ -87,14 +83,12 @@
     <!-- Reversed Layout -->
     <div class="content-grid reverse">
       <div class="content-text">
-        <h3>State-of-the-Art Equipment</h3>
+        <h3>Insurance and Guarantee</h3>
         <p>
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          We work with all major New Zealand insurers and manage the claims process directly — from initial assessment through to final delivery. Our team handles the paperwork so you don't have to.
         </p>
         <p>
-          Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-          voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+          All Land Rover repairs carry a written manufacturer guarantee, and our Glasurit paint system ensures a finish that matches factory colour exactly. Over 20 years of specialising in European vehicles means we understand what it takes to get the result right.
         </p>
       </div>
       <div class="content-image">

@@ -1,12 +1,18 @@
 {
+  "businessName": "Eurotech Auto Repair Centre",
   "phone": "(09) 573 1093",
   "email": "info@eurotech.co.nz",
-  "address": "",
+  "address": "20 Sylvia Park Road",
   "suburb": "Mount Wellington",
   "city": "Auckland",
-  "postcode": "1060",
-  "openingHours": "Mon-Fri: 8:00 AM - 5:00 PM",
+  "postcode": "1642",
+  "country": "New Zealand",
+  "openingHours": "Mon-Fri: 7:30 AM - 5:00 PM",
   "googleMapsUrl": "https://g.page/eurotech-auto-repair",
   "facebookUrl": "https://www.facebook.com/eurotechauto",
-  "instagramUrl": "https://www.instagram.com/eurotechauto"
+  "instagramUrl": "https://www.instagram.com/eurotechauto",
+  "cognitoFormId": "66",
+  "cognitoDataKey": "Cu6GoNFwtkCZW7SbTlnEGw",
+  "googleReviewRating": 4.7,
+  "googleReviewCount": 47
 }

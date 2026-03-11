@@ -1,6 +1,7 @@
 import { writable, derived } from 'svelte/store';
+import { site } from '$lib/config/site';
 
-export type ModalType = 'form' | 'image' | 'video' | 'confirm' | 'alert' | 'custom' | 'insurance';
+export type ModalType = 'form' | 'image' | 'video' | 'confirm' | 'alert' | 'custom' | 'insurance' | 'cognito';
 
 interface Modal {
   id: string;
@@ -93,6 +94,14 @@ export const modal = {
     return modals.open({
       type: 'insurance',
       title: 'Insurance Contacts'
+    });
+  },
+
+  cognito: (formId?: string, title?: string) => {
+    return modals.open({
+      type: 'cognito',
+      title: title || 'Repair Quote Request Form',
+      content: { formId: formId || site.cognitoFormId }
     });
   }
 };

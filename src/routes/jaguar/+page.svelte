@@ -4,9 +4,10 @@
   import ReviewCarousel from '$lib/components/ReviewCarousel.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
   import { modal } from '$lib/stores/modal';
+  import { site } from '$lib/config/site';
 
   function openContactModal() {
-    modal.form({ title: 'Get a Quote - Jaguar Service' });
+    modal.cognito();
   }
 
   const heroImages = [
@@ -88,10 +89,9 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">Excellence in Jaguar Repair</h2>
+      <h2 class="content-heading">New Zealand's Only Factory-Authorized Jaguar Repairer</h2>
       <p class="lead-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Eurotech is the only body shop in New Zealand fully authorized by Jaguar to carry out structural aluminium repairs. That means every repair meets the exact specifications set by the manufacturer — protecting your vehicle's integrity, warranty, and resale value.
       </p>
     </div>
 
@@ -101,15 +101,12 @@
         <img src="/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg" alt="Jaguar repair specialist" />
       </div>
       <div class="content-text">
-        <h3>Precision Craftsmanship</h3>
+        <h3>Aluminium Structural Expertise</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
+          Modern Jaguars are built with advanced aluminium architectures that require specialist knowledge, tooling, and training to repair safely. Our technicians have completed Jaguar's own aluminium structural repair courses — training only available to authorized repairers.
         </p>
         <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-          eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          We use dedicated aluminium repair bays with climate-controlled environments to prevent contamination, along with Jaguar-approved measuring and pulling equipment to restore every dimension to factory specification.
         </p>
       </div>
     </div>
@@ -117,14 +114,12 @@
     <!-- Reversed Layout -->
     <div class="content-grid reverse">
       <div class="content-text">
-        <h3>State-of-the-Art Equipment</h3>
+        <h3>Factory-Grade Finish</h3>
         <p>
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          Our refinish team uses the Glasurit 100 Line paint system — the same premium system trusted by manufacturers worldwide. With digital colour matching and over 90 tinting bases, we achieve colour accuracy that's indistinguishable from factory.
         </p>
         <p>
-          Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-          voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+          Every Jaguar repair we complete carries a written manufacturer guarantee. We work directly with all major NZ insurers to manage your claim from assessment through to completion, so you can focus on getting back on the road.
         </p>
       </div>
       <div class="content-image">
@@ -144,7 +139,7 @@
         <span class="google-rating">
           <img src="/icons/google-wordmark-white.svg" alt="Google" class="google-logo-inline" />
           <span class="star filled">★</span>
-          4.7 (64 reviews)
+          {site.googleReviewRating} ({site.googleReviewCount} reviews)
         </span>
       </h2>
     </div>

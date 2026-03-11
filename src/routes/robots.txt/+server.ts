@@ -1,7 +1,7 @@
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ url }) => {
-  const siteUrl = process.env.PUBLIC_SITE_URL || 'https://example.com';
+  const siteUrl = process.env.PUBLIC_SITE_URL || 'https://eurotechauto.co.nz';
 
   const robotsTxt = `# Robots.txt for ${siteUrl}
 # Generated dynamically

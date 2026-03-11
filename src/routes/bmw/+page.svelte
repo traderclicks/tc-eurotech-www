@@ -5,7 +5,7 @@
   import { modal } from '$lib/stores/modal';
 
   function openContactModal() {
-    modal.form({ title: 'Get a Quote - BMW Service' });
+    modal.cognito();
   }
 
   const heroImages = [
@@ -55,10 +55,9 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">Excellence in BMW Repair</h2>
+      <h2 class="content-heading">Accredited BMW Group Body Shop</h2>
       <p class="lead-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Eurotech is an accredited BMW Group Body Shop and New Zealand's only accredited BMW Carbon Fibre Body Shop. We have the training, equipment, and authorization to repair BMW vehicles to the standard the manufacturer demands.
       </p>
     </div>
 
@@ -68,15 +67,12 @@
         <img src="/gallery/bmw/arteum-KiTalJFRkcg-unsplash.jpg" alt="BMW repair specialist" />
       </div>
       <div class="content-text">
-        <h3>Precision Craftsmanship</h3>
+        <h3>Carbon Fibre and Multi-Material Expertise</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
+          BMW's latest models use a mix of carbon fibre reinforced plastic (CFRP), aluminium, and high-strength steel. Repairing these multi-material structures requires specific training, dedicated tooling, and strict contamination controls that most body shops don't have.
         </p>
         <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-          eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          As New Zealand's only accredited BMW Carbon Fibre Body Shop, we're equipped to handle the full range of BMW structural and cosmetic repairs — from the carbon-intensive i-series to the latest 3, 5, and 7 Series models.
         </p>
       </div>
     </div>
@@ -84,14 +80,12 @@
     <!-- Reversed Layout -->
     <div class="content-grid reverse">
       <div class="content-text">
-        <h3>State-of-the-Art Equipment</h3>
+        <h3>Quality You Can Trust</h3>
         <p>
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          We use genuine BMW parts and the Glasurit 100 Line paint system to deliver a finish that's indistinguishable from factory. Every repair is backed by a written guarantee, and our I-CAR certified technicians follow BMW's prescribed repair methods to the letter.
         </p>
         <p>
-          Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-          voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+          We work with all major New Zealand insurers and handle the claims process from start to finish. With over 20 years of European vehicle specialisation, we understand what BMW owners expect — and we deliver it.
         </p>
       </div>
       <div class="content-image">

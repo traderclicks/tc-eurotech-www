@@ -2,7 +2,7 @@
   import { modal } from '$lib/stores/modal';
 
   function openContactModal() {
-    modal.form({ title: 'Get a Quote' });
+    modal.cognito();
   }
 
   function openInsuranceModal() {
@@ -12,7 +12,7 @@
 
 <div class="hero-actions">
   <button class="hero-book-btn" on:click={openContactModal}>
-    Get a Quote
+    Get a Repair Quote
   </button>
   <button class="hero-insurance-link" on:click={openInsuranceModal}>
     insurance contacts

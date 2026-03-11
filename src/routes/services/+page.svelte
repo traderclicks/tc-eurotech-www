@@ -4,6 +4,7 @@
   import ReviewCarousel from '$lib/components/ReviewCarousel.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
   import { modal } from '$lib/stores/modal';
+  import { site } from '$lib/config/site';
 
   // This is a template page - customize these props for each service
   export let data: {
@@ -26,7 +27,7 @@
   };
 
   function openContactModal() {
-    modal.form({ title: `Get a Quote - ${data.serviceName}` });
+    modal.cognito();
   }
 
   const heroConfig = {
@@ -35,12 +36,12 @@
     description: data.description,
     images: data.heroImages,
     primaryCTA: {
-      text: 'Get a Quote',
+      text: 'Get a Repair Quote',
       action: openContactModal
     },
     secondaryCTA: {
-      text: 'Call (09) 573 1093',
-      href: 'tel:095731093'
+      text: `Call ${site.phone}`,
+      href: `tel:${site.phoneTel}`
     },
     showLogoBar: true
   };
@@ -99,7 +100,7 @@
         <span class="google-rating">
           <img src="/icons/google.svg" alt="Google" class="google-logo-inline" />
           <span class="star filled">★</span>
-          4.7 (64 reviews)
+          {site.googleReviewRating} ({site.googleReviewCount} reviews)
         </span>
       </h2>
     </div>
@@ -126,8 +127,8 @@
       <h2 class="cta-title">Ready to Book Your {data.serviceName} Service?</h2>
       <p class="cta-text">Contact us today for expert {data.serviceName} repairs and maintenance.</p>
       <div class="cta-actions">
-        <button class="btn btn-primary" on:click={openContactModal}>Get a Quote</button>
-        <a href="tel:095731093" class="btn btn-secondary">Call (09) 573 1093</a>
+        <button class="btn btn-primary" on:click={openContactModal}>Get a Repair Quote</button>
+        <a href="tel:{site.phoneTel}" class="btn btn-secondary">Call {site.phone}</a>
       </div>
     </div>
   </div>

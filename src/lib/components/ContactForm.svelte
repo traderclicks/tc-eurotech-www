@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { modal } from '$lib/stores/modal';
+
   export let title = 'Contact Us';
 
   let name = '';
@@ -10,6 +12,10 @@
   function handleSubmit() {
     // TODO: wire to form submission service (Cognito Forms, Resend, etc.)
     submitted = true;
+  }
+
+  function openContactForm() {
+    modal.cognito();
   }
 </script>
 
@@ -43,6 +49,14 @@
 
       <button type="submit" class="submit-btn">Send</button>
     </form>
+
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <button class="cognito-btn" on:click={openContactForm}>
+      Fill in our detailed contact form
+    </button>
   {/if}
 </div>
 
@@ -101,6 +115,41 @@
 
   .submit-btn:hover {
     background: var(--color-primary-dark);
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+    color: var(--text-tertiary);
+    font-size: var(--text-sm);
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-neutral-200);
+  }
+
+  .cognito-btn {
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .cognito-btn:hover {
+    background: var(--color-primary);
+    color: white;
   }
 
   .success {

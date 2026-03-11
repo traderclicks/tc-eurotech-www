@@ -1,4 +1,9 @@
 {
+  "businessName": {
+    "label": "Business Name",
+    "type": "text",
+    "placeholder": "Eurotech Auto Repair Centre"
+  },
   "phone": {
     "label": "Phone Number",
     "type": "text",
@@ -12,7 +17,7 @@
   "address": {
     "label": "Street Address",
     "type": "text",
-    "placeholder": "123 Example Street"
+    "placeholder": "20 Sylvia Park Road"
   },
   "suburb": {
     "label": "Suburb",
@@ -27,12 +32,17 @@
   "postcode": {
     "label": "Postcode",
     "type": "text",
-    "placeholder": "1060"
+    "placeholder": "1642"
+  },
+  "country": {
+    "label": "Country",
+    "type": "text",
+    "placeholder": "New Zealand"
   },
   "openingHours": {
     "label": "Opening Hours",
     "type": "textarea",
-    "placeholder": "Mon-Fri: 8:00 AM - 5:00 PM"
+    "placeholder": "Mon-Fri: 7:30 AM - 5:00 PM"
   },
   "googleMapsUrl": {
     "label": "Google Maps URL",
@@ -48,5 +58,25 @@
     "label": "Instagram URL",
     "type": "text",
     "placeholder": "https://instagram.com/..."
+  },
+  "cognitoFormId": {
+    "label": "Cognito Form ID",
+    "type": "text",
+    "placeholder": "66"
+  },
+  "cognitoDataKey": {
+    "label": "Cognito Data Key",
+    "type": "text",
+    "placeholder": "Cu6GoNFwtkCZW7SbTlnEGw"
+  },
+  "googleReviewRating": {
+    "label": "Google Review Rating",
+    "type": "number",
+    "placeholder": "4.7"
+  },
+  "googleReviewCount": {
+    "label": "Google Review Count",
+    "type": "number",
+    "placeholder": "47"
   }
 }

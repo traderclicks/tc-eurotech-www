@@ -1,6 +1,7 @@
 /**
  * Structured Data Utilities for SEO
  */
+import { site } from '$lib/config/site';
 
 export interface FAQItem {
   question: string;
@@ -42,14 +43,14 @@ export function generateFAQSchema(faqs: FAQItem[]) {
 /**
  * Generate Service Schema markup
  */
-export function generateServiceSchema(services: Service[], providerName = 'Page One') {
+export function generateServiceSchema(services: Service[], providerName?: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: 'Professional Services',
     provider: {
       '@type': 'Organization',
-      name: providerName,
+      name: providerName || site.businessName,
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -218,10 +219,10 @@ export function generateArticleSchema(article: {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Page One',
+      name: site.businessName,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://example.com/logo.png',
+        url: 'https://eurotechauto.co.nz/eurotech-logo.png',
       },
     },
   };

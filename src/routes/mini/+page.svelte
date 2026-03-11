@@ -5,7 +5,7 @@
   import { modal } from '$lib/stores/modal';
 
   function openContactModal() {
-    modal.form({ title: 'Get a Quote - Mini Service' });
+    modal.cognito();
   }
 
   const heroImages = [
@@ -55,10 +55,9 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">Excellence in Mini Repair</h2>
+      <h2 class="content-heading">European Vehicle Specialists for Mini</h2>
       <p class="lead-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Mini is part of the BMW Group, and modern Minis share the same engineering standards and advanced materials as their larger siblings. At Eurotech, we bring our BMW Group accreditation and 20+ years of European vehicle expertise to every Mini repair.
       </p>
     </div>
 
@@ -68,15 +67,12 @@
         <img src="/gallery/mini/huntleytography-0jdnuETGLRg-unsplash.jpg" alt="Mini Cooper repair specialist" />
       </div>
       <div class="content-text">
-        <h3>Precision Craftsmanship</h3>
+        <h3>Repair Done Right</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
+          Whether it's a Hatchback, Countryman, Clubman, or Convertible, we follow the manufacturer's prescribed repair procedures for every Mini model. Our technicians are trained in the specific techniques required for Mini's construction methods.
         </p>
         <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-          eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          We use genuine parts and the Glasurit 100 Line paint system to ensure colour accuracy and a factory-quality finish. Every repair is backed by a written guarantee.
         </p>
       </div>
     </div>
@@ -84,14 +80,12 @@
     <!-- Reversed Layout -->
     <div class="content-grid reverse">
       <div class="content-text">
-        <h3>State-of-the-Art Equipment</h3>
+        <h3>Full Insurance Support</h3>
         <p>
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          We work with all major New Zealand insurance companies and handle the entire claims process on your behalf — from initial assessment and quoting through to final inspection and delivery.
         </p>
         <p>
-          Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-          voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+          Our experience with European vehicles means we know how to work within insurer requirements while maintaining the repair quality your Mini deserves. No shortcuts, no compromises.
         </p>
       </div>
       <div class="content-image">

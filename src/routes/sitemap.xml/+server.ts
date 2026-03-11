@@ -1,47 +1,50 @@
 import type { RequestHandler } from './$types';
 
-const site = 'https://example.com'; // Update this with your actual domain
+const site = 'https://eurotechauto.co.nz';
 
-// Static pages - update these with your actual routes
 const staticPages = [
-  '', // Homepage
+  '',
   '/about',
-  '/services',
-  '/services/category-a',
-  '/services/category-b',
-  '/services/category-c',
-  '/portfolio',
-  '/testimonials',
-  '/contact',
+  '/jaguar',
+  '/land-rover',
+  '/range-rover',
+  '/bmw',
+  '/mini',
+  '/insurance',
+  '/blog',
+  '/gallery',
   '/privacy',
   '/terms',
-  '/theme', // Optional - remove in production
 ];
 
-// Priority mapping
 const priorityMap: Record<string, number> = {
   '': 1.0,
-  '/services': 0.9,
+  '/jaguar': 0.9,
+  '/land-rover': 0.9,
+  '/range-rover': 0.9,
+  '/bmw': 0.9,
+  '/mini': 0.8,
   '/about': 0.8,
-  '/portfolio': 0.8,
-  '/contact': 0.7,
-  '/testimonials': 0.6,
+  '/insurance': 0.8,
+  '/blog': 0.7,
+  '/gallery': 0.7,
   '/privacy': 0.3,
   '/terms': 0.3,
-  '/theme': 0.1,
 };
 
-// Change frequency mapping
 const changeFreqMap: Record<string, string> = {
   '': 'daily',
-  '/services': 'weekly',
+  '/jaguar': 'monthly',
+  '/land-rover': 'monthly',
+  '/range-rover': 'monthly',
+  '/bmw': 'monthly',
+  '/mini': 'monthly',
   '/about': 'monthly',
-  '/portfolio': 'weekly',
-  '/contact': 'monthly',
-  '/testimonials': 'weekly',
+  '/insurance': 'monthly',
+  '/blog': 'weekly',
+  '/gallery': 'weekly',
   '/privacy': 'yearly',
   '/terms': 'yearly',
-  '/theme': 'monthly',
 };
 
 export const GET: RequestHandler = async ({ url }) => {
