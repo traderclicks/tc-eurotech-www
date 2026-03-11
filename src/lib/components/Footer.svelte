@@ -123,18 +123,6 @@
           Get a Repair Quote
         </button>
 
-        <!-- Social Links -->
-        <div class="social-links">
-          <a href={site.facebookUrl} aria-label="Facebook" class="social-icon-link">
-            <img src="/icons/facebook.svg" alt="Facebook" width="35" height="35" />
-          </a>
-          <a href={site.instagramUrl} aria-label="Instagram" class="social-icon-link">
-            <img src="/icons/instagram.svg" alt="Instagram" width="35" height="35" />
-          </a>
-          <a href={site.googleMapsUrl} aria-label="Google Business" class="social-icon-link">
-            <img src="/icons/google.svg" alt="Google" width="35" height="35" />
-          </a>
-        </div>
       </div>
     </div>
 
