@@ -4,6 +4,7 @@
   import { fade, scale } from 'svelte/transition';
   import ContactForm from './ContactForm.svelte';
   import CognitoForm from './CognitoForm.svelte';
+  import PhoneIcon from './PhoneIcon.svelte';
 
   let modalElements: HTMLDivElement[] = [];
 
@@ -157,32 +158,39 @@
           <div class="insurance-modal">
             <div class="insurance-list">
               <div class="insurance-item">
+                <div class="insurer-avatar" style="background-image: url('/images/insurers/aa-insurance.png')"></div>
                 <div class="insurance-name">AA Insurance</div>
-                <a href="tel:0800222022" class="insurance-phone">0800 222 022</a>
+                <a href="tel:0800222022" class="insurance-phone"><PhoneIcon size={16} /> 0800 222 022</a>
               </div>
               <div class="insurance-item">
+                <div class="insurer-avatar" style="background-image: url('/images/insurers/state-logo.png')"></div>
                 <div class="insurance-name">State Insurance</div>
-                <a href="tel:0800808808" class="insurance-phone">0800 808 808</a>
+                <a href="tel:0800808808" class="insurance-phone"><PhoneIcon size={16} /> 0800 808 808</a>
               </div>
               <div class="insurance-item">
+                <div class="insurer-avatar" style="background-image: url('/images/insurers/ami.png')"></div>
                 <div class="insurance-name">AMI Insurance</div>
-                <a href="tel:0800100200" class="insurance-phone">0800 100 200</a>
+                <a href="tel:0800100200" class="insurance-phone"><PhoneIcon size={16} /> 0800 100 200</a>
               </div>
               <div class="insurance-item">
+                <div class="insurer-avatar" style="background-image: url('/images/insurers/navigation_tower_logo.png')"></div>
                 <div class="insurance-name">Tower Insurance</div>
-                <a href="tel:0800808808" class="insurance-phone">0800 808 808</a>
+                <a href="tel:0800808808" class="insurance-phone"><PhoneIcon size={16} /> 0800 808 808</a>
               </div>
               <div class="insurance-item">
+                <div class="insurer-avatar" style="background-image: url('/images/insurers/logo-vero.gif')"></div>
                 <div class="insurance-name">Vero Insurance</div>
-                <a href="tel:0800800100" class="insurance-phone">0800 800 100</a>
+                <a href="tel:0800800100" class="insurance-phone"><PhoneIcon size={16} /> 0800 800 100</a>
               </div>
               <div class="insurance-item">
+                <div class="insurer-avatar" style="background-image: url('/images/insurers/nzi.png')"></div>
                 <div class="insurance-name">NZI Insurance</div>
-                <a href="tel:0800100080" class="insurance-phone">0800 100 080</a>
+                <a href="tel:0800100080" class="insurance-phone"><PhoneIcon size={16} /> 0800 100 080</a>
               </div>
               <div class="insurance-item">
+                <div class="insurer-avatar" style="background-image: url('/images/insurers/IAGLogo_0.gif')"></div>
                 <div class="insurance-name">IAG (NZI/State/AMI/Lumley)</div>
-                <a href="tel:0800104104" class="insurance-phone">0800 104 104</a>
+                <a href="tel:0800104104" class="insurance-phone"><PhoneIcon size={16} /> 0800 104 104</a>
               </div>
             </div>
           </div>
@@ -239,8 +247,8 @@
   }
 
   .modal-container.insurance-container {
-    max-width: 450px;
-    background: #f5f5f5;
+    max-width: 520px;
+    background: var(--bg-content);
   }
 
   .modal-header {
@@ -372,37 +380,61 @@
 
   /* Insurance Modal Styles */
   .insurance-modal {
-    padding: var(--space-6);
+    padding: var(--space-6) var(--space-2);
   }
 
   .insurance-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: 0;
   }
 
   .insurance-item {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .insurance-item:last-child {
+    border-bottom: none;
+  }
+
+  .insurer-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    flex-shrink: 0;
   }
 
   .insurance-name {
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
     color: var(--text-primary);
+    flex: 1;
   }
 
   .insurance-phone {
-    font-size: var(--text-xl);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-base);
     color: var(--color-primary);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
     transition: color var(--transition-fast);
   }
 
   .insurance-phone:hover {
     color: var(--color-primary-dark);
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   /* Button Styles */

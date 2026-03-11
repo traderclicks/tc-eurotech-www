@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let variant: 'primary' | 'secondary' | 'outline' | 'ghost' = 'primary';
+  export let variant: 'primary' | 'hero' | 'light' | 'link' | 'secondary' | 'outline' | 'ghost' = 'primary';
   export let size: 'small' | 'medium' | 'large' = 'medium';
   export let type: 'button' | 'submit' | 'reset' = 'button';
   export let href: string | undefined = undefined;
@@ -15,6 +15,7 @@
     class="btn btn--{variant} btn--{size}"
     class:btn--full={fullWidth}
     class:btn--loading={loading}
+    on:click
   >
     {#if loading}
       <span class="btn-spinner"></span>
@@ -54,10 +55,10 @@
     justify-content: center;
     gap: var(--space-2);
     font-family: inherit;
-    font-weight: var(--font-medium);
+    font-weight: var(--font-semibold);
     text-decoration: none;
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: all var(--transition-fast);
     position: relative;
@@ -76,36 +77,91 @@
 
   /* Sizes */
   .btn--small {
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-2) var(--space-4);
     font-size: var(--text-sm);
   }
 
   .btn--medium {
-    padding: var(--space-3) var(--space-5);
+    padding: var(--space-3) var(--space-8);
     font-size: var(--text-base);
   }
 
   .btn--large {
-    padding: var(--space-4) var(--space-6);
+    padding: var(--space-4) var(--space-10);
     font-size: var(--text-lg);
   }
 
-  /* Variants */
+  /* === Primary: black pill === */
   .btn--primary {
-    background: var(--color-primary);
+    background: #1a1a1a;
     color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .btn--primary:hover:not(:disabled) {
-    background: var(--color-primary-dark);
+    background: #000000;
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .btn--primary:active:not(:disabled) {
     transform: translateY(0);
   }
 
+  /* === Hero: compact white pill for hero sections === */
+  .btn--hero {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: var(--space-3) var(--space-8);
+    font-size: var(--text-lg);
+  }
+
+  .btn--hero:hover:not(:disabled) {
+    background: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn--hero:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  /* === Light: white pill (for dark backgrounds) === */
+  .btn--light {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn--light:hover:not(:disabled) {
+    background: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn--light:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  /* === Link: plain text with underline === */
+  .btn--link {
+    background: none;
+    color: currentColor;
+    font-weight: var(--font-bold);
+    border-bottom: 1px solid currentColor;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .btn--link:hover:not(:disabled) {
+    opacity: 0.7;
+  }
+
+  /* === Legacy variants (backward compat) === */
   .btn--secondary {
     background: var(--color-secondary);
     color: white;
@@ -114,7 +170,7 @@
   .btn--secondary:hover:not(:disabled) {
     background: var(--color-secondary-dark);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .btn--outline {
@@ -174,8 +230,13 @@
 
   /* Mobile touch target */
   @media (max-width: 640px) {
-    .btn {
+    .btn:not(.btn--link) {
       min-height: 44px;
+    }
+
+    .btn--medium {
+      padding: var(--space-2) var(--space-6);
+      font-size: var(--text-sm);
     }
   }
 </style>

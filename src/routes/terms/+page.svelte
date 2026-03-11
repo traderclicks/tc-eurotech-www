@@ -8,12 +8,16 @@
   description="Terms and conditions for using the Eurotech Auto Repair Centre website and services."
 />
 
-<div class="page">
+<div class="page-header">
   <div class="container">
     <h1>Terms & Conditions</h1>
+    <p class="updated">Last updated: March 2026</p>
+  </div>
+</div>
 
+<div class="page">
+  <div class="container">
     <div class="content">
-      <p class="updated">Last updated: March 2026</p>
 
       <section>
         <h2>About This Website</h2>
@@ -84,20 +88,21 @@
 </div>
 
 <style>
+  .page-header {
+    background: var(--bg-content);
+    padding: var(--space-16) 0;
+  }
+
   .page {
+    padding: var(--space-16) 0;
     min-height: 60vh;
   }
 
-  .page .container {
-    padding-top: var(--space-16);
-    padding-bottom: var(--space-16);
-  }
-
   h1 {
-    font-size: var(--text-4xl);
-    font-weight: var(--font-bold);
-    margin-bottom: var(--space-8);
-    color: var(--color-text);
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: var(--font-extrabold);
+    line-height: 1.1;
+    color: rgba(0, 30, 80, 0.55);
     text-align: center;
   }
 
@@ -110,7 +115,7 @@
     text-align: center;
     color: var(--text-tertiary);
     font-size: var(--text-sm);
-    margin-bottom: var(--space-10);
+    margin-bottom: 0;
   }
 
   section {
@@ -141,13 +146,12 @@
   }
 
   @media (max-width: 768px) {
-    .page .container {
-      padding-top: var(--space-8);
-      padding-bottom: var(--space-12);
+    .page {
+      padding: var(--space-8) 0;
     }
 
     h1 {
-      font-size: var(--text-3xl);
+      font-size: clamp(2rem, 6vw, 3rem);
     }
 
     p {

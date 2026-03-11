@@ -26,7 +26,7 @@
       <p class="blog-excerpt">{excerpt}</p>
     {/if}
 
-    <span class="blog-link">Learn More</span>
+    <span class="blog-link">Read more →</span>
   </div>
 </a>
 
@@ -88,7 +88,7 @@
 
   .blog-date {
     display: block;
-    color: var(--text-tertiary);
+    color: var(--color-gray-400);
     font-size: var(--text-sm);
     margin-bottom: var(--space-3);
   }
@@ -116,7 +116,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    color: var(--text-primary);
+    color: var(--color-primary);
     font-weight: var(--font-medium);
     font-size: var(--text-sm);
   }

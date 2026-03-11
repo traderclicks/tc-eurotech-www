@@ -1,18 +1,21 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
+  import { createEventDispatcher } from 'svelte';
 
   export let isOpen = false;
+
+  const dispatch = createEventDispatcher();
 
   const primaryItems = [
     { label: 'Home', href: '/' },
     { label: 'About Us', href: '/about' },
     { label: 'Blog', href: '/blog' },
     { label: 'Insurance Claims', href: '/insurance' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Contact Us', href: '#contact', action: 'contact' },
   ];
 
   const secondaryItems = [
-    { label: 'Jaguar Repair', href: '/jaguar', logo: '/jaguar-logo-white.svg', logoHeight: 10 },
+    { label: 'Jaguar Repair', href: '/jaguar', logo: '/jaguar-logo-white.svg', logoHeight: 7 },
     { label: 'Land Rover Repair', href: '/land-rover', logo: '/landrover-logo-white.svg', logoHeight: 20 },
     { label: 'Range Rover Repair', href: '/range-rover', logo: '/range-rover-logo-white.svg', logoHeight: 14 },
     { label: 'BMW Repair', href: '/bmw', logo: '/bmw-logo-white.svg', logoHeight: 28 },
@@ -23,7 +26,13 @@
     isOpen = false;
   }
 
-  function handleNavClick() {
+  function handleNavClick(e: Event, item: typeof primaryItems[0]) {
+    if (item.action) {
+      e.preventDefault();
+      closeMenu();
+      dispatch(item.action);
+      return;
+    }
     closeMenu();
   }
 </script>
@@ -58,7 +67,7 @@
           <a
             href={item.href}
             class="nav-link"
-            on:click={handleNavClick}
+            on:click={(e) => handleNavClick(e, item)}
           >
             {item.label}
           </a>
@@ -151,26 +160,30 @@
   }
 
   .nav-item {
-    border-bottom: 1px solid #3A352F;
+    border-bottom: 1px solid #2a2520;
+  }
+
+  .nav-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
   }
 
   .secondary-nav {
-    margin-top: var(--space-6);
+    margin-top: var(--space-2);
     background: rgba(0, 0, 0, 0.15);
-    border-top: 1px solid #3A352F;
-    border-bottom: 1px solid #3A352F;
   }
 
   .secondary-title {
     font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.5);
+    font-weight: var(--font-bold);
+    color: rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    padding: var(--space-4) var(--space-6) var(--space-2);
+    padding: var(--space-3) var(--space-6) var(--space-1);
   }
 
   .secondary-list {
-    padding: 0;
+    padding: 0 0 var(--space-4) 0;
   }
 
   .secondary-item {
@@ -183,10 +196,10 @@
     justify-content: space-between;
     width: 100%;
     padding: var(--space-4) var(--space-6);
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-size: var(--text-lg);
-    font-weight: var(--font-regular);
+    font-weight: var(--font-medium);
     background: none;
     border: none;
     cursor: pointer;
@@ -207,7 +220,7 @@
 
   .nav-logo {
     width: auto;
-    opacity: 0.5;
+    opacity: 0.65;
   }
 
   /* Mobile Styles */

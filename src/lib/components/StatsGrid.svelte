@@ -64,7 +64,7 @@
 
   .logo-bar-container {
     width: 100%;
-    padding: var(--space-6) var(--space-6) var(--space-4) var(--space-6);
+    padding: var(--space-4) 0 var(--space-5) 0;
     background: rgba(20, 25, 30, 0.79);
     border-radius: var(--radius-xl);
     backdrop-filter: blur(120px);
@@ -81,7 +81,7 @@
     font-weight: bold;
     font-style: italic;
     text-align: center;
-    margin: var(--space-6) 0 var(--space-2) 0;
+    margin: var(--space-8) 0 0 0;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;

@@ -148,7 +148,7 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.55) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.6) 100%);
     z-index: 1;
   }
 
@@ -181,7 +181,7 @@
     left: 0;
     right: 0;
     height: 60px;
-    background: #f5f5f5;
+    background: var(--bg-content);
     z-index: 2;
   }
 

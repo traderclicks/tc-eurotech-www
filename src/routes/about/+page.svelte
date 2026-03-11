@@ -1,6 +1,7 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import ServiceHero from '$lib/components/ServiceHero.svelte';
+  import CloudflareImage from '$lib/components/CloudflareImage.svelte';
 
   const heroImages = [
     '/images/DSC00931.jpg',
@@ -22,56 +23,68 @@
 />
 
 <div class="page">
-  <div class="container">
-
-    <div class="content">
-      <section class="intro">
-        <p class="lead">For over 20 years, Eurotech Auto Repair Centre has been one of Auckland's leading panel and paint workshops — specialising exclusively in European vehicles.</p>
+  <!-- Section 1: Intro — text left, image right -->
+  <section class="split-section alt">
+    <div class="container split">
+      <div class="split-text">
+        <h2>20+ Years of European Expertise</h2>
+        <p class="lead">Eurotech Auto Repair Centre has been one of Auckland's leading panel and paint workshops — specialising exclusively in European vehicles.</p>
         <p>Based in Mount Wellington, we combine factory-authorized repair methods with the latest equipment and technology to deliver results that meet manufacturer specifications every time.</p>
-      </section>
+      </div>
+      <div class="split-image">
+        <CloudflareImage src="/images/DSC00931.jpg" alt="Eurotech Auto Repair Centre building" width={800} height={534} />
+      </div>
+    </div>
+  </section>
 
-      <section>
-        <h2>Ownership</h2>
-        <p>Eurotech is jointly owned by Trevor and Louise Foreman and Marino Milich. Between them, they bring decades of hands-on experience in panel beating and spray painting, along with a shared commitment to quality and customer service.</p>
-      </section>
-
-      <section>
+  <!-- Section 2: Certifications — image left, text right -->
+  <section class="split-section">
+    <div class="container split reverse">
+      <div class="split-text">
         <h2>Factory Authorizations</h2>
         <p>We hold certifications that set us apart from general body shops:</p>
         <ul>
-          <li><strong>New Zealand's only fully factory-authorized structural repairer for Jaguar and Land Rover</strong> — certified to carry out aluminium structural repairs to manufacturer specifications</li>
-          <li><strong>New Zealand's only accredited BMW Carbon Fibre Body Shop</strong> — one of very few facilities equipped and trained for carbon fibre repair</li>
-          <li><strong>Accredited BMW Group Body Shop</strong> — meeting BMW's standards for panel and paint repairs</li>
+          <li><strong>NZ's only factory-authorized Jaguar/Land Rover structural repairer</strong> — certified for aluminium structural repairs</li>
+          <li><strong>NZ's only accredited BMW Carbon Fibre Body Shop</strong></li>
+          <li><strong>Accredited BMW Group Body Shop</strong></li>
           <li><strong>Recommended repairer for Renault</strong></li>
-          <li><strong>CRA quality assurance accreditation</strong> — Collision Repair Association certified</li>
-          <li><strong>MTA member</strong> — Motor Trade Association</li>
+          <li><strong>CRA quality assurance</strong> and <strong>MTA member</strong></li>
         </ul>
-      </section>
-
-      <section>
-        <h2>Our Team</h2>
-        <p>Our technicians are factory-trained specialists, not generalists. The team includes I-CAR certified welders and technicians who have completed Jaguar aluminium structural repair courses — training that's only available to authorized repairers.</p>
-        <p>Our refinish staff are trained in Glasurit automotive paint systems, the same premium products used by manufacturers. This ensures colour accuracy and a finish that's indistinguishable from factory.</p>
-      </section>
-
-      <section>
-        <h2>How We Work</h2>
-        <p>Every repair we carry out meets three standards:</p>
-        <ul>
-          <li><strong>Manufacturer specifications</strong> — we follow the exact repair methods prescribed by the vehicle maker</li>
-          <li><strong>Insurer requirements</strong> — we work with all major NZ insurers and manage the claims process directly</li>
-          <li><strong>Written guarantees</strong> — all repairs carry a written manufacturer guarantee</li>
-        </ul>
-        <p>We use the latest equipment for measuring, pulling, welding, and finishing — including specialist aluminium and carbon fibre tooling that most body shops simply don't have.</p>
-      </section>
-
-      <section>
-        <h2>Why It Matters</h2>
-        <p>Modern European vehicles use advanced materials — high-strength steel, aluminium, carbon fibre — bonded and riveted in ways that require specific knowledge and equipment to repair safely. A repair done to the wrong specification can compromise the vehicle's structural integrity, void its warranty, and reduce its value.</p>
-        <p>That's why factory authorization exists, and it's why choosing the right repairer matters.</p>
-      </section>
+      </div>
+      <div class="split-image">
+        <CloudflareImage src="/images/DSC00720.jpg" alt="Technician working on Range Rover in aluminium repair bay" width={800} height={534} />
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Section 3: Team — text left, image right -->
+  <section class="split-section alt">
+    <div class="container split">
+      <div class="split-text">
+        <h2>Our Team</h2>
+        <p>Our technicians are factory-trained specialists, not generalists. The team includes I-CAR certified welders and technicians who have completed Jaguar aluminium structural repair courses — training only available to authorized repairers.</p>
+        <p>Our refinish staff are trained in Glasurit automotive paint systems, the same premium products used by manufacturers. This ensures colour accuracy and a finish indistinguishable from factory.</p>
+      </div>
+      <div class="split-image">
+        <CloudflareImage src="/images/DSC00625.jpg" alt="Spray painter applying paint in booth" width={800} height={534} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Why it matters — image left, text right -->
+  <section class="split-section">
+    <div class="container split reverse">
+      <div class="split-text">
+        <h2>Why It Matters</h2>
+        <p>Modern European vehicles use advanced materials — high-strength steel, aluminium, carbon fibre — bonded and riveted in ways that require specific knowledge and equipment to repair safely.</p>
+        <p>A repair done to the wrong specification can compromise structural integrity, void the warranty, and reduce the vehicle's value. That's why factory authorization exists, and why choosing the right repairer matters.</p>
+        <p>Every repair we carry out follows manufacturer specifications, meets insurer requirements, and carries a written guarantee.</p>
+      </div>
+      <div class="split-image">
+        <CloudflareImage src="/images/DSC00651.jpg" alt="Glasurit automotive paint mixing system" width={800} height={534} />
+      </div>
+    </div>
+  </section>
 </div>
 
 <style>
@@ -79,52 +92,53 @@
     min-height: 60vh;
   }
 
-  .page .container {
-    padding-top: var(--space-16);
-    padding-bottom: var(--space-16);
+  .split-section {
+    padding: var(--space-20, 5rem) 0;
   }
 
-  .content {
-    max-width: 740px;
-    margin: 0 auto;
+  .split-section.alt {
+    background: var(--bg-content);
   }
 
-  .intro {
-    margin-bottom: var(--space-10);
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
   }
 
-  .lead {
+  .split.reverse .split-image {
+    order: -1;
+  }
+
+  .split-text h2 {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+  }
+
+  .split-text .lead {
     font-size: var(--text-xl);
     line-height: var(--leading-relaxed);
     color: var(--color-text);
     margin-bottom: var(--space-4);
   }
 
-  section {
-    margin-bottom: var(--space-10);
-  }
-
-  h2 {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    color: var(--color-text);
-    margin-bottom: var(--space-4);
-  }
-
-  p {
+  .split-text p {
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
     margin-bottom: var(--space-4);
     font-size: var(--text-lg);
   }
 
-  ul {
+  .split-text ul {
     list-style: none;
     padding: 0;
     margin: var(--space-4) 0;
   }
 
-  li {
+  .split-text li {
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
     padding: var(--space-3) 0;
@@ -132,21 +146,45 @@
     font-size: var(--text-lg);
   }
 
-  li:last-child {
+  .split-text li:last-child {
     border-bottom: none;
   }
 
+  .split-image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .split-image :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   @media (max-width: 768px) {
-    .page .container {
-      padding-top: var(--space-8);
-      padding-bottom: var(--space-12);
+    .split-section {
+      padding: var(--space-12) 0;
     }
 
-    .lead {
+    .split {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .split.reverse .split-image {
+      order: 0;
+    }
+
+    .split-text h2 {
+      font-size: var(--text-2xl);
+    }
+
+    .split-text .lead {
       font-size: var(--text-lg);
     }
 
-    p, li {
+    .split-text p,
+    .split-text li {
       font-size: var(--text-base);
     }
   }

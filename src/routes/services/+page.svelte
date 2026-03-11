@@ -1,7 +1,7 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import HeroSlider from '$lib/components/HeroSlider.svelte';
-  import ReviewCarousel from '$lib/components/ReviewCarousel.svelte';
+  import ReviewSection from '$lib/components/ReviewSection.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
   import { modal } from '$lib/stores/modal';
   import { site } from '$lib/config/site';
@@ -91,22 +91,7 @@
 </section>
 
 <!-- Google Reviews Section -->
-<section class="section bg-dark reviews-section">
-  <div class="container">
-    <div class="section-header text-inverse">
-      <h2 class="section-title reviews-title">
-        What Our Customers Say
-        <span class="title-separator">|</span>
-        <span class="google-rating">
-          <img src="/icons/google.svg" alt="Google" class="google-logo-inline" />
-          <span class="star filled">★</span>
-          {site.googleReviewRating} ({site.googleReviewCount} reviews)
-        </span>
-      </h2>
-    </div>
-  </div>
-  <ReviewCarousel />
-</section>
+<ReviewSection />
 
 <!-- FAQ Section -->
 <section class="section bg-secondary">
@@ -136,15 +121,11 @@
 
 <style>
   .section {
-    padding: var(--space-16) 0;
+    padding: var(--space-20) 0;
   }
 
   .bg-light {
-    background: #f5f5f5;
-  }
-
-  .bg-dark {
-    background: #1a1a1a;
+    background: var(--bg-content);
   }
 
   .bg-secondary {
@@ -152,61 +133,17 @@
   }
 
   .section-header {
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-16);
   }
 
   .text-center {
     text-align: center;
   }
 
-  .text-inverse {
-    color: var(--text-inverse);
-  }
-
-  .text-inverse .section-title {
-    color: var(--text-inverse);
-  }
-
   .section-title {
     font-size: var(--text-4xl);
     font-weight: var(--font-bold);
     color: var(--text-primary);
-  }
-
-  .reviews-title {
-    font-size: var(--text-lg);
-  }
-
-  .title-separator {
-    margin: 0 var(--space-4);
-    opacity: 0.5;
-  }
-
-  .google-rating {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: 0.8em;
-    font-weight: normal;
-  }
-
-  .google-logo-inline {
-    height: 1.3em;
-    width: auto;
-    filter: brightness(0) invert(1);
-  }
-
-  .google-rating .star {
-    color: #fbbc04;
-    font-size: 1.3em;
-  }
-
-  .reviews-section {
-    padding-bottom: var(--space-8);
-  }
-
-  .reviews-section .section-header {
-    margin-bottom: var(--space-6);
   }
 
   /* Features Grid */

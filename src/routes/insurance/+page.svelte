@@ -1,12 +1,8 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
-  import ClientLogos from '$lib/components/ClientLogos.svelte';
+  import Button from '$lib/components/Button.svelte';
   import { modal } from '$lib/stores/modal';
-
-  function openEstimateModal() {
-    modal.cognito();
-  }
 
   const insuranceFaqs = [
     {
@@ -44,12 +40,24 @@
   ];
 
   const insurerLogos = [
-    { src: '/jaguar-logo-black.svg', alt: 'Jaguar Factory Authorized' },
-    { src: '/landrover-logo-black.svg', alt: 'Land Rover Factory Authorized' },
-    { src: '/bmw-logo-black.svg', alt: 'BMW Accredited Body Shop' },
-    { src: '/mini-black.svg', alt: 'Mini Specialist' },
-    { src: '/range-rover-logo-black.svg', alt: 'Range Rover Specialist' },
-    { src: '/mta-logo.png', alt: 'Motor Trade Association Member' },
+    { src: '/images/insurers/aa-insurance.png', alt: 'AA Insurance' },
+    { src: '/images/insurers/state-logo.png', alt: 'State Insurance' },
+    { src: '/images/insurers/alliance.png', alt: 'Alliance Insurance' },
+    { src: '/images/insurers/IAGLogo_0.gif', alt: 'IAG' },
+    { src: '/images/insurers/nac.png', alt: 'NAC' },
+    { src: '/images/insurers/Ando-logo.png', alt: 'Ando Insurance' },
+    { src: '/images/insurers/amp_0.gif', alt: 'AMP' },
+    { src: '/images/insurers/navigation_tower_logo.png', alt: 'Tower Insurance' },
+    { src: '/images/insurers/prestige-logo.png', alt: 'Prestige' },
+    { src: '/images/insurers/Lantern-insurance.jpg', alt: 'Lantern Insurance' },
+    { src: '/images/insurers/logo-vero.gif', alt: 'Vero' },
+    { src: '/images/insurers/zurich-logo-big.svg', alt: 'Zurich' },
+    { src: '/images/insurers/provident-insurance.png', alt: 'Provident Insurance' },
+    { src: '/images/insurers/qbe.png', alt: 'QBE' },
+    { src: '/images/insurers/mas.png', alt: 'MAS' },
+    { src: '/images/insurers/youi.png', alt: 'Youi' },
+    { src: '/images/insurers/nzi.png', alt: 'NZI' },
+    { src: '/images/insurers/ami.png', alt: 'AMI' },
   ];
 </script>
 
@@ -58,84 +66,105 @@
   description="We handle your insurance claim from start to finish. Factory-authorized European vehicle repairs trusted by all major NZ insurers."
 />
 
+<div class="page-header">
+  <div class="container">
+    <div class="intro-row">
+      <div class="intro-text">
+        <h1>Insurance Claims</h1>
+        <p class="intro">Factory-authorized for Jaguar, Land Rover, and BMW — we handle your claim from assessment to completion. You choose your repairer, and all work carries a manufacturer guarantee.</p>
+      </div>
+      <div class="cta-buttons-wrapper">
+        <div class="cta-buttons">
+          <Button size="large" on:click={() => modal.cognito()}>Get a Repair Quote</Button>
+          <Button variant="link" size="large" on:click={() => modal.insurance()}>insurance contacts</Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="page">
   <div class="container">
-    <h1>Insurance Claims</h1>
+    <div class="two-col">
+      <!-- Left Column -->
+      <div class="col-left">
+        <div class="faq-block">
+          <div class="section-header text-center">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+          </div>
+          <FAQ items={insuranceFaqs} />
+        </div>
+      </div>
 
-    <div class="intro">
-      <p class="lead">We work with all major New Zealand insurers and handle the claims process for you — from initial assessment through to completion.</p>
-      <p>As a factory-authorized repairer for Jaguar, Land Rover, and BMW, your insurer can be confident the repair meets manufacturer standards. This often speeds up the approval process. You have the right to choose your own repairer, and for European vehicles, choosing a specialist matters.</p>
-      <p>We provide a complimentary damage assessment, prepare detailed repair estimates with digital photos, and communicate directly with your insurer so you don't have to. All repairs carry a written manufacturer guarantee.</p>
-      <button class="btn-estimate" on:click={openEstimateModal}>Request an Estimate</button>
+      <!-- Right Column -->
+      <div class="col-right">
+        <div class="logos-block insurer-logos">
+          <div class="insurer-grid">
+            {#each insurerLogos as logo}
+              <div class="insurer-logo" class:small-logo={logo.alt === 'NZI'}>
+                <img src={logo.src} alt={logo.alt} />
+              </div>
+            {/each}
+          </div>
+        </div>
+      </div>
     </div>
-
-    <section class="logos-section">
-      <h2>Factory Authorizations & Accreditations</h2>
-      <ClientLogos logos={insurerLogos} />
-    </section>
-
-    <section class="faq-section">
-      <h2>Frequently Asked Questions</h2>
-      <FAQ items={insuranceFaqs} />
-    </section>
   </div>
 </div>
 
 <style>
+  .page-header {
+    background: var(--bg-content);
+    padding: var(--space-16) 0;
+  }
+
   .page {
     padding: var(--space-16) 0;
     min-height: 60vh;
   }
 
   h1 {
-    font-size: var(--text-4xl);
-    font-weight: var(--font-bold);
-    margin-bottom: var(--space-8);
-    color: var(--color-text);
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: var(--font-extrabold);
+    line-height: 1.1;
+    margin-bottom: var(--space-4);
+    color: rgba(0, 30, 80, 0.55);
+  }
+
+  .intro-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    margin-bottom: 0;
+    align-items: center;
   }
 
   .intro {
-    max-width: 740px;
-    margin-bottom: var(--space-12);
-  }
-
-  .lead {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     line-height: var(--leading-relaxed);
-    color: var(--color-text);
-    margin-bottom: var(--space-4);
-  }
-
-  .intro p {
     color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-4);
-    font-size: var(--text-lg);
   }
 
-  .btn-estimate {
-    display: inline-block;
-    margin-top: var(--space-4);
-    padding: var(--space-4) var(--space-8);
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    font-size: var(--text-lg);
-    font-weight: var(--font-semibold);
-    cursor: pointer;
-    transition: background var(--transition-fast);
+  .cta-buttons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
-  .btn-estimate:hover {
-    background: var(--color-primary-dark);
+  /* Two-column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
   }
 
-  .logos-section {
-    margin-bottom: var(--space-12);
-  }
-
-  .faq-section {
-    max-width: 800px;
+  .col-left,
+  .col-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
   }
 
   h2 {
@@ -145,21 +174,87 @@
     margin-bottom: var(--space-6);
   }
 
+  .logos-heading {
+    text-align: center;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  .cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    white-space: nowrap;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .section-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+  }
+
+  /* Insurer logos — full color grid */
+  .insurer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .insurer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3);
+  }
+
+  .insurer-logo img {
+    max-width: 140px;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .small-logo img {
+    max-width: 80px;
+    max-height: 35px;
+  }
+
   @media (max-width: 768px) {
     .page {
       padding: var(--space-8) 0;
     }
 
     h1 {
-      font-size: var(--text-3xl);
+      font-size: clamp(2rem, 6vw, 3rem);
     }
 
-    .lead {
+    .intro-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .intro {
       font-size: var(--text-lg);
     }
 
-    .intro p {
-      font-size: var(--text-base);
+    .section-title {
+      font-size: var(--text-2xl);
+    }
+
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+
+    .insurer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
     }
   }
 </style>

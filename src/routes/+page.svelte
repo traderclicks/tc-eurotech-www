@@ -15,7 +15,7 @@
   import HeroSection from '$lib/components/HeroSection.svelte';
   import StatsGrid from '$lib/components/StatsGrid.svelte';
   import ServiceCard from '$lib/components/ServiceCard.svelte';
-  import ReviewCarousel from '$lib/components/ReviewCarousel.svelte';
+  import ReviewSection from '$lib/components/ReviewSection.svelte';
   import BlogCard from '$lib/components/BlogCard.svelte';
   import HeroCTAButtons from '$lib/components/HeroCTAButtons.svelte';
   import { PLACEHOLDERS, iconPlaceholder} from '$lib/utils/placeholders';
@@ -279,32 +279,6 @@
     }
   ];
 
-  // Mock Google Reviews data
-  const googleReviews = {
-    rating: site.googleReviewRating,
-    totalReviews: site.googleReviewCount,
-    reviews: [
-      {
-        author: 'Sarah M.',
-        rating: 5,
-        text: 'Excellent service! My BMW looks brand new after the repair.',
-        time: '2 weeks ago'
-      },
-      {
-        author: 'Michael T.',
-        rating: 5,
-        text: 'Professional team, great communication throughout the process.',
-        time: '1 month ago'
-      },
-      {
-        author: 'Emma L.',
-        rating: 5,
-        text: 'Best panel beaters in Auckland for European vehicles!',
-        time: '1 month ago'
-      }
-    ]
-  };
-
   // Blog articles from CMS
   $: blogArticles = (data.latestPosts ?? []).map(post => ({
     title: post.title,
@@ -421,8 +395,8 @@
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Expert Insights & Advice</h2>
-      <p class="section-subtitle">Latest articles from our European vehicle repair specialists</p>
+      <h2 class="section-title">From the Workshop</h2>
+      <p class="section-subtitle">Tips, guides, and insights from our European vehicle specialists</p>
     </div>
 
     <div class="blog-grid">
@@ -433,23 +407,8 @@
   </div>
 </section>
 
-<!-- Google Reviews Section with Dark Background -->
-<section class="section bg-dark reviews-section">
-  <div class="container">
-    <div class="section-header text-inverse">
-      <h2 class="section-title reviews-title">
-        What Our Customers Say
-        <span class="title-separator">|</span>
-        <span class="google-rating">
-          <img src="/google-logo.svg" alt="Google" class="google-logo-inline" />
-          <span class="star filled">★</span>
-          {googleReviews.rating} average review ({googleReviews.totalReviews} reviews)
-        </span>
-      </h2>
-    </div>
-  </div>
-  <ReviewCarousel />
-</section>
+<!-- Google Reviews Section -->
+<ReviewSection />
 
 <!-- FAQ Section -->
 <section class="section bg-secondary">
@@ -479,7 +438,7 @@
   }
 
   .bg-blog {
-    background: #f5f5f5;
+    background: var(--bg-content);
     padding-top: var(--space-12);
   }
 
@@ -535,7 +494,7 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.55) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.6) 100%);
     z-index: 1;
   }
 
@@ -547,7 +506,7 @@
   .hero-content {
     color: white;
     text-align: center;
-    margin-top: 6rem;
+    margin-top: 1rem;
     position: relative;
     padding: var(--space-16);
     border-radius: var(--radius-2xl);
@@ -568,7 +527,7 @@
     left: 0;
     right: 0;
     height: 60px;
-    background: #f5f5f5;
+    background: var(--bg-content);
     z-index: 2;
   }
 
@@ -651,58 +610,9 @@
     }
   }
 
-  .bg-dark {
-    background: rgba(50, 75, 90, 0.12);
-  }
 
   .text-center {
     text-align: center;
-  }
-
-  .reviews-section {
-    padding-bottom: var(--space-8);
-  }
-
-  .reviews-section .section-header {
-    margin-bottom: var(--space-6);
-  }
-
-  .reviews-title {
-    font-size: var(--text-2xl);
-    color: #1a1a1a !important;
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0;
-  }
-
-  .title-separator {
-    margin: 0 var(--space-4);
-    opacity: 0.5;
-  }
-
-  .google-rating {
-    display: inline-flex;
-    align-items: baseline;
-    gap: var(--space-2);
-    font-size: 0.8em;
-    font-weight: normal;
-    color: #1a1a1a;
-  }
-
-  .google-logo-inline {
-    height: 1.1em;
-    width: auto;
-    filter: brightness(0);
-    vertical-align: baseline;
-    position: relative;
-    top: 0.15em;
-  }
-
-  .google-rating .star {
-    color: #fbbc04;
-    font-size: 1.3em;
-    line-height: 1;
   }
 
   @media (max-width: 768px) {

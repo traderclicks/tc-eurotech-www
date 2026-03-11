@@ -13,8 +13,8 @@
 <div class="page">
   <div class="container">
     <div class="page-header">
-      <h1>Expert Insights & Advice</h1>
-      <p class="page-subtitle">Latest articles from our European vehicle repair specialists</p>
+      <h1>From the Workshop</h1>
+      <p class="page-subtitle">Tips, guides, and insights from our European vehicle specialists</p>
     </div>
 
     {#if data.posts.length === 0}
