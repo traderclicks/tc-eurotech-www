@@ -16,10 +16,10 @@
   }
 
   const heroImages = [
-    '/images/DSC00619.jpg',
+    '/images/DSC00748.jpg',
     '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg',
     '/gallery/bmw/martinkatler-1ouLyK5oykg-unsplash.jpg',
-    '/images/DSC00748.jpg',
+    '/images/DSC00619.jpg',
     '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg',
     '/images/DSC00972.jpg',
     '/gallery/land-rover/finding_dan-lXvycA58ZfQ-unsplash.jpg',
@@ -269,6 +269,12 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--space-8);
     margin-top: var(--space-8);
+  }
+
+  @media (max-width: 1024px) {
+    .blog-grid :global(:last-child:nth-child(odd)) {
+      display: none;
+    }
   }
 
   .text-center {

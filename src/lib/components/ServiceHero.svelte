@@ -9,7 +9,7 @@
   export let description: string = '';
   export let images: string[] = [];
   export let showLogoBar: boolean = true;
-  export let minHeight: number = 760;
+  export let minHeight: number = 700;
 
   let isVisible = false;
   let currentSlide = 0;
@@ -246,7 +246,7 @@
 
   @media (max-width: 768px) {
     .hero {
-      min-height: 600px;
+      min-height: 600px !important;
     }
 
     .hero-nav-btn {
