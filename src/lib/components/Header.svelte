@@ -468,6 +468,25 @@
     .header.no-hero .logo img {
       height: 50px;
     }
+
+    .modal-actions {
+      flex-direction: column;
+    }
+
+    .menu-toggle {
+      left: 8px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .menu-toggle svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .nav-container {
+      padding-left: 52px;
+    }
   }
 
 </style>

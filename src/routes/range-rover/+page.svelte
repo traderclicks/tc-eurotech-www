@@ -19,8 +19,8 @@
 
   const faqs = [
     {
-      question: 'Are you factory-authorized for Range Rover repairs?',
-      answer: 'Yes, Eurotech is New Zealand\'s only factory-authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
+      question: 'Are you authorized for Range Rover repairs?',
+      answer: 'Yes, Eurotech is NZ\'s only authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
     },
     {
       question: 'Do you use genuine Range Rover parts?',
@@ -42,14 +42,14 @@
 </script>
 
 <Meta
-  title="Range Rover Specialist Repairs - Factory Authorized | Eurotech Auto Repair"
-  description="NZ's only factory-authorized Range Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
-  keywords="range rover repair auckland, range rover panel beaters, range rover collision repair, factory authorized range rover, genuine range rover parts"
+  title="Range Rover Specialist Repairs - Authorized | Eurotech Auto Repair"
+  description="NZ's only authorized Range Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
+  keywords="range rover repair auckland, range rover panel beaters, range rover collision repair, authorized range rover, genuine range rover parts"
 />
 
 <ServiceHero
   title="Range Rover Repairs"
-  description="NZ's only factory-authorized Range Rover repairer • Genuine parts only • 20+ years experience"
+  description="NZ's only authorized Range Rover repairer • Genuine parts only • 20+ years experience"
   images={heroImages}
   showLogoBar={true}
 />
@@ -60,9 +60,9 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">Factory-Authorized Range Rover Repairs</h2>
+      <h2 class="content-heading">Authorized Range Rover Repairs</h2>
       <p class="lead-text">
-        As New Zealand's only factory-authorized Jaguar/Land Rover structural repairer, Eurotech is equipped to handle the full Range Rover family — from the Sport and Velar to the full-size Range Rover. Every repair meets the manufacturer's exact specifications.
+        As NZ's only authorized Jaguar/Land Rover structural repairer, Eurotech is equipped to handle the full Range Rover family — from the Sport and Velar to the full-size Range Rover. Every repair meets the manufacturer's exact specifications.
       </p>
     </div>
 

@@ -58,7 +58,7 @@
     <div class="intro-block">
       <h2 class="content-heading">Accredited BMW Group Body Shop</h2>
       <p class="lead-text">
-        Eurotech is an accredited BMW Group Body Shop and New Zealand's only accredited BMW Carbon Fibre Body Shop. We have the training, equipment, and authorization to repair BMW vehicles to the standard the manufacturer demands.
+        Eurotech is an accredited BMW Group Body Shop and NZ's only accredited BMW Carbon Fibre Body Shop. We have the training, equipment, and authorization to repair BMW vehicles to the standard the manufacturer demands.
       </p>
     </div>
 
@@ -73,7 +73,7 @@
           BMW's latest models use a mix of carbon fibre reinforced plastic (CFRP), aluminium, and high-strength steel. Repairing these multi-material structures requires specific training, dedicated tooling, and strict contamination controls that most body shops don't have.
         </p>
         <p>
-          As New Zealand's only accredited BMW Carbon Fibre Body Shop, we're equipped to handle the full range of BMW structural and cosmetic repairs — from the carbon-intensive i-series to the latest 3, 5, and 7 Series models.
+          As NZ's only accredited BMW Carbon Fibre Body Shop, we're equipped to handle the full range of BMW structural and cosmetic repairs — from the carbon-intensive i-series to the latest 3, 5, and 7 Series models.
         </p>
       </div>
     </div>

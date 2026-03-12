@@ -25,8 +25,8 @@
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         <path d="M9 12l2 2 4-4"/>
       </svg>`,
-      title: 'Factory Authorized',
-      description: 'New Zealand\'s only Jaguar factory-authorized structural repairer'
+      title: 'Authorized',
+      description: 'NZ\'s only Jaguar authorized structural repairer'
     },
     {
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -49,8 +49,8 @@
 
   const faqs = [
     {
-      question: 'Are you factory-authorized for Jaguar repairs?',
-      answer: 'Yes, Eurotech is New Zealand\'s only factory-authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
+      question: 'Are you authorized for Jaguar repairs?',
+      answer: 'Yes, Eurotech is NZ\'s only authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
     },
     {
       question: 'Do you use genuine Jaguar parts?',
@@ -72,14 +72,14 @@
 </script>
 
 <Meta
-  title="Jaguar Specialist Repairs - Factory Authorized | Eurotech Auto Repair"
-  description="NZ's only factory-authorized Jaguar structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
-  keywords="jaguar repair auckland, jaguar panel beaters, jaguar collision repair, factory authorized jaguar, genuine jaguar parts"
+  title="Jaguar Specialist Repairs - Authorized | Eurotech Auto Repair"
+  description="NZ's only authorized Jaguar structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
+  keywords="jaguar repair auckland, jaguar panel beaters, jaguar collision repair, authorized jaguar, genuine jaguar parts"
 />
 
 <ServiceHero
   title="Jaguar Repairs"
-  description="NZ's only factory-authorized Jaguar repairer • Genuine parts only • 20+ years experience"
+  description="NZ's only authorized Jaguar repairer • Genuine parts only • 20+ years experience"
   images={heroImages}
   showLogoBar={true}
 />
@@ -90,14 +90,17 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">New Zealand's Only Factory-Authorized Jaguar Repairer</h2>
+      <h2 class="content-heading">NZ's Only Authorized Jaguar Repairer</h2>
       <p class="lead-text">
         Eurotech is the only body shop in New Zealand fully authorized by Jaguar to carry out structural aluminium repairs. That means every repair meets the exact specifications set by the manufacturer — protecting your vehicle's integrity, warranty, and resale value.
       </p>
     </div>
 
     <!-- Image + Text Grid Layout -->
-    <div class="content-grid reverse">
+    <div class="content-grid">
+      <div class="content-image">
+        <CloudflareImage src="/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg" alt="Jaguar repair specialist" width={1200} height={800} />
+      </div>
       <div class="content-text">
         <h3>Aluminium Structural Expertise</h3>
         <p>
@@ -107,15 +110,9 @@
           We use dedicated aluminium repair bays with climate-controlled environments to prevent contamination, along with Jaguar-approved measuring and pulling equipment to restore every dimension to factory specification.
         </p>
       </div>
-      <div class="content-image">
-        <CloudflareImage src="/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg" alt="Jaguar repair specialist" width={1200} height={800} />
-      </div>
     </div>
 
-    <div class="content-grid">
-      <div class="content-image">
-        <CloudflareImage src="/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg" alt="Jaguar repair workshop" width={1200} height={801} />
-      </div>
+    <div class="content-grid reverse">
       <div class="content-text">
         <h3>Factory-Grade Finish</h3>
         <p>
@@ -124,6 +121,9 @@
         <p>
           Every Jaguar repair we complete carries a written manufacturer guarantee. We work directly with all major NZ insurers to manage your claim from assessment through to completion, so you can focus on getting back on the road.
         </p>
+      </div>
+      <div class="content-image">
+        <CloudflareImage src="/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg" alt="Jaguar repair workshop" width={1200} height={801} />
       </div>
     </div>
 

@@ -18,8 +18,8 @@
 
   const faqs = [
     {
-      question: 'Are you factory-authorized for Land Rover repairs?',
-      answer: 'Yes, Eurotech is New Zealand\'s only factory-authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
+      question: 'Are you authorized for Land Rover repairs?',
+      answer: 'Yes, Eurotech is NZ\'s only authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
     },
     {
       question: 'Do you use genuine Land Rover parts?',
@@ -41,14 +41,14 @@
 </script>
 
 <Meta
-  title="Land Rover Specialist Repairs - Factory Authorized | Eurotech Auto Repair"
-  description="NZ's only factory-authorized Land Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
-  keywords="land rover repair auckland, land rover panel beaters, land rover collision repair, factory authorized land rover, genuine land rover parts"
+  title="Land Rover Specialist Repairs - Authorized | Eurotech Auto Repair"
+  description="NZ's only authorized Land Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
+  keywords="land rover repair auckland, land rover panel beaters, land rover collision repair, authorized land rover, genuine land rover parts"
 />
 
 <ServiceHero
   title="Land Rover Repairs"
-  description="NZ's only factory-authorized Land Rover repairer • Genuine parts only • 20+ years experience"
+  description="NZ's only authorized Land Rover repairer • Genuine parts only • 20+ years experience"
   images={heroImages}
   showLogoBar={true}
 />
@@ -59,7 +59,7 @@
 
     <!-- Intro Text -->
     <div class="intro-block">
-      <h2 class="content-heading">New Zealand's Only Factory-Authorized Land Rover Repairer</h2>
+      <h2 class="content-heading">NZ's Only Authorized Land Rover Repairer</h2>
       <p class="lead-text">
         Eurotech holds full factory authorization from Land Rover for structural aluminium repairs — the only body shop in New Zealand with this certification. Your vehicle is repaired to the exact specifications set by the manufacturer, preserving its safety, warranty, and value.
       </p>

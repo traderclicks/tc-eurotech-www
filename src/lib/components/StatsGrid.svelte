@@ -147,6 +147,10 @@
 
   /* Mobile Styles */
   @media (max-width: 768px) {
+    .logo-bar-wrapper {
+      width: 96%;
+    }
+
     .description-text {
       display: none;
     }
