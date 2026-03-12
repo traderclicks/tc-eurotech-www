@@ -43,7 +43,7 @@
 
   // Cloudflare Image Resizing only works when domain is proxied through Cloudflare.
   // Set PUBLIC_USE_CLOUDFLARE_IMAGES=false in Vercel env vars for Preview deployments.
-  const useCloudflareTransform = PUBLIC_USE_CLOUDFLARE_IMAGES !== 'false';
+  const useCloudflareTransform = PUBLIC_USE_CLOUDFLARE_IMAGES?.trim() !== 'false';
 
   // Build Cloudflare transformation URL
   function buildUrl(w: number): string {
