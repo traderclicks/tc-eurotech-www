@@ -9,17 +9,7 @@
     modal.cognito();
   }
 
-  function openImageCreditsModal() {
-    modal.alert('Image Credits', `
-        <h3 style="margin-top: 0;">Image Sources</h3>
-        <p>Vehicle photography from:</p>
-        <ul style="line-height: 1.8;">
-          <li><strong>Unsplash Contributors:</strong> Professional automotive photography</li>
-          <li><strong>Eurotech Workshop:</strong> Original photography of our facility and work</li>
-        </ul>
-        <p style="margin-top: 1rem;">All images are used in accordance with their respective licenses.</p>
-      `);
-  }
+
 </script>
 
 <footer class="footer">
@@ -83,9 +73,9 @@
       <div class="footer-column">
         <h3 class="footer-heading">Information</h3>
         <ul class="footer-links">
+          <li><a href="/insurance">Make an Insurance Claim</a></li>
           <li><a href="/about">About Eurotech</a></li>
           <li><a href="/blog">Blog</a></li>
-          <li><a href="/insurance">Insurance Claims</a></li>
           <li><a href="/gallery">Gallery</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms & Conditions</a></li>
@@ -136,8 +126,6 @@
         <a href="/privacy">Privacy</a>
         <span class="separator">|</span>
         <a href="/terms">Terms</a>
-        <span class="separator">|</span>
-        <button class="link-button" on:click={openImageCreditsModal}>Image Credits</button>
       </div>
 
       <!-- Logos at right -->
