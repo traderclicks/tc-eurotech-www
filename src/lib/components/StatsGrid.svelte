@@ -64,9 +64,10 @@
 
   .logo-bar-container {
     width: 100%;
-    padding: var(--space-4) 0 var(--space-5) 0;
+    padding: 0 0 var(--space-3) 0;
     background: #2a3038;
     border-radius: var(--radius-xl);
+    overflow: hidden;
   }
 
   .logo-bar-content {
@@ -76,11 +77,11 @@
 
   .description-text {
     color: #ffffff;
-    font-size: var(--text-base);
-    font-weight: normal;
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
     font-style: normal;
     text-align: center;
-    margin: var(--space-6) 0 var(--space-2) 0;
+    margin: var(--space-3) 0 var(--space-1) 0;
     display: flex;
     flex-wrap: wrap;
     gap: 2.5rem;
@@ -119,18 +120,18 @@
   }
 
   .brand-logo {
-    width: 70px;
+    width: 85px;
     height: auto;
     opacity: 1;
     flex-shrink: 0;
   }
 
   .brand-logo.bmw-logo {
-    width: 35px;
+    width: 42px;
   }
 
   .brand-logo.landrover-logo {
-    width: 56px;
+    width: 68px;
   }
 
   /* Tablet Styles */
