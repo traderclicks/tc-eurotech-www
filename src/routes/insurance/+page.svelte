@@ -71,7 +71,7 @@
     <div class="intro-row">
       <div class="intro-text">
         <h1>Insurance Claims</h1>
-        <p class="intro">Had an accident? Submit the form and we'll handle everything. Factory-authorized for Jaguar, Land Rover, and BMW — you get to choose us as your repairer. All work carries a manufacturer's guarantee.</p>
+        <p class="intro">Had an accident? Request a Repair Quote by clicking the button and we'll handle everything. Factory-authorized for Jaguar, Land Rover, and BMW — you get to choose us as your repairer. All work carries a manufacturer's guarantee.</p>
       </div>
       <div class="cta-buttons-wrapper">
         <div class="cta-buttons">

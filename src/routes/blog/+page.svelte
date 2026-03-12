@@ -6,14 +6,14 @@
 </script>
 
 <Meta
-  title="Blog - Eurotech Auto Repair Centre"
+  title="Workshop Updates - Eurotech Auto Repair Centre"
   description="Expert insights, maintenance tips, and industry news from Auckland's European vehicle repair specialists."
 />
 
 <div class="page">
   <div class="container">
     <div class="page-header">
-      <h1>From the Workshop</h1>
+      <h1>Workshop Updates</h1>
       <p class="page-subtitle">Tips, guides, and insights from our European vehicle specialists</p>
     </div>
 

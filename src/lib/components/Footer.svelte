@@ -75,7 +75,7 @@
         <ul class="footer-links">
           <li><a href="/insurance">Make an Insurance Claim</a></li>
           <li><a href="/about">About Eurotech</a></li>
-          <li><a href="/blog">Blog</a></li>
+          <li><a href="/blog">Workshop Updates</a></li>
           <li><a href="/gallery">Gallery</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms & Conditions</a></li>

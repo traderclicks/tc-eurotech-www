@@ -9,8 +9,8 @@
   const primaryItems = [
     { label: 'Home', href: '/' },
     { label: 'Make an Insurance Claim', href: '/insurance' },
-    { label: 'About Us', href: '/about' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'About Eurotech', href: '/about' },
+    { label: 'Workshop Updates', href: '/blog' },
     { label: 'Contact Us', href: '#contact', action: 'contact' },
   ];
 
@@ -156,7 +156,7 @@
   .nav-list {
     list-style: none;
     margin: 0;
-    padding: calc(var(--space-16) + var(--space-4)) 0 0 0;
+    padding: calc(var(--space-16) + var(--space-4)) 0 var(--space-8) 0;
   }
 
   .nav-item {
@@ -169,7 +169,7 @@
   }
 
   .secondary-nav {
-    margin-top: var(--space-2);
+    margin-top: var(--space-4);
     background: rgba(0, 0, 0, 0.15);
   }
 
@@ -179,7 +179,7 @@
     color: rgba(255, 255, 255, 0.35);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    padding: var(--space-3) var(--space-6) var(--space-1);
+    padding: var(--space-3) var(--space-6) var(--space-3);
   }
 
   .secondary-list {

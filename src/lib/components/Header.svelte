@@ -96,14 +96,13 @@
           {site.suburb}<br>
           {site.city} {site.postcode}<br>
           {site.country}
+          <a href={site.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="modal-maps-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            Open in Google Maps
+          </a>
         </div>
-
-        <a href={site.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="modal-maps-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
-          Open in Google Maps
-        </a>
 
         <div class="modal-contact">
           <div class="contact-row">
@@ -111,8 +110,9 @@
             <a href="tel:{site.phoneTel}">{site.phone}</a>
           </div>
           <div class="contact-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M22 4l-10 8L2 4"/>
             </svg>
             <a href="mailto:{site.email}">{site.email}</a>
           </div>
@@ -329,7 +329,7 @@
 
   .modal-address {
     color: #4a4a4a;
-    font-size: var(--text-xl);
+    font-size: var(--text-base);
     line-height: 1.8;
     margin-bottom: var(--space-6);
   }
@@ -338,8 +338,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    margin-bottom: var(--space-6);
-    padding: var(--space-4);
+    margin-bottom: var(--space-8);
   }
 
   .contact-row {
@@ -347,7 +346,7 @@
     align-items: center;
     gap: var(--space-2);
     color: #4a4a4a;
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
   }
 
   .contact-row svg {
@@ -376,7 +375,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
-    margin-bottom: var(--space-4);
+    margin-left: var(--space-2);
     background: none;
     color: var(--text-secondary);
     text-decoration: underline;
@@ -391,7 +390,7 @@
   }
 
   .modal-maps-btn svg {
-    width: 24px;
+    width: 16px;
     height: 24px;
   }
 
