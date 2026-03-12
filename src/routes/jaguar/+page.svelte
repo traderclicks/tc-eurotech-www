@@ -97,10 +97,7 @@
     </div>
 
     <!-- Image + Text Grid Layout -->
-    <div class="content-grid">
-      <div class="content-image">
-        <CloudflareImage src="/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg" alt="Jaguar repair specialist" width={1200} height={800} />
-      </div>
+    <div class="content-grid reverse">
       <div class="content-text">
         <h3>Aluminium Structural Expertise</h3>
         <p>
@@ -110,10 +107,15 @@
           We use dedicated aluminium repair bays with climate-controlled environments to prevent contamination, along with Jaguar-approved measuring and pulling equipment to restore every dimension to factory specification.
         </p>
       </div>
+      <div class="content-image">
+        <CloudflareImage src="/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg" alt="Jaguar repair specialist" width={1200} height={800} />
+      </div>
     </div>
 
-    <!-- Reversed Layout -->
-    <div class="content-grid reverse">
+    <div class="content-grid">
+      <div class="content-image">
+        <CloudflareImage src="/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg" alt="Jaguar repair workshop" width={1200} height={801} />
+      </div>
       <div class="content-text">
         <h3>Factory-Grade Finish</h3>
         <p>
@@ -122,9 +124,6 @@
         <p>
           Every Jaguar repair we complete carries a written manufacturer guarantee. We work directly with all major NZ insurers to manage your claim from assessment through to completion, so you can focus on getting back on the road.
         </p>
-      </div>
-      <div class="content-image">
-        <CloudflareImage src="/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg" alt="Jaguar repair workshop" width={1200} height={801} />
       </div>
     </div>
 

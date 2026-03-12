@@ -77,8 +77,8 @@
   .description-text {
     color: #ffffff;
     font-size: var(--text-base);
-    font-weight: bold;
-    font-style: italic;
+    font-weight: normal;
+    font-style: normal;
     text-align: center;
     margin: var(--space-6) 0 var(--space-2) 0;
     display: flex;
