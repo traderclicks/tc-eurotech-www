@@ -13,7 +13,7 @@
   else if (icon.includes('data:image')) logoClass = 'logo-insurance';
 </script>
 
-<a href={buttonHref} class="service-card" class:has-background={backgroundImage} style={backgroundImage ? `background-image: url('${backgroundImage}')` : ''}>
+<a href={buttonHref} class="service-card" class:has-background={backgroundImage} style={backgroundImage ? `background-image: url('${backgroundImage}')` : ''} aria-label="{title} — {description}">
   {#if backgroundImage}
     <div class="service-overlay"></div>
   {/if}
@@ -24,7 +24,7 @@
     {/if}
 
     {#if title}
-      <h3 class="service-title">{title}</h3>
+      <h3 class="service-title sr-only">{title}</h3>
     {/if}
 
     {#if description}
@@ -131,6 +131,18 @@
     font-size: var(--text-2xl);
     font-weight: 300;
     letter-spacing: 0.05em;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .service-description {

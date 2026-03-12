@@ -35,7 +35,7 @@
         </div>
         {#if description}
           <div class="description-text">
-            <span>NZ's only factory-authorised Jaguar/Land Rover repairer</span>
+            <span>NZ's only authorised Jaguar/Land Rover repairer</span>
             <span class="separator">•</span>
             <span>Expert BMW & Mini repairs</span>
             <span class="separator">•</span>
@@ -83,7 +83,7 @@
     margin: var(--space-6) 0 var(--space-2) 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2.5rem;
     justify-content: center;
     align-items: center;
     line-height: 1.2;

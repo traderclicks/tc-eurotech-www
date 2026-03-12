@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-8);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-8);
   }
 
   .hero-link-wrapper {
