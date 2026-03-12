@@ -1,5 +1,6 @@
 <script lang="ts">
   import { dev } from '$app/environment';
+  import { PUBLIC_USE_CLOUDFLARE_IMAGES } from '$env/static/public';
 
   /**
    * Cloudflare-optimized responsive image component
@@ -40,9 +41,9 @@
     Math.floor(width * 1.5)
   ];
 
-  // Check if Cloudflare Image Resizing should be used
-  // Can be disabled via environment variable if Cloudflare proxy is not enabled
-  const useCloudflareTransform = import.meta.env.PUBLIC_USE_CLOUDFLARE_IMAGES !== 'false';
+  // Cloudflare Image Resizing only works when domain is proxied through Cloudflare.
+  // Set PUBLIC_USE_CLOUDFLARE_IMAGES=false in Vercel env vars for Preview deployments.
+  const useCloudflareTransform = PUBLIC_USE_CLOUDFLARE_IMAGES !== 'false';
 
   // Build Cloudflare transformation URL
   function buildUrl(w: number): string {
