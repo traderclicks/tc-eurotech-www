@@ -179,8 +179,11 @@
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">From the Workshop</h2>
-      <p class="section-subtitle">Tips, guides, and insights from our European vehicle specialists</p>
+      <div class="section-title-row">
+        <h2 class="section-title">From the Workshop</h2>
+        <span class="section-title-pipe"><span class="pipe">|</span> <a href="/blog" class="section-more-link">View all posts →</a></span>
+      </div>
+      <p class="section-subtitle">Updates and articles from your European vehicle repair specialist</p>
     </div>
 
     <div class="blog-grid">
@@ -228,6 +231,37 @@
   .faq-container {
     max-width: 800px;
     margin: var(--space-8) auto 0;
+  }
+
+  .section-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
+  }
+
+  .section-title-pipe {
+    margin-left: var(--space-4);
+    font-size: var(--text-sm);
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  .pipe {
+    color: var(--text-secondary);
+  }
+
+  .section-more-link {
+    font-size: var(--text-sm);
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+    transition: color var(--transition-fast);
+  }
+
+  .section-more-link:hover {
+    color: var(--text-primary);
   }
 
   .blog-grid {
