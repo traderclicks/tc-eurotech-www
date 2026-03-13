@@ -144,7 +144,7 @@
 <!-- SEO Meta Tags -->
 <Meta
   title="Eurotech Auto Repair Centre - European Vehicle Specialists Auckland"
-  description="New Zealand's only factory-authorized Jaguar/Land Rover structural repairer. Expert BMW and Mini repairs. Insurance approved. Call (09) 573 1093"
+  description={`New Zealand's only factory-authorized Jaguar/Land Rover structural repairer. Expert BMW and Mini repairs. Insurance approved. Call ${site.phone}`}
   keywords="european car repair auckland, bmw repair, jaguar repair, land rover repair, mini repair, panel beaters auckland, insurance repairs"
   ogImage="/og-eurotech.png"
 />

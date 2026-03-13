@@ -6,6 +6,7 @@
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { modal } from '$lib/stores/modal';
   import { site } from '$lib/config/site';
+  import { generateFAQSchema } from '$lib/utils/structuredData';
 
   function openContactModal() {
     modal.cognito();
@@ -71,9 +72,13 @@
   ];
 </script>
 
+<svelte:head>
+  {@html `<script type="application/ld+json">${JSON.stringify(generateFAQSchema(faqs))}</script>`}
+</svelte:head>
+
 <Meta
   title="Jaguar Specialist Repairs - Authorized | Eurotech Auto Repair"
-  description="NZ's only authorized Jaguar structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
+  description={`NZ's only authorized Jaguar structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call ${site.phone}`}
   keywords="jaguar repair auckland, jaguar panel beaters, jaguar collision repair, authorized jaguar, genuine jaguar parts"
 />
 

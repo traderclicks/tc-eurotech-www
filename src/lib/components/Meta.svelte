@@ -18,7 +18,7 @@
   export let tags: string[] = [];
 
   // Additional SEO props
-  export let locale = 'en_US';
+  export let locale = 'en_NZ';
   export let siteName = 'Eurotech Auto Repair';
   export let twitterSite = '';
   export let twitterCreator = '';

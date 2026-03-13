@@ -1,4 +1,5 @@
 import type { RequestHandler } from './$types';
+import { getAllBlogPosts } from '$lib/cms/blog';
 
 const site = 'https://eurotechauto.co.nz';
 
@@ -11,6 +12,7 @@ const staticPages = [
   '/bmw',
   '/mini',
   '/insurance',
+  '/services',
   '/blog',
   '/gallery',
   '/privacy',
@@ -26,6 +28,7 @@ const priorityMap: Record<string, number> = {
   '/mini': 0.8,
   '/about': 0.8,
   '/insurance': 0.8,
+  '/services': 0.8,
   '/blog': 0.7,
   '/gallery': 0.7,
   '/privacy': 0.3,
@@ -41,6 +44,7 @@ const changeFreqMap: Record<string, string> = {
   '/mini': 'monthly',
   '/about': 'monthly',
   '/insurance': 'monthly',
+  '/services': 'monthly',
   '/blog': 'weekly',
   '/gallery': 'weekly',
   '/privacy': 'yearly',
@@ -48,9 +52,8 @@ const changeFreqMap: Record<string, string> = {
 };
 
 export const GET: RequestHandler = async ({ url }) => {
-  // In production, you might fetch dynamic pages from a database
-  // const dynamicPages = await fetchDynamicPages();
-  const dynamicPages: string[] = [];
+  const blogPosts = getAllBlogPosts();
+  const dynamicPages = blogPosts.map(post => `/blog/${post.slug}`);
 
   const pages = [...staticPages, ...dynamicPages];
   const siteUrl = process.env.PUBLIC_SITE_URL || site;

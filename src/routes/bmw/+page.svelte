@@ -4,6 +4,8 @@
   import FAQ from '$lib/components/FAQ.svelte';
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { modal } from '$lib/stores/modal';
+  import { site } from '$lib/config/site';
+  import { generateFAQSchema } from '$lib/utils/structuredData';
 
   function openContactModal() {
     modal.cognito();
@@ -37,9 +39,13 @@
   ];
 </script>
 
+<svelte:head>
+  {@html `<script type="application/ld+json">${JSON.stringify(generateFAQSchema(faqs))}</script>`}
+</svelte:head>
+
 <Meta
   title="BMW Specialist Repairs - European Vehicle Experts | Eurotech Auto Repair"
-  description="Expert BMW collision repairs, panel beating & paint work. European vehicle specialists with 20+ years experience. Insurance approved. Call (09) 573 1093"
+  description={`Expert BMW collision repairs, panel beating & paint work. European vehicle specialists with 20+ years experience. Insurance approved. Call ${site.phone}`}
   keywords="bmw repair auckland, bmw panel beaters, bmw collision repair, european vehicle specialists"
 />
 

@@ -3,6 +3,7 @@
   import FAQ from '$lib/components/FAQ.svelte';
   import Button from '$lib/components/Button.svelte';
   import { modal } from '$lib/stores/modal';
+  import { generateFAQSchema } from '$lib/utils/structuredData';
 
   const insuranceFaqs = [
     {
@@ -60,6 +61,10 @@
     { src: '/images/insurers/ami.png', alt: 'AMI' },
   ];
 </script>
+
+<svelte:head>
+  {@html `<script type="application/ld+json">${JSON.stringify(generateFAQSchema(insuranceFaqs))}</script>`}
+</svelte:head>
 
 <Meta
   title="Insurance Claims - Eurotech Auto Repair Centre"

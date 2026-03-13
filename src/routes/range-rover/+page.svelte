@@ -4,6 +4,8 @@
   import FAQ from '$lib/components/FAQ.svelte';
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
   import { modal } from '$lib/stores/modal';
+  import { site } from '$lib/config/site';
+  import { generateFAQSchema } from '$lib/utils/structuredData';
 
   function openContactModal() {
     modal.cognito();
@@ -41,9 +43,13 @@
   ];
 </script>
 
+<svelte:head>
+  {@html `<script type="application/ld+json">${JSON.stringify(generateFAQSchema(faqs))}</script>`}
+</svelte:head>
+
 <Meta
   title="Range Rover Specialist Repairs - Authorized | Eurotech Auto Repair"
-  description="NZ's only authorized Range Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call (09) 573 1093"
+  description={`NZ's only authorized Range Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call ${site.phone}`}
   keywords="range rover repair auckland, range rover panel beaters, range rover collision repair, authorized range rover, genuine range rover parts"
 />
 
