@@ -11,7 +11,7 @@
 </script>
 
 <Meta
-  title="About Eurotech - European Vehicle Specialists Auckland"
+  title="About Eurotech"
   description="Learn about Eurotech Auto Repair Centre, New Zealand's only factory-authorized Jaguar/Land Rover structural repairer with 20+ years experience."
 />
 

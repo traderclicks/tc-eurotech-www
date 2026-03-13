@@ -67,7 +67,7 @@
 </svelte:head>
 
 <Meta
-  title="Insurance Claims - Eurotech Auto Repair Centre"
+  title="Insurance Claims"
   description="We handle your insurance claim from start to finish. Factory-authorized European vehicle repairs trusted by all major NZ insurers."
 />
 

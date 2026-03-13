@@ -55,7 +55,7 @@
 </script>
 
 <Meta
-  title="BMW Specialist Repairs - European Vehicle Experts | Eurotech Auto Repair"
+  title="BMW Specialist Repairs - European Vehicle Experts"
   description={`Expert BMW collision repairs, panel beating & paint work. European vehicle specialists with 20+ years experience. Insurance approved. Call ${site.phone}`}
   keywords="bmw repair auckland, bmw panel beaters, bmw collision repair, european vehicle specialists"
 />

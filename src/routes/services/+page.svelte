@@ -48,7 +48,7 @@
 </script>
 
 <Meta
-  title="{data.serviceName} Specialist - Eurotech Auto Repair Centre"
+  title="{data.serviceName} Specialist"
   description={data.metaDescription}
   keywords={data.keywords}
 />

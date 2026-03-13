@@ -57,7 +57,7 @@
 </script>
 
 <Meta
-  title="Land Rover Specialist Repairs - Authorized | Eurotech Auto Repair"
+  title="Land Rover Specialist Repairs - Authorized"
   description={`NZ's only authorized Land Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call ${site.phone}`}
   keywords="land rover repair auckland, land rover panel beaters, land rover collision repair, authorized land rover, genuine land rover parts"
 />

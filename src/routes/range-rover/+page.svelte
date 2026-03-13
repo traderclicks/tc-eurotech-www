@@ -60,7 +60,7 @@
 </script>
 
 <Meta
-  title="Range Rover Specialist Repairs - Authorized | Eurotech Auto Repair"
+  title="Range Rover Specialist Repairs - Authorized"
   description={`NZ's only authorized Range Rover structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call ${site.phone}`}
   keywords="range rover repair auckland, range rover panel beaters, range rover collision repair, authorized range rover, genuine range rover parts"
 />

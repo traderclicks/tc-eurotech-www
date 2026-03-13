@@ -6,7 +6,7 @@
 </script>
 
 <Meta
-  title="Workshop Updates - Eurotech Auto Repair Centre"
+  title="Workshop Updates"
   description="Expert insights, maintenance tips, and industry news from Auckland's European vehicle repair specialists."
 />
 

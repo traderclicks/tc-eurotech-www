@@ -45,7 +45,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <Meta
-  title="Gallery - Eurotech Auto Repair Centre"
+  title="Gallery"
   description="See our workshop and team in action. European vehicle repair specialists in Auckland."
 />
 

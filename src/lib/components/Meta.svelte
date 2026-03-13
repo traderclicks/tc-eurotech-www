@@ -1,6 +1,6 @@
 <!-- Enhanced SEO Meta Component -->
 <script lang="ts">
-  export let title = 'Eurotech Auto Repair - European Vehicle Specialists Auckland';
+  export let title = 'Eurotech Auto Repair Centre - European Vehicle Specialists Auckland';
   export let description = 'Factory-authorized Jaguar, Land Rover & BMW specialists. Expert collision repairs, panel beating & paint work in Mount Wellington, Auckland.';
   export let keywords = '';
   export let canonical: string | undefined = undefined;
@@ -23,8 +23,10 @@
   export let twitterSite = '';
   export let twitterCreator = '';
 
-  // Construct full title
-  const fullTitle = title === 'Eurotech Auto Repair - European Vehicle Specialists Auckland' ? title : `${title} | Eurotech Auto Repair`;
+  // Construct full title — append brand unless it's the default or already contains it
+  const defaultTitle = 'Eurotech Auto Repair Centre - European Vehicle Specialists Auckland';
+  const brandSuffix = 'Eurotech Auto Repair';
+  const fullTitle = title === defaultTitle || title.includes(brandSuffix) ? title : `${title} | ${brandSuffix}`;
 
   // Get current URL for canonical and OG tags
   import { page } from '$app/stores';

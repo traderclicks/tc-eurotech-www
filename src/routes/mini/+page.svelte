@@ -54,7 +54,7 @@
 </script>
 
 <Meta
-  title="Mini Specialist Repairs - European Vehicle Experts | Eurotech Auto Repair"
+  title="Mini Specialist Repairs - European Vehicle Experts"
   description={`Expert Mini collision repairs, panel beating & paint work. European vehicle specialists with 20+ years experience. Insurance approved. Call ${site.phone}`}
   keywords="mini repair auckland, mini panel beaters, mini collision repair, mini cooper repair, european vehicle specialists"
 />

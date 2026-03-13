@@ -60,7 +60,7 @@
 </script>
 
 <Meta
-  title="Jaguar Specialist Repairs - Authorized | Eurotech Auto Repair"
+  title="Jaguar Specialist Repairs - Authorized"
   description={`NZ's only authorized Jaguar structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved. Call ${site.phone}`}
   keywords="jaguar repair auckland, jaguar panel beaters, jaguar collision repair, authorized jaguar, genuine jaguar parts"
 />

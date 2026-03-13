@@ -28,7 +28,7 @@
 </svelte:head>
 
 <Meta
-  title="{post.title} - Eurotech Blog"
+  title={post.title}
   description={post.excerpt}
   ogType="article"
   publishedTime={post.publishedAt}
