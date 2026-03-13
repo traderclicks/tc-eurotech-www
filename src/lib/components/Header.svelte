@@ -441,6 +441,21 @@
     .header.no-hero .logo img {
       height: 55px;
     }
+
+    .menu-toggle {
+      left: 16px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .menu-toggle svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .nav-container {
+      padding-left: 64px;
+    }
   }
 
   /* Mobile Styles */
@@ -474,18 +489,18 @@
     }
 
     .menu-toggle {
-      left: 8px;
-      width: 48px;
-      height: 48px;
+      left: 4px;
+      width: 40px;
+      height: 40px;
     }
 
     .menu-toggle svg {
-      width: 36px;
-      height: 36px;
+      width: 28px;
+      height: 28px;
     }
 
     .nav-container {
-      padding-left: 52px;
+      padding-left: 44px;
     }
   }
 

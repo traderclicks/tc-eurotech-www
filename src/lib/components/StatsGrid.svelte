@@ -149,7 +149,12 @@
   /* Mobile Styles */
   @media (max-width: 768px) {
     .logo-bar-wrapper {
-      width: 96%;
+      width: 100%;
+      border-radius: 0;
+    }
+
+    .logo-bar-container {
+      border-radius: 0;
     }
 
     .description-text {
@@ -161,15 +166,15 @@
     }
 
     .brand-logo {
-      width: 49px;
+      width: 65px;
     }
 
     .brand-logo.bmw-logo {
-      width: 21px;
+      width: 30px;
     }
 
     .brand-logo.landrover-logo {
-      width: 39px;
+      width: 50px;
     }
   }
 </style>
