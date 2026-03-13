@@ -1,6 +1,8 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import VideoEmbed from '$lib/components/VideoEmbed.svelte';
+  import { generateArticleSchema } from '$lib/utils/structuredData';
+  import { page } from '$app/stores';
 
   export let data;
 
@@ -12,9 +14,24 @@
   });
 </script>
 
+<svelte:head>
+  {@html `<script type="application/ld+json">${JSON.stringify(generateArticleSchema({
+    headline: post.title,
+    description: post.excerpt,
+    author: 'Eurotech Auto Repair',
+    datePublished: post.publishedAt,
+    image: post.featuredImage?.url ?? data.defaultPostImage,
+    url: $page.url.href
+  }))}</script>`}
+</svelte:head>
+
 <Meta
   title="{post.title} - Eurotech Blog"
   description={post.excerpt}
+  ogType="article"
+  publishedTime={post.publishedAt}
+  section={post.category}
+  tags={post.tags}
   ogImage={post.featuredImage?.url ?? data.defaultPostImage}
 />
 
