@@ -12,17 +12,19 @@
     month: 'long',
     day: 'numeric'
   });
-</script>
 
-<svelte:head>
-  {@html `<script type="application/ld+json">${JSON.stringify(generateArticleSchema({
+  $: articleSchema = generateArticleSchema({
     headline: post.title,
     description: post.excerpt,
     author: 'Eurotech Auto Repair',
     datePublished: post.publishedAt,
     image: post.featuredImage?.url ?? data.defaultPostImage,
     url: $page.url.href
-  }))}</script>`}
+  });
+</script>
+
+<svelte:head>
+  {@html `<script type="application/ld+json">${JSON.stringify(articleSchema)}</script>`}
 </svelte:head>
 
 <Meta
