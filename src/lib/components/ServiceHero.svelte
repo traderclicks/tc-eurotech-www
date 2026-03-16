@@ -249,6 +249,10 @@
       min-height: 600px !important;
     }
 
+    .hero-content {
+      padding-top: var(--space-24);
+    }
+
     .hero-nav-btn {
       width: 40px;
       height: 40px;
