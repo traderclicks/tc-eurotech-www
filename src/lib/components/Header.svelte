@@ -476,12 +476,12 @@
     }
 
     .logo img {
-      height: 55px;
+      height: 65px;
     }
 
     .header.scrolled .logo img,
     .header.no-hero .logo img {
-      height: 50px;
+      height: 55px;
     }
 
     .modal-actions {
