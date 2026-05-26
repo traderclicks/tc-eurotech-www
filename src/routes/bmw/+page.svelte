@@ -3,7 +3,8 @@
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import ServicePageContent from '$lib/components/ServicePageContent.svelte';
   import { site } from '$lib/config/site';
-  import faqsData from '../../../content/faqs/live.json';
+  import { page } from '$app/stores';
+  import type { FaqsByPage } from '$lib/cms/faqs';
 
   const heroImages = [
     '/gallery/bmw/tyler_clemmensen-h5XcT5T0ST8-unsplash.jpg',
@@ -35,7 +36,7 @@
     }
   ];
 
-  const faqs = faqsData.bmw;
+  $: faqs = (($page.data.faqs as FaqsByPage | undefined)?.bmw ?? []);
 </script>
 
 <Meta

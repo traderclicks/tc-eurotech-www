@@ -5,10 +5,11 @@
   import FAQ from '$lib/components/FAQ.svelte';
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import ServiceCard from '$lib/components/ServiceCard.svelte';
-  import ReviewSection from '$lib/components/ReviewSection.svelte';
+  import GoogleReviewsSection from '$lib/components/GoogleReviewsSection.svelte';
   import BlogCard from '$lib/components/BlogCard.svelte';
   import { generateFAQSchema, generateLocalBusinessSchema } from '$lib/utils/structuredData';
-  import faqsData from '../../content/faqs/live.json';
+  import { page } from '$app/stores';
+  import type { FaqsByPage } from '$lib/cms/faqs';
 
   export let data;
 
@@ -22,7 +23,6 @@
     '/gallery/bmw/martinkatler-1ouLyK5oykg-unsplash.jpg',
     '/images/DSC00619.jpg',
     '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg',
-    '/images/DSC00972.jpg',
     '/gallery/land-rover/finding_dan-lXvycA58ZfQ-unsplash.jpg',
     '/images/DSC00773.jpg',
     '/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg',
@@ -32,7 +32,7 @@
     '/gallery/range-rover/range-rover-1725815761.jpg'
   ];
 
-  const faqs = faqsData.home;
+  $: faqs = (($page.data.faqs as FaqsByPage | undefined)?.home ?? []);
 
   // Services data
   const services = [
@@ -175,7 +175,7 @@
 </section>
 
 <!-- Google Reviews Section -->
-<ReviewSection />
+<GoogleReviewsSection />
 
 <!-- FAQ Section -->
 <section class="section bg-secondary">

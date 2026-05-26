@@ -3,7 +3,8 @@
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import ServicePageContent from '$lib/components/ServicePageContent.svelte';
   import { site } from '$lib/config/site';
-  import faqsData from '../../../content/faqs/live.json';
+  import { page } from '$app/stores';
+  import type { FaqsByPage } from '$lib/cms/faqs';
 
   const heroImages = [
     '/gallery/range-rover/range-rover-1725815761.jpg',
@@ -36,7 +37,7 @@
     }
   ];
 
-  const faqs = faqsData['range-rover'];
+  $: faqs = (($page.data.faqs as FaqsByPage | undefined)?.['range-rover'] ?? []);
 </script>
 
 <Meta

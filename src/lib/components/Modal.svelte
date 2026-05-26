@@ -5,9 +5,11 @@
   import ContactForm from './ContactForm.svelte';
   import CognitoForm from './CognitoForm.svelte';
   import PhoneIcon from './PhoneIcon.svelte';
-  import insurersData from '../../../content/insurers/live.json';
+  import { page } from '$app/stores';
+  import type { Insurer } from '$lib/cms/insurers';
 
-  const insurerContacts = insurersData.filter((i) => i.phone);
+  $: insurers = ($page.data.insurers ?? []) as Insurer[];
+  $: insurerContacts = insurers.filter((i) => i.phone);
 
   let modalElements: HTMLDivElement[] = [];
 

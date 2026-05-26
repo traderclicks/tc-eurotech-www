@@ -1,15 +1,22 @@
 import type { LayoutServerLoad } from './$types';
 import { verifySessionToken, generateSessionToken } from '$lib/cms/auth-service';
+import { getReviewsWithPreview } from '$lib/cms/reviews';
+import { getInsurersWithPreview } from '$lib/cms/insurers';
+import { getFaqsWithPreview } from '$lib/cms/faqs';
 
 export const load: LayoutServerLoad = async ({ cookies }) => {
   // Check for preview mode
   const isPreviewMode = cookies.get('cms_preview') === 'true';
 
+  const reviews = getReviewsWithPreview(isPreviewMode);
+  const insurers = getInsurersWithPreview(isPreviewMode);
+  const faqs = getFaqsWithPreview(isPreviewMode);
+
   // Check for CMS session on all pages
   const sessionToken = cookies.get('cms_session');
 
   if (!sessionToken) {
-    return { cmsUser: null, isPreviewMode };
+    return { cmsUser: null, isPreviewMode, reviews, insurers, faqs };
   }
 
   const user = await verifySessionToken(sessionToken);
@@ -17,7 +24,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
   if (!user) {
     // Invalid/expired session - clear cookie
     cookies.delete('cms_session', { path: '/' });
-    return { cmsUser: null };
+    return { cmsUser: null, isPreviewMode, reviews, insurers, faqs };
   }
 
   // Sliding window: refresh session on each request
@@ -30,5 +37,5 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
     maxAge: 60 * 30 // 30 minutes
   });
 
-  return { cmsUser: user, isPreviewMode };
+  return { cmsUser: user, isPreviewMode, reviews, insurers, faqs };
 };

@@ -1,0 +1,10 @@
+{
+  "type": "list",
+  "label": "Insurers",
+  "of": {
+    "name": { "label": "Name", "type": "text" },
+    "logo": { "label": "Logo Path", "type": "text" },
+    "phone": { "label": "Phone (display)", "type": "text" },
+    "phoneTel": { "label": "Phone (tel: format)", "type": "text" }
+  }
+}

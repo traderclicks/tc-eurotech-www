@@ -1,7 +1,7 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import HeroSlider from '$lib/components/HeroSlider.svelte';
-  import ReviewSection from '$lib/components/ReviewSection.svelte';
+  import GoogleReviewsSection from '$lib/components/GoogleReviewsSection.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
   import { modal } from '$lib/stores/modal';
   import { site } from '$lib/config/site';
@@ -91,7 +91,7 @@
 </section>
 
 <!-- Google Reviews Section -->
-<ReviewSection />
+<GoogleReviewsSection />
 
 <!-- FAQ Section -->
 <section class="section bg-secondary">

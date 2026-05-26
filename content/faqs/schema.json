@@ -1,0 +1,10 @@
+{
+  "type": "map",
+  "label": "FAQs by page",
+  "keyLabel": "Page slug",
+  "valueType": "list",
+  "of": {
+    "question": { "label": "Question", "type": "text" },
+    "answer": { "label": "Answer", "type": "textarea" }
+  }
+}

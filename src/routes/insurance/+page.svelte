@@ -4,11 +4,12 @@
   import Button from '$lib/components/Button.svelte';
   import { modal } from '$lib/stores/modal';
   import { generateFAQSchema } from '$lib/utils/structuredData';
-  import faqsData from '../../../content/faqs/live.json';
-  import insurersData from '../../../content/insurers/live.json';
+  import { page } from '$app/stores';
+  import type { FaqsByPage } from '$lib/cms/faqs';
+  import type { Insurer } from '$lib/cms/insurers';
 
-  const insuranceFaqs = faqsData.insurance;
-  const insurerLogos = insurersData;
+  $: insuranceFaqs = (($page.data.faqs as FaqsByPage | undefined)?.insurance ?? []);
+  $: insurerLogos = (($page.data.insurers as Insurer[] | undefined) ?? []);
 </script>
 
 <svelte:head>

@@ -2,9 +2,10 @@
   import Meta from '$lib/components/Meta.svelte';
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import ServicePageContent from '$lib/components/ServicePageContent.svelte';
-  import ReviewSection from '$lib/components/ReviewSection.svelte';
+  import GoogleReviewsSection from '$lib/components/GoogleReviewsSection.svelte';
   import { site } from '$lib/config/site';
-  import faqsData from '../../../content/faqs/live.json';
+  import { page } from '$app/stores';
+  import type { FaqsByPage } from '$lib/cms/faqs';
 
   const heroImages = [
     '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg',
@@ -36,7 +37,7 @@
     }
   ];
 
-  const faqs = faqsData.jaguar;
+  $: faqs = (($page.data.faqs as FaqsByPage | undefined)?.jaguar ?? []);
 </script>
 
 <Meta
@@ -58,5 +59,5 @@
   {sections}
   {faqs}
 >
-  <ReviewSection slot="after-content" />
+  <GoogleReviewsSection slot="after-content" />
 </ServicePageContent>
