@@ -55,7 +55,7 @@
       <!-- Centre links -->
       <div class="nav-center">
         <button class="header-link location-btn" on:click={toggleLocation}>
-          {site.suburb}
+          Mt Wellington, Auckland
         </button>
 
         <span class="separator">•</span>

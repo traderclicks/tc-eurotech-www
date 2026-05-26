@@ -1,0 +1,16 @@
+[
+  { "name": "AA Insurance", "logo": "/images/insurers/aa-insurance.png", "phone": "0800 500 216", "phoneTel": "0800500216" },
+  { "name": "State Insurance", "logo": "/images/insurers/state-logo.png", "phone": "0800 80 24 24", "phoneTel": "0800802424" },
+  { "name": "AMI Insurance", "logo": "/images/insurers/ami.png", "phone": "0800 100 200", "phoneTel": "0800100200" },
+  { "name": "Tower Insurance", "logo": "/images/insurers/navigation_tower_logo.png", "phone": "0800 379 372", "phoneTel": "0800379372" },
+  { "name": "Vero Insurance", "logo": "/images/insurers/logo-vero.gif", "phone": "0800 800 134", "phoneTel": "0800800134" },
+  { "name": "Provident Insurance", "logo": "/images/insurers/provident-insurance.png", "phone": "0800 676 867", "phoneTel": "0800676867" },
+  { "name": "QBE Insurance", "logo": "/images/insurers/qbe.png", "phone": "0800 723 252", "phoneTel": "0800723252" },
+  { "name": "Medical Assurance Society (MAS)", "logo": "/images/insurers/mas.png", "phone": "0800 800 627", "phoneTel": "0800800627" },
+  { "name": "Zurich New Zealand", "logo": "/images/insurers/zurich-logo-big.svg", "phone": "09 928 8000", "phoneTel": "099288000" },
+  { "name": "IAG", "logo": "/images/insurers/IAGLogo_0.gif" },
+  { "name": "Ando Insurance", "logo": "/images/insurers/Ando-logo.png" },
+  { "name": "AMP", "logo": "/images/insurers/amp_0.gif" },
+  { "name": "Prestige", "logo": "/images/insurers/prestige-logo.png" },
+  { "name": "NZI", "logo": "/images/insurers/nzi.png" }
+]

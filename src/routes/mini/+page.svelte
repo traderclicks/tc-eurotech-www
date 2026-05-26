@@ -3,6 +3,7 @@
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import ServicePageContent from '$lib/components/ServicePageContent.svelte';
   import { site } from '$lib/config/site';
+  import faqsData from '../../../content/faqs/live.json';
 
   const heroImages = [
     '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg',
@@ -33,24 +34,7 @@
     }
   ];
 
-  const faqs = [
-    {
-      question: 'Do you specialize in Mini repairs?',
-      answer: 'Yes, we are European vehicle specialists with extensive experience in Mini collision repairs, panel beating, and paint work.'
-    },
-    {
-      question: 'Can you work with my insurance company?',
-      answer: 'Absolutely. We work with all major insurance companies and can manage your entire claim from assessment to completion.'
-    },
-    {
-      question: 'What types of Mini repairs do you perform?',
-      answer: 'We perform comprehensive repairs including collision damage, panel beating, paint work, and structural repairs for all Mini models.'
-    },
-    {
-      question: 'How long do Mini repairs typically take?',
-      answer: 'Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process.'
-    }
-  ];
+  const faqs = faqsData.mini;
 </script>
 
 <Meta

@@ -3,6 +3,7 @@
   import ServiceHero from '$lib/components/ServiceHero.svelte';
   import ServicePageContent from '$lib/components/ServicePageContent.svelte';
   import { site } from '$lib/config/site';
+  import faqsData from '../../../content/faqs/live.json';
 
   const heroImages = [
     '/gallery/range-rover/range-rover-1725815761.jpg',
@@ -35,28 +36,7 @@
     }
   ];
 
-  const faqs = [
-    {
-      question: 'Are you authorized for Range Rover repairs?',
-      answer: 'Yes, Eurotech is NZ\'s only authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
-    },
-    {
-      question: 'Do you use genuine Range Rover parts?',
-      answer: 'Absolutely. We only use genuine Range Rover parts for all repairs to maintain your vehicle\'s integrity, performance, and warranty.'
-    },
-    {
-      question: 'Can you handle insurance claims for Range Rover repairs?',
-      answer: 'Yes, we work with all major insurance companies and can manage your entire claim from assessment to completion.'
-    },
-    {
-      question: 'What types of Range Rover repairs do you perform?',
-      answer: 'We perform comprehensive repairs including structural damage, panel beating, paint work, and collision repairs for all Range Rover models.'
-    },
-    {
-      question: 'How long do Range Rover repairs typically take?',
-      answer: 'Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process.'
-    }
-  ];
+  const faqs = faqsData['range-rover'];
 </script>
 
 <Meta

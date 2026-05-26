@@ -12,12 +12,12 @@
   "email": {
     "label": "Email Address",
     "type": "text",
-    "placeholder": "info@eurotech.co.nz"
+    "placeholder": "info@eurotechauto.co.nz"
   },
   "address": {
     "label": "Street Address",
     "type": "text",
-    "placeholder": "20 Sylvia Park Road"
+    "placeholder": "20G Sylvia Park Road"
   },
   "suburb": {
     "label": "Suburb",

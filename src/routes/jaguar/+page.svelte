@@ -4,6 +4,7 @@
   import ServicePageContent from '$lib/components/ServicePageContent.svelte';
   import ReviewSection from '$lib/components/ReviewSection.svelte';
   import { site } from '$lib/config/site';
+  import faqsData from '../../../content/faqs/live.json';
 
   const heroImages = [
     '/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg',
@@ -35,28 +36,7 @@
     }
   ];
 
-  const faqs = [
-    {
-      question: 'Are you authorized for Jaguar repairs?',
-      answer: 'Yes, Eurotech is NZ\'s only authorized Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards.'
-    },
-    {
-      question: 'Do you use genuine Jaguar parts?',
-      answer: 'Absolutely. We only use genuine Jaguar parts for all repairs to maintain your vehicle\'s integrity, performance, and warranty.'
-    },
-    {
-      question: 'Can you handle insurance claims for Jaguar repairs?',
-      answer: 'Yes, we work with all major insurance companies and can manage your entire claim from assessment to completion.'
-    },
-    {
-      question: 'What types of Jaguar repairs do you perform?',
-      answer: 'We perform comprehensive repairs including structural damage, panel beating, paint work, and collision repairs for all Jaguar models.'
-    },
-    {
-      question: 'How long do Jaguar repairs typically take?',
-      answer: 'Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process.'
-    }
-  ];
+  const faqs = faqsData.jaguar;
 </script>
 
 <Meta

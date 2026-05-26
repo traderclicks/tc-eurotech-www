@@ -8,6 +8,7 @@
   import ReviewSection from '$lib/components/ReviewSection.svelte';
   import BlogCard from '$lib/components/BlogCard.svelte';
   import { generateFAQSchema, generateLocalBusinessSchema } from '$lib/utils/structuredData';
+  import faqsData from '../../content/faqs/live.json';
 
   export let data;
 
@@ -31,28 +32,7 @@
     '/gallery/range-rover/range-rover-1725815761.jpg'
   ];
 
-  const faqs = [
-    {
-      question: 'What brands do you specialize in?',
-      answer: 'We are European vehicle specialists, focusing on BMW, Jaguar, Land Rover, and Mini. We are New Zealand\'s only factory-authorized Jaguar/Land Rover structural repairer.'
-    },
-    {
-      question: 'Do you work with insurance companies?',
-      answer: 'Yes, we work with all major insurance companies and can handle your claim from start to finish, making the process as smooth as possible for you.'
-    },
-    {
-      question: 'What certifications do you have?',
-      answer: 'We are CRA accredited, I-Car Gold certified, and MTA members. We\'re also the only factory-authorized Jaguar/Land Rover structural repairer in New Zealand.'
-    },
-    {
-      question: 'Where are you located?',
-      answer: 'We are at 20 Sylvia Park Road, Mount Wellington, Auckland. We are open Monday to Friday, 7:30 AM to 5:00 PM.'
-    },
-    {
-      question: 'How long have you been in business?',
-      answer: 'Eurotech has been providing quality European vehicle repairs for over 20 years, building a reputation for excellence and reliability.'
-    }
-  ];
+  const faqs = faqsData.home;
 
   // Services data
   const services = [
@@ -157,7 +137,7 @@
 
 <!-- Hero Section -->
 <ServiceHero
-  title="European Auto Repair"
+  title="Eurotech Auto Repair Centre"
   description="NZ's only factory-authorized Jaguar/Land Rover repairer  •  Expert BMW & Mini repairs  •  Over 20 years experience"
   images={heroImages}
   showLogoBar={true}
