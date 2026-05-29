@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "label": "SEO Meta",
+    "fields": {
+      "title": { "label": "Title (without site suffix)", "type": "text" },
+      "description": { "label": "Description (phone appended at render)", "type": "textarea" },
+      "keywords": { "label": "Keywords (comma separated)", "type": "text" }
+    }
+  },
+  "hero": {
+    "label": "Hero",
+    "fields": {
+      "title": { "label": "Headline", "type": "text" },
+      "description": { "label": "Sub-headline", "type": "textarea" },
+      "images": { "label": "Hero slider images", "type": "list", "of": { "type": "text" } }
+    }
+  },
+  "content": {
+    "label": "Body content",
+    "fields": {
+      "heading": { "label": "Main heading", "type": "text" },
+      "leadText": { "label": "Lead paragraph", "type": "textarea" },
+      "sections": {
+        "label": "Content sections",
+        "type": "list",
+        "of": {
+          "image": { "label": "Image path", "type": "text" },
+          "imageAlt": { "label": "Image alt text", "type": "text" },
+          "imageHeight": { "label": "Image height (optional)", "type": "number" },
+          "title": { "label": "Section title", "type": "text" },
+          "paragraphs": { "label": "Paragraphs", "type": "list", "of": { "type": "textarea" } }
+        }
+      }
+    }
+  },
+  "showReviews": { "label": "Show Google Reviews section", "type": "boolean" }
+}
