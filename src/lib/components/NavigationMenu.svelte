@@ -84,7 +84,7 @@
             <a
               href={item.href}
               class="nav-link secondary"
-              on:click={handleNavClick}
+              on:click={(e) => handleNavClick(e, item)}
             >
               <span>{item.label}</span>
               {#if item.logo}

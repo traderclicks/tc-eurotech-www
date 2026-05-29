@@ -20,22 +20,24 @@
   keywords={brand.meta.keywords}
 />
 
-<ServiceHero
-  title={brand.hero.title}
-  description={brand.hero.description}
-  images={brand.hero.images}
-  showLogoBar={true}
-/>
+{#key data.slug}
+  <ServiceHero
+    title={brand.hero.title}
+    description={brand.hero.description}
+    images={brand.hero.images}
+    showLogoBar={true}
+  />
 
-<ServicePageContent
-  heading={brand.content.heading}
-  leadText={brand.content.leadText}
-  sections={brand.content.sections}
-  {faqs}
->
-  <svelte:fragment slot="after-content">
-    {#if brand.showReviews}
-      <GoogleReviewsSection />
-    {/if}
-  </svelte:fragment>
-</ServicePageContent>
+  <ServicePageContent
+    heading={brand.content.heading}
+    leadText={brand.content.leadText}
+    sections={brand.content.sections}
+    {faqs}
+  >
+    <svelte:fragment slot="after-content">
+      {#if brand.showReviews}
+        <GoogleReviewsSection />
+      {/if}
+    </svelte:fragment>
+  </ServicePageContent>
+{/key}

@@ -178,7 +178,7 @@
 <GoogleReviewsSection />
 
 <!-- FAQ Section -->
-<section class="section bg-secondary">
+<section class="section">
   <div class="container">
     <div class="section-header text-center">
       <h2 class="section-title">Frequently Asked Questions</h2>

@@ -4,7 +4,7 @@
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
 
   const heroImages = [
-    '/images/DSC00931.jpg',
+    '/images/punchy.jpg',
     '/images/DSC00651.jpg',
     '/images/DSC00720.jpg'
   ];

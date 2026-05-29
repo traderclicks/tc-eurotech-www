@@ -30,7 +30,7 @@
       >
         <span class="question-text">{item.question}</span>
         <span class="question-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
             {#if openItems.has(index)}
               <line x1="5" y1="12" x2="19" y2="12" />
             {:else}
@@ -111,7 +111,7 @@
 
   .question-icon {
     flex-shrink: 0;
-    color: #1a1a1a;
+    color: var(--color-primary);
     transition: transform var(--transition-base);
   }
 
