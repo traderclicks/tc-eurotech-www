@@ -122,8 +122,8 @@
         <span>I-Car Gold Certified</span>
         <span class="separator">|</span>
         <span>Member of:</span>
-        <img src="/cra-logo.png" alt="CRA Member" width="60" height="30" />
-        <img src="/mta-logo.png" alt="MTA Member" width="60" height="30" />
+        <img src="/cra-logo.png" alt="CRA Member" class="cert-logo cert-logo-cra" />
+        <img src="/mta-logo.png" alt="MTA Member" class="cert-logo cert-logo-mta" />
       </div>
 
       <div class="bottom-right">
@@ -134,6 +134,7 @@
         <a href="/privacy">Privacy</a>
         <span class="separator">|</span>
         <a href="/terms">Terms</a>
+        <span class="separator">|</span>
         <a
           class="made-with"
           href="https://traderclicks.co.nz"
@@ -143,7 +144,7 @@
         >
           <span class="made-with-text">Made with</span>
           <span class="made-with-heart" aria-hidden="true">
-            <img src="/images/tc-heart.svg" alt="" width="19" height="21" />
+            <img src="/images/tc-heart.svg" alt="" width="16" height="18" />
           </span>
           <span class="sr-only">by TraderClicks</span>
         </a>
@@ -372,6 +373,18 @@
     color: rgba(255, 255, 255, 0.5);
   }
 
+  .cert-logo {
+    height: auto;
+  }
+
+  .cert-logo-cra {
+    width: 54px;  /* -10% from 60px baseline */
+  }
+
+  .cert-logo-mta {
+    width: 48px;  /* -20% from 60px baseline */
+  }
+
   .footer-bottom-links a {
     color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
@@ -425,8 +438,8 @@
   }
   .made-with-heart {
     display: inline-flex;
-    width: 19px;
-    height: 21px;
+    width: 16px;
+    height: 18px;
     align-items: center;
     justify-content: center;
     background-image: url('/images/tc-heart-hover.svg');
@@ -504,18 +517,16 @@
     }
 
     .certifications-logos {
-      gap: var(--space-3);
-      font-size: var(--text-xs);
+      gap: var(--space-2);
     }
 
     .bottom-right {
-      gap: var(--space-3);
-      font-size: var(--text-xs);
+      gap: var(--space-2);
     }
 
-    /* Drop visual separators on mobile — wrapping makes them awkward */
+    /* Tighten the pip separators a touch on mobile */
     .footer-bottom-links .separator {
-      display: none;
+      margin: 0 calc(var(--space-1) * -1);
     }
 
     /* Shrink brand service logos */
@@ -540,17 +551,18 @@
       width: 26px;
     }
 
-    /* Shrink certifications logos */
-    .certifications-logos img {
-      width: 48px;
-      height: auto;
+    /* Shrink certifications logos (preserve the -10% / -20% ratio) */
+    .cert-logo-cra {
+      width: 43px;
     }
 
-    /* Push the TC attribution onto its own line so it sits tidily */
+    .cert-logo-mta {
+      width: 38px;
+    }
+
+    /* Keep made-with inline with Privacy/Terms — no own-line break */
     .made-with {
-      flex-basis: 100%;
-      justify-content: center;
-      margin-top: var(--space-2);
+      margin-left: 0;
     }
   }
 </style>

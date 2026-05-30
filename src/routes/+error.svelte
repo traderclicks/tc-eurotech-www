@@ -42,7 +42,6 @@
         <div class="helpful-links">
           <h3>Helpful Links</h3>
           <ul>
-            <li><a href="/services">Our Services</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/insurance">Insurance</a></li>
           </ul>

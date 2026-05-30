@@ -16,7 +16,7 @@
 
   let scrollY = 0;
   // Pages that use ServiceHero — header overlays the hero image
-  const heroPages = ['/', '/jaguar', '/land-rover', '/range-rover', '/bmw', '/mini', '/about', '/services'];
+  const heroPages = ['/', '/jaguar', '/land-rover', '/range-rover', '/bmw', '/mini', '/about'];
   $: hasHero = heroPages.includes($page.url.pathname);
   $: isLoginPage = $page.url.pathname === '/login';
   $: isPreviewMode = data.isPreviewMode;
