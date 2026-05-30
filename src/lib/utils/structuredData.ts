@@ -222,7 +222,7 @@ export function generateArticleSchema(article: {
       name: site.businessName,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://eurotechauto.co.nz/eurotech-logo.png',
+        url: 'https://eurotechauto.co.nz/eurotech-main-logo.png',
       },
     },
   };

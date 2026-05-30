@@ -118,7 +118,15 @@
 
     <!-- Bottom Links -->
     <div class="footer-bottom-links">
-      <div class="bottom-left">
+      <div class="certifications-logos">
+        <span>I-Car Gold Certified</span>
+        <span class="separator">|</span>
+        <span>Member of:</span>
+        <img src="/cra-logo.png" alt="CRA Member" width="60" height="30" />
+        <img src="/mta-logo.png" alt="MTA Member" width="60" height="30" />
+      </div>
+
+      <div class="bottom-right">
         <p class="copyright">
           © {currentYear} {site.businessName}. All rights reserved.
         </p>
@@ -126,15 +134,19 @@
         <a href="/privacy">Privacy</a>
         <span class="separator">|</span>
         <a href="/terms">Terms</a>
-      </div>
-
-      <!-- Logos at right -->
-      <div class="certifications-logos">
-        <span>I-Car Gold Certified</span>
-        <span class="separator">|</span>
-        <span>Member of:</span>
-        <img src="/eurotech-logo.png" alt="Eurotech" width="60" height="30" />
-        <img src="/mta-logo.png" alt="MTA Member" width="60" height="30" />
+        <a
+          class="made-with"
+          href="https://traderclicks.co.nz"
+          rel="noopener"
+          target="_blank"
+          title="TraderClicks Web Design &amp; Marketing"
+        >
+          <span class="made-with-text">Made with</span>
+          <span class="made-with-heart" aria-hidden="true">
+            <img src="/images/tc-heart.svg" alt="" width="19" height="21" />
+          </span>
+          <span class="sr-only">by TraderClicks</span>
+        </a>
       </div>
     </div>
   </div>
@@ -144,7 +156,7 @@
   .footer {
     background: #08141a;
     color: rgba(255, 255, 255, 0.8);
-    padding: var(--space-16) 0 0;
+    padding: var(--space-16) 0 var(--space-16);
     margin-top: auto;
   }
 
@@ -337,20 +349,20 @@
 
   .footer-bottom-links {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
     padding-top: var(--space-12);
     margin-top: var(--space-12);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: var(--text-sm);
   }
 
-  .bottom-left {
+  .bottom-right {
     display: flex;
     align-items: center;
     gap: var(--space-4);
   }
+
 
   .certifications-logos {
     display: flex;
@@ -390,6 +402,59 @@
     color: rgba(255, 255, 255, 0.3);
   }
 
+  /* TraderClicks attribution — mirrors tc-thelawreports-www pattern */
+  .made-with {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: var(--space-2);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .made-with:hover {
+    color: white;
+  }
+  .made-with:hover .made-with-text {
+    color: white;
+  }
+  .made-with-text {
+    color: rgba(255, 255, 255, 0.5);
+    transition: color var(--transition-fast);
+  }
+  .made-with-heart {
+    display: inline-flex;
+    width: 19px;
+    height: 21px;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/images/tc-heart-hover.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .made-with-heart img {
+    width: 100%;
+    height: 100%;
+    transition: opacity var(--transition-fast);
+  }
+  .made-with:hover .made-with-heart img {
+    opacity: 0;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   @media (max-width: 1024px) {
     .footer-grid {
       grid-template-columns: 1fr 1fr;
@@ -399,9 +464,30 @@
     .footer-spacer {
       display: none;
     }
+
+    /* Tablet: stack the two bottom blocks, center them, breathing room between */
+    .footer-bottom-links {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-6);
+      padding-top: var(--space-10);
+      margin-top: var(--space-10);
+      text-align: center;
+    }
+
+    .certifications-logos,
+    .bottom-right {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: var(--space-2);
+    }
   }
 
   @media (max-width: 640px) {
+    .footer {
+      padding: var(--space-12) 0 var(--space-10);
+    }
+
     .footer-grid {
       grid-template-columns: 1fr;
       gap: var(--space-8);
@@ -412,19 +498,59 @@
     }
 
     .footer-bottom-links {
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .bottom-left {
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: var(--space-5);
+      padding-top: var(--space-8);
+      margin-top: var(--space-8);
     }
 
     .certifications-logos {
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+    }
+
+    .bottom-right {
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+    }
+
+    /* Drop visual separators on mobile — wrapping makes them awkward */
+    .footer-bottom-links .separator {
+      display: none;
+    }
+
+    /* Shrink brand service logos */
+    .services-grid-links .service-link {
+      grid-template-columns: 40px 1fr;
       gap: var(--space-2);
+    }
+
+    .logo-col {
+      width: 40px;
+    }
+
+    .service-logo {
+      width: 32px;
+    }
+
+    .service-logo-bmw {
+      width: 18px;
+    }
+
+    .service-logo-landrover {
+      width: 26px;
+    }
+
+    /* Shrink certifications logos */
+    .certifications-logos img {
+      width: 48px;
+      height: auto;
+    }
+
+    /* Push the TC attribution onto its own line so it sits tidily */
+    .made-with {
+      flex-basis: 100%;
+      justify-content: center;
+      margin-top: var(--space-2);
     }
   }
 </style>

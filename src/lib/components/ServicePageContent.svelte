@@ -91,11 +91,11 @@
   }
 
   .content-section {
-    background: white;
+    background: var(--bg-secondary);
   }
 
   .bg-secondary {
-    background: var(--bg-secondary);
+    background: white;
   }
 
   .container {

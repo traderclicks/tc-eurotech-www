@@ -1,26 +1,27 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import reviewsData from '$lib/data/google-reviews.json';
+  import { page } from '$app/stores';
+  import { site } from '$lib/config/site';
+  import type { GoogleReview, GoogleReviewsData } from '$lib/cms/reviews';
 
   export let autoPlay = true;
-  export let interval = 6750; // Time between slides in ms (slowed by 35%)
-  export let reviewsPerSlide = 5; // Number of reviews to show at once
+  export let interval = 6750;
+  export let reviewsPerSlide = 5;
+  export let data: GoogleReviewsData | undefined = undefined;
 
   let currentIndex = 0;
   let carouselContainer: HTMLDivElement;
   let intervalId: number | null = null;
   let isPaused = false;
 
-  // Filter out low ratings and reviews without comments or very short comments
-  const reviews = reviewsData.reviews.filter(r =>
+  $: reviewsData = data ?? ($page.data.reviews as GoogleReviewsData | undefined);
+  $: reviews = (reviewsData?.reviews ?? []).filter((r: GoogleReview) =>
     r.rating >= 4 &&
     r.comment &&
     r.comment.length > 20 &&
-    !r.comment.includes('reviews · ') // Filter out empty reviews that just have stats
+    !r.comment.includes('reviews · ')
   );
-
-  // Calculate total number of slides (groups of reviews)
-  const totalSlides = Math.ceil(reviews.length / reviewsPerSlide);
+  $: totalSlides = Math.ceil(reviews.length / reviewsPerSlide);
 
   function nextSlide() {
     if (!isPaused) {
@@ -72,8 +73,22 @@
   }
 </script>
 
-<section class="review-carousel-section">
-  <!-- Full-width carousel -->
+{#if reviews.length > 0}
+<section class="reviews-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="reviews-title">
+        What Our Customers Say
+        <span class="title-separator">|</span>
+        <span class="google-rating">
+          <img src="/google-logo.svg" alt="Google" class="google-logo-inline" />
+          <span class="star">★</span>
+          {site.googleReviewRating} ({site.googleReviewCount} reviews)
+        </span>
+      </h2>
+    </div>
+  </div>
+
   <div
     class="carousel-container"
     bind:this={carouselContainer}
@@ -107,9 +122,6 @@
                             </svg>
                           {/each}
                         </div>
-                        {#if review.isLocalGuide}
-                          <span class="local-guide-badge">Local Guide</span>
-                        {/if}
                       </div>
                     </div>
                   </div>
@@ -129,18 +141,17 @@
     </div>
   </div>
 
-  <!-- Contained controls -->
   <div class="container">
     <div class="carousel-controls">
       <div class="carousel-dots">
-      {#each Array(totalSlides) as _, index}
-        <button
-          class="dot"
-          class:active={index === currentIndex}
-          on:click={() => goToSlide(index)}
-          aria-label="Go to slide {index + 1}"
-        ></button>
-      {/each}
+        {#each Array(totalSlides) as _, index}
+          <button
+            class="dot"
+            class:active={index === currentIndex}
+            on:click={() => goToSlide(index)}
+            aria-label="Go to slide {index + 1}"
+          ></button>
+        {/each}
       </div>
 
       <div class="carousel-arrows">
@@ -159,13 +170,59 @@
     </div>
   </div>
 </section>
+{/if}
 
 <style>
-  .review-carousel-section {
-    padding: 0;
-    background: transparent;
+  .reviews-section {
+    background: rgba(50, 75, 90, 0.12);
+    padding: var(--space-12) 0 var(--space-8) 0;
     position: relative;
     overflow: hidden;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+
+  .reviews-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: #1a1a1a;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .title-separator {
+    margin: 0 var(--space-4);
+    opacity: 0.5;
+  }
+
+  .google-rating {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #1a1a1a;
+  }
+
+  .google-logo-inline {
+    height: 1.1em;
+    width: auto;
+    filter: brightness(0);
+    vertical-align: baseline;
+    position: relative;
+    top: 0.15em;
+  }
+
+  .google-rating .star {
+    color: #fbbc04;
+    font-size: 1.3em;
+    line-height: 1;
   }
 
   .carousel-container {
@@ -266,15 +323,6 @@
     gap: var(--space-2);
   }
 
-  .local-guide-badge {
-    font-size: var(--text-xs);
-    color: #4a4a4a;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-    font-weight: var(--font-medium);
-  }
-
   .review-comment {
     color: #333;
     line-height: var(--leading-relaxed);
@@ -353,6 +401,10 @@
   }
 
   @media (max-width: 768px) {
+    .reviews-title {
+      font-size: var(--text-xl);
+    }
+
     .reviews-grid {
       grid-template-columns: 1fr;
       gap: var(--space-4);

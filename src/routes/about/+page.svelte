@@ -4,7 +4,7 @@
   import CloudflareImage from '$lib/components/CloudflareImage.svelte';
 
   const heroImages = [
-    '/images/DSC00931.jpg',
+    '/images/punchy.jpg',
     '/images/DSC00651.jpg',
     '/images/DSC00720.jpg'
   ];
@@ -41,13 +41,12 @@
   <section class="split-section">
     <div class="container split reverse">
       <div class="split-text">
-        <h2>Factory Authorizations</h2>
+        <h2>Factory Authorisations</h2>
         <p>We hold certifications that set us apart from general body shops:</p>
         <ul>
-          <li><strong>NZ's only factory-authorized Jaguar/Land Rover structural repairer</strong> — certified for aluminium structural repairs</li>
+          <li><strong>NZ's only factory-authorised Jaguar/Land Rover structural repairer</strong> — certified for aluminium structural repairs</li>
           <li><strong>NZ's only accredited BMW Carbon Fibre Body Shop</strong></li>
           <li><strong>Accredited BMW Group Body Shop</strong></li>
-          <li><strong>Recommended repairer for Renault</strong></li>
           <li><strong>CRA quality assurance</strong> and <strong>MTA member</strong></li>
         </ul>
       </div>

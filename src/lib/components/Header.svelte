@@ -55,7 +55,7 @@
       <!-- Centre links -->
       <div class="nav-center">
         <button class="header-link location-btn" on:click={toggleLocation}>
-          {site.suburb}
+          Mt Wellington, Auckland
         </button>
 
         <span class="separator">•</span>
@@ -85,7 +85,7 @@
       </button>
 
       <div class="modal-image-wrapper">
-        <CloudflareImage src="/images/DSC00931.jpg" alt="Eurotech Auto Repair Centre Building" width={800} height={534} />
+        <CloudflareImage src="/images/punchy.jpg" alt="Eurotech Auto Repair Centre" width={800} height={534} />
         <div class="modal-image-overlay"></div>
       </div>
 

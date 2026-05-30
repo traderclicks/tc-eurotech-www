@@ -49,7 +49,7 @@
       "name": site.businessName,
       "alternateName": "Eurotech Panel Beaters",
       "url": "https://eurotechauto.co.nz",
-      "logo": "https://eurotechauto.co.nz/eurotech-logo.png",
+      "logo": "https://eurotechauto.co.nz/eurotech-main-logo.png",
       "description": "Factory-authorized European vehicle specialists. NZ's only Jaguar/Land Rover structural repairer and accredited BMW Carbon Fibre Body Shop.",
       "foundingDate": "2003",
       "address": {

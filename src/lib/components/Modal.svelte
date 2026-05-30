@@ -5,6 +5,11 @@
   import ContactForm from './ContactForm.svelte';
   import CognitoForm from './CognitoForm.svelte';
   import PhoneIcon from './PhoneIcon.svelte';
+  import { page } from '$app/stores';
+  import type { Insurer } from '$lib/cms/insurers';
+
+  $: insurers = ($page.data.insurers ?? []) as Insurer[];
+  $: insurerContacts = insurers.filter((i) => i.phone);
 
   let modalElements: HTMLDivElement[] = [];
 
@@ -157,41 +162,13 @@
         {:else if modal.type === 'insurance'}
           <div class="insurance-modal">
             <div class="insurance-list">
-              <div class="insurance-item">
-                <div class="insurer-avatar" style="background-image: url('/images/insurers/aa-insurance.png')"></div>
-                <div class="insurance-name">AA Insurance</div>
-                <a href="tel:0800222022" class="insurance-phone"><PhoneIcon size={16} /> 0800 222 022</a>
-              </div>
-              <div class="insurance-item">
-                <div class="insurer-avatar" style="background-image: url('/images/insurers/state-logo.png')"></div>
-                <div class="insurance-name">State Insurance</div>
-                <a href="tel:0800808808" class="insurance-phone"><PhoneIcon size={16} /> 0800 808 808</a>
-              </div>
-              <div class="insurance-item">
-                <div class="insurer-avatar" style="background-image: url('/images/insurers/ami.png')"></div>
-                <div class="insurance-name">AMI Insurance</div>
-                <a href="tel:0800100200" class="insurance-phone"><PhoneIcon size={16} /> 0800 100 200</a>
-              </div>
-              <div class="insurance-item">
-                <div class="insurer-avatar" style="background-image: url('/images/insurers/navigation_tower_logo.png')"></div>
-                <div class="insurance-name">Tower Insurance</div>
-                <a href="tel:0800808808" class="insurance-phone"><PhoneIcon size={16} /> 0800 808 808</a>
-              </div>
-              <div class="insurance-item">
-                <div class="insurer-avatar" style="background-image: url('/images/insurers/logo-vero.gif')"></div>
-                <div class="insurance-name">Vero Insurance</div>
-                <a href="tel:0800800100" class="insurance-phone"><PhoneIcon size={16} /> 0800 800 100</a>
-              </div>
-              <div class="insurance-item">
-                <div class="insurer-avatar" style="background-image: url('/images/insurers/nzi.png')"></div>
-                <div class="insurance-name">NZI Insurance</div>
-                <a href="tel:0800100080" class="insurance-phone"><PhoneIcon size={16} /> 0800 100 080</a>
-              </div>
-              <div class="insurance-item">
-                <div class="insurer-avatar" style="background-image: url('/images/insurers/IAGLogo_0.gif')"></div>
-                <div class="insurance-name">IAG (NZI/State/AMI/Lumley)</div>
-                <a href="tel:0800104104" class="insurance-phone"><PhoneIcon size={16} /> 0800 104 104</a>
-              </div>
+              {#each insurerContacts as insurer}
+                <div class="insurance-item">
+                  <div class="insurer-avatar" style="background-image: url('{insurer.logo}')"></div>
+                  <div class="insurance-name">{insurer.name}</div>
+                  <a href="tel:{insurer.phoneTel}" class="insurance-phone"><PhoneIcon size={16} /> {insurer.phone}</a>
+                </div>
+              {/each}
             </div>
           </div>
         {:else if modal.type === 'cognito'}

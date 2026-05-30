@@ -144,6 +144,10 @@
       font-size: var(--text-base);
       gap: 1rem;
     }
+
+    .logos-track {
+      animation-duration: 22s;
+    }
   }
 
   /* Mobile Styles */
@@ -163,6 +167,7 @@
 
     .logos-track {
       gap: var(--space-8);
+      animation-duration: 12s;
     }
 
     .brand-logo {
