@@ -13,7 +13,6 @@
   import ServiceCard from '$lib/components/ServiceCard.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
   import StatsGrid from '$lib/components/StatsGrid.svelte';
-  import HeroSlider from '$lib/components/HeroSlider.svelte';
   import HeroVariations from '$lib/components/HeroVariations.svelte';
 
   // Import centralized styles
@@ -503,12 +502,6 @@
         <p class="section-description">Various hero/header layouts for landing pages</p>
 
         <div class="hero-showcase">
-          <h3>Hero Slider</h3>
-          <p class="component-description">Full-featured carousel with multiple slides</p>
-          <div class="hero-demo">
-            <HeroSlider height="medium" />
-          </div>
-
           <h3 class="mt-8">Hero Variations</h3>
           <div class="hero-variations-grid">
             <div class="hero-variant-item">
