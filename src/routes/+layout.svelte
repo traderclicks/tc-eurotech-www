@@ -11,19 +11,14 @@
 
   export let data: LayoutData;
 
-  // Admin pages get a completely clean pass-through
-  $: isAdminPage = $page.url.pathname.startsWith('/admin');
-
   let scrollY = 0;
   // Pages that use ServiceHero — header overlays the hero image
   const heroPages = ['/', '/jaguar', '/land-rover', '/range-rover', '/bmw', '/mini', '/about'];
   $: hasHero = heroPages.includes($page.url.pathname);
-  $: isLoginPage = $page.url.pathname === '/login';
+  // Preview mode reserved for the Controlla Connector (D549). Today: always false.
   $: isPreviewMode = data.isPreviewMode;
 
   onMount(() => {
-    if (isAdminPage) return;
-
     const handleScroll = () => {
       scrollY = window.scrollY;
     };
@@ -37,8 +32,7 @@
 </script>
 
 <svelte:head>
-  {#if !isAdminPage}
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 
@@ -84,50 +78,38 @@
       "url": "https://eurotechauto.co.nz"
     })}
     </script>`}
-  {/if}
 </svelte:head>
 
-{#if isAdminPage}
-  <!-- Admin: clean pass-through, admin layout handles everything -->
-  <slot />
-{:else}
-  <!-- Website: full layout -->
-  {#if isPreviewMode && !isLoginPage}
-    <div class="preview-bar">
-      <span class="preview-text">Preview Mode — Viewing unpublished changes</span>
-      <a href="/api/preview/disable?return={$page.url.pathname}" class="preview-exit">Exit Preview</a>
-    </div>
-  {/if}
-
-  <div class="app" class:has-preview-bar={isPreviewMode && !isLoginPage}>
-    {#if !isLoginPage}
-      <Header isScrolled={scrollY > 50} {hasHero} />
-    {/if}
-
-    <main class="main">
-      <slot />
-    </main>
-
-    {#if !isLoginPage}
-      <FooterCTA />
-      <Footer />
-    {/if}
-
-    <Modal />
-
-    {#if scrollY > 300 && !isLoginPage}
-      <button
-        class="back-to-top"
-        on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Back to top"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-      </button>
-    {/if}
+{#if isPreviewMode}
+  <div class="preview-bar">
+    <span class="preview-text">Preview Mode — Viewing unpublished changes</span>
   </div>
 {/if}
+
+<div class="app" class:has-preview-bar={isPreviewMode}>
+  <Header isScrolled={scrollY > 50} {hasHero} />
+
+  <main class="main">
+    <slot />
+  </main>
+
+  <FooterCTA />
+  <Footer />
+
+  <Modal />
+
+  {#if scrollY > 300}
+    <button
+      class="back-to-top"
+      on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Back to top"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+  {/if}
+</div>
 
 <style>
   :global(:root) {
