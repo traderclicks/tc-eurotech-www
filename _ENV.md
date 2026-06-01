@@ -40,5 +40,5 @@ Eurotech Auto client website. Public read-only content-consumer per **D658**.
 
 ## Notes
 
-- Auth removed entirely as of W517 — `CMS_SESSION_SECRET`, `TC_SERVICES_URL`, and the magic-link flow (previously delegated to tc-services) are no longer used. The Connector (**D549**) will reintroduce an editor identity layer when it ships.
-- `cms_preview` cookie is still read by `hooks.server.ts` and `+layout.server.ts` as forward-compat for the Connector. Today nothing sets it, so preview mode is always off.
+- Auth removed entirely as of W517 — `CMS_SESSION_SECRET`, `TC_SERVICES_URL`, and the magic-link flow (previously delegated to tc-services) are no longer used.
+- The Controlla Connector (**D549**) will reintroduce an editor identity layer + preview mode when it ships. Until then, the loader signatures `getXWithPreview()` in `src/lib/cms/*.ts` are the kept integration surface — they're all called with `false` today. See **D671** for the rationale on stripping the cookie hooks pre-Connector.
