@@ -3,14 +3,14 @@ import { getReviewsWithPreview } from '$lib/cms/reviews';
 import { getInsurersWithPreview } from '$lib/cms/insurers';
 import { getFaqsWithPreview } from '$lib/cms/faqs';
 
-export const load: LayoutServerLoad = async ({ cookies }) => {
-  // Preview mode arrives from the Controlla Connector (D549) when it ships.
-  // For now nothing sets the cookie, so this is effectively always false.
-  const isPreviewMode = cookies.get('cms_preview') === 'true';
+export const load: LayoutServerLoad = async () => {
+  // Loader wrappers keep the (isPreviewMode) signature for portfolio
+  // consistency with other tc-*-www sites and the Controlla Connector
+  // contract (D549). This site has no preview surface today so we
+  // always pass false.
+  const reviews = getReviewsWithPreview(false);
+  const insurers = getInsurersWithPreview(false);
+  const faqs = getFaqsWithPreview(false);
 
-  const reviews = getReviewsWithPreview(isPreviewMode);
-  const insurers = getInsurersWithPreview(isPreviewMode);
-  const faqs = getFaqsWithPreview(isPreviewMode);
-
-  return { isPreviewMode, reviews, insurers, faqs };
+  return { reviews, insurers, faqs };
 };

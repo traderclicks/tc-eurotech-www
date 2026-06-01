@@ -5,9 +5,7 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		interface Locals {
-			isPreviewMode: boolean;
-		}
+		// interface Locals {}
 		// interface PageData {}
 		// interface Platform {}
 	}

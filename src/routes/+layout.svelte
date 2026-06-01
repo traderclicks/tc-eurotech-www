@@ -15,8 +15,6 @@
   // Pages that use ServiceHero — header overlays the hero image
   const heroPages = ['/', '/jaguar', '/land-rover', '/range-rover', '/bmw', '/mini', '/about'];
   $: hasHero = heroPages.includes($page.url.pathname);
-  // Preview mode reserved for the Controlla Connector (D549). Today: always false.
-  $: isPreviewMode = data.isPreviewMode;
 
   onMount(() => {
     const handleScroll = () => {
@@ -80,13 +78,7 @@
     </script>`}
 </svelte:head>
 
-{#if isPreviewMode}
-  <div class="preview-bar">
-    <span class="preview-text">Preview Mode — Viewing unpublished changes</span>
-  </div>
-{/if}
-
-<div class="app" class:has-preview-bar={isPreviewMode}>
+<div class="app">
   <Header isScrolled={scrollY > 50} {hasHero} />
 
   <main class="main">
@@ -112,58 +104,15 @@
 </div>
 
 <style>
-  :global(:root) {
-    --preview-bar-height: 40px;
-  }
-
   .app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  .app.has-preview-bar {
-    margin-top: var(--preview-bar-height);
-  }
-
   .main {
     flex: 1;
     width: 100%;
-  }
-
-  .preview-bar {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    color: white;
-    font-size: 14px;
-    font-weight: 500;
-    width: 100%;
-    height: var(--preview-bar-height);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9998;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .preview-text::before {
-    content: '⚡ ';
-  }
-
-  .preview-exit {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 6px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.2s;
-  }
-
-  .preview-exit:hover {
-    background: rgba(255, 255, 255, 0.3);
   }
 
   .back-to-top {
