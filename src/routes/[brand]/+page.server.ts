@@ -2,9 +2,8 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { getBrandPageWithPreview, listBrandSlugs } from '$lib/cms/brand-pages';
 
-export const load: PageServerLoad = async ({ params, parent }) => {
-  const { isPreviewMode } = await parent();
-  const brand = getBrandPageWithPreview(params.brand, !!isPreviewMode);
+export const load: PageServerLoad = async ({ params }) => {
+  const brand = getBrandPageWithPreview(params.brand, false);
   if (!brand) {
     throw error(404, 'Page not found');
   }

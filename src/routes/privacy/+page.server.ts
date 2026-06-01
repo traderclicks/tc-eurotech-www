@@ -2,9 +2,8 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { getPageWithPreview } from '$lib/cms/pages';
 
-export const load: PageServerLoad = async ({ parent }) => {
-  const { isPreviewMode } = await parent();
-  const page = getPageWithPreview('privacy', !!isPreviewMode);
+export const load: PageServerLoad = async () => {
+  const page = getPageWithPreview('privacy', false);
   if (!page) throw error(404, 'Page not found');
   return { page };
 };
