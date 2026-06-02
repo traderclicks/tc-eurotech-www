@@ -14,6 +14,7 @@
    * - Responsive srcset with 3 breakpoints
    * - Native lazy loading
    * - EXIF stripped for privacy
+   * - Skeleton shimmer placeholder until the image fires `load`
    * - Free tier: 5,000 transformations/month
    *
    * @example
@@ -33,6 +34,8 @@
   export let eager = false;
   export let quality = 85;
   export let fit: 'scale-down' | 'cover' | 'contain' | 'crop' = 'scale-down';
+
+  let loaded = false;
 
   // Generate responsive sizes (0.5x, 1x, 1.5x)
   const sizes = [
@@ -74,6 +77,8 @@
   {height}
   loading={eager ? "eager" : "lazy"}
   decoding="async"
+  class:loaded
+  on:load={() => (loaded = true)}
 />
 
 <style>
@@ -81,5 +86,36 @@
     max-width: 100%;
     height: auto;
     display: block;
+    /* Skeleton shimmer while the bytes arrive. Disappears the moment the
+       img fires its `load` event, so there's no flash for cache hits. */
+    background-color: var(--bg-content, #f3f4f6);
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.55) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    animation: img-shimmer 1.4s ease-in-out infinite;
+  }
+
+  img.loaded {
+    background: none;
+    animation: none;
+  }
+
+  @keyframes img-shimmer {
+    0%   { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+
+  /* Respect users who don't want motion */
+  @media (prefers-reduced-motion: reduce) {
+    img {
+      animation: none;
+      background-image: none;
+    }
   }
 </style>
