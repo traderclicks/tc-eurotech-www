@@ -17,8 +17,7 @@
   let slideInterval: number | null = null;
   let trackEl: HTMLDivElement;
 
-  // Repeat images 10 times for longer slideshow before reset
-  const heroBackgrounds = Array(10).fill(images).flat();
+  const heroBackgrounds = images;
   const totalSlides = heroBackgrounds.length;
 
   // Calculate widths dynamically based on number of slides
