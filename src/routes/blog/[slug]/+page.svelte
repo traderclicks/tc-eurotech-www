@@ -43,8 +43,8 @@
     <img src={post.featuredImage?.url ?? data.defaultPostImage} alt={post.featuredImage?.alt ?? post.title} />
     <div class="hero-title-wrap">
       <div class="hero-title-inner">
-        <a href="/blog" class="hero-back-link"><span class="back-arrow">&larr;</span> <span class="back-text">Latest posts</span></a>
         <h1 class="hero-title">{post.title}</h1>
+        <a href="/blog" class="hero-back-link"><span class="back-arrow">&larr;</span> <span class="back-text">Latest posts</span></a>
       </div>
     </div>
     {#if post.featuredImage?.credit}
@@ -122,7 +122,7 @@
     font-size: var(--text-xs);
     font-weight: var(--font-medium);
     transition: background var(--transition-fast);
-    margin-bottom: var(--space-3);
+    margin-top: var(--space-3);
   }
 
   .hero-back-link:hover {
