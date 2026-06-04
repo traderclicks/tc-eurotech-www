@@ -8,7 +8,7 @@
 
   const primaryItems = [
     { label: 'Home', href: '/' },
-    { label: 'Make an Insurance Claim', href: '/insurance' },
+    { label: 'Make an Insurance Claim *', href: '/insurance' },
     { label: 'About Eurotech', href: '/about' },
     { label: 'Workshop Updates', href: '/blog' },
     { label: 'Contact Us', href: '#contact', action: 'contact' },
