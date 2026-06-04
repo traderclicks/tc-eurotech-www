@@ -6,8 +6,8 @@
     <img src="/bmw-logo-black.svg" alt="" style="height: 32px" />
     <img src="/mini-black.svg" alt="" style="height: 30px" />
   </div>
-  <p class="business-name">Eurotech Auto Repair Centre</p>
-  <p class="tagline">Expert &amp; Factory Authorised European Auto Repair Specialists · Auckland</p>
+  <p class="business-name">Eurotech Auto Repair Centre, Mt Wellington, Auckland</p>
+  <p class="tagline">Expert &amp; Factory Authorised European Auto Repair Specialists</p>
 </aside>
 
 <style>
