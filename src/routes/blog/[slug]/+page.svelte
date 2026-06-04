@@ -46,6 +46,9 @@
       </div>
     </div>
     <img src={post.featuredImage?.url ?? data.defaultPostImage} alt={post.featuredImage?.alt ?? post.title} />
+    <div class="hero-title-wrap">
+      <h1 class="hero-title">{post.title}</h1>
+    </div>
     {#if post.featuredImage?.credit}
       <div class="hero-credit">
         Image:
@@ -68,8 +71,6 @@
         <div class="post-meta-spacer"></div>
         <BrandStrip />
       </div>
-
-      <h1>{post.title}</h1>
 
       {#if post.video}
         <VideoEmbed video={post.video} />
@@ -192,12 +193,25 @@
     letter-spacing: 0.05em;
   }
 
-  h1 {
+  .hero-title-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .hero-title {
+    max-width: 740px;
+    margin: 0 auto;
     font-size: var(--text-4xl);
     font-weight: var(--font-bold);
-    color: var(--text-primary);
+    color: white;
     line-height: var(--leading-tight);
-    margin-bottom: var(--space-8);
+    text-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.6),
+      0 1px 2px rgba(0, 0, 0, 0.5);
   }
 
   .post-body {
@@ -259,7 +273,7 @@
       padding: var(--space-8) 0 var(--space-12);
     }
 
-    h1 {
+    .hero-title {
       font-size: var(--text-3xl);
     }
 
