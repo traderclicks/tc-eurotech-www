@@ -4,7 +4,7 @@
     <img src="/landrover-logo-black.svg" alt="" style="height: 52px" />
     <img src="/range-rover-logo-black.svg" alt="" style="height: 46px" />
     <img src="/bmw-logo-black.svg" alt="" style="height: 32px" />
-    <img src="/mini-black.svg" alt="" style="height: 20px" />
+    <img src="/mini-black.svg" alt="" style="height: 30px" />
   </div>
   <p class="tagline">Expert &amp; Factory Authorised European Specialists · Auckland</p>
 </aside>
