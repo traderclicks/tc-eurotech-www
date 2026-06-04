@@ -40,14 +40,12 @@
 
 <article class="post">
   <div class="post-hero">
-    <div class="hero-overlay">
-      <div class="hero-nav">
-        <a href="/blog" class="hero-back-link"><span class="back-arrow">&larr;</span> <span class="back-text">Latest posts</span></a>
-      </div>
-    </div>
     <img src={post.featuredImage?.url ?? data.defaultPostImage} alt={post.featuredImage?.alt ?? post.title} />
     <div class="hero-title-wrap">
-      <h1 class="hero-title">{post.title}</h1>
+      <div class="hero-title-inner">
+        <a href="/blog" class="hero-back-link"><span class="back-arrow">&larr;</span> <span class="back-text">Latest posts</span></a>
+        <h1 class="hero-title">{post.title}</h1>
+      </div>
     </div>
     {#if post.featuredImage?.credit}
       <div class="hero-credit">
@@ -103,23 +101,10 @@
     overflow: hidden;
   }
 
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    padding: var(--space-3) 0;
-  }
-
-  .hero-nav {
-    max-width: 740px;
-    margin: 0 auto;
-  }
-
   .hero-back-link {
     display: inline-flex;
     align-items: center;
+    align-self: flex-start;
     gap: var(--space-4);
     background: #08141a;
     color: white;
@@ -128,6 +113,7 @@
     font-size: var(--text-xs);
     font-weight: var(--font-medium);
     transition: background var(--transition-fast);
+    margin-bottom: var(--space-3);
   }
 
   .hero-back-link:hover {
@@ -202,13 +188,19 @@
     padding: var(--space-8) var(--space-4);
   }
 
-  .hero-title {
+  .hero-title-inner {
+    display: flex;
+    flex-direction: column;
     max-width: 740px;
     margin: 0 auto;
-    font-size: var(--text-4xl);
+  }
+
+  .hero-title {
+    font-size: var(--text-5xl);
     font-weight: var(--font-bold);
     color: white;
     line-height: var(--leading-tight);
+    margin: 0;
     text-shadow:
       0 2px 8px rgba(0, 0, 0, 0.6),
       0 1px 2px rgba(0, 0, 0, 0.5);
@@ -274,7 +266,7 @@
     }
 
     .hero-title {
-      font-size: var(--text-3xl);
+      font-size: var(--text-4xl);
     }
 
     .post-body {
