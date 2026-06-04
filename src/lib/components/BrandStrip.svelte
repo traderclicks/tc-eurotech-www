@@ -54,6 +54,7 @@
     border: none;
     padding: 0;
     font: inherit;
+    font-weight: var(--font-medium);
     color: inherit;
     text-decoration: underline;
     cursor: pointer;
