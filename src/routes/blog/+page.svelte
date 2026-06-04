@@ -78,7 +78,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: var(--space-4);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-1);
   }
 
   .brand-logos img {
