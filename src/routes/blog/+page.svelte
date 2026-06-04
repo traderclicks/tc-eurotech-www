@@ -21,7 +21,7 @@
         <div class="brand-logos">
           <img src="/jaguar-logo-black.svg" alt="" style="height: 9px" />
           <img src="/landrover-logo-black.svg" alt="" style="height: 52px" />
-          <img src="/range-rover-logo-black.svg" alt="" style="height: 23px" />
+          <img src="/range-rover-logo-black.svg" alt="" style="height: 46px" />
           <img src="/bmw-logo-black.svg" alt="" style="height: 32px" />
           <img src="/mini-black.svg" alt="" style="height: 20px" />
         </div>
