@@ -6,7 +6,7 @@
     <img src="/bmw-logo-black.svg" alt="" style="height: 32px" />
     <img src="/mini-black.svg" alt="" style="height: 30px" />
   </div>
-  <p class="tagline">Expert &amp; Factory Authorised European Specialists · Auckland</p>
+  <p class="tagline">Expert &amp; Factory Authorised European Auto Repair Specialists · Auckland</p>
 </aside>
 
 <style>
