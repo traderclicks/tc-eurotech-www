@@ -45,6 +45,16 @@
       </div>
     </div>
     <img src={post.featuredImage?.url ?? data.defaultPostImage} alt={post.featuredImage?.alt ?? post.title} />
+    {#if post.featuredImage?.credit}
+      <div class="hero-credit">
+        Image:
+        {#if post.featuredImage.credit.url}
+          <a href={post.featuredImage.credit.url} target="_blank" rel="noopener noreferrer">{post.featuredImage.credit.text}</a>
+        {:else}
+          {post.featuredImage.credit.text}
+        {/if}
+      </div>
+    {/if}
   </div>
 
   <div class="container">
@@ -129,6 +139,27 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .hero-credit {
+    position: absolute;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+  }
+
+  .hero-credit a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .hero-credit a:hover {
+    text-decoration: none;
   }
 
   .post-content {

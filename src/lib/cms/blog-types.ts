@@ -11,6 +11,10 @@ export interface BlogVideo {
 export interface BlogImage {
   url: string;
   alt: string;
+  credit?: {
+    text: string;
+    url?: string;
+  };
 }
 
 export interface BlogPost {
