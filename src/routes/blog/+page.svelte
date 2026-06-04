@@ -25,7 +25,7 @@
           <img src="/bmw-logo-black.svg" alt="" style="height: 32px" />
           <img src="/mini-black.svg" alt="" style="height: 20px" />
         </div>
-        <p class="tagline">Factory-authorised European specialists · Auckland</p>
+        <p class="tagline">Expert &amp; Factory Authorised European Specialists · Auckland</p>
       </aside>
     </div>
 
