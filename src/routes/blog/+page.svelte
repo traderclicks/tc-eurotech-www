@@ -73,7 +73,8 @@
   }
 
   .page-subtitle {
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
+    font-weight: var(--font-light);
     color: var(--text-secondary);
   }
 
