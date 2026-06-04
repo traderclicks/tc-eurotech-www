@@ -9,6 +9,12 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+
+	interface Window {
+		Cognito?: {
+			load: (mode: string, config: Record<string, unknown>, opts: Record<string, unknown>) => void;
+		};
+	}
 }
 
 export {};
