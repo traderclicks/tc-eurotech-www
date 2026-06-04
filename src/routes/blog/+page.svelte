@@ -1,6 +1,7 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import BlogCard from '$lib/components/BlogCard.svelte';
+  import BrandStrip from '$lib/components/BrandStrip.svelte';
 
   export let data;
 </script>
@@ -17,16 +18,9 @@
         <h1>Workshop Updates</h1>
         <p class="page-subtitle">Tips, guides, and insights from our European vehicle specialists</p>
       </div>
-      <aside class="page-header-aside" aria-label="Eurotech specialisations">
-        <div class="brand-logos">
-          <img src="/jaguar-logo-black.svg" alt="" style="height: 9px" />
-          <img src="/landrover-logo-black.svg" alt="" style="height: 52px" />
-          <img src="/range-rover-logo-black.svg" alt="" style="height: 46px" />
-          <img src="/bmw-logo-black.svg" alt="" style="height: 32px" />
-          <img src="/mini-black.svg" alt="" style="height: 20px" />
-        </div>
-        <p class="tagline">Expert &amp; Factory Authorised European Specialists · Auckland</p>
-      </aside>
+      <div class="page-header-aside">
+        <BrandStrip />
+      </div>
     </div>
 
     {#if data.posts.length === 0}
@@ -69,28 +63,6 @@
 
   .page-header-aside {
     flex: 0 0 auto;
-    text-align: right;
-    opacity: 0.55;
-  }
-
-  .brand-logos {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: var(--space-4);
-    margin-bottom: var(--space-1);
-  }
-
-  .brand-logos img {
-    display: block;
-    width: auto;
-  }
-
-  .tagline {
-    font-size: var(--text-xs);
-    color: var(--text-secondary);
-    letter-spacing: 0.02em;
-    margin: 0;
   }
 
   h1 {
@@ -129,8 +101,9 @@
       grid-template-columns: 1fr;
     }
 
-    .page-header-aside {
-      display: none;
+    .page-header {
+      flex-direction: column;
+      align-items: stretch;
     }
   }
 </style>

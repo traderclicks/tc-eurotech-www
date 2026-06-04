@@ -1,6 +1,7 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import VideoEmbed from '$lib/components/VideoEmbed.svelte';
+  import BrandStrip from '$lib/components/BrandStrip.svelte';
   import { generateArticleSchema } from '$lib/utils/structuredData';
   import { page } from '$app/stores';
 
@@ -64,6 +65,8 @@
           <span class="post-category">{post.category}</span>
         {/if}
         <time datetime={post.publishedAt}>{formattedDate}</time>
+        <div class="post-meta-spacer"></div>
+        <BrandStrip />
       </div>
 
       <h1>{post.title}</h1>
@@ -175,6 +178,10 @@
     margin-bottom: var(--space-6);
     font-size: var(--text-sm);
     color: var(--text-tertiary);
+  }
+
+  .post-meta-spacer {
+    flex: 1 1 auto;
   }
 
   .post-category {
