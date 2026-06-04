@@ -1,0 +1,34 @@
+/* Em-based vertical text rhythm.
+   Per D678 / W543: em on text elements, absolute units on layout.
+   These defaults apply where component styles don't override.
+   Migration is opt-in per component (remove the scoped margin to adopt). */
+
+h1, h2, h3, h4, h5, h6 {
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+  line-height: var(--leading-tight, 1.2);
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 1em;
+}
+
+ul, ol, blockquote {
+  margin-block-start: 0;
+  margin-block-end: 1em;
+}
+
+/* Avoid orphan bottom space when a flow element is the last thing in a container. */
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child,
+p:last-child,
+ul:last-child,
+ol:last-child,
+blockquote:last-child {
+  margin-block-end: 0;
+}
