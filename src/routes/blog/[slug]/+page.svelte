@@ -181,16 +181,17 @@
 
   .hero-title-wrap {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     z-index: 1;
     padding: var(--space-8) var(--space-4);
+    display: flex;
+    align-items: center;
   }
 
   .hero-title-inner {
     display: flex;
     flex-direction: column;
+    width: 100%;
     max-width: 740px;
     margin: 0 auto;
   }
