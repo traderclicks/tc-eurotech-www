@@ -168,14 +168,14 @@
   .post-content {
     max-width: 740px;
     margin: 0 auto;
-    padding: var(--space-12) 0 var(--space-16);
+    padding: var(--space-6) 0 var(--space-16);
   }
 
   .post-meta {
     display: flex;
     align-items: center;
     gap: var(--space-4);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-10);
     font-size: var(--text-sm);
     color: var(--text-tertiary);
   }
