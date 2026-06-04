@@ -8,7 +8,7 @@
 
   const primaryItems = [
     { label: 'Home', href: '/' },
-    { label: 'Make an Insurance Claim *', href: '/insurance' },
+    { label: 'Make an Insurance Claim', href: '/insurance', flag: '*' },
     { label: 'About Eurotech', href: '/about' },
     { label: 'Workshop Updates', href: '/blog' },
     { label: 'Contact Us', href: '#contact', action: 'contact' },
@@ -69,7 +69,7 @@
             class="nav-link"
             on:click={(e) => handleNavClick(e, item)}
           >
-            {item.label}
+            {item.label}{#if item.flag}<span class="nav-flag">{item.flag}</span>{/if}
           </a>
         </li>
       {/each}
@@ -221,6 +221,12 @@
   .nav-logo {
     width: auto;
     opacity: 0.85;
+  }
+
+  .nav-flag {
+    color: #d4af37;
+    margin-left: 0.25em;
+    font-weight: var(--font-bold);
   }
 
   /* Mobile Styles */
