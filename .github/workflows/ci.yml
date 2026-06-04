@@ -25,10 +25,6 @@ jobs:
         run: npm ci
 
       - name: Type check
-        # Tolerate pre-existing errors in admin/, theme/, services/ — admin
-        # and theme are scheduled for removal under W517 (per D658).
-        # Re-tighten to required once those dirs are gone.
-        continue-on-error: true
         run: npm run check
 
       - name: Check images
