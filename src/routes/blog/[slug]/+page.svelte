@@ -115,8 +115,8 @@
     align-items: center;
     align-self: flex-start;
     gap: var(--space-4);
-    background: #08141a;
-    color: white;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--color-primary);
     padding: var(--space-1) var(--space-4);
     text-decoration: none;
     font-size: var(--text-xs);
@@ -126,7 +126,7 @@
   }
 
   .hero-back-link:hover {
-    background: #000;
+    background: rgba(255, 255, 255, 1);
   }
 
   .back-text {
