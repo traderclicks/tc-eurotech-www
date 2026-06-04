@@ -98,7 +98,7 @@
   .post-hero {
     position: relative;
     width: 100%;
-    height: 480px;
+    height: 420px;
     overflow: hidden;
   }
 
@@ -120,7 +120,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-4);
-    background: rgba(0, 0, 0, 0.4);
+    background: #08141a;
     color: white;
     padding: var(--space-1) var(--space-4);
     text-decoration: none;
@@ -130,7 +130,7 @@
   }
 
   .hero-back-link:hover {
-    background: rgba(0, 0, 0, 0.6);
+    background: #000;
   }
 
   .back-text {
