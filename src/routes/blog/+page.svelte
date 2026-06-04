@@ -20,8 +20,8 @@
       <aside class="page-header-aside" aria-label="Eurotech specialisations">
         <div class="brand-logos">
           <img src="/jaguar-logo-black.svg" alt="" style="height: 9px" />
-          <img src="/landrover-logo-black.svg" alt="" style="height: 26px" />
-          <img src="/range-rover-logo-black.svg" alt="" style="height: 18px" />
+          <img src="/landrover-logo-black.svg" alt="" style="height: 52px" />
+          <img src="/range-rover-logo-black.svg" alt="" style="height: 23px" />
           <img src="/bmw-logo-black.svg" alt="" style="height: 32px" />
           <img src="/mini-black.svg" alt="" style="height: 20px" />
         </div>
