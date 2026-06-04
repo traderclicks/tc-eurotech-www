@@ -1,6 +1,7 @@
 <script lang="ts">
   import Meta from '$lib/components/Meta.svelte';
   import BlogCard from '$lib/components/BlogCard.svelte';
+  import BrandStrip from '$lib/components/BrandStrip.svelte';
 
   export let data;
 </script>
@@ -13,8 +14,13 @@
 <div class="page">
   <div class="container">
     <div class="page-header">
-      <h1>Workshop Updates</h1>
-      <p class="page-subtitle">Tips, guides, and insights from our European vehicle specialists</p>
+      <div class="page-header-main">
+        <h1>Workshop Updates</h1>
+        <p class="page-subtitle">Updates from the workshop and industry news</p>
+      </div>
+      <div class="page-header-aside">
+        <BrandStrip />
+      </div>
     </div>
 
     {#if data.posts.length === 0}
@@ -43,7 +49,20 @@
   }
 
   .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-8);
     margin-bottom: var(--space-12);
+  }
+
+  .page-header-main {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .page-header-aside {
+    flex: 0 0 auto;
   }
 
   h1 {
@@ -54,7 +73,8 @@
   }
 
   .page-subtitle {
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
+    font-weight: var(--font-light);
     color: var(--text-secondary);
   }
 
@@ -80,6 +100,11 @@
 
     .blog-grid {
       grid-template-columns: 1fr;
+    }
+
+    .page-header {
+      flex-direction: column;
+      align-items: stretch;
     }
   }
 </style>
