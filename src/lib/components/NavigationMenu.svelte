@@ -225,7 +225,6 @@
 
   .nav-flag {
     color: #d4af37;
-    margin-left: 0.25em;
     font-weight: var(--font-bold);
   }
 
