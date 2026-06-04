@@ -101,6 +101,15 @@
     overflow: hidden;
   }
 
+  .post-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .hero-back-link {
     display: inline-flex;
     align-items: center;
@@ -135,7 +144,7 @@
     position: absolute;
     bottom: var(--space-3);
     right: var(--space-3);
-    z-index: 1;
+    z-index: 2;
     background: rgba(0, 0, 0, 0.4);
     color: white;
     padding: var(--space-1) var(--space-3);
@@ -182,7 +191,7 @@
   .hero-title-wrap {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     padding: var(--space-8) var(--space-4);
     display: flex;
     align-items: center;
