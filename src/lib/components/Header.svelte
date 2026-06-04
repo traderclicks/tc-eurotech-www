@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade, scale } from 'svelte/transition';
   import { modal } from '$lib/stores/modal';
+  import { locationOpen } from '$lib/stores/locationModal';
   import { site } from '$lib/config/site';
   import Button from './Button.svelte';
   import CloudflareImage from './CloudflareImage.svelte';
@@ -11,7 +12,6 @@
   export let hasHero = false;
 
   let isMenuOpen = false;
-  let isLocationOpen = false;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -26,7 +26,7 @@
   }
 
   function toggleLocation() {
-    isLocationOpen = !isLocationOpen;
+    locationOpen.update((v) => !v);
   }
 </script>
 
@@ -72,10 +72,10 @@
 </header>
 
 <!-- Navigation Menu Component -->
-<NavigationMenu bind:isOpen={isMenuOpen} on:contact={() => { isMenuOpen = false; isLocationOpen = true; }} />
+<NavigationMenu bind:isOpen={isMenuOpen} on:contact={() => { isMenuOpen = false; locationOpen.set(true); }} />
 
 <!-- Location Modal -->
-{#if isLocationOpen}
+{#if $locationOpen}
   <div class="modal-overlay" on:click={toggleLocation} on:keydown={(e) => e.key === 'Escape' && toggleLocation()} role="dialog" aria-modal="true" aria-label="Location details" transition:fade={{ duration: 200 }}>
     <div class="modal-content" on:click|stopPropagation on:keydown={() => {}} transition:scale={{ duration: 200, start: 0.95 }}>
       <button class="modal-close" on:click={toggleLocation} aria-label="Close">
