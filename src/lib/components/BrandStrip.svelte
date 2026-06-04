@@ -11,7 +11,7 @@
     <img src="/mini-black.svg" alt="" style="height: 30px" />
   </div>
   <p class="business-name">
-    Eurotech Auto Repair Centre, Mt Wellington, <button type="button" class="location-link" on:click={() => locationOpen.set(true)}>Auckland</button>
+    Eurotech Auto Repair Centre &mdash; <button type="button" class="location-link" on:click={() => locationOpen.set(true)}>Mt Wellington, Auckland</button>
   </p>
   <p class="tagline">Expert &amp; Factory Authorised European Auto Repair Specialists</p>
 </aside>
