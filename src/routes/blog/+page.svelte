@@ -16,7 +16,7 @@
     <div class="page-header">
       <div class="page-header-main">
         <h1>Workshop Updates</h1>
-        <p class="page-subtitle">Tips, guides, and insights from our European vehicle specialists</p>
+        <p class="page-subtitle">Updates from the workshop and industry news</p>
       </div>
       <div class="page-header-aside">
         <BrandStrip />
