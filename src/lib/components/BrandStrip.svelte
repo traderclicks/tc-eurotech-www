@@ -61,7 +61,7 @@
   }
 
   .location-link:hover {
-    color: var(--color-primary);
+    color: var(--color-primary-dark);
   }
 
   @media (max-width: 768px) {
