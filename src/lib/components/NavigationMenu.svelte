@@ -1,16 +1,25 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
   import { createEventDispatcher } from 'svelte';
+  import { page } from '$app/stores';
 
   export let isOpen = false;
 
   const dispatch = createEventDispatcher();
 
+  $: pathname = $page.url.pathname;
+
+  function isActive(href: string): boolean {
+    if (href.startsWith('#')) return false;
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(href + '/');
+  }
+
   const primaryItems = [
     { label: 'Home', href: '/' },
     { label: 'Make an Insurance Claim', href: '/insurance', flag: '*' },
     { label: 'About Eurotech', href: '/about' },
-    { label: 'Workshop Updates', href: '/blog' },
+    { label: 'From the Workshop', href: '/blog' },
     { label: 'Contact Us', href: '#contact', action: 'contact' },
   ];
 
@@ -67,6 +76,8 @@
           <a
             href={item.href}
             class="nav-link"
+            class:active={isActive(item.href)}
+            aria-current={isActive(item.href) ? 'page' : undefined}
             on:click={(e) => handleNavClick(e, item)}
           >
             <span>{item.label}{#if item.flag} <span class="nav-flag">{item.flag}</span>{/if}</span>
@@ -84,6 +95,8 @@
             <a
               href={item.href}
               class="nav-link secondary"
+              class:active={isActive(item.href)}
+              aria-current={isActive(item.href) ? 'page' : undefined}
               on:click={(e) => handleNavClick(e, item)}
             >
               <span>{item.label}</span>
@@ -212,6 +225,17 @@
     padding-left: calc(var(--space-6) + 4px);
   }
 
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: var(--font-bold);
+    box-shadow: inset 3px 0 0 #d4af37;
+  }
+
+  .nav-link.active:hover {
+    background: rgba(255, 255, 255, 0.13);
+  }
+
   .nav-link.secondary {
     font-size: var(--text-base);
     padding: var(--space-3) var(--space-6);
@@ -226,6 +250,7 @@
   .nav-flag {
     color: #d4af37;
     font-weight: var(--font-bold);
+    margin-left: 0.15em;
   }
 
   /* Mobile Styles */
