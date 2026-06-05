@@ -107,7 +107,7 @@
     display: inline-flex;
     align-items: center;
     gap: calc(var(--space-12) * 2);
-    animation: scroll 60s linear infinite;
+    animation: scroll 40s linear infinite;
   }
 
   @keyframes scroll {
@@ -146,7 +146,7 @@
     }
 
     .logos-track {
-      animation-duration: 22s;
+      animation-duration: 15s;
     }
   }
 
@@ -167,7 +167,7 @@
 
     .logos-track {
       gap: var(--space-8);
-      animation-duration: 12s;
+      animation-duration: 8s;
     }
 
     .brand-logo {
