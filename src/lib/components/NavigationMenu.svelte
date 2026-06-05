@@ -226,13 +226,14 @@
   }
 
   .nav-link.active {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
+    font-weight: var(--font-bold);
     box-shadow: inset 3px 0 0 #d4af37;
   }
 
   .nav-link.active:hover {
-    background: rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.13);
   }
 
   .nav-link.secondary {
