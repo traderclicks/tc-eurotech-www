@@ -1,10 +1,19 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
   import { createEventDispatcher } from 'svelte';
+  import { page } from '$app/stores';
 
   export let isOpen = false;
 
   const dispatch = createEventDispatcher();
+
+  $: pathname = $page.url.pathname;
+
+  function isActive(href: string): boolean {
+    if (href.startsWith('#')) return false;
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(href + '/');
+  }
 
   const primaryItems = [
     { label: 'Home', href: '/' },
@@ -67,6 +76,8 @@
           <a
             href={item.href}
             class="nav-link"
+            class:active={isActive(item.href)}
+            aria-current={isActive(item.href) ? 'page' : undefined}
             on:click={(e) => handleNavClick(e, item)}
           >
             <span>{item.label}{#if item.flag} <span class="nav-flag">{item.flag}</span>{/if}</span>
@@ -84,6 +95,8 @@
             <a
               href={item.href}
               class="nav-link secondary"
+              class:active={isActive(item.href)}
+              aria-current={isActive(item.href) ? 'page' : undefined}
               on:click={(e) => handleNavClick(e, item)}
             >
               <span>{item.label}</span>
@@ -210,6 +223,16 @@
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.05);
     padding-left: calc(var(--space-6) + 4px);
+  }
+
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+    box-shadow: inset 3px 0 0 #d4af37;
+  }
+
+  .nav-link.active:hover {
+    background: rgba(255, 255, 255, 0.09);
   }
 
   .nav-link.secondary {
