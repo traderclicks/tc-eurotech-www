@@ -10,7 +10,7 @@
     { label: 'Home', href: '/' },
     { label: 'Make an Insurance Claim', href: '/insurance', flag: '*' },
     { label: 'About Eurotech', href: '/about' },
-    { label: 'Workshop Updates', href: '/blog' },
+    { label: 'From the Workshop', href: '/blog' },
     { label: 'Contact Us', href: '#contact', action: 'contact' },
   ];
 
@@ -226,6 +226,7 @@
   .nav-flag {
     color: #d4af37;
     font-weight: var(--font-bold);
+    margin-left: 0.15em;
   }
 
   /* Mobile Styles */
