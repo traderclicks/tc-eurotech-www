@@ -69,7 +69,7 @@
             class="nav-link"
             on:click={(e) => handleNavClick(e, item)}
           >
-            {item.label}{#if item.flag}<span class="nav-flag">{item.flag}</span>{/if}
+            <span>{item.label}{#if item.flag} <span class="nav-flag">{item.flag}</span>{/if}</span>
           </a>
         </li>
       {/each}
@@ -226,8 +226,6 @@
   .nav-flag {
     color: #d4af37;
     font-weight: var(--font-bold);
-    margin-left: -0.15em;
-    margin-right: 0.5em;
   }
 
   /* Mobile Styles */
