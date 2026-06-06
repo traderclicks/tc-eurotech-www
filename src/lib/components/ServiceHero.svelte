@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import { fly } from 'svelte/transition';
   import StatsGrid from './StatsGrid.svelte';
   import HeroCTAButtons from './HeroCTAButtons.svelte';
 
@@ -11,7 +10,6 @@
   export let showLogoBar: boolean = true;
   export let minHeight: number = 700;
 
-  let isVisible = false;
   let currentSlide = 0;
   let isTransitioning = true;
   let slideInterval: number | null = null;
@@ -57,7 +55,6 @@
   }
 
   onMount(() => {
-    isVisible = true;
     slideInterval = setInterval(nextSlide, 6000) as unknown as number;
   });
 
@@ -93,18 +90,16 @@
   </button>
 
   <div class="container hero-container">
-    {#if isVisible}
-      <div class="hero-content" in:fly={{ y: 20, duration: 800, delay: 100 }}>
-        <HeroCTAButtons />
+    <div class="hero-content">
+      <HeroCTAButtons />
 
-        <h1 class="hero-title">
-          {title}
-          {#if subtitle}
-            <span class="hero-gradient">{subtitle}</span>
-          {/if}
-        </h1>
-      </div>
-    {/if}
+      <h1 class="hero-title">
+        {title}
+        {#if subtitle}
+          <span class="hero-gradient">{subtitle}</span>
+        {/if}
+      </h1>
+    </div>
   </div>
 
   <!-- White background block for half-on-half effect -->
@@ -163,6 +158,18 @@
     position: relative;
     padding: var(--space-16);
     border-radius: var(--radius-2xl);
+    animation: hero-content-in 800ms 100ms ease-out backwards;
+  }
+
+  @keyframes hero-content-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content {
+      animation: none;
+    }
   }
 
   .hero-content::before {
