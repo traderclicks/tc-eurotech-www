@@ -7,7 +7,7 @@
 </script>
 
 <Meta
-  title="Workshop Updates"
+  title="From the Workshop"
   description="Expert insights, maintenance tips, and industry news from Auckland's European vehicle repair specialists."
 />
 
@@ -15,7 +15,7 @@
   <div class="container">
     <div class="page-header">
       <div class="page-header-main">
-        <h1>Workshop Updates</h1>
+        <h1>From the Workshop</h1>
         <p class="page-subtitle">Updates from the workshop and industry news</p>
       </div>
       <div class="page-header-aside">
