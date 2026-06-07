@@ -2,7 +2,7 @@
   import Meta from '$lib/components/Meta.svelte';
   import VideoEmbed from '$lib/components/VideoEmbed.svelte';
   import BrandStrip from '$lib/components/BrandStrip.svelte';
-  import { generateArticleSchema } from '$lib/utils/structuredData';
+  import { generateArticleSchema, generateBreadcrumbSchema } from '$lib/utils/structuredData';
   import { page } from '$app/stores';
 
   export let data;
@@ -22,10 +22,17 @@
     image: post.featuredImage?.url ?? data.defaultPostImage,
     url: $page.url.href
   });
+
+  $: breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://eurotechauto.co.nz/' },
+    { name: 'From the Workshop', url: 'https://eurotechauto.co.nz/blog' },
+    { name: post.title, url: `https://eurotechauto.co.nz/blog/${post.slug}` }
+  ]);
 </script>
 
 <svelte:head>
   {@html `<script type="application/ld+json">${JSON.stringify(articleSchema)}</script>`}
+  {@html `<script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>`}
 </svelte:head>
 
 <Meta
