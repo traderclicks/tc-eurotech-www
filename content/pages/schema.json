@@ -28,6 +28,10 @@
     "label": "Page title (h1, for plain pages)",
     "type": "text"
   },
+  "subtitle": {
+    "label": "Sub-headline below the page title (optional)",
+    "type": "text"
+  },
   "updatedAt": {
     "label": "Last updated stamp (Privacy/Terms)",
     "type": "text"

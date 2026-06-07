@@ -5,7 +5,7 @@
 
   export let data: PageData;
 
-  // Images from CMS slot
+  $: page = data.page;
   $: images = data.images;
 
   let lightboxOpen = false;
@@ -45,15 +45,16 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <Meta
-  title="Gallery"
-  description="See our workshop and team in action. European vehicle repair specialists in Auckland."
+  title={page.meta.title}
+  description={page.meta.description}
+  keywords={page.meta.keywords}
 />
 
 <div class="gallery-page">
   <div class="container">
     <header class="page-header">
-      <h1>Eurotech Gallery</h1>
-      <p>See our team and facility in action</p>
+      <h1>{page.title}</h1>
+      {#if page.subtitle}<p>{page.subtitle}</p>{/if}
     </header>
 
     <div class="gallery-grid">
