@@ -111,5 +111,12 @@
     "page": "/services",
     "section": "Hero",
     "type": "textarea"
+  },
+  "brand-strip-tagline": {
+    "label": "Brand Strip tagline",
+    "description": "Tagline shown beneath the manufacturer logos in the BrandStrip component (blog index header + blog post meta row)",
+    "page": "/blog",
+    "section": "BrandStrip",
+    "type": "text"
   }
 }

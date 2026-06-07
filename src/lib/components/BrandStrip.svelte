@@ -1,5 +1,13 @@
 <script lang="ts">
   import { locationOpen } from '$lib/stores/locationModal';
+  import { page } from '$app/stores';
+
+  // Read CMS-driven copy with a hardcoded fallback. The fallback keeps
+  // the component rendering cleanly on any tc-*-www fork that hasn't
+  // populated the text store yet — same graceful-degradation principle
+  // as W542 / W543.
+  const DEFAULT_TAGLINE = 'Expert & Factory Authorised European Auto Repair Specialists';
+  $: tagline = ($page.data.text as Record<string, string> | undefined)?.['brand-strip-tagline'] ?? DEFAULT_TAGLINE;
 </script>
 
 <aside class="brand-strip" aria-label="Eurotech specialisations">
@@ -13,7 +21,7 @@
   <p class="business-name">
     Eurotech Auto Repair Centre &mdash; <button type="button" class="location-link" on:click={() => locationOpen.set(true)}>Mt Wellington, Auckland</button>
   </p>
-  <p class="tagline">Expert &amp; Factory Authorised European Auto Repair Specialists</p>
+  <p class="tagline">{tagline}</p>
 </aside>
 
 <style>
