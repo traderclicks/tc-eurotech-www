@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { modal } from '$lib/stores/modal';
-  import { site } from '$lib/config/site';
   import Meta from '$lib/components/Meta.svelte';
   import FAQ from '$lib/components/FAQ.svelte';
   import ServiceHero from '$lib/components/ServiceHero.svelte';
@@ -10,75 +8,12 @@
   import { generateFAQSchema } from '$lib/utils/structuredData';
   import { page } from '$app/stores';
   import type { FaqsByPage } from '$lib/cms/faqs';
+  import type { PageData as RouteData } from './$types';
 
-  export let data;
+  export let data: RouteData;
 
-  function openContactModal() {
-    modal.cognito();
-  }
-
-  const heroImages = [
-    '/images/DSC00748.jpg',
-    '/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg',
-    '/gallery/bmw/martinkatler-1ouLyK5oykg-unsplash.jpg',
-    '/images/DSC00619.jpg',
-    '/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg',
-    '/gallery/land-rover/finding_dan-lXvycA58ZfQ-unsplash.jpg',
-    '/images/DSC00773.jpg',
-    '/gallery/mini/damiangoh-0f4B4UDk8T0-unsplash.jpg',
-    '/images/DSC00751.jpg',
-    '/gallery/bmw/pat__-TOigkN59Dcg-unsplash.jpg',
-    '/images/DSC00727.jpg',
-    '/gallery/range-rover/range-rover-1725815761.jpg'
-  ];
-
+  $: pageContent = data.page;
   $: faqs = (($page.data.faqs as FaqsByPage | undefined)?.home ?? []);
-
-  // Services data
-  const services = [
-    {
-      icon: '/jaguar-logo-white.svg',
-      title: 'Jaguar',
-      description: 'Factory-authorized structural repairs with genuine parts',
-      buttonHref: '/jaguar',
-      backgroundImage: '/gallery/jaguar/fourfour_44-w4aIu8mhxX8-unsplash.jpg'
-    },
-    {
-      icon: '/landrover-logo-white.svg',
-      title: 'Land Rover',
-      description: 'Factory-authorized Land Rover specialist repairs',
-      buttonHref: '/land-rover',
-      backgroundImage: '/gallery/land-rover/timtrad-CLm3pWXrS9Q-unsplash.jpg'
-    },
-    {
-      icon: '/range-rover-logo-white.svg',
-      title: 'Range Rover',
-      description: 'Premium Range Rover collision repair and refinishing',
-      buttonHref: '/range-rover',
-      backgroundImage: '/gallery/range-rover/range-rover-1725815761.jpg'
-    },
-    {
-      icon: '/bmw-logo-white.svg',
-      title: 'BMW',
-      description: 'Specialist BMW repairs using latest repair techniques',
-      buttonHref: '/bmw',
-      backgroundImage: '/bmw.jpg'
-    },
-    {
-      icon: '/mini-white.svg',
-      title: 'Mini',
-      description: 'Expert Mini collision repairs and panel beating',
-      buttonHref: '/mini',
-      backgroundImage: '/gallery/mini/huntleytography-d_6pVSQip3I-unsplash.jpg'
-    },
-    {
-      icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"%3E%3Cpath d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/%3E%3Cpath d="M9 12l2 2 4-4"/%3E%3C/svg%3E',
-      title: 'Insurance Claims',
-      description: 'Complete claim management from assessment to completion',
-      buttonHref: '/insurance',
-      backgroundImage: '/gallery/land-rover/woeiman-4C-x7CQNwvw-unsplash.jpg'
-    }
-  ];
 
   // Blog articles from CMS
   $: blogArticles = (data.latestPosts ?? []).map(post => ({
@@ -90,15 +25,15 @@
     href: `/blog/${post.slug}`
   }));
 
-  // LocalBusiness schema is now emitted by +layout.svelte site-wide; not duplicated here.
+  // LocalBusiness schema is emitted by +layout.svelte site-wide; not duplicated here.
 </script>
 
 <!-- SEO Meta Tags -->
 <Meta
-  title="Eurotech Auto Repair Centre - European Vehicle Specialists Auckland"
-  description={`New Zealand's only factory-authorized Jaguar/Land Rover structural repairer. Expert BMW and Mini repairs. Insurance approved. Call ${site.phone}`}
-  keywords="european car repair auckland, bmw repair, jaguar repair, land rover repair, mini repair, panel beaters auckland, insurance repairs"
-  ogImage="/og-eurotech.jpg"
+  title={pageContent.meta.title}
+  description={pageContent.meta.description}
+  keywords={pageContent.meta.keywords}
+  ogImage={pageContent.meta.ogImage}
 />
 
 <!-- Structured Data -->
@@ -107,24 +42,28 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<ServiceHero
-  title="Eurotech Auto Repair Centre"
-  description="NZ's only factory-authorized Jaguar/Land Rover repairer  •  Expert BMW & Mini repairs  •  Over 20 years experience"
-  images={heroImages}
-  showLogoBar={true}
-  minHeight={840}
-/>
+{#if pageContent.hero}
+  <ServiceHero
+    title={pageContent.hero.title}
+    description={pageContent.hero.description ?? ''}
+    images={pageContent.hero.images}
+    showLogoBar={pageContent.hero.showLogoBar ?? true}
+    minHeight={pageContent.hero.minHeight ?? 700}
+  />
+{/if}
 
 <!-- Services Section -->
-<section class="section bg-blog">
-  <div class="container">
-    <div class="services-grid">
-      {#each services as service}
-        <ServiceCard {...service} />
-      {/each}
+{#if pageContent.services && pageContent.services.length > 0}
+  <section class="section bg-blog">
+    <div class="container">
+      <div class="services-grid">
+        {#each pageContent.services as service}
+          <ServiceCard {...service} />
+        {/each}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+{/if}
 
 <!-- Blog Articles -->
 <section class="section">
@@ -134,7 +73,7 @@
         <h2 class="section-title">From the Workshop</h2>
         <span class="section-title-pipe"><span class="pipe">|</span> <a href="/blog" class="section-more-link">View all posts →</a></span>
       </div>
-      <p class="section-subtitle">Updates and articles from your European vehicle repair specialist</p>
+      {#if pageContent.blogSectionSubtitle}<p class="section-subtitle">{pageContent.blogSectionSubtitle}</p>{/if}
     </div>
 
     <div class="blog-grid">
