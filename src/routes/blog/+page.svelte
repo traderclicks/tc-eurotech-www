@@ -4,19 +4,22 @@
   import BrandStrip from '$lib/components/BrandStrip.svelte';
 
   export let data;
+
+  $: page = data.page;
 </script>
 
 <Meta
-  title="From the Workshop"
-  description="Expert insights, maintenance tips, and industry news from Auckland's European vehicle repair specialists."
+  title={page.meta.title}
+  description={page.meta.description}
+  keywords={page.meta.keywords}
 />
 
 <div class="page">
   <div class="container">
     <div class="page-header">
       <div class="page-header-main">
-        <h1>From the Workshop</h1>
-        <p class="page-subtitle">Updates from the workshop and industry news</p>
+        <h1>{page.title}</h1>
+        {#if page.subtitle}<p class="page-subtitle">{page.subtitle}</p>{/if}
       </div>
       <div class="page-header-aside">
         <BrandStrip />
