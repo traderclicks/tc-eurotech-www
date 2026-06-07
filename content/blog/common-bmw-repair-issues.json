@@ -1,4 +1,5 @@
 {
+  "dateModified": "2026-03-11T04:48:28.000Z",
   "slug": "common-bmw-repair-issues",
   "title": "Common BMW Collision Repair Challenges — and How We Handle Them",
   "excerpt": "BMW's multi-material construction makes collision repair complex. Here's what's involved and why specialist knowledge matters.",
@@ -8,7 +9,12 @@
     "alt": "BMW vehicle"
   },
   "category": "Expert Advice",
-  "tags": ["bmw", "collision-repair", "carbon-fibre", "aluminium"],
+  "tags": [
+    "bmw",
+    "collision-repair",
+    "carbon-fibre",
+    "aluminium"
+  ],
   "publishedAt": "2025-03-10T08:00:00.000Z",
   "video": null
 }

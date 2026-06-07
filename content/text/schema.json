@@ -1,4 +1,12 @@
 {
+  "dateCreated": {
+    "label": "Created (ISO 8601 — immutable; seeded from git first-commit, owned by Connector on insert)",
+    "type": "datetime"
+  },
+  "dateModified": {
+    "label": "Modified (ISO 8601 — auto-updated by Connector on save; falls back to git latest-commit)",
+    "type": "datetime"
+  },
   "home-hero-headline": {
     "label": "Headline",
     "description": "Main headline in the hero section",

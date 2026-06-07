@@ -1,10 +1,24 @@
 {
+  "dateCreated": {
+    "label": "Created (ISO 8601 — immutable; seeded from git first-commit, owned by Connector on insert)",
+    "type": "datetime"
+  },
+  "dateModified": {
+    "label": "Modified (ISO 8601 — auto-updated by Connector on save; falls back to git latest-commit)",
+    "type": "datetime"
+  },
   "type": "map",
   "label": "FAQs by page",
   "keyLabel": "Page slug",
   "valueType": "list",
   "of": {
-    "question": { "label": "Question", "type": "text" },
-    "answer": { "label": "Answer", "type": "textarea" }
+    "question": {
+      "label": "Question",
+      "type": "text"
+    },
+    "answer": {
+      "label": "Answer",
+      "type": "textarea"
+    }
   }
 }

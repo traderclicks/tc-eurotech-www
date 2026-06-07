@@ -1,4 +1,5 @@
 {
+  "dateModified": "2026-06-04T07:42:12.000Z",
   "slug": "glasurit-100-line-paint-system",
   "title": "The Paint Behind Our Finish — Why We Use Glasurit 100 Line",
   "excerpt": "A look at the premium paint system we use for European vehicle refinishing, and why it delivers a factory-quality finish every time.",
@@ -8,7 +9,13 @@
     "alt": "Glasurit colour-matched paint sample"
   },
   "category": "Technology",
-  "tags": ["paint", "glasurit", "quality", "sustainability", "refinishing"],
+  "tags": [
+    "paint",
+    "glasurit",
+    "quality",
+    "sustainability",
+    "refinishing"
+  ],
   "publishedAt": "2025-05-10T08:00:00.000Z",
   "video": null
 }
