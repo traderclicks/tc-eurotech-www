@@ -68,6 +68,15 @@ export interface PageHero {
   description?: string;
   images: string[];
   showLogoBar?: boolean;
+  minHeight?: number;
+}
+
+export interface ServiceCardItem {
+  icon: string;
+  title: string;
+  description: string;
+  buttonHref: string;
+  backgroundImage: string;
 }
 
 export interface PageData {
@@ -75,6 +84,7 @@ export interface PageData {
     title: string;
     description: string;
     keywords?: string;
+    ogImage?: string;
   };
   /** h1 for plain text pages (Privacy/Terms style) — omit if hero is used */
   title?: string;
@@ -85,6 +95,10 @@ export interface PageData {
   /** Hero block for image-led pages (About style) */
   hero?: PageHero;
   sections: PageSection[];
+  /** Homepage service grid (5 brand cards + Insurance card) */
+  services?: ServiceCardItem[];
+  /** Homepage "From the Workshop" section subtitle */
+  blogSectionSubtitle?: string;
 }
 
 export function getPage(slug: string): PageData | null {
