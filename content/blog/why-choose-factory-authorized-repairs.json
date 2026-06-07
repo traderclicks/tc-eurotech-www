@@ -1,4 +1,5 @@
 {
+  "dateModified": "2026-06-04T07:42:12.000Z",
   "slug": "why-choose-factory-authorized-repairs",
   "title": "Why Choose Factory-Authorized Repairs for Your Jaguar or Land Rover",
   "excerpt": "Learn about the importance of factory-authorized repairs and how they protect your vehicle's value and warranty.",
@@ -8,7 +9,12 @@
     "alt": "Technician working on a vehicle in the Eurotech workshop"
   },
   "category": "Expert Advice",
-  "tags": ["jaguar", "land-rover", "factory-authorized", "warranty"],
+  "tags": [
+    "jaguar",
+    "land-rover",
+    "factory-authorized",
+    "warranty"
+  ],
   "publishedAt": "2025-03-15T08:00:00.000Z",
   "video": null
 }

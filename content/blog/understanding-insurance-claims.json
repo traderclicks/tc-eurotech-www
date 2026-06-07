@@ -1,4 +1,5 @@
 {
+  "dateModified": "2026-06-04T07:42:12.000Z",
   "slug": "understanding-insurance-claims",
   "title": "Understanding Your Insurance Claim Process",
   "excerpt": "A comprehensive guide to navigating insurance claims for European vehicle repairs in New Zealand.",
@@ -8,6 +9,10 @@
     "alt": "European vehicle"
   },
   "category": "Insurance",
-  "tags": ["insurance", "claims", "guide"],
+  "tags": [
+    "insurance",
+    "claims",
+    "guide"
+  ],
   "publishedAt": "2025-03-05T08:00:00.000Z"
 }
