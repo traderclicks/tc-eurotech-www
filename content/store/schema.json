@@ -12,6 +12,11 @@
     "type": "text",
     "placeholder": "Eurotech Auto Repair Centre"
   },
+  "alternateName": {
+    "label": "Alternate Name (used by LocalBusiness JSON-LD)",
+    "type": "text",
+    "placeholder": "Eurotech Panel Beaters"
+  },
   "phone": {
     "label": "Phone Number",
     "type": "text",
@@ -47,15 +52,65 @@
     "type": "text",
     "placeholder": "New Zealand"
   },
+  "foundingDate": {
+    "label": "Founding year (YYYY — used by LocalBusiness JSON-LD)",
+    "type": "text",
+    "placeholder": "2003"
+  },
+  "shortDescription": {
+    "label": "Short business description (used in JSON-LD + as Meta fallback)",
+    "type": "textarea",
+    "placeholder": "European vehicle repair specialists..."
+  },
   "openingHours": {
     "label": "Opening Hours",
     "type": "textarea",
     "placeholder": "Mon-Fri: 7:30 AM - 5:00 PM"
   },
+  "businessHours": {
+    "label": "Business Hours (structured — used by LocalBusiness JSON-LD)",
+    "type": "list",
+    "of": {
+      "type": "object",
+      "fields": {
+        "days": {
+          "label": "Days of week",
+          "type": "list",
+          "of": {
+            "type": "text"
+          }
+        },
+        "opens": {
+          "label": "Open time (HH:MM, 24-hour)",
+          "type": "text",
+          "placeholder": "07:30"
+        },
+        "closes": {
+          "label": "Close time (HH:MM, 24-hour)",
+          "type": "text",
+          "placeholder": "17:00"
+        }
+      }
+    }
+  },
   "googleMapsUrl": {
     "label": "Google Maps URL",
     "type": "text",
     "placeholder": "https://maps.google.com/..."
+  },
+  "geo": {
+    "label": "Geo Coordinates (used by LocalBusiness JSON-LD)",
+    "type": "object",
+    "fields": {
+      "latitude": {
+        "label": "Latitude",
+        "type": "number"
+      },
+      "longitude": {
+        "label": "Longitude",
+        "type": "number"
+      }
+    }
   },
   "facebookUrl": {
     "label": "Facebook URL",

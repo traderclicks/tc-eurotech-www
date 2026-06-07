@@ -1,7 +1,19 @@
 import store from '../../../content/store/live.json';
 
+interface BusinessHours {
+  days: string[];
+  opens: string;
+  closes: string;
+}
+
+interface GeoCoordinates {
+  latitude: number;
+  longitude: number;
+}
+
 interface SiteConfig {
   businessName: string;
+  alternateName: string;
   phone: string;
   phoneTel: string;
   email: string;
@@ -10,8 +22,12 @@ interface SiteConfig {
   city: string;
   postcode: string;
   country: string;
+  foundingDate: string;
+  shortDescription: string;
   fullAddress: string;
   openingHours: string;
+  businessHours: BusinessHours[];
+  geo: GeoCoordinates;
   googleMapsUrl: string;
   facebookUrl: string;
   instagramUrl: string;

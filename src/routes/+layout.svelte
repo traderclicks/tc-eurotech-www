@@ -7,9 +7,42 @@
   import { site } from '$lib/config/site';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
+  import { generateLocalBusinessSchema } from '$lib/utils/structuredData';
   import type { LayoutData } from './$types';
 
   export let data: LayoutData;
+
+  // Site-wide LocalBusiness JSON-LD — emitted on every route so every URL
+  // is a candidate for Google's knowledge panel. LocalBusiness is a subtype
+  // of Organization; emitting LocalBusiness alone covers both roles.
+  const businessSchema = {
+    ...generateLocalBusinessSchema({
+      name: site.businessName,
+      description: site.shortDescription,
+      address: {
+        street: site.address,
+        city: `${site.suburb}, ${site.city}`,
+        state: site.city,
+        postalCode: site.postcode,
+        country: 'NZ'
+      },
+      phone: site.phone,
+      email: site.email,
+      hours: site.businessHours,
+      rating: {
+        value: site.googleReviewRating,
+        count: site.googleReviewCount
+      },
+      geo: site.geo
+    }),
+    // Additional Organization-level fields. LocalBusiness inherits these
+    // via its supertype.
+    url: 'https://eurotechauto.co.nz',
+    logo: 'https://eurotechauto.co.nz/eurotech-main-logo.png',
+    alternateName: site.alternateName,
+    foundingDate: site.foundingDate,
+    sameAs: [site.facebookUrl, site.instagramUrl, site.googleMapsUrl]
+  };
 
   let scrollY = 0;
   // Pages that use ServiceHero — header overlays the hero image
@@ -34,39 +67,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 
-    {@html `<script type="application/ld+json">
-    ${JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": site.businessName,
-      "alternateName": "Eurotech Panel Beaters",
-      "url": "https://eurotechauto.co.nz",
-      "logo": "https://eurotechauto.co.nz/eurotech-main-logo.png",
-      "description": "Factory-authorized European vehicle specialists. NZ's only Jaguar/Land Rover structural repairer and accredited BMW Carbon Fibre Body Shop.",
-      "foundingDate": "2003",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": site.address,
-        "addressLocality": site.suburb,
-        "addressRegion": site.city,
-        "postalCode": site.postcode,
-        "addressCountry": "NZ"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": `+64-9-${site.phone.replace(/[()]/g, '').replace(/^09\s*/, '')}`,
-        "contactType": "customer service",
-        "email": site.email,
-        "areaServed": "NZ",
-        "availableLanguage": ["English"]
-      },
-      "sameAs": [
-        site.facebookUrl,
-        site.instagramUrl,
-        site.googleMapsUrl
-      ]
-    })}
-    </script>`}
+    {@html `<script type="application/ld+json">${JSON.stringify(businessSchema)}</script>`}
 
     {@html `<script type="application/ld+json">
     ${JSON.stringify({

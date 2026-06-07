@@ -7,7 +7,7 @@
   import ServiceCard from '$lib/components/ServiceCard.svelte';
   import GoogleReviewsSection from '$lib/components/GoogleReviewsSection.svelte';
   import BlogCard from '$lib/components/BlogCard.svelte';
-  import { generateFAQSchema, generateLocalBusinessSchema } from '$lib/utils/structuredData';
+  import { generateFAQSchema } from '$lib/utils/structuredData';
   import { page } from '$app/stores';
   import type { FaqsByPage } from '$lib/cms/faqs';
 
@@ -90,35 +90,7 @@
     href: `/blog/${post.slug}`
   }));
 
-  // Local Business Schema
-  const businessSchema = generateLocalBusinessSchema({
-    name: site.businessName,
-    description: 'European vehicle repair specialists. New Zealand\'s only factory-authorized Jaguar/Land Rover structural repairer.',
-    address: {
-      street: site.address,
-      city: `${site.suburb}, ${site.city}`,
-      state: site.city,
-      postalCode: site.postcode,
-      country: 'NZ'
-    },
-    phone: site.phone,
-    email: site.email,
-    hours: [
-      {
-        days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '07:30',
-        closes: '17:00'
-      }
-    ],
-    rating: {
-      value: site.googleReviewRating,
-      count: site.googleReviewCount
-    },
-    geo: {
-      latitude: -36.909,
-      longitude: 174.836
-    }
-  });
+  // LocalBusiness schema is now emitted by +layout.svelte site-wide; not duplicated here.
 </script>
 
 <!-- SEO Meta Tags -->
@@ -132,7 +104,6 @@
 <!-- Structured Data -->
 <svelte:head>
   {@html `<script type="application/ld+json">${JSON.stringify(generateFAQSchema(faqs))}</script>`}
-  {@html `<script type="application/ld+json">${JSON.stringify(businessSchema)}</script>`}
 </svelte:head>
 
 <!-- Hero Section -->
