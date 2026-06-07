@@ -78,6 +78,8 @@ export interface PageData {
   };
   /** h1 for plain text pages (Privacy/Terms style) — omit if hero is used */
   title?: string;
+  /** Sub-headline below the page title (optional) */
+  subtitle?: string;
   /** "Last updated: …" stamp for legal pages */
   updatedAt?: string;
   /** Hero block for image-led pages (About style) */
