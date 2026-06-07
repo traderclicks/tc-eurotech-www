@@ -1,0 +1,118 @@
+{
+  "dateCreated": "2026-05-31T18:16:08.000Z",
+  "dateModified": "2026-05-31T18:16:08.000Z",
+  "meta": {
+    "title": "Privacy Policy",
+    "description": "How Eurotech Auto Repair Centre collects, uses, and protects your personal information."
+  },
+  "title": "Privacy Policy",
+  "updatedAt": "Last updated: March 2026",
+  "sections": [
+    {
+      "heading": "Who We Are",
+      "paragraphs": [
+        "{businessName} operates from {fullAddress}. When we refer to \"we\", \"us\", or \"our\" in this policy, we mean {businessName}."
+      ]
+    },
+    {
+      "heading": "Information We Collect",
+      "paragraphs": [
+        "We collect personal information when you:"
+      ],
+      "list": {
+        "type": "unordered",
+        "items": [
+          "Submit a quote request or contact form on our website",
+          "Phone or email us directly",
+          "Bring a vehicle in for assessment or repair"
+        ]
+      }
+    },
+    {
+      "paragraphs": [
+        "This typically includes your name, phone number, email address, vehicle details, and information about the damage or repair required. If your repair involves an insurance claim, we may also collect your policy number and insurer details."
+      ]
+    },
+    {
+      "heading": "How We Use Your Information",
+      "paragraphs": [
+        "We use your information to:"
+      ],
+      "list": {
+        "type": "unordered",
+        "items": [
+          "Prepare repair quotes and assessments",
+          "Communicate with you about your repair",
+          "Process insurance claims on your behalf (with your consent)",
+          "Contact you about your vehicle's progress"
+        ]
+      }
+    },
+    {
+      "paragraphs": [
+        "We do not use your information for marketing purposes unless you have specifically opted in."
+      ]
+    },
+    {
+      "heading": "Who We Share It With",
+      "paragraphs": [
+        "We may share your personal information with:"
+      ],
+      "list": {
+        "type": "unordered",
+        "items": [
+          "Your insurance company, to process a claim you have authorised",
+          "Parts suppliers, where necessary to complete your repair",
+          "Our form provider (Cognito Forms), which processes online form submissions on our behalf"
+        ]
+      }
+    },
+    {
+      "paragraphs": [
+        "We do not sell or share your personal information with third parties for their own marketing purposes."
+      ]
+    },
+    {
+      "heading": "How We Protect It",
+      "paragraphs": [
+        "Online form submissions are processed through Cognito Forms using encrypted (HTTPS) connections. We store customer records securely and limit access to staff who need the information to carry out their work."
+      ]
+    },
+    {
+      "heading": "How Long We Keep It",
+      "paragraphs": [
+        "We retain your information for as long as necessary to complete your repair and meet our legal obligations. Repair records are typically kept for seven years in accordance with New Zealand tax and business record requirements."
+      ]
+    },
+    {
+      "heading": "Your Rights",
+      "paragraphs": [
+        "Under the New Zealand Privacy Act 2020, you have the right to:"
+      ],
+      "list": {
+        "type": "unordered",
+        "items": [
+          "Ask what personal information we hold about you",
+          "Request correction of any information that is wrong",
+          "Ask us to delete your information (subject to legal retention requirements)"
+        ]
+      }
+    },
+    {
+      "html": "<p>To make a request, contact us at <a href=\"mailto:{email}\">{email}</a> or phone <a href=\"tel:{phoneTel}\">{phone}</a>.</p>"
+    },
+    {
+      "heading": "Changes to This Policy",
+      "paragraphs": [
+        "We may update this policy from time to time. The latest version will always be available on this page."
+      ]
+    },
+    {
+      "heading": "Contact",
+      "paragraphs": [
+        "If you have questions about this privacy policy or how we handle your information, contact us:"
+      ],
+      "html": "<p>{businessName}<br>{address}<br>{suburb}, {city} {postcode}<br>Phone: <a href=\"tel:{phoneTel}\">{phone}</a><br>Email: <a href=\"mailto:{email}\">{email}</a></p>"
+    }
+  ]
+}

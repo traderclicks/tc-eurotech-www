@@ -1,0 +1,145 @@
+{
+  "dateCreated": {
+    "label": "Created (ISO 8601 — immutable; seeded from git first-commit, owned by Connector on insert)",
+    "type": "datetime"
+  },
+  "dateModified": {
+    "label": "Modified (ISO 8601 — auto-updated by Connector on save; falls back to git latest-commit)",
+    "type": "datetime"
+  },
+  "businessName": {
+    "label": "Business Name",
+    "type": "text",
+    "placeholder": "Eurotech Auto Repair Centre"
+  },
+  "alternateName": {
+    "label": "Alternate Name (used by LocalBusiness JSON-LD)",
+    "type": "text",
+    "placeholder": "Eurotech Panel Beaters"
+  },
+  "phone": {
+    "label": "Phone Number",
+    "type": "text",
+    "placeholder": "(09) 573 1093"
+  },
+  "email": {
+    "label": "Email Address",
+    "type": "text",
+    "placeholder": "info@eurotechauto.co.nz"
+  },
+  "address": {
+    "label": "Street Address",
+    "type": "text",
+    "placeholder": "20G Sylvia Park Road"
+  },
+  "suburb": {
+    "label": "Suburb",
+    "type": "text",
+    "placeholder": "Mount Wellington"
+  },
+  "city": {
+    "label": "City",
+    "type": "text",
+    "placeholder": "Auckland"
+  },
+  "postcode": {
+    "label": "Postcode",
+    "type": "text",
+    "placeholder": "1642"
+  },
+  "country": {
+    "label": "Country",
+    "type": "text",
+    "placeholder": "New Zealand"
+  },
+  "foundingDate": {
+    "label": "Founding year (YYYY — used by LocalBusiness JSON-LD)",
+    "type": "text",
+    "placeholder": "2003"
+  },
+  "shortDescription": {
+    "label": "Short business description (used in JSON-LD + as Meta fallback)",
+    "type": "textarea",
+    "placeholder": "European vehicle repair specialists..."
+  },
+  "openingHours": {
+    "label": "Opening Hours",
+    "type": "textarea",
+    "placeholder": "Mon-Fri: 7:30 AM - 5:00 PM"
+  },
+  "businessHours": {
+    "label": "Business Hours (structured — used by LocalBusiness JSON-LD)",
+    "type": "list",
+    "of": {
+      "type": "object",
+      "fields": {
+        "days": {
+          "label": "Days of week",
+          "type": "list",
+          "of": {
+            "type": "text"
+          }
+        },
+        "opens": {
+          "label": "Open time (HH:MM, 24-hour)",
+          "type": "text",
+          "placeholder": "07:30"
+        },
+        "closes": {
+          "label": "Close time (HH:MM, 24-hour)",
+          "type": "text",
+          "placeholder": "17:00"
+        }
+      }
+    }
+  },
+  "googleMapsUrl": {
+    "label": "Google Maps URL",
+    "type": "text",
+    "placeholder": "https://maps.google.com/..."
+  },
+  "geo": {
+    "label": "Geo Coordinates (used by LocalBusiness JSON-LD)",
+    "type": "object",
+    "fields": {
+      "latitude": {
+        "label": "Latitude",
+        "type": "number"
+      },
+      "longitude": {
+        "label": "Longitude",
+        "type": "number"
+      }
+    }
+  },
+  "facebookUrl": {
+    "label": "Facebook URL",
+    "type": "text",
+    "placeholder": "https://facebook.com/..."
+  },
+  "instagramUrl": {
+    "label": "Instagram URL",
+    "type": "text",
+    "placeholder": "https://instagram.com/..."
+  },
+  "cognitoFormId": {
+    "label": "Cognito Form ID",
+    "type": "text",
+    "placeholder": "66"
+  },
+  "cognitoDataKey": {
+    "label": "Cognito Data Key",
+    "type": "text",
+    "placeholder": "Cu6GoNFwtkCZW7SbTlnEGw"
+  },
+  "googleReviewRating": {
+    "label": "Google Review Rating",
+    "type": "number",
+    "placeholder": "4.7"
+  },
+  "googleReviewCount": {
+    "label": "Google Review Count",
+    "type": "number",
+    "placeholder": "47"
+  }
+}

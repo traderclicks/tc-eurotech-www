@@ -1,0 +1,68 @@
+{
+  "dateCreated": {
+    "label": "Created (ISO 8601 — immutable; seeded from git first-commit, owned by Connector on insert)",
+    "type": "datetime"
+  },
+  "dateModified": {
+    "label": "Modified (ISO 8601 — auto-updated by Connector on save; falls back to git latest-commit)",
+    "type": "datetime"
+  },
+  "businessName": {
+    "label": "Business Name",
+    "type": "text"
+  },
+  "totalReviews": {
+    "label": "Total Reviews",
+    "type": "number"
+  },
+  "averageRating": {
+    "label": "Average Rating",
+    "type": "number"
+  },
+  "lastUpdated": {
+    "label": "Last Updated",
+    "type": "text"
+  },
+  "reviews": {
+    "label": "Reviews",
+    "type": "list",
+    "of": {
+      "id": {
+        "label": "Review ID",
+        "type": "text"
+      },
+      "reviewerName": {
+        "label": "Reviewer Name",
+        "type": "text"
+      },
+      "rating": {
+        "label": "Rating (1-5)",
+        "type": "number"
+      },
+      "comment": {
+        "label": "Comment",
+        "type": "textarea"
+      },
+      "date": {
+        "label": "Date (relative)",
+        "type": "text"
+      },
+      "profileImage": {
+        "label": "Profile Image Path",
+        "type": "text"
+      },
+      "isLocalGuide": {
+        "label": "Local Guide",
+        "type": "boolean"
+      },
+      "reviewerStats": {
+        "label": "Reviewer Stats",
+        "type": "text"
+      },
+      "ownerResponse": {
+        "label": "Owner Response",
+        "type": "textarea"
+      }
+    }
+  }
+}

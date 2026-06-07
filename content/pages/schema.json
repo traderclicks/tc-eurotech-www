@@ -1,0 +1,138 @@
+{
+  "dateCreated": {
+    "label": "Created (ISO 8601 — immutable; seeded from git first-commit, owned by Connector on insert)",
+    "type": "datetime"
+  },
+  "dateModified": {
+    "label": "Modified (ISO 8601 — auto-updated by Connector on save; falls back to git latest-commit)",
+    "type": "datetime"
+  },
+  "meta": {
+    "label": "SEO Meta",
+    "fields": {
+      "title": {
+        "label": "Title",
+        "type": "text"
+      },
+      "description": {
+        "label": "Description",
+        "type": "textarea"
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      }
+    }
+  },
+  "title": {
+    "label": "Page title (h1, for plain pages)",
+    "type": "text"
+  },
+  "subtitle": {
+    "label": "Sub-headline below the page title (optional)",
+    "type": "text"
+  },
+  "updatedAt": {
+    "label": "Last updated stamp (Privacy/Terms)",
+    "type": "text"
+  },
+  "hero": {
+    "label": "Hero (image-led pages only)",
+    "fields": {
+      "title": {
+        "label": "Title",
+        "type": "text"
+      },
+      "description": {
+        "label": "Description",
+        "type": "textarea"
+      },
+      "images": {
+        "label": "Hero images",
+        "type": "list",
+        "of": {
+          "type": "text"
+        }
+      },
+      "showLogoBar": {
+        "label": "Show brand logo bar",
+        "type": "boolean"
+      }
+    }
+  },
+  "sections": {
+    "label": "Sections",
+    "type": "list",
+    "of": {
+      "heading": {
+        "label": "Heading (h2)",
+        "type": "text"
+      },
+      "leadText": {
+        "label": "Lead paragraph",
+        "type": "textarea"
+      },
+      "paragraphs": {
+        "label": "Body paragraphs",
+        "type": "list",
+        "of": {
+          "type": "textarea"
+        }
+      },
+      "list": {
+        "label": "List block",
+        "fields": {
+          "type": {
+            "label": "Style",
+            "type": "select",
+            "options": [
+              "unordered",
+              "ordered",
+              "tick"
+            ]
+          },
+          "items": {
+            "label": "Items",
+            "type": "list",
+            "of": {
+              "type": "text"
+            }
+          }
+        }
+      },
+      "image": {
+        "label": "Image (split-layout pages)",
+        "fields": {
+          "src": {
+            "label": "Path",
+            "type": "text"
+          },
+          "alt": {
+            "label": "Alt text",
+            "type": "text"
+          },
+          "side": {
+            "label": "Side (left/right)",
+            "type": "select",
+            "options": [
+              "left",
+              "right"
+            ]
+          },
+          "width": {
+            "label": "Width",
+            "type": "number"
+          },
+          "height": {
+            "label": "Height",
+            "type": "number"
+          }
+        }
+      },
+      "html": {
+        "label": "Raw HTML escape hatch",
+        "type": "textarea"
+      }
+    }
+  }
+}

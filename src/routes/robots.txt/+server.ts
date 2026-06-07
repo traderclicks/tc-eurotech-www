@@ -1,7 +1,7 @@
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ url }) => {
-  const siteUrl = process.env.PUBLIC_SITE_URL || 'https://example.com';
+  const siteUrl = process.env.PUBLIC_SITE_URL || 'https://eurotechauto.co.nz';
 
   const robotsTxt = `# Robots.txt for ${siteUrl}
 # Generated dynamically
@@ -9,16 +9,13 @@ export const GET: RequestHandler = ({ url }) => {
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /admin/
 Disallow: /_app/
-Disallow: /theme
 Crawl-delay: 1
 
 # Googlebot specific
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
-Disallow: /admin/
 Disallow: /_app/
 Crawl-delay: 0
 
@@ -26,7 +23,6 @@ Crawl-delay: 0
 User-agent: Bingbot
 Allow: /
 Disallow: /api/
-Disallow: /admin/
 Disallow: /_app/
 Crawl-delay: 1
 

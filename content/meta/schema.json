@@ -1,0 +1,154 @@
+{
+  "dateCreated": {
+    "label": "Created (ISO 8601 — immutable; seeded from git first-commit, owned by Connector on insert)",
+    "type": "datetime"
+  },
+  "dateModified": {
+    "label": "Modified (ISO 8601 — auto-updated by Connector on save; falls back to git latest-commit)",
+    "type": "datetime"
+  },
+  "home": {
+    "label": "Home Page",
+    "page": "/",
+    "fields": {
+      "title": {
+        "label": "Page Title",
+        "type": "text",
+        "maxLength": 60
+      },
+      "description": {
+        "label": "Meta Description",
+        "type": "textarea",
+        "maxLength": 160
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      },
+      "ogImage": {
+        "label": "OG Image",
+        "type": "text"
+      }
+    }
+  },
+  "jaguar": {
+    "label": "Jaguar",
+    "page": "/jaguar",
+    "fields": {
+      "title": {
+        "label": "Page Title",
+        "type": "text",
+        "maxLength": 60
+      },
+      "description": {
+        "label": "Meta Description",
+        "type": "textarea",
+        "maxLength": 160
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      }
+    }
+  },
+  "land-rover": {
+    "label": "Land Rover",
+    "page": "/land-rover",
+    "fields": {
+      "title": {
+        "label": "Page Title",
+        "type": "text",
+        "maxLength": 60
+      },
+      "description": {
+        "label": "Meta Description",
+        "type": "textarea",
+        "maxLength": 160
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      }
+    }
+  },
+  "range-rover": {
+    "label": "Range Rover",
+    "page": "/range-rover",
+    "fields": {
+      "title": {
+        "label": "Page Title",
+        "type": "text",
+        "maxLength": 60
+      },
+      "description": {
+        "label": "Meta Description",
+        "type": "textarea",
+        "maxLength": 160
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      }
+    }
+  },
+  "bmw": {
+    "label": "BMW",
+    "page": "/bmw",
+    "fields": {
+      "title": {
+        "label": "Page Title",
+        "type": "text",
+        "maxLength": 60
+      },
+      "description": {
+        "label": "Meta Description",
+        "type": "textarea",
+        "maxLength": 160
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      }
+    }
+  },
+  "mini": {
+    "label": "Mini",
+    "page": "/mini",
+    "fields": {
+      "title": {
+        "label": "Page Title",
+        "type": "text",
+        "maxLength": 60
+      },
+      "description": {
+        "label": "Meta Description",
+        "type": "textarea",
+        "maxLength": 160
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      }
+    }
+  },
+  "services": {
+    "label": "Services",
+    "page": "/services",
+    "fields": {
+      "title": {
+        "label": "Page Title",
+        "type": "text",
+        "maxLength": 60
+      },
+      "description": {
+        "label": "Meta Description",
+        "type": "textarea",
+        "maxLength": 160
+      },
+      "keywords": {
+        "label": "Keywords",
+        "type": "text"
+      }
+    }
+  }
+}

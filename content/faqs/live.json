@@ -1,0 +1,158 @@
+{
+  "dateCreated": "2026-05-26T14:22:15.000Z",
+  "dateModified": "2026-05-26T14:22:15.000Z",
+  "home": [
+    {
+      "question": "What brands do you specialize in?",
+      "answer": "We are European vehicle specialists, focusing on BMW, Jaguar, Land Rover, and Mini. We are New Zealand's only factory-authorised Jaguar/Land Rover structural repairer."
+    },
+    {
+      "question": "Do you work with insurance companies?",
+      "answer": "Yes, we work with all major insurance companies and can handle your claim from start to finish, making the process as smooth as possible for you."
+    },
+    {
+      "question": "What certifications do you have?",
+      "answer": "We are CRA accredited, I-Car Gold certified, and MTA members. We're also the only factory-authorised Jaguar/Land Rover structural repairer in New Zealand."
+    },
+    {
+      "question": "How long have you been in business?",
+      "answer": "Eurotech has been providing quality European vehicle repairs for over 20 years, building a reputation for excellence and reliability."
+    }
+  ],
+  "jaguar": [
+    {
+      "question": "Are you authorised for Jaguar repairs?",
+      "answer": "Yes, Eurotech is NZ's only authorised Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards."
+    },
+    {
+      "question": "Do you use genuine Jaguar parts?",
+      "answer": "Absolutely. We only use genuine Jaguar parts for all repairs to maintain your vehicle's integrity, performance, and warranty."
+    },
+    {
+      "question": "Can you handle insurance claims for Jaguar repairs?",
+      "answer": "Yes, we work with all major insurance companies and can manage your entire claim from assessment to completion."
+    },
+    {
+      "question": "What types of Jaguar repairs do you perform?",
+      "answer": "We perform comprehensive repairs including structural damage, panel beating, paint work, and collision repairs for all Jaguar models."
+    },
+    {
+      "question": "How long do Jaguar repairs typically take?",
+      "answer": "Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process."
+    }
+  ],
+  "land-rover": [
+    {
+      "question": "Are you authorised for Land Rover repairs?",
+      "answer": "Yes, Eurotech is NZ's only authorised Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards."
+    },
+    {
+      "question": "Do you use genuine Land Rover parts?",
+      "answer": "Absolutely. We only use genuine Land Rover parts for all repairs to maintain your vehicle's integrity, performance, and warranty."
+    },
+    {
+      "question": "Can you handle insurance claims for Land Rover repairs?",
+      "answer": "Yes, we work with all major insurance companies and can manage your entire claim from assessment to completion."
+    },
+    {
+      "question": "What types of Land Rover repairs do you perform?",
+      "answer": "We perform comprehensive repairs including structural damage, panel beating, paint work, and collision repairs for all Land Rover models."
+    },
+    {
+      "question": "How long do Land Rover repairs typically take?",
+      "answer": "Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process."
+    }
+  ],
+  "range-rover": [
+    {
+      "question": "Are you authorised for Range Rover repairs?",
+      "answer": "Yes, Eurotech is NZ's only authorised Jaguar/Land Rover structural repairer, ensuring repairs meet manufacturer standards."
+    },
+    {
+      "question": "Do you use genuine Range Rover parts?",
+      "answer": "Absolutely. We only use genuine Range Rover parts for all repairs to maintain your vehicle's integrity, performance, and warranty."
+    },
+    {
+      "question": "Can you handle insurance claims for Range Rover repairs?",
+      "answer": "Yes, we work with all major insurance companies and can manage your entire claim from assessment to completion."
+    },
+    {
+      "question": "What types of Range Rover repairs do you perform?",
+      "answer": "We perform comprehensive repairs including structural damage, panel beating, paint work, and collision repairs for all Range Rover models."
+    },
+    {
+      "question": "How long do Range Rover repairs typically take?",
+      "answer": "Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process."
+    }
+  ],
+  "bmw": [
+    {
+      "question": "Do you specialize in BMW repairs?",
+      "answer": "Yes, we are European vehicle specialists with extensive experience in BMW collision repairs, panel beating, and paint work."
+    },
+    {
+      "question": "Can you work with my insurance company?",
+      "answer": "Absolutely. We work with all major insurance companies and can manage your entire claim from assessment to completion."
+    },
+    {
+      "question": "What types of BMW repairs do you perform?",
+      "answer": "We perform comprehensive repairs including collision damage, panel beating, paint work, and structural repairs for all BMW models."
+    },
+    {
+      "question": "How long do BMW repairs typically take?",
+      "answer": "Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process."
+    }
+  ],
+  "mini": [
+    {
+      "question": "Do you specialize in Mini repairs?",
+      "answer": "Yes, we are European vehicle specialists with extensive experience in Mini collision repairs, panel beating, and paint work."
+    },
+    {
+      "question": "Can you work with my insurance company?",
+      "answer": "Absolutely. We work with all major insurance companies and can manage your entire claim from assessment to completion."
+    },
+    {
+      "question": "What types of Mini repairs do you perform?",
+      "answer": "We perform comprehensive repairs including collision damage, panel beating, paint work, and structural repairs for all Mini models."
+    },
+    {
+      "question": "How long do Mini repairs typically take?",
+      "answer": "Repair timelines vary based on damage extent. We provide detailed estimates and keep you informed throughout the process."
+    }
+  ],
+  "insurance": [
+    {
+      "question": "What do I do if I have an accident?",
+      "answer": "First, assess the situation and make sure everyone is safe. Obtain the other driver's details if applicable, and report the accident to police within 24 hours if someone is injured. Take photos of the damage if you can — they'll be useful for your claim."
+    },
+    {
+      "question": "What's the next step after reporting it?",
+      "answer": "Contact your insurer or broker to lodge a claim. Once you have a claim number, get in touch with us. We can also help you through the claims process if you're not sure where to start."
+    },
+    {
+      "question": "Can I choose which panel beater to use?",
+      "answer": "Yes — as the vehicle owner, you have the right to choose whichever repairer you wish. You don't have to use the insurer's recommended repairer. For European vehicles, choosing a factory-authorised specialist like Eurotech ensures your car is repaired to manufacturer specifications."
+    },
+    {
+      "question": "How does the insurance company assess my vehicle?",
+      "answer": "Bring your vehicle to Eurotech and we'll evaluate the damage, take digital photos, and prepare a complimentary repair estimate. We send everything directly to your insurer. Some insurers approve repairs from photos alone, while others may want to inspect the vehicle in person."
+    },
+    {
+      "question": "When will my vehicle be repaired?",
+      "answer": "Once we receive written authorisation from your insurance company, we order the necessary parts and contact you to schedule the repair as soon as parts arrive. We'll keep you informed throughout."
+    },
+    {
+      "question": "Will I get a replacement vehicle?",
+      "answer": "Most major insurers cover a replacement vehicle or contribute toward rental costs while your car is being repaired. We can also offer courtesy vehicles in certain situations. We'll help you work out what's available under your policy."
+    },
+    {
+      "question": "Can I get extra private work done at the same time?",
+      "answer": "Absolutely. If there's other damage or work you'd like done while your vehicle is with us, we'll provide a free, no-obligation quote. It's often more convenient to have everything done in one visit."
+    },
+    {
+      "question": "What happens when my vehicle is finished?",
+      "answer": "We'll contact you to arrange a convenient collection time. When you pick up your vehicle, we'll walk you through the repairs and answer any questions. All work carries a written manufacturer guarantee."
+    }
+  ]
+}

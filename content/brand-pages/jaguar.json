@@ -1,0 +1,46 @@
+{
+  "dateCreated": "2026-05-29T03:44:20.000Z",
+  "dateModified": "2026-05-29T03:44:20.000Z",
+  "meta": {
+    "title": "Jaguar Specialist Repairs - Authorised",
+    "description": "NZ's only authorised Jaguar structural repairer. Expert collision repairs, panel beating & genuine parts. Insurance approved.",
+    "keywords": "jaguar repair auckland, jaguar panel beaters, jaguar collision repair, authorised jaguar, genuine jaguar parts"
+  },
+  "hero": {
+    "title": "Jaguar Repairs",
+    "description": "NZ's only authorised Jaguar repairer • Genuine parts only • 20+ years experience",
+    "images": [
+      "/gallery/jaguar/introspectivedsgn-oUoLi5k7esA-unsplash.jpg",
+      "/gallery/jaguar/imkaravisual-G3A9DDh3ovU-unsplash.jpg",
+      "/gallery/jaguar/davidgeneugelijk-mdUbSHdebO0-unsplash.jpg",
+      "/gallery/jaguar/escobar_kanishk-J1kmixRfys0-unsplash.jpg",
+      "/gallery/jaguar/taylor65s-EIs247QDxZk-unsplash.jpg"
+    ]
+  },
+  "content": {
+    "heading": "NZ's Only Authorised Jaguar Repairer",
+    "leadText": "Eurotech is the only body shop in New Zealand fully authorised by Jaguar to carry out structural aluminium repairs. That means every repair meets the exact specifications set by the manufacturer — protecting your vehicle's integrity, warranty, and resale value.",
+    "sections": [
+      {
+        "image": "/gallery/jaguar/imlst-OnppPkl1d3U-unsplash.jpg",
+        "imageAlt": "Jaguar repair specialist",
+        "title": "Aluminium Structural Expertise",
+        "paragraphs": [
+          "Modern Jaguars are built with advanced aluminium architectures that require specialist knowledge, tooling, and training to repair safely. Our technicians have completed Jaguar's own aluminium structural repair courses — training only available to authorised repairers.",
+          "We use dedicated aluminium repair bays with climate-controlled environments to prevent contamination, along with Jaguar-approved measuring and pulling equipment to restore every dimension to factory specification."
+        ]
+      },
+      {
+        "image": "/gallery/jaguar/switch_dtp_fotografie-01dxABUoCQA-unsplash.jpg",
+        "imageAlt": "Jaguar repair workshop",
+        "imageHeight": 801,
+        "title": "Factory-Grade Finish",
+        "paragraphs": [
+          "Our refinish team uses the Glasurit 100 Line paint system — the same premium system trusted by manufacturers worldwide. With digital colour matching and over 90 tinting bases, we achieve colour accuracy that's indistinguishable from factory.",
+          "Every Jaguar repair we complete carries a written manufacturer guarantee. We work directly with all major NZ insurers to manage your claim from assessment through to completion, so you can focus on getting back on the road."
+        ]
+      }
+    ]
+  },
+  "showReviews": true
+}

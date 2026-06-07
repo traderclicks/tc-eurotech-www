@@ -1,0 +1,28 @@
+{
+  "$schema": "./image-check.schema.json",
+  "cloudflareEnabled": true,
+  "maxImageSizeBytes": {
+    "cloudflareEnabled": 3145728,
+    "cloudflareDisabled": 524288
+  },
+  "imageDirs": [
+    "static/images",
+    "static/gallery"
+  ],
+  "codeDirs": [
+    "src/routes",
+    "src/lib/components"
+  ],
+  "imageExtensions": [
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".gif"
+  ],
+  "codeExtensions": [
+    ".svelte",
+    ".ts",
+    ".js"
+  ]
+}

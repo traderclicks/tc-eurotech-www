@@ -3,6 +3,13 @@
   import { onMount } from 'svelte';
   import { fade, scale } from 'svelte/transition';
   import ContactForm from './ContactForm.svelte';
+  import CognitoForm from './CognitoForm.svelte';
+  import PhoneIcon from './PhoneIcon.svelte';
+  import { page } from '$app/stores';
+  import type { Insurer } from '$lib/cms/insurers';
+
+  $: insurers = ($page.data.insurers ?? []) as Insurer[];
+  $: insurerContacts = insurers.filter((i) => i.phone);
 
   let modalElements: HTMLDivElement[] = [];
 
@@ -48,12 +55,14 @@
     class="modal-backdrop"
     transition:fade={{ duration: 200 }}
     on:click={(e) => handleBackdropClick(modal.id, e)}
+    on:keydown={(e) => e.key === 'Enter' && handleBackdropClick(modal.id, e as any)}
     bind:this={modalElements[i]}
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-title-{modal.id}"
+    tabindex="-1"
   >
-    <div class="modal-container" transition:scale={{ duration: 200, start: 0.95 }}>
+    <div class="modal-container" class:image-container={modal.type === 'image'} class:insurance-container={modal.type === 'insurance'} class:cognito-container={modal.type === 'cognito'} transition:scale={{ duration: 200, start: 0.95 }}>
       {#if modal.type !== 'image'}
         <div class="modal-header">
           {#if modal.title}
@@ -88,6 +97,23 @@
               </svg>
             </button>
             <img src={modal.content.src} alt={modal.content.alt || ''} />
+            {#if modal.content.attribution}
+              <div class="image-attribution">
+                Photo by <a
+                  href={modal.content.attribution.photographerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {modal.content.attribution.photographer}
+                </a> on <a
+                  href="https://unsplash.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Unsplash
+                </a>
+              </div>
+            {/if}
           </div>
         {:else if modal.type === 'video'}
           <div class="video-modal">
@@ -133,6 +159,20 @@
               OK
             </button>
           </div>
+        {:else if modal.type === 'insurance'}
+          <div class="insurance-modal">
+            <div class="insurance-list">
+              {#each insurerContacts as insurer}
+                <div class="insurance-item">
+                  <div class="insurer-avatar" style="background-image: url('{insurer.logo}')"></div>
+                  <div class="insurance-name">{insurer.name}</div>
+                  <a href="tel:{insurer.phoneTel}" class="insurance-phone"><PhoneIcon size={16} /> {insurer.phone}</a>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {:else if modal.type === 'cognito'}
+          <CognitoForm formId={modal.content.formId} />
         {:else if modal.type === 'custom'}
           <!-- Slot for custom modal content -->
           <slot name="custom" {modal} />
@@ -154,9 +194,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: var(--z-modal-backdrop);
+    z-index: 10001;
     padding: var(--space-4);
     overflow-y: auto;
+  }
+
+  .modal-container.cognito-container {
+    max-width: 800px;
   }
 
   .modal-container {
@@ -166,11 +210,22 @@
     max-width: 600px;
     width: 100%;
     max-height: 90vh;
-    overflow: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: var(--z-modal);
+    z-index: 10002;
+  }
+
+  .modal-container.image-container {
+    max-width: 1200px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .modal-container.insurance-container {
+    max-width: 520px;
+    background: var(--bg-content);
   }
 
   .modal-header {
@@ -241,6 +296,31 @@
     background: rgba(0, 0, 0, 0.8);
   }
 
+  .image-attribution {
+    position: absolute;
+    bottom: var(--space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .image-attribution a {
+    color: white;
+    text-decoration: underline;
+    font-weight: var(--font-medium);
+    transition: opacity var(--transition-fast);
+  }
+
+  .image-attribution a:hover {
+    opacity: 0.8;
+  }
+
   /* Video Modal Styles */
   .video-modal {
     aspect-ratio: 16 / 9;
@@ -273,6 +353,65 @@
   .alert-modal p {
     margin-bottom: var(--space-6);
     color: var(--text-secondary);
+  }
+
+  /* Insurance Modal Styles */
+  .insurance-modal {
+    padding: var(--space-6) var(--space-2);
+  }
+
+  .insurance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .insurance-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .insurance-item:last-child {
+    border-bottom: none;
+  }
+
+  .insurer-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    flex-shrink: 0;
+  }
+
+  .insurance-name {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+    flex: 1;
+  }
+
+  .insurance-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition-fast);
+  }
+
+  .insurance-phone:hover {
+    color: var(--color-primary-dark);
+    text-decoration: none;
   }
 
   /* Button Styles */

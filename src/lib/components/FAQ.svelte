@@ -30,7 +30,7 @@
       >
         <span class="question-text">{item.question}</span>
         <span class="question-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
             {#if openItems.has(index)}
               <line x1="5" y1="12" x2="19" y2="12" />
             {:else}
@@ -62,21 +62,23 @@
   }
 
   .faq-item {
-    background: var(--bg-primary);
-    border: 1px solid var(--color-gray-200);
-    border-radius: var(--radius-lg);
+    background: rgba(235, 235, 235, 0.4);
+    border: none;
+    border-radius: 0;
     overflow: hidden;
     transition: all var(--transition-base);
+    box-shadow: none;
   }
 
+  .faq-item:hover,
   .faq-item.open {
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-md);
+    border: none;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   }
 
   .faq-question {
     width: 100%;
-    padding: var(--space-4) var(--space-6);
+    padding: var(--space-6) var(--space-6);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -92,10 +94,19 @@
     background: var(--bg-secondary);
   }
 
+  .faq-item.open .faq-question {
+    background: white;
+  }
+
   .question-text {
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     font-weight: var(--font-semibold);
     color: var(--text-primary);
+    transition: font-size var(--transition-base);
+  }
+
+  .faq-item.open .question-text {
+    font-size: var(--text-2xl);
   }
 
   .question-icon {
@@ -109,18 +120,20 @@
   }
 
   .faq-answer {
-    padding: 0 var(--space-6) var(--space-4);
+    padding: 0 var(--space-6) var(--space-6);
+    background: white;
   }
 
   .faq-answer p {
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
+    font-size: var(--text-base);
     margin: 0;
   }
 
   @media (max-width: 640px) {
     .faq-question {
-      padding: var(--space-3) var(--space-4);
+      padding: var(--space-5) var(--space-4);
     }
 
     .question-text {
@@ -128,7 +141,7 @@
     }
 
     .faq-answer {
-      padding: 0 var(--space-4) var(--space-3);
+      padding: var(--space-5) var(--space-4) var(--space-5);
     }
   }
 </style>

@@ -1,0 +1,86 @@
+{
+  "dateCreated": "2026-05-31T18:16:08.000Z",
+  "dateModified": "2026-06-03T02:14:47.000Z",
+  "meta": {
+    "title": "About Eurotech",
+    "description": "Learn about Eurotech Auto Repair Centre, New Zealand's only factory-authorised Jaguar/Land Rover structural repairer with 20+ years experience.",
+    "keywords": "eurotech auto repair, european vehicle specialists, panel beaters auckland, factory authorised repairer"
+  },
+  "hero": {
+    "title": "About Eurotech",
+    "description": "European vehicle specialists • Factory authorised • 20+ years experience",
+    "images": [
+      "/images/punchy.jpg",
+      "/images/DSC00651.jpg",
+      "/images/DSC00720.jpg"
+    ],
+    "showLogoBar": true
+  },
+  "sections": [
+    {
+      "heading": "20+ Years of European Expertise",
+      "leadText": "Eurotech Auto Repair Centre has been one of Auckland's leading panel and paint workshops — specialising exclusively in European vehicles.",
+      "paragraphs": [
+        "Based in Mt Wellington, we combine factory-authorised repair methods with the latest equipment and technology to deliver results that meet manufacturer specifications every time."
+      ],
+      "image": {
+        "src": "/images/DSC00931.jpg",
+        "alt": "Eurotech Auto Repair Centre building",
+        "side": "right",
+        "width": 800,
+        "height": 534
+      }
+    },
+    {
+      "heading": "Factory Authorisations",
+      "paragraphs": [
+        "We hold certifications that set us apart from general body shops:"
+      ],
+      "list": {
+        "type": "tick",
+        "items": [
+          "<strong>NZ's only factory-authorised Jaguar/Land Rover structural repairer</strong> — certified for aluminium structural repairs",
+          "<strong>NZ's only accredited BMW Carbon Fibre Body Shop</strong>",
+          "<strong>Accredited BMW Group Body Shop</strong>",
+          "<strong>CRA quality assurance</strong> and <strong>MTA member</strong>"
+        ]
+      },
+      "image": {
+        "src": "/images/DSC00720.jpg",
+        "alt": "Technician working on Range Rover in aluminium repair bay",
+        "side": "left",
+        "width": 800,
+        "height": 534
+      }
+    },
+    {
+      "heading": "Our Team",
+      "paragraphs": [
+        "Our technicians are factory-trained specialists, not generalists. The team includes I-CAR certified welders and technicians who have completed Jaguar aluminium structural repair courses — training only available to authorised repairers.",
+        "Our refinish staff are trained in Glasurit automotive paint systems, the same premium products used by manufacturers. This ensures colour accuracy and a finish indistinguishable from factory."
+      ],
+      "image": {
+        "src": "/images/DSC00625.jpg",
+        "alt": "Spray painter applying paint in booth",
+        "side": "right",
+        "width": 800,
+        "height": 534
+      }
+    },
+    {
+      "heading": "Why It Matters",
+      "paragraphs": [
+        "Modern European vehicles use advanced materials — high-strength steel, aluminium, carbon fibre — bonded and riveted in ways that require specific knowledge and equipment to repair safely.",
+        "A repair done to the wrong specification can compromise structural integrity, void the warranty, and reduce the vehicle's value. That's why factory authorisation exists, and why choosing the right repairer matters.",
+        "Every repair we carry out follows manufacturer specifications, meets insurer requirements, and carries a written guarantee."
+      ],
+      "image": {
+        "src": "/images/DSC00651.jpg",
+        "alt": "Glasurit automotive paint mixing system",
+        "side": "left",
+        "width": 800,
+        "height": 534
+      }
+    }
+  ]
+}

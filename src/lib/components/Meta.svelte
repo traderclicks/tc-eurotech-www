@@ -1,7 +1,7 @@
 <!-- Enhanced SEO Meta Component -->
 <script lang="ts">
-  export let title = 'Page One - Premium Solutions';
-  export let description = 'Discover our comprehensive range of solutions designed to help you achieve success.';
+  export let title = 'Eurotech Auto Repair Centre - European Vehicle Specialists Auckland';
+  export let description = 'Factory-authorized Jaguar, Land Rover & BMW specialists. Expert collision repairs, panel beating & paint work in Mount Wellington, Auckland.';
   export let keywords = '';
   export let canonical: string | undefined = undefined;
   export let ogImage = '/og-image.png';
@@ -18,13 +18,15 @@
   export let tags: string[] = [];
 
   // Additional SEO props
-  export let locale = 'en_US';
-  export let siteName = 'Page One';
+  export let locale = 'en_NZ';
+  export let siteName = 'Eurotech Auto Repair';
   export let twitterSite = '';
   export let twitterCreator = '';
 
-  // Construct full title
-  const fullTitle = title === 'Page One - Premium Solutions' ? title : `${title} | Page One`;
+  // Construct full title — append brand unless it's the default or already contains it
+  const defaultTitle = 'Eurotech Auto Repair Centre - European Vehicle Specialists Auckland';
+  const brandSuffix = 'Eurotech Auto Repair';
+  const fullTitle = title === defaultTitle || title.includes(brandSuffix) ? title : `${title} | ${brandSuffix}`;
 
   // Get current URL for canonical and OG tags
   import { page } from '$app/stores';

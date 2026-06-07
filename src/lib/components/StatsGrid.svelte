@@ -1,54 +1,185 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
 
-  export let stats = [];
-  export let backgroundColor = 'var(--color-primary)';
+  export let backgroundColor = '#000000';
   export let textColor = 'white';
+  export let description = '';
+
+  const logos = [
+    '/jaguar-logo-white.svg',
+    '/landrover-logo-white.svg',
+    '/range-rover-logo-white.svg',
+    '/bmw-logo-white.svg',
+    '/mini-white.svg'
+  ];
 </script>
 
-<section class="stats" style="background: {backgroundColor}; color: {textColor};">
-  <div class="container">
-    <div class="stats-grid">
-      {#each stats as stat, i}
-        <div class="stat-item" in:fly={{ y: 20, delay: 100 * i, duration: 600 }}>
-          <div class="stat-number">{stat.number}</div>
-          <div class="stat-label">{stat.label}</div>
+<section class="logo-bar-section" style="background: {backgroundColor}; color: {textColor};">
+  <div class="logo-bar-wrapper">
+    <div class="logo-bar-container">
+      <div class="logo-bar-content">
+        <div class="logos-scroll">
+          <div class="logos-track">
+            {#each Array(10) as _, repeatIndex}
+              {#each logos as logo, i}
+                <img
+                  src={logo}
+                  alt="Brand logo"
+                  class="brand-logo"
+                  class:bmw-logo={logo.includes('bmw')}
+                  class:landrover-logo={logo.includes('landrover') || logo.includes('range-rover')}
+                />
+              {/each}
+            {/each}
+          </div>
         </div>
-      {/each}
+        {#if description}
+          <div class="description-text">
+            <span>NZ's only authorised Jaguar/Land Rover repairer</span>
+            <span class="separator">•</span>
+            <span>Expert BMW & Mini repairs</span>
+            <span class="separator">•</span>
+            <span>20+ years of operation</span>
+          </div>
+        {/if}
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .stats {
-    padding: var(--space-12) 0;
+  .logo-bar-section {
+    overflow: visible;
+    padding-top: var(--space-8);
   }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--space-8);
-    text-align: center;
+  .logo-bar-wrapper {
+    width: 68%;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: var(--radius-xl);
+    filter: drop-shadow(0 -12px 24px rgba(255, 255, 255, 0.14));
   }
 
-  .stat-number {
-    font-size: var(--text-4xl);
-    font-weight: var(--font-bold);
-    margin-bottom: var(--space-2);
+  .logo-bar-container {
+    width: 100%;
+    padding: 0 0 var(--space-3) 0;
+    background: #2a3038;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
   }
 
-  .stat-label {
+  .logo-bar-content {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .description-text {
+    color: #ffffff;
     font-size: var(--text-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.9;
+    font-weight: var(--font-bold);
+    font-style: normal;
+    text-align: center;
+    margin: var(--space-3) 0 var(--space-1) 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+  }
+
+  .separator {
+    opacity: 0.7;
+  }
+
+  .logos-scroll {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    background: rgba(90, 100, 105, 0.9);
+    backdrop-filter: blur(10px);
+    padding: var(--space-3) 0;
+  }
+
+  .logos-track {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--space-12) * 2);
+    animation: scroll 40s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-10%);
+    }
+  }
+
+  .brand-logo {
+    width: 85px;
+    height: auto;
+    opacity: 1;
+    flex-shrink: 0;
+  }
+
+  .brand-logo.bmw-logo {
+    width: 42px;
+  }
+
+  .brand-logo.landrover-logo {
+    width: 68px;
+  }
+
+  /* Tablet Styles */
+  @media (max-width: 1024px) {
+    .logo-bar-wrapper {
+      width: 90%;
+    }
+
+    .description-text {
+      font-size: var(--text-base);
+      gap: 1rem;
+    }
+
+    .logos-track {
+      animation-duration: 15s;
+    }
   }
 
   /* Mobile Styles */
   @media (max-width: 768px) {
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-6);
+    .logo-bar-wrapper {
+      width: 100%;
+      border-radius: 0;
+    }
+
+    .logo-bar-container {
+      border-radius: 0;
+    }
+
+    .description-text {
+      display: none;
+    }
+
+    .logos-track {
+      gap: var(--space-8);
+      animation-duration: 8s;
+    }
+
+    .brand-logo {
+      width: 65px;
+    }
+
+    .brand-logo.bmw-logo {
+      width: 30px;
+    }
+
+    .brand-logo.landrover-logo {
+      width: 50px;
     }
   }
 </style>

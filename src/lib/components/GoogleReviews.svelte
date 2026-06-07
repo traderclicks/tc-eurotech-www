@@ -1,6 +1,8 @@
 <script lang="ts">
-  export let rating = 4.9;
-  export let reviewCount = 127;
+  import { site } from '$lib/config/site';
+
+  export let rating = site.googleReviewRating;
+  export let reviewCount = site.googleReviewCount;
 </script>
 
 <div class="google-reviews">

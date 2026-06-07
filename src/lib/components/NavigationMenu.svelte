@@ -1,49 +1,48 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
-  import { modal } from '$lib/stores/modal';
+  import { createEventDispatcher } from 'svelte';
+  import { page } from '$app/stores';
 
   export let isOpen = false;
 
-  const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact Us', href: '#contact' },
-  ];
+  const dispatch = createEventDispatcher();
 
-  const serviceItems = [
-    { label: 'Jaguar & Land Rover', href: '#jaguar-landrover' },
-    { label: 'BMW & Mini', href: '#bmw-mini' },
-    { label: 'Insurance Claims', href: '#insurance' },
-    { label: 'Structural Repairs', href: '#structural' },
-    { label: 'Paintless Dent Removal', href: '#paintless' },
-  ];
+  $: pathname = $page.url.pathname;
 
-  let expandedItems: Set<string> = new Set();
-
-  function toggleExpanded(label: string, event: Event) {
-    event.preventDefault();
-    if (expandedItems.has(label)) {
-      expandedItems.delete(label);
-    } else {
-      expandedItems.add(label);
-    }
-    expandedItems = expandedItems;
+  function isActive(href: string): boolean {
+    if (href.startsWith('#')) return false;
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(href + '/');
   }
+
+  const primaryItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Make an Insurance Claim', href: '/insurance', flag: '*' },
+    { label: 'About Eurotech', href: '/about' },
+    { label: 'From the Workshop', href: '/blog' },
+    { label: 'Contact Us', href: '#contact', action: 'contact' },
+  ];
+
+  const secondaryItems = [
+    { label: 'Jaguar Repair', href: '/jaguar', logo: '/jaguar-logo-white.svg', logoHeight: 7 },
+    { label: 'Land Rover Repair', href: '/land-rover', logo: '/landrover-logo-white.svg', logoHeight: 20 },
+    { label: 'Range Rover Repair', href: '/range-rover', logo: '/range-rover-logo-white.svg', logoHeight: 14 },
+    { label: 'BMW Repair', href: '/bmw', logo: '/bmw-logo-white.svg', logoHeight: 28 },
+    { label: 'Mini Repair', href: '/mini', logo: '/mini-white.svg', logoHeight: 16 },
+  ];
 
   function closeMenu() {
     isOpen = false;
   }
 
-  function handleNavClick(event: Event, hasSubItems: boolean = false) {
-    if (!hasSubItems) {
+  function handleNavClick(e: Event, item: typeof primaryItems[0]) {
+    if (item.action) {
+      e.preventDefault();
       closeMenu();
+      dispatch(item.action);
+      return;
     }
-  }
-
-  function openContactModal() {
     closeMenu();
-    modal.form({ title: 'Get a Quote' });
   }
 </script>
 
@@ -72,58 +71,44 @@
 
     <!-- Navigation Items -->
     <ul class="nav-list">
-      {#each navItems as item}
+      {#each primaryItems as item}
         <li class="nav-item">
           <a
             href={item.href}
             class="nav-link"
-            on:click={(e) => handleNavClick(e)}
+            class:active={isActive(item.href)}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            on:click={(e) => handleNavClick(e, item)}
           >
-            {item.label}
+            <span>{item.label}{#if item.flag} <span class="nav-flag">{item.flag}</span>{/if}</span>
           </a>
         </li>
       {/each}
-
-      <!-- Services Section -->
-      <li class="nav-item services-section">
-        <div class="services-title">Services</div>
-        <ul class="services-list">
-          {#each serviceItems as service}
-            <li>
-              <a
-                href={service.href}
-                class="service-link"
-                on:click={(e) => handleNavClick(e)}
-              >
-                {service.label}
-              </a>
-            </li>
-          {/each}
-        </ul>
-      </li>
     </ul>
 
-    <!-- Bottom Section -->
-    <div class="menu-footer">
-      <button class="quote-btn" on:click={openContactModal}>
-        Get a Quote
-      </button>
-
-      <div class="contact-info">
-        <a href="tel:095731093" class="contact-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-          </svg>
-          (09) 573 1093
-        </a>
-        <a href="mailto:info@eurotech.co.nz" class="contact-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-          info@eurotech.co.nz
-        </a>
-      </div>
+    <!-- Secondary Navigation -->
+    <div class="secondary-nav">
+      <div class="secondary-title">Our services</div>
+      <ul class="nav-list secondary-list">
+        {#each secondaryItems as item}
+          <li class="nav-item secondary-item">
+            <a
+              href={item.href}
+              class="nav-link secondary"
+              class:active={isActive(item.href)}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              on:click={(e) => handleNavClick(e, item)}
+            >
+              <span>{item.label}</span>
+              {#if item.logo}
+                <img src={item.logo} alt="" class="nav-logo" style="height: {item.logoHeight}px" />
+              {/if}
+            </a>
+          </li>
+        {/each}
+      </ul>
     </div>
+
   </nav>
 {/if}
 
@@ -147,7 +132,7 @@
     bottom: 0;
     width: 400px;
     max-width: 100vw;
-    background: #000000;
+    background: #2a2a2a;
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -184,12 +169,38 @@
   .nav-list {
     list-style: none;
     margin: 0;
-    padding: calc(var(--space-16) + var(--space-4)) 0 var(--space-4) 0;
-    flex: 1;
+    padding: calc(var(--space-16) + var(--space-4)) 0 var(--space-8) 0;
   }
 
   .nav-item {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .secondary-nav {
+    margin-top: var(--space-4);
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .secondary-title {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-3) var(--space-6) var(--space-3);
+  }
+
+  .secondary-list {
+    padding: 0 0 var(--space-4) 0;
+  }
+
+  .secondary-item {
+    border-bottom: none;
   }
 
   .nav-link {
@@ -198,10 +209,10 @@
     justify-content: space-between;
     width: 100%;
     padding: var(--space-4) var(--space-6);
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-size: var(--text-lg);
-    font-weight: var(--font-regular);
+    font-weight: var(--font-medium);
     background: none;
     border: none;
     cursor: pointer;
@@ -214,116 +225,32 @@
     padding-left: calc(var(--space-6) + 4px);
   }
 
-  .expand-icon {
-    transition: transform var(--transition-base);
-    flex-shrink: 0;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .nav-link.expanded .expand-icon {
-    transform: rotate(45deg);
-  }
-
-  /* Services Section Styles */
-  .services-section {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: var(--space-2);
-  }
-
-  .services-title {
-    padding: var(--space-4) var(--space-6);
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-    font-size: var(--text-lg);
-    font-weight: var(--font-medium);
-    opacity: 0.9;
+    font-weight: var(--font-bold);
+    box-shadow: inset 3px 0 0 #d4af37;
   }
 
-  .services-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: rgba(255, 255, 255, 0.03);
+  .nav-link.active:hover {
+    background: rgba(255, 255, 255, 0.13);
   }
 
-  .service-link {
-    display: block;
-    padding: var(--space-3) var(--space-6) var(--space-3) var(--space-10);
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
+  .nav-link.secondary {
     font-size: var(--text-base);
-    transition: all var(--transition-fast);
+    padding: var(--space-3) var(--space-6);
+    opacity: 0.8;
   }
 
-  .service-link:hover {
-    color: white;
-    padding-left: calc(var(--space-10) + 4px);
-    background: rgba(255, 255, 255, 0.08);
+  .nav-logo {
+    width: auto;
+    opacity: 0.85;
   }
 
-  .submenu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .submenu-link {
-    display: block;
-    padding: var(--space-3) var(--space-6) var(--space-3) var(--space-10);
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: var(--text-base);
-    transition: all var(--transition-fast);
-  }
-
-  .submenu-link:hover {
-    color: white;
-    padding-left: calc(var(--space-10) + 4px);
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .menu-footer {
-    padding: var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  .quote-btn {
-    width: 100%;
-    padding: var(--space-4);
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    border-radius: var(--radius-md);
-    font-size: var(--text-base);
-    font-weight: var(--font-medium);
-    cursor: pointer;
-    transition: background var(--transition-fast);
-    margin-bottom: var(--space-4);
-  }
-
-  .quote-btn:hover {
-    background: var(--color-primary-dark);
-  }
-
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: var(--text-sm);
-    transition: color var(--transition-fast);
-  }
-
-  .contact-link:hover {
-    color: white;
+  .nav-flag {
+    color: #d4af37;
+    font-weight: var(--font-bold);
+    margin-left: 0.15em;
   }
 
   /* Mobile Styles */

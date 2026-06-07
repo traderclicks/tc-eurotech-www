@@ -32,7 +32,7 @@
           Return to Homepage
         </Button>
         {#if isNotFound}
-          <Button href="/sitemap" variant="secondary">
+          <Button href="/sitemap.xml" variant="secondary">
             View Sitemap
           </Button>
         {/if}
@@ -42,9 +42,8 @@
         <div class="helpful-links">
           <h3>Helpful Links</h3>
           <ul>
-            <li><a href="/services">Our Services</a></li>
             <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/insurance">Insurance</a></li>
           </ul>
         </div>
       {/if}

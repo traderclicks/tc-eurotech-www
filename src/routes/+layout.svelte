@@ -3,13 +3,51 @@
   import Modal from '$lib/components/Modal.svelte';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import FooterCTA from '$lib/components/FooterCTA.svelte';
+  import { site } from '$lib/config/site';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
+  import { generateLocalBusinessSchema } from '$lib/utils/structuredData';
+  import type { LayoutData } from './$types';
+
+  export let data: LayoutData;
+
+  // Site-wide LocalBusiness JSON-LD — emitted on every route so every URL
+  // is a candidate for Google's knowledge panel. LocalBusiness is a subtype
+  // of Organization; emitting LocalBusiness alone covers both roles.
+  const businessSchema = {
+    ...generateLocalBusinessSchema({
+      name: site.businessName,
+      description: site.shortDescription,
+      address: {
+        street: site.address,
+        city: `${site.suburb}, ${site.city}`,
+        state: site.city,
+        postalCode: site.postcode,
+        country: 'NZ'
+      },
+      phone: site.phone,
+      email: site.email,
+      hours: site.businessHours,
+      rating: {
+        value: site.googleReviewRating,
+        count: site.googleReviewCount
+      },
+      geo: site.geo
+    }),
+    // Additional Organization-level fields. LocalBusiness inherits these
+    // via its supertype.
+    url: 'https://eurotechauto.co.nz',
+    logo: 'https://eurotechauto.co.nz/eurotech-main-logo.png',
+    alternateName: site.alternateName,
+    foundingDate: site.foundingDate,
+    sameAs: [site.facebookUrl, site.instagramUrl, site.googleMapsUrl]
+  };
 
   let scrollY = 0;
-
-  // Only the homepage has a hero image
-  $: hasHero = $page.url.pathname === '/';
+  // Pages that use ServiceHero — header overlays the hero image
+  const heroPages = ['/', '/jaguar', '/land-rover', '/range-rover', '/bmw', '/mini', '/about'];
+  $: hasHero = heroPages.includes($page.url.pathname);
 
   onMount(() => {
     const handleScroll = () => {
@@ -17,68 +55,28 @@
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   });
 </script>
 
 <svelte:head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 
-  <!-- Organization Schema for SEO -->
-  {@html `<script type="application/ld+json">
-  ${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Page One",
-    "alternateName": "Page One Solutions",
-    "url": "https://example.com",
-    "logo": "https://example.com/logo.png",
-    "description": "Premium solutions and services to help you achieve success",
-    "foundingDate": "2020",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Main Street",
-      "addressLocality": "City",
-      "addressRegion": "State",
-      "postalCode": "12345",
-      "addressCountry": "US"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-555-0100",
-      "contactType": "customer service",
-      "email": "contact@example.com",
-      "areaServed": "US",
-      "availableLanguage": ["English"]
-    },
-    "sameAs": [
-      "https://www.facebook.com/pageone",
-      "https://twitter.com/pageone",
-      "https://www.linkedin.com/company/pageone",
-      "https://www.instagram.com/pageone"
-    ]
-  })}
-  </script>`}
+    {@html `<script type="application/ld+json">${JSON.stringify(businessSchema)}</script>`}
 
-  <!-- Website Schema -->
-  {@html `<script type="application/ld+json">
-  ${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Page One",
-    "url": "https://example.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://example.com/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  })}
-  </script>`}
+    {@html `<script type="application/ld+json">
+    ${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": site.businessName,
+      "url": "https://eurotechauto.co.nz"
+    })}
+    </script>`}
 </svelte:head>
 
 <div class="app">
@@ -88,12 +86,11 @@
     <slot />
   </main>
 
+  <FooterCTA />
   <Footer />
 
-  <!-- Global Modal Container -->
   <Modal />
 
-  <!-- Back to Top Button -->
   {#if scrollY > 300}
     <button
       class="back-to-top"

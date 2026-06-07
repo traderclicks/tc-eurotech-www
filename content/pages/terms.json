@@ -1,0 +1,82 @@
+{
+  "dateCreated": "2026-05-31T18:16:08.000Z",
+  "dateModified": "2026-05-31T18:16:08.000Z",
+  "meta": {
+    "title": "Terms & Conditions",
+    "description": "Terms and conditions for using the Eurotech Auto Repair Centre website and services."
+  },
+  "title": "Terms & Conditions",
+  "updatedAt": "Last updated: March 2026",
+  "sections": [
+    {
+      "heading": "About This Website",
+      "paragraphs": [
+        "This website is operated by {businessName}, {fullAddress}. By using this website you agree to these terms."
+      ]
+    },
+    {
+      "heading": "Quotes and Estimates",
+      "paragraphs": [
+        "Quotes submitted through this website are requests only and do not constitute a binding agreement. All repair quotes are subject to a physical inspection of the vehicle. Final pricing may differ from initial estimates if additional damage is found during the repair process.",
+        "We will always discuss any changes in scope or cost with you before proceeding."
+      ]
+    },
+    {
+      "heading": "Repairs and Warranty",
+      "paragraphs": [
+        "All repairs are carried out in accordance with manufacturer specifications where applicable. Repairs completed by {businessName} carry a written guarantee as outlined at the time of repair.",
+        "Warranty does not cover damage caused by subsequent incidents, misuse, or failure to follow manufacturer maintenance recommendations."
+      ]
+    },
+    {
+      "heading": "Insurance Claims",
+      "paragraphs": [
+        "Where we manage an insurance claim on your behalf, we act as your representative with your insurer. You remain responsible for any excess or costs not covered by your insurance policy. We are not responsible for decisions made by your insurer regarding claim approval or coverage."
+      ]
+    },
+    {
+      "heading": "Website Content",
+      "paragraphs": [
+        "We make reasonable efforts to keep the information on this website accurate and up to date. However, we do not guarantee that all content is complete, current, or free of errors. Vehicle images on this site may include stock photography and may not represent specific vehicles repaired by us."
+      ]
+    },
+    {
+      "heading": "Intellectual Property",
+      "paragraphs": [
+        "All content on this website, including text, images, logos, and design, is owned by or licensed to {businessName} and is protected by copyright. You may not reproduce, distribute, or use any content from this website without our written permission.",
+        "Vehicle manufacturer names, logos, and trademarks displayed on this site are the property of their respective owners and are used to indicate our repair specialisations."
+      ]
+    },
+    {
+      "heading": "Limitation of Liability",
+      "paragraphs": [
+        "To the fullest extent permitted by New Zealand law, {businessName} is not liable for any indirect, incidental, or consequential loss arising from your use of this website. This does not affect your rights under the Consumer Guarantees Act 1993 or other applicable New Zealand legislation."
+      ]
+    },
+    {
+      "heading": "External Links",
+      "paragraphs": [
+        "This website may contain links to third-party websites. We are not responsible for the content, privacy practices, or availability of those sites."
+      ]
+    },
+    {
+      "heading": "Changes to These Terms",
+      "paragraphs": [
+        "We may update these terms from time to time. The latest version will always be available on this page. Continued use of the website after changes constitutes acceptance of the updated terms."
+      ]
+    },
+    {
+      "heading": "Governing Law",
+      "paragraphs": [
+        "These terms are governed by the laws of New Zealand. Any disputes will be subject to the jurisdiction of the New Zealand courts."
+      ]
+    },
+    {
+      "heading": "Contact",
+      "paragraphs": [
+        "If you have questions about these terms, contact us:"
+      ],
+      "html": "<p>{businessName}<br>{address}<br>{suburb}, {city} {postcode}<br>Phone: <a href=\"tel:{phoneTel}\">{phone}</a><br>Email: <a href=\"mailto:{email}\">{email}</a></p>"
+    }
+  ]
+}

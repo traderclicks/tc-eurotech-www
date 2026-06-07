@@ -1,0 +1,13 @@
+{
+  "siteName": "Eurotech Automotive",
+  "editors": [
+    "andy@eurotechauto.co.nz"
+  ],
+  "approvers": [
+    "duncan@traderclicks.com"
+  ],
+  "settings": {
+    "requireApproval": true,
+    "defaultPostImage": "/images/DSC00625.jpg"
+  }
+}
