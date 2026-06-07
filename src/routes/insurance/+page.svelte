@@ -7,7 +7,11 @@
   import { page } from '$app/stores';
   import type { FaqsByPage } from '$lib/cms/faqs';
   import type { Insurer } from '$lib/cms/insurers';
+  import type { PageData } from './$types';
 
+  export let data: PageData;
+
+  $: pageContent = data.page;
   $: insuranceFaqs = (($page.data.faqs as FaqsByPage | undefined)?.insurance ?? []);
   $: insurerLogos = (($page.data.insurers as Insurer[] | undefined) ?? []);
 </script>
@@ -17,16 +21,17 @@
 </svelte:head>
 
 <Meta
-  title="Insurance Claims"
-  description="We handle your insurance claim from start to finish. Factory-authorized European vehicle repairs trusted by all major NZ insurers."
+  title={pageContent.meta.title}
+  description={pageContent.meta.description}
+  keywords={pageContent.meta.keywords}
 />
 
 <div class="page-header">
   <div class="container">
     <div class="intro-row">
       <div class="intro-text">
-        <h1>Insurance Claims</h1>
-        <p class="intro">Had an accident? Request a Repair Quote by clicking the button and we'll handle everything. Factory-authorized for Jaguar, Land Rover, and BMW — you get to choose us as your repairer. All work carries a manufacturer's guarantee.</p>
+        <h1>{pageContent.title}</h1>
+        {#if pageContent.subtitle}<p class="intro">{pageContent.subtitle}</p>{/if}
       </div>
       <div class="cta-buttons-wrapper">
         <div class="cta-buttons">
