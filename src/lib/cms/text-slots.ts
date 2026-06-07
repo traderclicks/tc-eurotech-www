@@ -184,3 +184,20 @@ export function getTextSlotValueWithPreview(slotId: string, isPreviewMode: boole
   }
   return getTextSlotValue(slotId);
 }
+
+/**
+ * Get the full text-value record with preview-mode support.
+ * Layout loaders use this so site-wide text is available on $page.data.text.
+ * Matches the getXWithPreview() contract used across the CMS loaders
+ * (D549 — Controlla Connector integration surface).
+ */
+export function getTextWithPreview(isPreviewMode: boolean): TextSlotValues {
+  const live = getLiveTextValues();
+  if (!isPreviewMode) return live;
+  const pending = getTextPendingChanges();
+  const merged: TextSlotValues = { ...live };
+  for (const [slotId, change] of Object.entries(pending)) {
+    merged[slotId] = change.proposed;
+  }
+  return merged;
+}
