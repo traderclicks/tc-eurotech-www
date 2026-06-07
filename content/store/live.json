@@ -2,6 +2,7 @@
   "dateCreated": "2026-01-25T10:10:04.000Z",
   "dateModified": "2026-05-26T14:22:15.000Z",
   "businessName": "Eurotech Auto Repair Centre",
+  "alternateName": "Eurotech Panel Beaters",
   "phone": "(09) 573 1093",
   "email": "info@eurotechauto.co.nz",
   "address": "20G Sylvia Park Road",
@@ -9,8 +10,27 @@
   "city": "Auckland",
   "postcode": "1642",
   "country": "New Zealand",
+  "foundingDate": "2003",
+  "shortDescription": "European vehicle repair specialists. New Zealand's only factory-authorized Jaguar/Land Rover structural repairer.",
   "openingHours": "Mon-Fri: 7:30 AM - 5:00 PM",
+  "businessHours": [
+    {
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "07:30",
+      "closes": "17:00"
+    }
+  ],
   "googleMapsUrl": "https://g.page/eurotech-auto-repair",
+  "geo": {
+    "latitude": -36.909,
+    "longitude": 174.836
+  },
   "facebookUrl": "https://www.facebook.com/eurotechauto",
   "instagramUrl": "https://www.instagram.com/eurotechauto",
   "cognitoFormId": "66",
