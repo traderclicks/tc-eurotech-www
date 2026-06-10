@@ -189,10 +189,20 @@
     left: 0;
     right: 0;
     bottom: 0;
+    /* Pin to the *visible* viewport. `dvh` tracks the mobile browser chrome
+       (address bar) expanding/collapsing; `vh` is the fallback for browsers
+       without `dvh`. This is what stops the overlay being measured taller than
+       the screen on Android/iOS, which was pushing the modal's top and bottom
+       off-screen. */
+    height: 100vh;
+    height: 100dvh;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     display: flex;
-    align-items: center;
+    /* `safe center` centers as normal, but when the modal is taller than the
+       viewport it falls back to start-alignment so the top can never be clipped
+       or become unreachable — the classic flexbox-centering + overflow trap. */
+    align-items: safe center;
     justify-content: center;
     z-index: 10001;
     padding: var(--space-4);
@@ -210,6 +220,7 @@
     max-width: 600px;
     width: 100%;
     max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -276,6 +287,7 @@
   .image-modal img {
     max-width: 100%;
     max-height: 80vh;
+    max-height: 80dvh;
     object-fit: contain;
   }
 
@@ -451,6 +463,7 @@
     .modal-container {
       max-width: 100%;
       max-height: 100vh;
+      max-height: 100dvh;
       border-radius: var(--radius-lg);
     }
 

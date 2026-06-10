@@ -453,8 +453,10 @@
       height: 36px;
     }
 
+    /* Indent the logo past the menu icon (left:16 + 48 = 64) plus a gap,
+       so the logo doesn't crowd the icon on compressed/narrow viewports. */
     .nav-container {
-      padding-left: 64px;
+      padding-left: 88px;
     }
   }
 
@@ -499,8 +501,9 @@
       height: 28px;
     }
 
+    /* Indent the logo past the menu icon (left:4 + 40 = 44) plus a gap. */
     .nav-container {
-      padding-left: 44px;
+      padding-left: 68px;
     }
   }
 
