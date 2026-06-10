@@ -501,9 +501,9 @@
       height: 28px;
     }
 
-    /* Indent the logo past the menu icon (left:4 + 40 = 44) plus a gap. */
+    /* Indent the logo past the menu icon (left:4 + 40 = 44) plus a small gap. */
     .nav-container {
-      padding-left: 68px;
+      padding-left: 56px;
     }
   }
 
