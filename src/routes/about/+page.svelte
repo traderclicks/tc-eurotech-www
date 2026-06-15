@@ -51,6 +51,33 @@
         {/if}
       </div>
     </section>
+
+    {#if page.team && (page.team.afterSection ?? page.sections.length - 1) === i}
+      <section class="team-panel">
+        <div class="container">
+          <h2>{page.team.heading}</h2>
+          <div class="team-grid">
+            {#each page.team.members as member}
+              <figure class="team-member">
+                <div class="team-photo">
+                  <CloudflareImage
+                    src={member.image}
+                    alt={member.alt}
+                    width={240}
+                    height={288}
+                    fit="cover"
+                  />
+                </div>
+                <figcaption class="team-name">
+                  {member.name}
+                  {#if member.role}<span class="team-role">{member.role}</span>{/if}
+                </figcaption>
+              </figure>
+            {/each}
+          </div>
+        </div>
+      </section>
+    {/if}
   {/each}
 </div>
 
@@ -130,6 +157,88 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230066cc' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
     background-repeat: no-repeat;
     background-size: contain;
+  }
+
+  /* Team panel — horizontal passport photos with names underneath */
+  .team-panel {
+    padding: var(--space-20, 5rem) 0;
+    text-align: center;
+  }
+
+  .team-panel h2 {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-12);
+  }
+
+  .team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-10);
+  }
+
+  .team-member {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+  }
+
+  .team-photo {
+    width: 180px;
+    height: 216px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-content);
+  }
+
+  .team-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .team-name {
+    margin-top: var(--space-4);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+  }
+
+  .team-role {
+    display: block;
+    font-size: var(--text-base);
+    font-weight: var(--font-normal);
+    color: var(--text-secondary);
+    margin-top: var(--space-1);
+  }
+
+  @media (max-width: 768px) {
+    .team-panel {
+      padding: var(--space-12) 0;
+    }
+
+    .team-panel h2 {
+      margin-bottom: var(--space-8);
+    }
+
+    /* Two-up grid on phones — smaller frames + tighter gap so two fit per row */
+    .team-grid {
+      gap: var(--space-6) var(--space-5);
+    }
+
+    .team-member {
+      width: 130px;
+    }
+
+    .team-photo {
+      width: 130px;
+      height: 156px;
+    }
   }
 
   .split-image {
