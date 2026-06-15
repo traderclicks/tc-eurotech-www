@@ -71,6 +71,23 @@ export interface PageHero {
   minHeight?: number;
 }
 
+export interface TeamMember {
+  /** Display name shown under the photo */
+  name: string;
+  /** Passport-style headshot, e.g. /images/team/bijay.jpg */
+  image: string;
+  alt: string;
+  /** Optional role/title shown beneath the name */
+  role?: string;
+}
+
+export interface TeamPanel {
+  heading: string;
+  members: TeamMember[];
+  /** Render the panel immediately after this section index (0-based). Omit to append at the end. */
+  afterSection?: number;
+}
+
 export interface ServiceCardItem {
   icon: string;
   title: string;
@@ -95,6 +112,8 @@ export interface PageData {
   /** Hero block for image-led pages (About style) */
   hero?: PageHero;
   sections: PageSection[];
+  /** Optional team panel — horizontal passport photos with names (About page) */
+  team?: TeamPanel;
   /** Homepage service grid (5 brand cards + Insurance card) */
   services?: ServiceCardItem[];
   /** Homepage "From the Workshop" section subtitle */
