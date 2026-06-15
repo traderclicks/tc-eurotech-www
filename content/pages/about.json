@@ -82,5 +82,31 @@
         "height": 534
       }
     }
-  ]
+  ],
+  "team": {
+    "heading": "Meet the Team",
+    "afterSection": 0,
+    "members": [
+      {
+        "name": "Marino",
+        "image": "/images/team/marino.jpg",
+        "alt": "Marino — Eurotech Auto Repair Centre"
+      },
+      {
+        "name": "Bijay",
+        "image": "/images/team/bijay.jpg",
+        "alt": "Bijay — Eurotech Auto Repair Centre"
+      },
+      {
+        "name": "Dorothea",
+        "image": "/images/team/dorothea.jpg",
+        "alt": "Dorothea — Eurotech Auto Repair Centre"
+      },
+      {
+        "name": "Dewi",
+        "image": "/images/team/dewi.jpg",
+        "alt": "Dewi — Eurotech Auto Repair Centre"
+      }
+    ]
+  }
 }
