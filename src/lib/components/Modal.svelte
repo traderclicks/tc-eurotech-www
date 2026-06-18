@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { fade, scale } from 'svelte/transition';
   import ContactForm from './ContactForm.svelte';
-  import CognitoForm from './CognitoForm.svelte';
+  import CognitoFormIframe from './CognitoFormIframe.svelte';
   import PhoneIcon from './PhoneIcon.svelte';
   import { page } from '$app/stores';
   import type { Insurer } from '$lib/cms/insurers';
@@ -172,7 +172,7 @@
             </div>
           </div>
         {:else if modal.type === 'cognito'}
-          <CognitoForm formId={modal.content.formId} />
+          <CognitoFormIframe formId={modal.content.formId} title={modal.title} />
         {:else if modal.type === 'custom'}
           <!-- Slot for custom modal content -->
           <slot name="custom" {modal} />
