@@ -72,7 +72,7 @@
 </header>
 
 <!-- Navigation Menu Component -->
-<NavigationMenu bind:isOpen={isMenuOpen} on:contact={() => { isMenuOpen = false; locationOpen.set(true); }} />
+<NavigationMenu bind:isOpen={isMenuOpen} on:contact={() => { isMenuOpen = false; openMessageModal(); }} />
 
 <!-- Location Modal -->
 {#if $locationOpen}
