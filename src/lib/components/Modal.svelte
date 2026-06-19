@@ -2,7 +2,6 @@
   import { modals, type ModalType } from '$lib/stores/modal';
   import { onMount } from 'svelte';
   import { fade, scale } from 'svelte/transition';
-  import ContactForm from './ContactForm.svelte';
   import CognitoFormIframe from './CognitoFormIframe.svelte';
   import PhoneIcon from './PhoneIcon.svelte';
   import { page } from '$app/stores';
@@ -82,9 +81,7 @@
       {/if}
 
       <div class="modal-content">
-        {#if modal.type === 'form'}
-          <ContactForm {...modal.props} />
-        {:else if modal.type === 'image'}
+        {#if modal.type === 'image'}
           <div class="image-modal">
             <button
               class="image-close"

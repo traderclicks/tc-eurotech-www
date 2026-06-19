@@ -1,14 +1,13 @@
 import { writable, derived } from 'svelte/store';
 import { site } from '$lib/config/site';
 
-export type ModalType = 'form' | 'image' | 'video' | 'confirm' | 'alert' | 'custom' | 'insurance' | 'cognito';
+export type ModalType = 'image' | 'video' | 'confirm' | 'alert' | 'custom' | 'insurance' | 'cognito';
 
 interface Modal {
   id: string;
   type: ModalType;
   title?: string;
   content?: any;
-  props?: Record<string, any>;
   onConfirm?: () => void;
   onCancel?: () => void;
 }
@@ -43,14 +42,6 @@ export const isModalOpen = derived(modals, ($modals) => $modals.length > 0);
 
 // Helper functions for common modal types
 export const modal = {
-  form: (props?: Record<string, any>) => {
-    return modals.open({
-      type: 'form',
-      title: props?.title || 'Contact Us',
-      props
-    });
-  },
-
   image: (src: string, alt?: string) => {
     return modals.open({
       type: 'image',
