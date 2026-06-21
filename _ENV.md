@@ -16,7 +16,6 @@ Eurotech Auto client website. Public read-only content-consumer per **D658**.
 
 | Variable | Description | Where to get |
 |----------|-------------|--------------|
-| `PUBLIC_TURNSTILE_SITEKEY` | Cloudflare Turnstile site key (used by ContactForm) | Cloudflare dashboard → Turnstile → eurotech-auth widget |
 | `PUBLIC_USE_CLOUDFLARE_IMAGES` | `true` on Cloudflare-proxied hostnames (production + `preview.eurotechauto.co.nz`), `false` on `*.vercel.app` previews where `/cdn-cgi/` paths don't resolve | Set per Vercel environment |
 
 ## Optional Variables
