@@ -168,7 +168,8 @@
   /* Insurer logos — full color grid */
   .insurer-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* 9 insurers → 3 rows of 3 */
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-5);
     align-items: center;
   }
