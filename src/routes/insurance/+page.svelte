@@ -7,13 +7,14 @@
   import { page } from '$app/stores';
   import type { FaqsByPage } from '$lib/cms/faqs';
   import type { Insurer } from '$lib/cms/insurers';
+  import { displayInsurers } from '$lib/cms/insurer-display';
   import type { PageData } from './$types';
 
   export let data: PageData;
 
   $: pageContent = data.page;
   $: insuranceFaqs = (($page.data.faqs as FaqsByPage | undefined)?.insurance ?? []);
-  $: insurerLogos = (($page.data.insurers as Insurer[] | undefined) ?? []);
+  $: insurerLogos = displayInsurers(($page.data.insurers as Insurer[] | undefined) ?? []);
 </script>
 
 <svelte:head>
@@ -167,8 +168,9 @@
   /* Insurer logos — full color grid */
   .insurer-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-5);
+    /* 9 insurers → 3 rows of 3 */
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
     align-items: center;
   }
 
@@ -176,12 +178,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-3);
+    padding: var(--space-4);
   }
 
   .insurer-logo img {
-    max-width: 115px;
-    max-height: 48px;
+    max-width: 145px;
+    max-height: 60px;
     width: auto;
     height: auto;
     object-fit: contain;
