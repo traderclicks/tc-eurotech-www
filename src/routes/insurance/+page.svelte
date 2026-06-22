@@ -7,13 +7,14 @@
   import { page } from '$app/stores';
   import type { FaqsByPage } from '$lib/cms/faqs';
   import type { Insurer } from '$lib/cms/insurers';
+  import { displayInsurers } from '$lib/cms/insurer-display';
   import type { PageData } from './$types';
 
   export let data: PageData;
 
   $: pageContent = data.page;
   $: insuranceFaqs = (($page.data.faqs as FaqsByPage | undefined)?.insurance ?? []);
-  $: insurerLogos = (($page.data.insurers as Insurer[] | undefined) ?? []);
+  $: insurerLogos = displayInsurers(($page.data.insurers as Insurer[] | undefined) ?? []);
 </script>
 
 <svelte:head>

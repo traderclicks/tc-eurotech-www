@@ -6,9 +6,10 @@
   import PhoneIcon from './PhoneIcon.svelte';
   import { page } from '$app/stores';
   import type { Insurer } from '$lib/cms/insurers';
+  import { displayInsurers } from '$lib/cms/insurer-display';
 
   $: insurers = ($page.data.insurers ?? []) as Insurer[];
-  $: insurerContacts = insurers.filter((i) => i.phone);
+  $: insurerContacts = displayInsurers(insurers);
 
   let modalElements: HTMLDivElement[] = [];
 
