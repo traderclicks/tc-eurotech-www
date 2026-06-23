@@ -62,7 +62,7 @@
         <div class="logos-block insurer-logos">
           <div class="insurer-grid">
             {#each insurerLogos as logo}
-              <div class="insurer-logo" class:small-logo={logo.name === 'NZI'}>
+              <div class="insurer-logo">
                 <img src={logo.logo} alt={logo.name} />
               </div>
             {/each}
@@ -189,10 +189,6 @@
     object-fit: contain;
   }
 
-  .small-logo img {
-    max-width: 50px;
-    max-height: 22px;
-  }
 
   @media (max-width: 768px) {
     .page {
