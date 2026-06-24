@@ -27,15 +27,15 @@ Eurotech Auto client website. Public read-only content-consumer per **D658**.
 ## Vercel Project
 
 - Project: `tc-eurotech-www` in `traderclicks` team
-- Production URL: `https://eurotechauto.co.nz` (post-cutover — pending **T1017**)
-- Preview branch: `dev` → `https://preview.eurotechauto.co.nz` (Cloudflare-proxied)
+- Production URL: `https://eurotechauto.co.nz` (apex 301→`www` via Cloudflare; `www` = Vercel Production. DNS cutover complete.)
+- Preview: **disabled** as of 2026-06-23 — `dev` auto-deploys off (`vercel.json` `deploymentEnabled.dev=false`) and the `preview.eurotechauto.co.nz` domain deleted from Vercel. It was a public, indexable duplicate of prod. See **R641** for status + how to restore.
 - Other previews: `*.vercel.app` (no Cloudflare proxy — image transforms broken there by design)
 
 ## Cloudflare
 
 - Zone: `eurotechauto.co.nz`
 - Image Transformations: enabled, origin policy "This zone only"
-- SSL mode: Flexible at zone level while live Webflow remains on apex; overridden to Full for `preview.eurotechauto.co.nz` via Page Rule (cleanup tracked as **T1873** — fire at DNS cutover)
+- SSL mode: **Full** (zone-wide, set at DNS cutover — T1873 done; the old preview-only "SSL Full" Page Rule was deleted)
 
 ## Notes
 
