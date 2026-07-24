@@ -26,7 +26,8 @@
 
   // Construct full title — append brand unless it's the default or already contains it
   const defaultTitle = 'Eurotech Auto Repair Centre - European Vehicle Specialists Auckland';
-  const brandSuffix = 'Eurotech Auto Repair';
+  // Definitive full business name — competitors trade as "Eurotech", so never shorten. See _ENV.md.
+  const brandSuffix = 'Eurotech Auto Repair Centre';
   const fullTitle = title === defaultTitle || title.includes(brandSuffix) ? title : `${title} | ${brandSuffix}`;
 
   // Get current URL for canonical and OG tags

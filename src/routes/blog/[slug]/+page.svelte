@@ -17,7 +17,7 @@
   $: articleSchema = generateArticleSchema({
     headline: post.title,
     description: post.excerpt,
-    author: 'Eurotech Auto Repair',
+    author: 'Eurotech Auto Repair Centre',
     datePublished: post.publishedAt,
     image: post.featuredImage?.url ?? data.defaultPostImage,
     url: $page.url.href
