@@ -19,7 +19,8 @@
 
   // Additional SEO props
   export let locale = 'en_NZ';
-  export let siteName = 'Eurotech Auto Repair';
+  // Definitive full business name — competitors trade as "Eurotech", so never shorten. See _ENV.md.
+  export let siteName = 'Eurotech Auto Repair Centre';
   export let twitterSite = '';
   export let twitterCreator = '';
 

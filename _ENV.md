@@ -39,5 +39,8 @@ Eurotech Auto client website. Public read-only content-consumer per **D658**.
 
 ## Notes
 
+- **Business name in published copy — always use the full name "Eurotech Auto Repair Centre", never bare "Eurotech".** Client advises there are other Auckland auto businesses trading as "Eurotech", so the short form is ambiguous and loses attribution. Canonical source is `content/store/live.json` → `businessName`. Applies to blog posts, page copy, meta descriptions and ad copy. Client instruction, 2026-07-24 (W659).
+  - Site metadata (`og:site_name`, `author`) comes from the `siteName` default in `src/lib/components/Meta.svelte` — no caller ever passes the prop, so that default is what renders on every page. It said "Eurotech Auto Repair" (no "Centre") until W659; `content/config.json` → `siteName` separately said "Eurotech Automotive" and is dead config (nothing reads it). Both corrected 2026-07-24.
+  - Blog bodies do **not** run through `interpolate()` (it's only wired into `TextPage.svelte`), so `{businessName}` will render literally in a post. The name is hardcoded in blog copy until that changes.
 - Auth removed entirely as of W517 — `CMS_SESSION_SECRET`, `TC_SERVICES_URL`, and the magic-link flow (previously delegated to tc-services) are no longer used.
 - The Controlla Connector (**D549**) will reintroduce an editor identity layer + preview mode when it ships. Until then, the loader signatures `getXWithPreview()` in `src/lib/cms/*.ts` are the kept integration surface — they're all called with `false` today. See **D671** for the rationale on stripping the cookie hooks pre-Connector.
