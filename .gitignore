@@ -62,3 +62,6 @@ _common
 # OS files
 .DS_Store
 **/.DS_Store
+
+# Starto parallel environments
+.starto/
