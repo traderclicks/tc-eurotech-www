@@ -168,7 +168,7 @@
   /* Insurer logos — full color grid */
   .insurer-grid {
     display: grid;
-    /* 9 insurers → 3 rows of 3 */
+    /* Column count is fixed; the roster length varies (see content/insurers/live.json) */
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-8);
     align-items: center;
