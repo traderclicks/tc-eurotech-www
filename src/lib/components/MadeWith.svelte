@@ -4,7 +4,7 @@
   Do not edit a site's copy: change the master and run _admin/scripts/made-with-sync.sh.
 
   Usage: <MadeWith slug="jimmeates" bg="dark" />
-    slug — the site's tc-<slug>-www name; the link goes to traderclicks.nz/<slug>
+    slug — the site's tc-<slug>-www name; the link goes to traderclicks.nz/client-story/<slug>
     bg   — "light" (dark ink), "dark" (light ink) or "theme" (the surrounding text colour)
 
   Tune per site with CSS variables on any ancestor, e.g. .footer { --mw-bottom: 0.5; }
@@ -25,7 +25,7 @@
 
 <a
   class="made-with made-with--{bg} {className}"
-  href="https://www.traderclicks.nz/{slug}"
+  href="https://www.traderclicks.nz/client-story/{slug}"
   rel="noopener"
   target="_blank"
   title="TraderClicks | Branding, Marketing, Websites"
