@@ -2,6 +2,7 @@
   import { modal } from '$lib/stores/modal';
   import { site } from '$lib/config/site';
   import PhoneIcon from './PhoneIcon.svelte';
+  import MadeWith from './MadeWith.svelte';
 
   const currentYear = new Date().getFullYear();
 
@@ -135,19 +136,7 @@
         <span class="separator">|</span>
         <a href="/terms">Terms</a>
         <span class="separator">|</span>
-        <a
-          class="made-with"
-          href="https://traderclicks.co.nz"
-          rel="noopener"
-          target="_blank"
-          title="TraderClicks Web Design &amp; Marketing"
-        >
-          <span class="made-with-text">Made with</span>
-          <span class="made-with-heart" aria-hidden="true">
-            <img src="/images/tc-heart.svg" alt="" width="16" height="18" />
-          </span>
-          <span class="sr-only">by TraderClicks</span>
-        </a>
+        <MadeWith slug="eurotech" bg="dark" class="footer-made-with" />
       </div>
     </div>
   </div>
@@ -415,57 +404,10 @@
     color: rgba(255, 255, 255, 0.3);
   }
 
-  /* TraderClicks attribution — mirrors tc-thelawreports-www pattern */
-  .made-with {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
+  /* TraderClicks credit — the component (MadeWith.svelte) owns its look */
+  .bottom-right :global(.footer-made-with) {
     margin-left: var(--space-2);
-    color: rgba(255, 255, 255, 0.5);
     font-size: var(--text-sm);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-  .made-with:hover {
-    color: white;
-  }
-  .made-with:hover .made-with-text {
-    color: white;
-  }
-  .made-with-text {
-    color: rgba(255, 255, 255, 0.5);
-    transition: color var(--transition-fast);
-  }
-  .made-with-heart {
-    display: inline-flex;
-    width: 16px;
-    height: 18px;
-    align-items: center;
-    justify-content: center;
-    background-image: url('/images/tc-heart-hover.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  .made-with-heart img {
-    width: 100%;
-    height: 100%;
-    transition: opacity var(--transition-fast);
-  }
-  .made-with:hover .made-with-heart img {
-    opacity: 0;
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
   }
 
   @media (max-width: 1024px) {
@@ -561,7 +503,7 @@
     }
 
     /* Keep made-with inline with Privacy/Terms — no own-line break */
-    .made-with {
+    .bottom-right :global(.footer-made-with) {
       margin-left: 0;
     }
   }
