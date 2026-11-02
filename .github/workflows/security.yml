@@ -1,0 +1,25 @@
+# Required security checks (W886, D893): `security / scan` and `security / ai-review`.
+# The logic lives in traderclicks/.github; this file only calls it.
+name: security
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: security-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  security:
+    uses: traderclicks/.github/.github/workflows/security.yml@main
+    with:
+      mode: report
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
